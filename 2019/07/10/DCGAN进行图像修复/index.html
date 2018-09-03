@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python, machine learning," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="本文已置于https://github.com/tedqin/GAN-ImageRepairing 总体设计 和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神">
+<meta name="keywords" content="python, machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DCGAN进行图像修复">
+<meta property="og:url" content="http://yoursite.com/2019/07/10/DCGAN进行图像修复/index.html">
+<meta property="og:site_name" content="TedQin">
+<meta property="og:description" content="本文已置于https://github.com/tedqin/GAN-ImageRepairing 总体设计 和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/V0qUcr6.png">
+<meta property="og:image" content="https://i.imgur.com/rci95K5.png">
+<meta property="og:image" content="https://i.imgur.com/iFx1IJJ.png">
+<meta property="og:image" content="https://i.imgur.com/hvRAj2E.png">
+<meta property="og:image" content="https://i.imgur.com/mWpdlIY.png">
+<meta property="og:image" content="https://i.imgur.com/XfwNfoa.png">
+<meta property="og:updated_time" content="2019-07-29T05:24:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DCGAN进行图像修复">
+<meta name="twitter:description" content="本文已置于https://github.com/tedqin/GAN-ImageRepairing 总体设计 和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神">
+<meta name="twitter:image" content="https://i.imgur.com/V0qUcr6.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/10/DCGAN进行图像修复/"/>
+
+
+
+
+
+  <title>DCGAN进行图像修复 | TedQin</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TedQin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/DCGAN进行图像修复/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DCGAN进行图像修复</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-10T12:12:51+01:00">
+                2019-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">machine learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/gan/" itemprop="url" rel="index">
+                    <span itemprop="name">gan</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文已置于<a href="https://github.com/tedqin/GAN-ImageRepairing" title="github" target="_blank" rel="noopener">https://github.com/tedqin/GAN-ImageRepairing</a></p>
+<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="https://i.imgur.com/V0qUcr6.png" alt=""></p>
+<p>和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。<br>首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神经网络需要矩阵形式的输入，所以修复流程的首要步骤就是将图像分解为样本点，这个步骤可以由判别器的卷积实现，然后生成器和判别器进行博弈，得到训练好的模型，由生成器快速生成伪造的图像，然后建立适当的损失函数和惩罚因子来寻找修复图像所需要的最佳伪造图像。<br>由此，总的系统流程主要可以分为三步：</p>
+<ul>
+<li>图像预处理。</li>
+<li>训练DCGAN模型。</li>
+<li>找到补全原图像所需要的最佳伪造图像，进行图像修复。</li>
+</ul>
+<h2 id="图像预处理"><a href="#图像预处理" class="headerlink" title="图像预处理"></a>图像预处理</h2><h3 id="Openface预处理"><a href="#Openface预处理" class="headerlink" title="Openface预处理"></a>Openface预处理</h3><p>Openface是一个基于深度神经网络的开源人脸识别系统。</p>
+<ul>
+<li>用OpenCV或者dlib中预训练好的模型检测人脸</li>
+<li>将人脸迁移到神经网络。利用dlib的实时姿态估计与OpenCV的仿射线变换来使人脸的眼睛和嘴唇出现在每个图像上的相同位置。</li>
+<li>使用深度神经网络将面部表示（或嵌入）在128维单位超球面上。这种嵌入方法可以通用于任何人脸表示上面。与其他的一些人脸表征方法不同，这种人脸嵌入方法具有很好的性质，两个嵌入人脸间的距离较大就意味着这两幅面孔可能不是来自于同一个人。</li>
+</ul>
+<p>运用Openface来消除除了人脸外的其他的因素，比如背景、发型等等，然后移动图像，使得数据集中的每个人的人脸区域居于整张图片的中央。</p>
+<p><img src="https://i.imgur.com/rci95K5.png" alt=""></p>
+<h3 id="构建掩膜"><a href="#构建掩膜" class="headerlink" title="构建掩膜"></a>构建掩膜</h3><p>为了能够评估修复结果，需要知道被损坏图像之前的样子。我采用给未损坏图像一个二进制掩膜来作为损坏区域，这样就可以在修复掩膜之后，对比修复前的图像进行修复效果评估。</p>
+<p><img src="https://i.imgur.com/iFx1IJJ.png" alt=""></p>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p><img src="https://i.imgur.com/hvRAj2E.png" alt=""></p>
+<p>训练过程中，定义了一个采样器，在每一个epoch训练完成以后，用采样器对生成器进行采样并且保存样例图像</p>
+<p>在20个epoch训练完成以后，生成的图像效果已经比较好，此时生成器和判别器的损失函数变化如图</p>
+<p><img src="https://i.imgur.com/mWpdlIY.png" alt=""></p>
+<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><p>部分结果如下：<br><img src="https://i.imgur.com/XfwNfoa.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python-machine-learning/" rel="tag"># python, machine learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/01/Javascript整理16-安全性/" rel="next" title="Javascript整理16-安全性">
+                <i class="fa fa-chevron-left"></i> Javascript整理16-安全性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/14/知识整理css/" rel="prev" title="知识整理CSS">
+                知识整理CSS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Ted Qin" />
+          <p class="site-author-name" itemprop="name">Ted Qin</p>
+           
+              <p class="site-description motion-element" itemprop="description">Output is the best input</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/tedqin" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/133755136/" target="_blank" title="DouBan">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      DouBan
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/qin-tian-60-94/activities" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      ZhiHu
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总体设计"><span class="nav-number">1.</span> <span class="nav-text">总体设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图像预处理"><span class="nav-number">2.</span> <span class="nav-text">图像预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Openface预处理"><span class="nav-number">2.1.</span> <span class="nav-text">Openface预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建掩膜"><span class="nav-number">2.2.</span> <span class="nav-text">构建掩膜</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练"><span class="nav-number">3.</span> <span class="nav-text">训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修复"><span class="nav-number">4.</span> <span class="nav-text">修复</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ted Qin</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

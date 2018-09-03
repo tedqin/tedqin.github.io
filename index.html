@@ -1493,6 +1493,181 @@ localStorage.getItem(key)</pre>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/DCGAN进行图像修复/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/10/DCGAN进行图像修复/" itemprop="url">DCGAN进行图像修复</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-10T12:12:51+01:00">
+                2019-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">machine learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/gan/" itemprop="url" rel="index">
+                    <span itemprop="name">gan</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文已置于<a href="https://github.com/tedqin/GAN-ImageRepairing" title="github" target="_blank" rel="noopener">https://github.com/tedqin/GAN-ImageRepairing</a></p>
+<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="https://i.imgur.com/V0qUcr6.png" alt=""></p>
+<p>和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。<br>首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神经网络需要矩阵形式的输入，所以修复流程的首要步骤就是将图像分解为样本点，这个步骤可以由判别器的卷积实现，然后生成器和判别器进行博弈，得到训练好的模型，由生成器快速生成伪造的图像，然后建立适当的损失函数和惩罚因子来寻找修复图像所需要的最佳伪造图像。<br>由此，总的系统流程主要可以分为三步：</p>
+<ul>
+<li>图像预处理。</li>
+<li>训练DCGAN模型。</li>
+<li>找到补全原图像所需要的最佳伪造图像，进行图像修复。</li>
+</ul>
+<h2 id="图像预处理"><a href="#图像预处理" class="headerlink" title="图像预处理"></a>图像预处理</h2><h3 id="Openface预处理"><a href="#Openface预处理" class="headerlink" title="Openface预处理"></a>Openface预处理</h3><p>Openface是一个基于深度神经网络的开源人脸识别系统。</p>
+<ul>
+<li>用OpenCV或者dlib中预训练好的模型检测人脸</li>
+<li>将人脸迁移到神经网络。利用dlib的实时姿态估计与OpenCV的仿射线变换来使人脸的眼睛和嘴唇出现在每个图像上的相同位置。</li>
+<li>使用深度神经网络将面部表示（或嵌入）在128维单位超球面上。这种嵌入方法可以通用于任何人脸表示上面。与其他的一些人脸表征方法不同，这种人脸嵌入方法具有很好的性质，两个嵌入人脸间的距离较大就意味着这两幅面孔可能不是来自于同一个人。</li>
+</ul>
+<p>运用Openface来消除除了人脸外的其他的因素，比如背景、发型等等，然后移动图像，使得数据集中的每个人的人脸区域居于整张图片的中央。</p>
+<p><img src="https://i.imgur.com/rci95K5.png" alt=""></p>
+<h3 id="构建掩膜"><a href="#构建掩膜" class="headerlink" title="构建掩膜"></a>构建掩膜</h3><p>为了能够评估修复结果，需要知道被损坏图像之前的样子。我采用给未损坏图像一个二进制掩膜来作为损坏区域，这样就可以在修复掩膜之后，对比修复前的图像进行修复效果评估。</p>
+<p><img src="https://i.imgur.com/iFx1IJJ.png" alt=""></p>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p><img src="https://i.imgur.com/hvRAj2E.png" alt=""></p>
+<p>训练过程中，定义了一个采样器，在每一个epoch训练完成以后，用采样器对生成器进行采样并且保存样例图像</p>
+<p>在20个epoch训练完成以后，生成的图像效果已经比较好，此时生成器和判别器的损失函数变化如图</p>
+<p><img src="https://i.imgur.com/mWpdlIY.png" alt=""></p>
+<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><p>部分结果如下：<br><img src="https://i.imgur.com/XfwNfoa.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/Javascript整理16-安全性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2789,191 +2964,6 @@ localStorage.getItem(key)</pre>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/10/Javascript整理09-事件绑定/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/10/Javascript整理09-事件绑定/" itemprop="url">Javascript整理09-事件绑定</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-10T11:31:59+01:00">
-                2019-05-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>通用事件绑定<ul>
-<li><img src="https://i.imgur.com/3n74SBB.png" alt=""></li>
-</ul>
-</li>
-<li>事件冒泡<ul>
-<li>若底层和父层节点有相同绑定事件，底层业务节点的事件（如点击）会先执行，然后会一层层网上执行，先执行底层的事件，然后上一层的事件，然后…</li>
-<li>点击激活弹出激活，点击取消弹出取消<img src="https://i.imgur.com/CS0jTZh.png" alt=""><br>（<code>e.stopPropatation()</code>：阻止冒泡）</li>
-</ul>
-</li>
-<li>代理 事件冒泡的应用<ul>
-<li>点击a标签的元素，会弹出相应文字<img src="https://i.imgur.com/uRTP2p5.png" alt=""><br>（这里target可以定位到当前点击的元素）</li>
-</ul>
-</li>
-<li><strong>问题</strong><ul>
-<li>编写一个通用的事件监听函数<ul>
-<li><img src="https://i.imgur.com/BBOT3t6.png" alt=""></li>
-</ul>
-</li>
-<li>描述事件冒泡流程<ul>
-<li>dom树形结构</li>
-<li>冒泡</li>
-<li>阻止冒泡</li>
-<li>应用：代理</li>
-</ul>
-</li>
-<li>对于一个无限下拉加载图片的页面，如何给每个图片绑定事件<ul>
-<li>使用代理：代码简洁，对浏览器压力小</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3024,7 +3014,7 @@ localStorage.getItem(key)</pre>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -3035,7 +3025,7 @@ localStorage.getItem(key)</pre>
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -3046,7 +3036,7 @@ localStorage.getItem(key)</pre>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

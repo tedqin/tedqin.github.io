@@ -72,6 +72,33 @@
   </entry>
   
   <entry>
+    <title>DCGAN进行图像修复</title>
+    <link href="http://yoursite.com/2019/07/10/DCGAN%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E4%BF%AE%E5%A4%8D/"/>
+    <id>http://yoursite.com/2019/07/10/DCGAN进行图像修复/</id>
+    <published>2019-07-10T11:12:51.000Z</published>
+    <updated>2019-07-29T05:24:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文已置于<a href="https://github.com/tedqin/GAN-ImageRepairing" title="github" target="_blank" rel="noopener">https://github.com/tedqin/GAN-ImageRepairing</a></p><h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="https://i.imgur.com/V0qUcr6.png" alt=""></p><p>和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。<br>首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神经网络需要矩阵形式的输入，所以修复流程的首要步骤就是将图像分解为样本点，这个步骤可以由判别器的卷积实现，然后生成器和判别器进行博弈，得到训练好的模型，由生成器快速生成伪造的图像，然后建立适当的损失函数和惩罚因子来寻找修复图像所需要的最佳伪造图像。<br>由此，总的系统流程主要可以分为三步：</p><ul><li>图像预处理。</li><li>训练DCGAN模型。</li><li>找到补全原图像所需要的最佳伪造图像，进行图像修复。</li></ul><h2 id="图像预处理"><a href="#图像预处理" class="headerlink" title="图像预处理"></a>图像预处理</h2><h3 id="Openface预处理"><a href="#Openface预处理" class="headerlink" title="Openface预处理"></a>Openface预处理</h3><p>Openface是一个基于深度神经网络的开源人脸识别系统。</p><ul><li>用OpenCV或者dlib中预训练好的模型检测人脸</li><li>将人脸迁移到神经网络。利用dlib的实时姿态估计与OpenCV的仿射线变换来使人脸的眼睛和嘴唇出现在每个图像上的相同位置。</li><li>使用深度神经网络将面部表示（或嵌入）在128维单位超球面上。这种嵌入方法可以通用于任何人脸表示上面。与其他的一些人脸表征方法不同，这种人脸嵌入方法具有很好的性质，两个嵌入人脸间的距离较大就意味着这两幅面孔可能不是来自于同一个人。</li></ul><p>运用Openface来消除除了人脸外的其他的因素，比如背景、发型等等，然后移动图像，使得数据集中的每个人的人脸区域居于整张图片的中央。</p><p><img src="https://i.imgur.com/rci95K5.png" alt=""></p><h3 id="构建掩膜"><a href="#构建掩膜" class="headerlink" title="构建掩膜"></a>构建掩膜</h3><p>为了能够评估修复结果，需要知道被损坏图像之前的样子。我采用给未损坏图像一个二进制掩膜来作为损坏区域，这样就可以在修复掩膜之后，对比修复前的图像进行修复效果评估。</p><p><img src="https://i.imgur.com/iFx1IJJ.png" alt=""></p><h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p><img src="https://i.imgur.com/hvRAj2E.png" alt=""></p><p>训练过程中，定义了一个采样器，在每一个epoch训练完成以后，用采样器对生成器进行采样并且保存样例图像</p><p>在20个epoch训练完成以后，生成的图像效果已经比较好，此时生成器和判别器的损失函数变化如图</p><p><img src="https://i.imgur.com/mWpdlIY.png" alt=""></p><h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><p>部分结果如下：<br><img src="https://i.imgur.com/XfwNfoa.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;本文已置于&lt;a href=&quot;https://github.com/tedqin/GAN-ImageRepairing&quot; title=&quot;github&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/tedqin/GAN-I
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="http://yoursite.com/categories/machine-learning/"/>
+    
+      <category term="gan" scheme="http://yoursite.com/categories/machine-learning/gan/"/>
+    
+    
+      <category term="python, machine learning" scheme="http://yoursite.com/tags/python-machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Javascript整理16-安全性</title>
     <link href="http://yoursite.com/2019/06/01/Javascript%E6%95%B4%E7%90%8616-%E5%AE%89%E5%85%A8%E6%80%A7/"/>
     <id>http://yoursite.com/2019/06/01/Javascript整理16-安全性/</id>
@@ -619,32 +646,6 @@
     
     
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>c++tips笔记</title>
-    <link href="http://yoursite.com/2018/10/18/cpp%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2018/10/18/cpp笔记/</id>
-    <published>2018-10-18T15:19:02.000Z</published>
-    <updated>2019-07-28T17:52:43.745Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><h3 id=""><a href="#" class="headerlink" title="*"></a>*</h3><ul><li><ul><li>是取值运算符，对地址使用可以获得地址中储存的数值。对于指针a，*a表示取a中的值</li></ul></li><li>在 <em>定义</em> 时，<em> 是一个标识符，声明该变量是一个指针，比如说int </em>p; 那p就是一个指向int型的指针</li><li>在 <em>调用</em> 时，<em> p是指针p指向的那个变量，比如说之前有int a=5；int </em> p=&amp;a；那么p的值是a的地址，也就是指针p指向a，<em> p则等于a的值，即</em>p=5。</li></ul><h3 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h3><ul><li>&amp;在 <em>定义</em> 时则是引用，比如说有定义int a=5；再定义int b=&amp;a；那么这里的b则引用a的值，即b=5，而再给b赋值：b=10，a的值也会变为10。</li><li>&amp;在 <em>调用</em> 是地址运算符，对变量使用可以获得该变量的地址, 对于变量b，&amp;b表示取b的地址</li></ul><h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><ul><li>先定义有int x = 0；int *p = &amp;x；</li><li>若定义函数： void fun1（int a）{ a=5；} ，则调用：fun1(x); 之后，x还等于0；因为fun1函数只改变了形参a的值，a只是fun1函数里的局部变量，调用fun1(x)相当于是“a=x;a=5;”，x没变；</li><li>若定义函数：void fun2（int &amp;a）{ a=5；} ， 则调用：fun2(x); 之后，x等于5；因为这里的a引用了x的值；</li><li>若定义函数：void fun3（int <em> a）{ </em> a=5；} ， 则调用：fun3(p); 之后，x也等于5；因为fun3函数的参数a是一个指针，相当于a=p；<em> a则与</em> p指向同一地址，改变<em> a即改变</em>p即x</li><li>return *this:</li><li></li></ul><h2 id="strcpy和strncpy："><a href="#strcpy和strncpy：" class="headerlink" title="strcpy和strncpy："></a>strcpy和strncpy：</h2><p><code>strcpy(char *ch1, char *ch2)</code>：</p><ul><li>直接将ch2指向的由”\0”结束的字符串复制到ch1，ch1必须有足够的空间来存储ch2</li><li>若ch2长于ch1，还是会复制，但是ch1会溢出<br>*</li></ul><p><code>strncpy(char *ch1, char *ch2, n)</code>:</p><ul><li>将ch2中最多n个字符复制到ch1</li><li>如果n&gt;ch1长度，ch1溢出</li><li>如果n&lt;ch1长度，且如果<ul><li>ch2长度&lt;=ch1长度，则ch2前n个字符复制到ch1</li><li>ch2长度&gt;ch1长度，出错</li></ul></li><li>建议：将n设置为ch1长度</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;指针&quot;&gt;&lt;a href=&quot;#指针&quot; class=&quot;headerlink&quot; title=&quot;指针&quot;&gt;&lt;/a&gt;指针&lt;/h2&gt;&lt;h3 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;*&quot;&gt;&lt;/a&gt;*&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;ul
-      
-    
-    </summary>
-    
-      <category term="cpp" scheme="http://yoursite.com/categories/cpp/"/>
-    
-    
-      <category term="cpp" scheme="http://yoursite.com/tags/cpp/"/>
     
   </entry>
   
