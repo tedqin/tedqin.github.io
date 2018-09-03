@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-28T18:05:13.918Z</updated>
+  <updated>2019-07-29T06:07:15.581Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>javascript整理-全</title>
-    <link href="http://yoursite.com/2019/07/15/javascript%E6%95%B4%E7%90%86-%E5%85%A8/"/>
-    <id>http://yoursite.com/2019/07/15/javascript整理-全/</id>
+    <title>javascript整理</title>
+    <link href="http://yoursite.com/2019/07/15/javascript%E6%95%B4%E7%90%86/"/>
+    <id>http://yoursite.com/2019/07/15/javascript整理/</id>
     <published>2019-07-15T20:23:22.000Z</published>
-    <updated>2019-07-28T18:05:13.918Z</updated>
+    <updated>2019-07-29T06:07:15.581Z</updated>
     
     <content type="html"><![CDATA[<p>闲来无事，把之前的笔记整理一下。   </p><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h3><ul><li>值类型：a和b相等，改a，b不变 (直接赋值值)<ul><li>undefined string number boolean</li></ul></li><li>引用类型：a和b相等，改a，b变 （赋值地址）    <ul><li>object function</li></ul></li><li>强制类型转换<ul><li>字符串拼接 <ul><li><code>var a=10; var b=100 + &#39;10&#39;//string</code></li></ul></li><li>== <ul><li><code>100==&#39;100&#39;; 0==&#39;&#39;; null==undefined //true</code></li></ul></li><li>if <ul><li><code>if(b=100)//转换为true</code></li></ul></li><li>逻辑运算符(&amp;，||) <ul><li><code>10&amp;&amp;0；&#39;&#39;||&#39;abc&#39;; !window.abc//都转换为true或false</code></li></ul></li></ul></li><li><strong>问题</strong><ul><li>typeof能得到哪些类型<ul><li>number, string, object, boolean, function, undefiend, symbol （null是object）</li><li>symbol： 可以生成永不重复的值，可以用一个字符串标记 </li></ul></li><li>何时使用===，何时使用==<ul><li>===：内容相等数据类型也相同的严格模式；==：内容相等数据类型可以不相等</li><li>使用==的唯一情况：’’if(obj.a==null){}’’</li></ul></li></ul></li></ul><h3 id="原型-原型链"><a href="#原型-原型链" class="headerlink" title="原型 原型链"></a>原型 原型链</h3><ul><li>构造函数<ul><li><code>function Foo(name,age) {this.name=name; this.age=age return this}</code> <code>var f = new Foo(&#39;ted&#39;,20)</code></li><li>var a ={}是var a =new Object()的语法糖//数组，函数同理</li><li>函数名大写字母开头</li></ul></li><li>原型规则和示例<ul><li>所有的引用类型（数组对象函数）都具有对象特性，即可自由扩展属性(null除外)</li><li>所有的引用类型都有一个<code>__proto__</code>属性，属性值是一个普通对象 </li><li>所有的函数都有一个prototype属性，属性值也是一个普通的对象</li><li><code>__proto__</code>对象指向它的构造函数的prototype对象（完全等于）</li><li>当试图得到一个引用类型的某个属性时，如果这个变量本身没有这个属性，那么会去它的<code>__proto__</code>，即它的构造函数的prototype中找</li><li>例子：不遍历原型上的属性：<code>if(f.hasOwnProperty(item))</code></li></ul></li><li>原型链<ul><li>一个对象，对象自身不存在的属性到它的隐式原型找，它的隐式原型不存的的话，再到它的隐式原型的隐式原型中找</li><li>Object.prototype指向null，防止死循环</li></ul></li><li>instanceof<ul><li>instanceof判断一个函数是否是一个变量的构造函数</li><li><code>var f = new Foo(&#39;ted&#39;)</code> <code>f instanceof Foo//true</code></li><li>判断逻辑：f的<code>__proto__</code>一层层往上，能否对应到Foo.prototype</li></ul></li><li><strong>问题</strong><ul><li>如何准确判断一个变量是数组<ul><li><code>var arr = []</code> <code>arr instanceof Array//true</code></li></ul></li><li>写一个原型链继承的例子<ul><li><code>function Animal(){this.eat = function(){console.log(&#39;eat&#39;)}}</code> <code>function Dog(){this.bark(){console.log(&#39;bark&#39;)}}</code> <code>Dog.prototype=new Animal()</code> <code>var haski=new Dog()</code> //这个比较low</li><li><code>function Elem(id){this.elem=document.getElementById(id)}</code> <pre>Elem.prototype.html=function(val) {<pre><code>  var elem=this.elem   if(val){      elem.innerHTML=val      return this  } else{       return elem.innerHTML}}&lt;/pre&gt; </code></pre>  <pre>Elem.prototype.on=function(type,fn){<pre><code>  var elem=this.elem  elem.addEventListener(type,fn)      &lt;/pre&gt;</code></pre>  <code>var div1 = new Elem(&#39;div1&#39;)</code></pre></pre></li></ul></li><li>描述new一个对象的过程<ul><li>创建一个新对象</li><li>this指向这个新对象</li><li>执行构造函数的代码，即对this赋值</li><li>返回this</li></ul></li></ul></li></ul><h3 id="作用域-闭包"><a href="#作用域-闭包" class="headerlink" title="作用域 闭包"></a>作用域 闭包</h3><ul><li>执行上下文 代码执行的环境<ul><li>一段<code>&lt;script&gt;</code>：全局上下文<ul><li>变量定义-&gt;函数申明</li></ul></li><li>一个函数：函数上下文<ul><li>变量定义-&gt;函数申明-&gt;this-&gt;arguments</li></ul></li></ul></li><li>this<ul><li>this要在执行时才能确认值，定义时无法确认</li><li>call可以改变this的值：<code>a.fn.call({name:B})</code></li><li>1.作为构造函数执行：指向定义的对象 <pre>function Foo(name) {<br>this.name = name}<br>var f = new Foo(‘ted’)</pre></li><li>2.作为对象属性执行:指向该对象 <pre>var obj = {<br>name: ‘A’, printName: function () {console.log(this.name)}}<br>obj.printName()</pre></li><li>3.作为普通函数执行: 指向window <pre>function fn() {<br>console.log(this)}}</pre></li><li>4.call apply bind <pre>function fn1(name, age) {<br>alert(name); console.log(this)}<br>fn1(‘ted’,20)//普通函数的this，指向window<br>fn1.call({x:100},’ted’,20)//通过call函数改变this，指向{x:100}这个对象<br>fn1.apply({x:200}, [‘ted’, 20])//apply和call不同在于参数用数组传递<br></pre>  <pre>//bind:适用于函数表达式 var fn2 = function (name, age) {alert(name); console.log(this)}.bind({y:300})fn2('ted',20)//通过bind函数改变this，this也指向{y:300}这个对象</pre></li></ul></li><li>作用域<ul><li>JS没有块级作用域<ul><li>在函数中定义和赋值的变量可以在函数外使用</li><li>ES6中加入块级作用域：<pre>for(let i = 0; i&lt; 10; i++){}<br>console.log(i)//报错，let定义的变量有块级作用域，在for中定义的不能在for之外访问</pre></li></ul></li><li>JS有函数和全局作用域<ul><li>定义在函数中的变量，只能在函数中修改</li></ul></li><li>自由变量：当前作用域没有定义的变量，可以在父级作用域中去找</li></ul></li><li>作用域链<ul><li>当前作用域可访问父级作用域</li><li>一个元素的父级作用域是在它定义的时候的作用域，而非执行</li></ul></li><li>闭包<ul><li>函数作为返回值</li><li>函数作为参数传递</li><li>闭包中返回的函数，若有自由变量，则向（函数定义时）父作用域寻找</li></ul></li><li><strong>问题</strong><ul><li>说一下对变量提升的理解<ul><li>在各个执行上下文中，变量定义+函数声明都会提前</li></ul></li><li>说明this几种不同的使用场景<ul><li>作为构造函数：指向定义的对象</li><li>作为对象属性：指向该对象</li><li>作为普通函数：指向window</li><li>call apply bind： 指向改变的对象</li></ul></li><li>创建10个<code>&lt;a&gt;</code>标签，点击的时候弹出来对应的序号<br>  * </li><li>如何理解作用域<ul><li>自由变量</li><li>作用域链，自由变量的查找</li><li>闭包的两个场景</li></ul></li><li>闭包</li><li>实际开发中闭包的应用<ul><li>封装变量，收敛权限</li><li><img src="https://i.imgur.com/WHL94oZ.png" alt=""></li></ul></li></ul></li></ul><h3 id="异步和单线程"><a href="#异步和单线程" class="headerlink" title="异步和单线程"></a>异步和单线程</h3><ul><li>什么是异步（对比同步）<ul><li>同步会阻塞，异步不会，遇到setTimeout会先执行后面的代码</li><li>何时使用：有可能发生等待的情况-等待的过程不能阻塞程序运行</li></ul></li><li>前端使用异步的场景<ul><li>定时任务：setTimeout，setInverral</li><li>网络请求：ajax请求，动态<img>加载 （时间不固定）</li><li>事件绑定：如点击事件，在不点击的时候不能阻塞程序运行</li></ul></li><li>异步和单线程<ul><li>单线程：代码一个个排队执行，不能同时干两件事</li><li>js是单线程，所以在遇到阻塞的情况，要用异步，现将不需要等待的代码执行完，再执行异步代码</li></ul></li><li><strong>问题</strong><ul><li>同步和异步的区别是什么？分别举一个同步和异步的例子<ul><li>同步会阻塞代码，异步不会，alert是同步，setTimeout是异步</li></ul></li><li>一个关于setTimeout的笔试题</li><li>前端使用异步的场景有哪些？<ul><li>定时任务-网络请求-时间绑定</li></ul></li></ul></li></ul><h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul><li>日期<ul><li><img src="https://i.imgur.com/WIOLL8V.png" alt=""></li></ul></li><li>Math<ul><li>获取随机数<code>Math.random()</code></li></ul></li><li>数组api<ul><li>forEach 遍历所有元素</li><li>every 判断所有元素是否都符合条件</li><li>some 判断是否有至少一个元素符合条件</li><li>sort 排序</li><li>map 对元素重新组装，生成新数组</li><li>filter 过滤符合条件的元素</li></ul></li><li>对象api<ul><li>for in</li></ul></li><li><strong>题目</strong><ul><li>获取2019-07-25格式的日期<ul><li><img src="https://i.imgur.com/I9MSkph.png" alt=""></li></ul></li><li>获取随机数，要求是长度一致的字符串格式<ul><li><img src="https://i.imgur.com/M8L70aG.png" alt=""></li></ul></li><li>写一个能遍历对象和数组的通用forEach函数<ul><li><img src="https://i.imgur.com/KvR1Jfd.png" alt=""></li></ul></li></ul></li></ul><h2 id="JS-API"><a href="#JS-API" class="headerlink" title="JS API"></a>JS API</h2><ul><li>JS语法标准（基础知识）：ECMA 262标准</li><li>JS-WEB-API（浏览器）：W3C标准<ul><li>DOM操作</li><li>BOM操作：浏览器操作 获取当前地址 获取屏幕尺寸</li><li>事件绑定</li><li>AJAX请求（包括http协议）</li><li>存储</li><li>没有规定任何JS基础相关的东西</li></ul></li><li>全面考虑，JS内置的全局函数和对象（浏览器打造）<ul><li>Object，Array，Boolean等</li><li>window document</li><li>所有未定义的全局变量，如navigator.userAgent</li></ul></li></ul><h3 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h3><ul><li>DOM本质<ul><li>浏览器拿到html代码后，把html结构化成浏览器可识别以及js可识别的东西，就是dom</li><li>dom本质是js的对象</li></ul></li><li>DOM节点操作<ul><li>获取dom节点<ul><li><img src="https://i.imgur.com/buzzJoD.png" alt=""></li></ul></li><li>property<ul><li>js对象中的属性</li><li><img src="https://i.imgur.com/Wtu93oq.png" alt=""></li></ul></li><li>attribute<ul><li>HTML文档中 标签的属性</li><li><img src="https://i.imgur.com/IJSJKq8.png" alt=""></li></ul></li></ul></li><li>DOM结构操作<ul><li>新增节点 <code>document.createElement(node)</code><ul><li><img src="https://i.imgur.com/7H8uSP8.png" alt=""></li></ul></li><li>获取父节点 <code>childNode.parentElement</code></li><li>获取子节点 <code>.parentNode.childNodes</code><ul><li><img src="https://i.imgur.com/JcAj6O8.png" alt=""></li><li><code>.childNodes返回所有节点包括文本和注释节点</code> <code>.children只返回元素节点</code></li></ul></li><li>删除节点 <code>parentNode.removeChild(childNode)</code><ul><li><img src="https://i.imgur.com/PG53s2T.png" alt=""></li></ul></li></ul></li><li><strong>问题</strong><ul><li>DOM是哪一种基本数据结构<ul><li>数</li></ul></li><li>DOM操作的常用API有哪些<ul><li>获取DOM节点，以及节点的property和attr</li><li>获取父节点，子节点</li><li>新增，删除，移动节点</li></ul></li><li>DOM节点的attr和property有何局别<ul><li>property是js属性的修改和获取</li><li>attr是对html标签的修改和获取</li></ul></li></ul></li></ul><h3 id="BOM操作"><a href="#BOM操作" class="headerlink" title="BOM操作"></a>BOM操作</h3><ul><li>navigator浏览器<ul><li>判断浏览器类型 userAgent <pre>var ua = navigator.userAgent<br>var isChrome = ua.indexOf(‘Chrome’)<br>console.log(isChrome)</pre></li></ul></li><li>screen屏幕<ul><li><pre>console.log(screen.width)console.log(screen.height)</pre></li></ul></li><li>location地址栏信息 拆解url<ul><li><pre>  location.href //url  location.protocal //协议 http https  location.host //域名  location.pathname //路径 /learn/199  location.search //url ？ 后面的字符串  location.search //url # 后的hash</pre></li></ul></li><li><p>history历史 前进后退</p><ul><li><pre>history.backhistory.forward</pre></li></ul></li><li><p><strong>问题</strong></p><ul><li>如何检测目标浏览器的类型<ul><li><img src="https://i.imgur.com/o5DlvbW.png" alt=""></li></ul></li><li>拆解url的各部分<ul><li><pre>location.href //urllocation.protocal //协议 http httpslocation.host //域名location.pathname //路径 /learn/199location.search //url ？ 后面的字符串location.search //url # 后的hash</pre></li><li><img src="https://i.imgur.com/efoIRJM.jpg" alt=""></li></ul></li></ul></li></ul><h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><ul><li>XMLHttpRequest<ul><li><img src="https://i.imgur.com/dfRzR2h.png" alt=""></li></ul></li><li>状态码说明<ul><li><code>readyState == 4</code> ajax状态码<ul><li>0-（未初始化）还没有调用send()方法</li><li>1-（载入）已调用send()方法，正在发送请求</li><li>2-（载入完成）send()方法执行完成，已经接收到全部响应内容</li><li>3-（交互）正在解析响应内容</li><li>4-（完成）响应内容解析完成，可以在客户端调用了</li></ul></li><li><code>statue == 200</code> http标准状态码<ul><li>2xx - 表示成功处理请求。如200</li><li>3xx - 需要重定向，浏览器直接跳转</li><li>4xx - 客户端请求错误，如404</li><li>5xx - 服务端错误</li></ul></li></ul></li><li>跨域<ul><li>什么是跨域<ul><li>浏览器有同源策略，不允许ajax访问其他接口，如<a href="http://www.a.com:80不能访问http://www.b.com" target="_blank" rel="noopener">http://www.a.com:80不能访问http://www.b.com</a></li><li>跨域条件：协议(http)、域名(<a href="http://www.a.com)、端口(:80)有一个不同就算跨域" target="_blank" rel="noopener">www.a.com)、端口(:80)有一个不同就算跨域</a></li></ul></li><li>可以跨域的三个标签<ul><li><code>&lt;img src=xxx&gt;</code><ul><li>用于打点统计，统计网站可能是其他域</li></ul></li><li><code>&lt;link href=xxx&gt;</code><ul><li>可以使用CDN，CDN也是其他域</li></ul></li><li><code>&lt;script src=xxx&gt;</code><ul><li>可以使用CDN，CDN也是其他域</li><li>可以用于JSONP</li></ul></li></ul></li><li>JSONP 前端<ul><li><img src="https://i.imgur.com/PYUD2il.png" alt=""></li><li>前端定义一个callback函数，得到信息。再用script标签获取一个跨域的信息，这个信息会调用callback({x:100, y:200})</li></ul></li><li>服务器端设置http header 后端<ul><li><img src="https://i.imgur.com/LwrJhv8.png" alt=""></li></ul></li></ul></li><li><strong>问题</strong><ul><li>手动编写一个ajax，不依赖第三方库<ul><li><img src="https://i.imgur.com/n7jIfMM.png" alt=""></li></ul></li><li>跨域的几种实现方式<ul><li>JSONP</li><li>服务器端设置http header</li></ul></li></ul></li></ul><h3 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h3><ul><li>通用事件绑定<ul><li><img src="https://i.imgur.com/3n74SBB.png" alt=""></li></ul></li><li>事件冒泡<ul><li>若底层和父层节点有相同绑定事件，底层业务节点的事件（如点击）会先执行，然后会一层层网上执行，先执行底层的事件，然后上一层的事件，然后…</li><li>点击激活弹出激活，点击取消弹出取消<img src="https://i.imgur.com/CS0jTZh.png" alt=""><br>（<code>e.stopPropatation()</code>：阻止冒泡）</li></ul></li><li>代理 事件冒泡的应用<ul><li>点击a标签的元素，会弹出相应文字<img src="https://i.imgur.com/uRTP2p5.png" alt=""><br>（这里target可以定位到当前点击的元素）</li></ul></li><li><strong>问题</strong><ul><li>编写一个通用的事件监听函数<ul><li><img src="https://i.imgur.com/BBOT3t6.png" alt=""></li></ul></li><li>描述事件冒泡流程<ul><li>dom树形结构</li><li>冒泡</li><li>阻止冒泡</li><li>应用：代理</li></ul></li><li>对于一个无限下拉加载图片的页面，如何给每个图片绑定事件<ul><li>使用代理：代码简洁，对浏览器压力小</li></ul></li></ul></li></ul><h3 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h3><ul><li>cookie<ul><li>属于http的东西，本身用于客户端和服务端通信</li><li>但是它有本地存储的功能，于是被“借用”</li><li>使用<code>document.cookie=...</code>获取和修改即可</li><li>限制：<ul><li>存储量太小，只有4kb</li><li>所有http请求都带着，会影响获取资源的效率</li><li>API简单，需要封装才能用<code>document.coockie</code></li></ul></li></ul></li><li><p>sessionStorage和localStorage</p><ul><li>H5专门为存储而设计，最大容量5M</li><li>API简单易用,key+value<ul><li><pre>localStorage.setItem(key,value)localStorage.getItem(key)</pre></li></ul></li></ul></li><li><p><strong>问题</strong></p><ul><li>描述一下cookie（h5之前），sessionStorage和localStorage的区别 <ul><li>cookie和后两者的区别<ul><li>容量</li><li>是否会携带到ajax请求中</li><li>API易用性</li></ul></li><li>后两者的区别<ul><li>localStorage不会主动删除，sessionStorage随着每次会话结束会清除，95%的场景存储到localStorage中</li></ul></li></ul></li></ul></li></ul><h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><h3 id="IDE（写代码的效率）"><a href="#IDE（写代码的效率）" class="headerlink" title="IDE（写代码的效率）"></a>IDE（写代码的效率）</h3><ul><li>webstorm</li><li>sublime</li><li>vscode</li><li>atom</li></ul><h3 id="git-版本管理，多人协作"><a href="#git-版本管理，多人协作" class="headerlink" title="git 版本管理，多人协作"></a>git 版本管理，多人协作</h3><ul><li>常用命令<ul><li>git add .</li><li>git checkout xxx </li><li>git commit -m ‘xxx’ //提交到本地仓库</li><li>git push origin master</li><li>git pull origin master</li><li>git branch </li><li>git checkout -b xxx</li><li>git merge xxx</li></ul></li></ul><h3 id="js模块化"><a href="#js模块化" class="headerlink" title="js模块化"></a>js模块化</h3><ul><li>不适用模块化的情况<ul><li>如果a.js, b.js, c.js, c依赖b，b依赖a，引用的时候要按顺序</li><li>容易出现问题：全局变量容易被污染；不知道祖先依赖关系<img src="https://i.imgur.com/lIpUfS6.png" alt=""></li></ul></li><li>使用模块化<ul><li>a.js 传递出别人所需要的功能函数，b和a需要哪个函数引用哪个函数<img src="https://i.imgur.com/n0xFoID.png" alt=""></li><li>引用的时候直接引用最表层的js文件即可</li></ul></li><li>AMD 异步模块定义规范<ul><li>require.js</li><li>全局define函数</li><li>全局require函数</li><li>依赖的js会自动、异步加载</li><li><img src="https://i.imgur.com/kfdTYDt.png" alt=""></li><li>html用：<code>&lt;script src=&quot;/require.js&quot; data-main=&quot;./main.js&quot;&gt;&lt;/script&gt;</code></li><li>好处：异步加载，不使用（依赖）就不加载</li></ul></li><li>CommonJs<ul><li>nodejs模块化规划，现在被大量用于前端</li><li>前端开发依赖的插件和库，都可以用npm中获取</li><li>构建工具的高度自动化，使得使用npm的成本非常低</li><li>CommonJS不会异步加载js，而是同步一次性加载出来</li><li><img src="https://i.imgur.com/7hvXgIb.png" alt=""></li></ul></li><li>AMD和CommonJS的使用场景<ul><li>需要异步加载，用AMD</li><li>使用了npm之后建议使用CommonJs</li></ul></li></ul><h3 id="打包工具"><a href="#打包工具" class="headerlink" title="打包工具"></a>打包工具</h3><ul><li><p>webpack</p><ul><li>启动一个服务，先全局安装，<code>npm install http-server =g</code>，然后在要访问的页面根目录启动服务 <code>http-server 8080</code></li><li><code>npm init</code> 初始化，完成后多处package.json文件</li><li><code>npm install webpack --save -dev</code> 安装webpack</li></ul></li><li><p>配置webpack</p><ul><li>创建webpack.config.js <img src="https://i.imgur.com/pfvAftc.png" alt=""></li><li>创建src app.js等文件</li><li>在package.json scripts里加入”start”: “webpack”，就可以在命令行执行start进行打包输出     </li></ul></li><li>webpack进行代码压缩：<ul><li>在config的exports中追加<code>plugins: [new webpack.optimize.UglifyJsPlugin()]</code></li></ul></li><li>webpack的主要作用：<ul><li>代码合并：合并commonjs的语法规范，否则前端无法识别</li><li>代码压缩：保证代码上线</li></ul></li></ul><h3 id="上线回滚的流程"><a href="#上线回滚的流程" class="headerlink" title="上线回滚的流程"></a>上线回滚的流程</h3><ul><li>上线的基本流程<ul><li>将测试完成的代码提交到git版本库的master分支</li><li>将当前服务器的代码全部打包并记录版本号，备份</li><li>将master分支的代码提交覆盖到线上服务器，生成新版本号</li></ul></li><li>回滚的基本流程<ul><li>将当前服务器的代码全部打包并记录版本号，备份</li><li>将备份的上一个版本号解压，覆盖到线上服务器，并生成新的版本号</li></ul></li><li>linux基本命令<ul><li>mkdir</li><li>ls</li><li>ll 列表形式的ls</li><li>pwd</li><li>cd</li><li>cd ..</li><li>rm -rf 文件夹名 //删除当前目录下所有文件</li><li>vi a.js //创建并进入a.js<ul><li>i //insert</li><li>: //最下行</li><li>w //写</li><li>q //退出</li></ul></li><li>cp a1 a2 //创建a2，把a1复制到a2</li><li>mv a1 f1 //把a1移动到f1文件夹</li><li>cat a1 //查看当前文件</li><li>grep ‘2’ a.js //查找a.js中的2</li></ul></li></ul><h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><h3 id="页面加载过程"><a href="#页面加载过程" class="headerlink" title="页面加载过程"></a>页面加载过程</h3><ul><li>加载资源的形式<ul><li>输入url(或跳转页面)加载html </li><li>加载html中的静态资源<ul><li>如<code>&lt;script&gt;&lt;img&gt;</code></li></ul></li></ul></li><li>加载一个资源的过程<ul><li>浏览器根据DNS服务器得到域名的IP地址</li><li>向这个IP的机器发送http请求</li><li>服务器收到、处理并返回http请求（图片，html js代码，）</li><li>浏览器得到返回的请求并渲染</li></ul></li><li>浏览器渲染页面的过程<ul><li>根据HTNL结构生成DOM树</li><li>根据CSS生成CSSOM（结构化处理）</li><li>将DOM和CSSOM整合成RenderTree（渲染树，每个节点都规定了样式）</li><li>根据RenderTree开始渲染和展示</li><li>遇到<code>&lt;script&gt;</code>时，会执行并阻塞渲染</li></ul></li><li><strong>题目</strong><ul><li>从输入url到得到html的详细过程<ul><li>根据DNS得到域名IP-向该IP发送请求-服务器收到处理返回请求-浏览器得到返回内容</li></ul></li><li>window.onload和DOMCotentLoaded的区别<ul><li>onload：页面全部资源加载完，包括图片视频等才会执行</li><li>CotentLoaded：DOM渲染完即可执行，图片还没有加载完</li><li><img src="https://i.imgur.com/5qnJxGf.png" alt=""></li></ul></li><li>为什么把css文件放在head中？<ul><li>因为渲染默认是顺序的，保证在渲染body时候浏览器已经知道对应的样式了</li></ul></li><li>为什么把js放在body最下面？<ul><li>不会阻塞之前body中html的渲染</li><li>保证script能拿到所有的html节点标签</li></ul></li></ul></li></ul><h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><ul><li>基本2点<ul><li>多使用内存、缓存或者其他方法 -开源</li><li>减少CPU计算、减少网络 -节流</li></ul></li><li>加载资源优化<ul><li>静态资源的压缩合并<ul><li>合并：将多个js文件合并成一个js</li><li>压缩：压缩体积</li></ul></li><li>静态资源缓存<ul><li>通过连接名称，名称不变的话，浏览器会加载之前同名的缓存</li></ul></li><li>使用CDN让资源加载更快<ul><li>不同区域的网络优化，上海转到上海的节点等等</li></ul></li><li>使用SSR后端渲染，数据直接输出到HTML中（不同ajax请求数据）</li></ul></li><li>页面渲染优化<ul><li>CSS放前面，JS放后面</li><li>懒加载（图片懒加载，下拉加载更多/先用一张模糊的图片代替原图，要用的时候再加载） 什么时候用什么时候加载</li><li>减少DOM查询，对DOM查询做缓存</li><li>减少DOM操作，多个操作尽量合并在一个执行<ul><li>先创建一个片段<code>frag=document.createDocumentFragment()</code></li></ul></li><li>事件节流<ul><li>如键盘输入，输入快的时候不执行，异步<br><img src="https://i.imgur.com/QCxbPgv.png" alt=""></li></ul></li><li>尽早执行操作（DOMCotentLoaded）</li></ul></li></ul><h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><ul><li>XSS跨站请求攻击<ul><li>新浪博客写一篇文章，同时偷偷插入一段攻击代码<code>&lt;script&gt;</code></li><li>攻击代码中，获取查看者的cookie，发送到自己的服务器</li></ul></li><li>XSS预防<ul><li>前端替换关键字，例如替换<code>&lt;</code>为&amp;lt；<code>&gt;</code>为&amp;gt</li><li>后端替换</li></ul></li><li>XSRF跨站请求伪造<ul><li>你已登录一个购物网站，正在浏览商品</li><li>付费接口是xxx.com/pay?id=100但是没有任何验证</li><li>你收到一封钓鱼邮件，隐藏着<code>&lt;img src=&#39;xxx.com/pay?id=100&#39;&gt;</code></li><li>查看邮件的时候，就悄悄付费了</li></ul></li><li>XSRF预防<ul><li>增加验证流程，如输入指纹、密码、短信验证码</li></ul></li><li><strong>问题</strong><ul><li>前端安全问题的场景有哪些</li></ul></li></ul><h2 id="面试技巧"><a href="#面试技巧" class="headerlink" title="面试技巧"></a>面试技巧</h2><ul><li>简历<ul><li>简介明了，重点突出项目经历和解决方案</li><li>把个人博客放在简历中，并且定期维护更新博客</li><li>把个人的开源项目放在简历中，并维护开源项目</li><li>不能造假，要保证能力和经历上的造假</li></ul></li><li>谈谈你的缺点<ul><li>说一下最近正在学的东西，比如我对vue不是很了解，正在学vue.js</li></ul></li></ul><h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><ul><li>window.onload和DOMCotentLoaded的区别<ul><li>onload事件触发：页面上所有dom，样式表，脚本，图片，flash都已经加载完；DOMCotentLoaded：仅dom加载完</li></ul></li><li>如何理解JSON<ul><li>是一个JS对象，有两个API：<ul><li><code>JSON.stringify(obj)//将js的对象转换成json字符串</code></li><li><code>JSON.parse(&#39;{&quot;a&quot;:5}&#39;)</code>//json字符串转js对象</li></ul></li><li>是一个数据格式</li></ul></li><li>js有哪些内置函数<ul><li>Object</li><li>Array</li><li>Boolean</li><li>Number</li><li>String</li><li>Function(以上为构造函数)</li><li>Date    </li><li>RegExp</li><li>Error</li></ul></li></ul>]]></content>
     
@@ -41,33 +41,6 @@
     
     
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>知识整理CSS</title>
-    <link href="http://yoursite.com/2019/07/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86css/"/>
-    <id>http://yoursite.com/2019/07/14/知识整理css/</id>
-    <published>2019-07-14T15:19:02.000Z</published>
-    <updated>2019-07-28T17:55:05.381Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><p>标签：p{}<br>class: .class{}<br>同一类，不同标签： p.class{}<br>同一标签，多个类：p.class1{} .class2{<br>id：#id {}<br>集体选择器：p,.class1,#id1 {}<br>后代选择器：<code>&lt;p&gt;&lt;em&gt;&lt;a&gt;123&lt;a&gt;&lt;/em&gt;&lt;/p&gt;</code>:p em a {}<br>链接伪类 <code>:link</code>:未访问的链接 <code>:visited</code>：已访问的链接 <code>:hover</code>：鼠标悬停状态 <code>:active</code>：鼠标点击到松开的阶段<br>（hover和active可用于任何标签）</p><h2 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h2><p>文字粗细：<code>font-weight: normal/bold</code><br>文字斜度：<code>font-style: normal/italic/oblique</code><br>文字粗细：<code>font-weight: 600</code><br>文字粗细：<code>font-weight: 600</code><br>文字粗细：<code>font-weight: 600</code>  </p><h2 id="文本对齐方式"><a href="#文本对齐方式" class="headerlink" title="文本对齐方式"></a>文本对齐方式</h2><p>文本水平对齐方式：<code>text-align: left/right/center/justify</code><br>左对齐/右对齐/居中对齐/两端对齐 只对块级元素有效 </p><h2 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h2><p>首行缩进：<code>text-indent: 2em</code><br>行高：<code>line-height: 120em</code> 最好用em防止字体过大导致显示不全</p><h2 id="元素内容的垂直方式"><a href="#元素内容的垂直方式" class="headerlink" title="元素内容的垂直方式"></a>元素内容的垂直方式</h2><p>只对行内元素有效<br><code>vertical-align: sub/supper/</code>文字向上向下对齐</p><h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><ul><li>height：长度/百分比/auto</li><li>width： </li><li>border边框<ul><li>边框粗细<code>border-(top/l/r/bottom)-width: thin/medium/thick/长度值</code></li><li>边框颜色 <code>border-color:</code></li><li>样式<code>border-style: none/solid实线/dotted点状</code></li><li>简写: 粗细-样式-颜色</li></ul></li><li>padding内边距 主要用来设置空隙 盒子与边框的距离<ul><li>padding粗细<code>padding-(top/l/r/bottom): thin/medium/thick/长度值</code></li><li>padding粗细简写：全/上下 左右/上 左右 下/上 右 下 左</li></ul></li><li>margin外边距 边框与外界的距离 <ul><li>可以为负值</li><li>设置为auto：实现水平方向居中</li></ul></li></ul><h2 id="display属性"><a href="#display属性" class="headerlink" title="display属性"></a>display属性</h2><p>将元素显示为内联元素: <code>inline</code><br>将元素显示为块级元素: <code>block</code><br>将元素显示为内联元素具有快级属性可以设置宽高: <code>inline-block</code> </p><p>ps：宽高设为100%，表示和父元素相同</p><h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><ul><li>脱离文档流，只能左右</li><li><code>float:left/right/none</code> </li><li>浮动后出现的问题：<ul><li>浮动溢出（高度塌陷）</li></ul></li><li>解决：清楚浮动<ul><li><code>clear:none/left/right/both</code></li><li>1.<code>&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;</code></li><li>2.给父元素添加<code>overflow:hidden</code></li><li>3.css3 <code>clearfix :after{content:&quot;.&quot;;display:block;height:0;visibility:hidden;clear:both}</code></li></ul></li></ul><h2 id="position-定位模型"><a href="#position-定位模型" class="headerlink" title="position 定位模型"></a>position 定位模型</h2><ul><li>static：常规流 忽略跑偏移量</li><li>relative： <ul><li>相对常规流，设置偏移量 <code>top/bottom/left/right:10px</code></li><li>常规流的位置会留下，不会影响其他元素</li></ul></li><li>absolute：绝对定位<ul><li>相对于最近的祖先元素做绝对定位</li><li>常规流的位置会被占据，会影响其他元素</li><li>如果设置上下左右偏移量为0，margin：autoauto，子元素就会相对于父元素居中</li></ul></li><li>常用： 父元素设置为relative，子元素设置为absolute，子元素就可以设置相对于父元素的偏移量 </li><li>fixed：相对定位 <ul><li>不会随着视图滚动而滚动，其余和absolute一样</li></ul></li></ul><h2 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h2><ul><li>新增的元素选择器<ul><li>子元素选择器：<code>father &gt; son1 {}</code></li><li>相邻兄弟元素选择器:<code>father &gt; son1 + son2 {}</code> </li><li>通用兄弟选择器: <code>father &gt; son1 ~ son5 {}</code></li><li>群组选择器: <code>father &gt; son1, father &gt; son2, father &gt; son3 {}</code></li></ul></li><li>属性选择器<ul><li><code>a[href] {}</code></li></ul></li><li>伪类选择器<ul><li>动态伪类（之前有）：<ul><li>锚点伪类 <code>a:link{} a:visited{}</code></li><li>用户行为伪类 :hover :active :focus</li></ul></li><li>UI元素状态伪类<ul><li><code>input:enabled {} :disabled :checked</code> </li></ul></li></ul></li><li>结构类选择器<ul><li>first/last子类选择器<code>section:first-child {}</code></li><li>父元素的第N个子元素<code>ul&gt;li:nth-child(3){}</code><ul><li>选择多个： <code>nth-child(n){}</code></li></ul></li></ul></li><li>边框与圆角    <ul><li>圆角 <code>border-radius:10px/10rem/10%</code></li><li>盒阴影 <code>box-shadow:水平偏移 垂直偏移 模糊 扩展 颜色</code></li><li>边界图片 <code></code>border-image:source </li></ul></li><li>文本<ul><li>文本阴影 <code>text-shadow:h v blur color</code></li><li>自动换行 <code>word-break</code></li><li>文本属性</li></ul></li><li>字体 @font-face<ul><li><code>@font-face {font-familt:&lt;name&gt; src:&lt;source&gt; [&lt;format&gt;]}</code></li></ul></li><li>transform 转换<ul><li>旋转<code>transform:rotate(&lt;angle&gt;)</code></li><li>平移<code>trandform:translate(x,y)</code><ul><li><code>trandform:translateX(200px)</code></li><li><code>trandform:translateY(200px)</code>    </li></ul></li><li>缩放：水平 垂直 都有    <ul><li><code>trandform:scaleX(.5)</code>    </li></ul></li><li>扭曲: 三种<ul><li><code>skewX(&lt;angle&gt;)``</code></li></ul></li></ul></li><li>3D transform<ul><li>rotateX</li><li>translate3d(x,y,z)</li><li>scale3d(x,y,z) scaleZ(z)</li></ul></li><li>动画<ul><li>animation-name: keyframename</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;CSS选择器&quot;&gt;&lt;a href=&quot;#CSS选择器&quot; class=&quot;headerlink&quot; title=&quot;CSS选择器&quot;&gt;&lt;/a&gt;CSS选择器&lt;/h2&gt;&lt;p&gt;标签：p{}&lt;br&gt;class: .class{}&lt;br&gt;同一类，不同标签： p.class{}&lt;br&gt;同一
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="css" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/css/"/>
-    
-    
-      <category term="css" scheme="http://yoursite.com/tags/css/"/>
     
   </entry>
   
@@ -99,35 +72,29 @@
   </entry>
   
   <entry>
-    <title>Javascript整理16-安全性</title>
-    <link href="http://yoursite.com/2019/06/01/Javascript%E6%95%B4%E7%90%8616-%E5%AE%89%E5%85%A8%E6%80%A7/"/>
-    <id>http://yoursite.com/2019/06/01/Javascript整理16-安全性/</id>
-    <published>2019-06-01T22:34:20.000Z</published>
-    <updated>2019-07-28T17:57:25.771Z</updated>
+    <title>知识整理CSS</title>
+    <link href="http://yoursite.com/2019/06/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86css/"/>
+    <id>http://yoursite.com/2019/06/01/知识整理css/</id>
+    <published>2019-06-01T15:19:02.000Z</published>
+    <updated>2019-07-29T06:06:47.918Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>XSS跨站请求攻击<ul><li>新浪博客写一篇文章，同时偷偷插入一段攻击代码<code>&lt;script&gt;</code></li><li>攻击代码中，获取查看者的cookie，发送到自己的服务器</li></ul></li><li>XSS预防<ul><li>前端替换关键字，例如替换<code>&lt;</code>为&amp;lt；<code>&gt;</code>为&amp;gt</li><li>后端替换</li></ul></li><li>XSRF跨站请求伪造<ul><li>你已登录一个购物网站，正在浏览商品</li><li>付费接口是xxx.com/pay?id=100但是没有任何验证</li><li>你收到一封钓鱼邮件，隐藏着<code>&lt;img src=&#39;xxx.com/pay?id=100&#39;&gt;</code></li><li>查看邮件的时候，就悄悄付费了</li></ul></li><li>XSRF预防<ul><li>增加验证流程，如输入指纹、密码、短信验证码</li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><p>标签：p{}<br>class: .class{}<br>同一类，不同标签： p.class{}<br>同一标签，多个类：p.class1{} .class2{<br>id：#id {}<br>集体选择器：p,.class1,#id1 {}<br>后代选择器：<code>&lt;p&gt;&lt;em&gt;&lt;a&gt;123&lt;a&gt;&lt;/em&gt;&lt;/p&gt;</code>:p em a {}<br>链接伪类 <code>:link</code>:未访问的链接 <code>:visited</code>：已访问的链接 <code>:hover</code>：鼠标悬停状态 <code>:active</code>：鼠标点击到松开的阶段<br>（hover和active可用于任何标签）</p><h2 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h2><p>文字粗细：<code>font-weight: normal/bold</code><br>文字斜度：<code>font-style: normal/italic/oblique</code><br>文字粗细：<code>font-weight: 600</code><br>文字粗细：<code>font-weight: 600</code><br>文字粗细：<code>font-weight: 600</code>  </p><h2 id="文本对齐方式"><a href="#文本对齐方式" class="headerlink" title="文本对齐方式"></a>文本对齐方式</h2><p>文本水平对齐方式：<code>text-align: left/right/center/justify</code><br>左对齐/右对齐/居中对齐/两端对齐 只对块级元素有效 </p><h2 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h2><p>首行缩进：<code>text-indent: 2em</code><br>行高：<code>line-height: 120em</code> 最好用em防止字体过大导致显示不全</p><h2 id="元素内容的垂直方式"><a href="#元素内容的垂直方式" class="headerlink" title="元素内容的垂直方式"></a>元素内容的垂直方式</h2><p>只对行内元素有效<br><code>vertical-align: sub/supper/</code>文字向上向下对齐</p><h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><ul><li>height：长度/百分比/auto</li><li>width： </li><li>border边框<ul><li>边框粗细<code>border-(top/l/r/bottom)-width: thin/medium/thick/长度值</code></li><li>边框颜色 <code>border-color:</code></li><li>样式<code>border-style: none/solid实线/dotted点状</code></li><li>简写: 粗细-样式-颜色</li></ul></li><li>padding内边距 主要用来设置空隙 盒子与边框的距离<ul><li>padding粗细<code>padding-(top/l/r/bottom): thin/medium/thick/长度值</code></li><li>padding粗细简写：全/上下 左右/上 左右 下/上 右 下 左</li></ul></li><li>margin外边距 边框与外界的距离 <ul><li>可以为负值</li><li>设置为auto：实现水平方向居中</li></ul></li></ul><h2 id="display属性"><a href="#display属性" class="headerlink" title="display属性"></a>display属性</h2><p>将元素显示为内联元素: <code>inline</code><br>将元素显示为块级元素: <code>block</code><br>将元素显示为内联元素具有快级属性可以设置宽高: <code>inline-block</code> </p><p>ps：宽高设为100%，表示和父元素相同</p><h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><ul><li>脱离文档流，只能左右</li><li><code>float:left/right/none</code> </li><li>浮动后出现的问题：<ul><li>浮动溢出（高度塌陷）</li></ul></li><li>解决：清楚浮动<ul><li><code>clear:none/left/right/both</code></li><li>1.<code>&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;</code></li><li>2.给父元素添加<code>overflow:hidden</code></li><li>3.css3 <code>clearfix :after{content:&quot;.&quot;;display:block;height:0;visibility:hidden;clear:both}</code></li></ul></li></ul><h2 id="position-定位模型"><a href="#position-定位模型" class="headerlink" title="position 定位模型"></a>position 定位模型</h2><ul><li>static：常规流 忽略跑偏移量</li><li>relative： <ul><li>相对常规流，设置偏移量 <code>top/bottom/left/right:10px</code></li><li>常规流的位置会留下，不会影响其他元素</li></ul></li><li>absolute：绝对定位<ul><li>相对于最近的祖先元素做绝对定位</li><li>常规流的位置会被占据，会影响其他元素</li><li>如果设置上下左右偏移量为0，margin：autoauto，子元素就会相对于父元素居中</li></ul></li><li>常用： 父元素设置为relative，子元素设置为absolute，子元素就可以设置相对于父元素的偏移量 </li><li>fixed：相对定位 <ul><li>不会随着视图滚动而滚动，其余和absolute一样</li></ul></li></ul><h2 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h2><ul><li>新增的元素选择器<ul><li>子元素选择器：<code>father &gt; son1 {}</code></li><li>相邻兄弟元素选择器:<code>father &gt; son1 + son2 {}</code> </li><li>通用兄弟选择器: <code>father &gt; son1 ~ son5 {}</code></li><li>群组选择器: <code>father &gt; son1, father &gt; son2, father &gt; son3 {}</code></li></ul></li><li>属性选择器<ul><li><code>a[href] {}</code></li></ul></li><li>伪类选择器<ul><li>动态伪类（之前有）：<ul><li>锚点伪类 <code>a:link{} a:visited{}</code></li><li>用户行为伪类 :hover :active :focus</li></ul></li><li>UI元素状态伪类<ul><li><code>input:enabled {} :disabled :checked</code> </li></ul></li></ul></li><li>结构类选择器<ul><li>first/last子类选择器<code>section:first-child {}</code></li><li>父元素的第N个子元素<code>ul&gt;li:nth-child(3){}</code><ul><li>选择多个： <code>nth-child(n){}</code></li></ul></li></ul></li><li>边框与圆角    <ul><li>圆角 <code>border-radius:10px/10rem/10%</code></li><li>盒阴影 <code>box-shadow:水平偏移 垂直偏移 模糊 扩展 颜色</code></li><li>边界图片 <code></code>border-image:source </li></ul></li><li>文本<ul><li>文本阴影 <code>text-shadow:h v blur color</code></li><li>自动换行 <code>word-break</code></li><li>文本属性</li></ul></li><li>字体 @font-face<ul><li><code>@font-face {font-familt:&lt;name&gt; src:&lt;source&gt; [&lt;format&gt;]}</code></li></ul></li><li>transform 转换<ul><li>旋转<code>transform:rotate(&lt;angle&gt;)</code></li><li>平移<code>trandform:translate(x,y)</code><ul><li><code>trandform:translateX(200px)</code></li><li><code>trandform:translateY(200px)</code>    </li></ul></li><li>缩放：水平 垂直 都有    <ul><li><code>trandform:scaleX(.5)</code>    </li></ul></li><li>扭曲: 三种<ul><li><code>skewX(&lt;angle&gt;)``</code></li></ul></li></ul></li><li>3D transform<ul><li>rotateX</li><li>translate3d(x,y,z)</li><li>scale3d(x,y,z) scaleZ(z)</li></ul></li><li>动画<ul><li>animation-name: keyframename</li></ul></li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;ul&gt;
-&lt;li&gt;XSS跨站请求攻击&lt;ul&gt;
-&lt;li&gt;新浪博客写一篇文章，同时偷偷插入一段攻击代码&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;攻击代码中，获取查看者的cookie，发送到自己的服务器&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;XSS预
+        &lt;h2 id=&quot;CSS选择器&quot;&gt;&lt;a href=&quot;#CSS选择器&quot; class=&quot;headerlink&quot; title=&quot;CSS选择器&quot;&gt;&lt;/a&gt;CSS选择器&lt;/h2&gt;&lt;p&gt;标签：p{}&lt;br&gt;class: .class{}&lt;br&gt;同一类，不同标签： p.class{}&lt;br&gt;同一
       
     
     </summary>
     
       <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+      <category term="css" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/css/"/>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
     
   </entry>
   
@@ -136,9 +103,9 @@
     <link href="http://yoursite.com/2019/05/22/Alexnet%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
     <id>http://yoursite.com/2019/05/22/Alexnet图像分类/</id>
     <published>2019-05-22T20:12:11.000Z</published>
-    <updated>2019-07-29T05:48:36.503Z</updated>
+    <updated>2019-07-29T06:03:48.770Z</updated>
     
-    <content type="html"><![CDATA[<p>github链接：<a href="https://github.com/tedqin/Alexnet_Imagenet" target="_blank" rel="noopener">https://github.com/tedqin/Alexnet_Imagenet</a></p><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul><li><p>概述</p><ul><li>Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3个全连接层（1000类的softmax分类器）。Alexnet模型由Alex Krizhevsky 等人在两个GTX 580 3GB GPU上训练5、6天左右得到。目前是深度学习图像处理领域当中最常用的模型之一。<br>AlexNet相比于以前的一些网络模型来说，做出了很多创新，主要包括以下几点</li></ul></li><li><p>框架</p><ul><li>使用激活函数ReLu</li><li>多GPU并行训练</li><li>局部影响标准化</li><li>重叠池化</li></ul></li></ul><h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p>Alexnet有5个卷积层和3个全连接层，并且Alex发现移除任意一层都会降低最终的效果。网络结构如图</p><p><img src="https://i.imgur.com/0LFUfXp.png" alt=""></p><p>这个网络前面5层是卷积层，后面三层是全连接层，最终softmax输出是1000类。</p><ul><li>第三卷积层用384个3<em>3</em>256的卷积核,得到13<em>13</em>192*2的卷积层。 </li><li>第四卷积层用384个3<em>3</em>192的卷积核，得到13<em>13</em>192*2的卷积层。 </li><li>第五卷积层用256个3<em>3</em>192的卷积核，得到13<em>13</em>128*2的卷积层。<br>每个全连接层有4096个神经元。</li></ul><p>总体而言，Alexnet网络的结构如下：<br><img src="https://i.imgur.com/wYZay5v.png" alt=""></p><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ul><li>数据集<br><img src="https://i.imgur.com/qm2Ofif.png" alt=""></li></ul><h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>caffe提供的预训练模型一共包括了1000类图像，涵盖了生物、天文、自然、科技等多个方面的相关图像，具体在caffe_classes.py下，由于文件本身较大就没放在github上，可以很容易在网上找到<br>测试集包括1000张图像，共200类，标签存储在lable.txt当中。取测试图像概率最大类的下标作为测试的分类结果（即top-1测试），并且与label对比，最后计算得出整个测试集得precision在75%左右，算是比较好的结果。<br><img src="https://i.imgur.com/SOuRIsz.png" alt=""><br><img src="https://i.imgur.com/pWERo64.png" alt=""></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>AlexNet可以说是深度神经网络的鼻祖，相比于后来的VGG和googlenet而言，它的构造更加简单，而且结构也已经非常的成熟和稳固。<br>作为学校的大创项目用alexnet有点蠢，但是时间紧迫，也分享下自己学习cnn的过程。</p>]]></content>
+    <content type="html"><![CDATA[<p>github链接：<a href="https://github.com/tedqin/Alexnet_Imagenet" target="_blank" rel="noopener">https://github.com/tedqin/Alexnet_Imagenet</a></p><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul><li><p>概述</p><ul><li>Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3个全连接层（1000类的softmax分类器）。Alexnet模型由Alex Krizhevsky 等人在两个GTX 580 3GB GPU上训练5、6天左右得到。目前是深度学习图像处理领域当中最常用的模型之一。<br>AlexNet相比于以前的一些网络模型来说，做出了很多创新，主要包括以下几点</li></ul></li><li><p>框架</p><ul><li>使用激活函数ReLu</li><li>多GPU并行训练</li><li>局部影响标准化</li><li>重叠池化</li></ul></li></ul><h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p>Alexnet有5个卷积层和3个全连接层，并且Alex发现移除任意一层都会降低最终的效果。网络结构如图</p><p><img src="https://i.imgur.com/0LFUfXp.png" alt=""></p><p>这个网络前面5层是卷积层，后面三层是全连接层，最终softmax输出是1000类。</p><ul><li>第三卷积层用384个3<em>3</em>256的卷积核,得到13<em>13</em>192*2的卷积层。 </li><li>第四卷积层用384个3<em>3</em>192的卷积核，得到13<em>13</em>192*2的卷积层。 </li><li>第五卷积层用256个3<em>3</em>192的卷积核，得到13<em>13</em>128*2的卷积层。<br>每个全连接层有4096个神经元。</li></ul><p>总体而言，Alexnet网络的结构如下：<br><img src="https://i.imgur.com/wYZay5v.png" alt=""></p><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="https://i.imgur.com/qm2Ofif.png" alt=""></p><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>caffe提供的预训练模型一共包括了1000类图像，涵盖了生物、天文、自然、科技等多个方面的相关图像，具体在caffe_classes.py下，由于文件本身较大就没放在github上，可以很容易在网上找到<br>测试集包括1000张图像，共200类，标签存储在lable.txt当中。取测试图像概率最大类的下标作为测试的分类结果（即top-1测试），并且与label对比，最后计算得出整个测试集得precision在75%左右，算是比较好的结果。<br><img src="https://i.imgur.com/SOuRIsz.png" alt=""><br><img src="https://i.imgur.com/pWERo64.png" alt=""></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>AlexNet可以说是深度神经网络的鼻祖，相比于后来的VGG和googlenet而言，它的构造更加简单，而且结构也已经非常的成熟和稳固。<br>作为学校的大创项目用alexnet有点蠢，但是时间紧迫，也分享下自己学习cnn的过程。</p>]]></content>
     
     <summary type="html">
     
@@ -155,400 +122,6 @@
     
     
       <category term="python, machine learning" scheme="http://yoursite.com/tags/python-machine-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理15-性能优化</title>
-    <link href="http://yoursite.com/2019/05/20/Javascript%E6%95%B4%E7%90%8615-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
-    <id>http://yoursite.com/2019/05/20/Javascript整理15-性能优化/</id>
-    <published>2019-05-20T17:36:43.000Z</published>
-    <updated>2019-07-28T17:57:20.037Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>基本2点<ul><li>多使用内存、缓存或者其他方法 -开源</li><li>减少CPU计算、减少网络 -节流</li></ul></li><li>加载资源优化<ul><li>静态资源的压缩合并<ul><li>合并：将多个js文件合并成一个js</li><li>压缩：压缩体积</li></ul></li><li>静态资源缓存<ul><li>通过连接名称，名称不变的话，浏览器会加载之前同名的缓存</li></ul></li><li>使用CDN让资源加载更快<ul><li>不同区域的网络优化，上海转到上海的节点等等</li></ul></li><li>使用SSR后端渲染，数据直接输出到HTML中（不同ajax请求数据）</li></ul></li><li>页面渲染优化<ul><li>CSS放前面，JS放后面</li><li>懒加载（图片懒加载，下拉加载更多/先用一张模糊的图片代替原图，要用的时候再加载） 什么时候用什么时候加载</li><li>减少DOM查询，对DOM查询做缓存</li><li>减少DOM操作，多个操作尽量合并在一个执行<ul><li>先创建一个片段<code>frag=document.createDocumentFragment()</code></li></ul></li><li>事件节流<ul><li>如键盘输入，输入快的时候不执行，异步<br><img src="https://i.imgur.com/QCxbPgv.png" alt=""></li></ul></li><li>尽早执行操作（DOMCotentLoaded）</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;基本2点&lt;ul&gt;
-&lt;li&gt;多使用内存、缓存或者其他方法 -开源&lt;/li&gt;
-&lt;li&gt;减少CPU计算、减少网络 -节流&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;加载资源优化&lt;ul&gt;
-&lt;li&gt;静态资源的压缩合并&lt;ul&gt;
-&lt;li&gt;合并：将多个js文件合并成一个js&lt;/
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javaScript" scheme="http://yoursite.com/tags/javaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理14-页面加载</title>
-    <link href="http://yoursite.com/2019/05/17/Javascript%E6%95%B4%E7%90%8614-%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD/"/>
-    <id>http://yoursite.com/2019/05/17/Javascript整理14-页面加载/</id>
-    <published>2019-05-17T21:58:06.000Z</published>
-    <updated>2019-07-28T17:57:15.550Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>加载资源的形式<ul><li>输入url(或跳转页面)加载html </li><li>加载html中的静态资源<ul><li>如<code>&lt;script&gt;&lt;img&gt;</code></li></ul></li></ul></li><li>加载一个资源的过程<ul><li>浏览器根据DNS服务器得到域名的IP地址</li><li>向这个IP的机器发送http请求</li><li>服务器收到、处理并返回http请求（图片，html js代码，）</li><li>浏览器得到返回的请求并渲染</li></ul></li><li>浏览器渲染页面的过程<ul><li>根据HTNL结构生成DOM树</li><li>根据CSS生成CSSOM（结构化处理）</li><li>将DOM和CSSOM整合成RenderTree（渲染树，每个节点都规定了样式）</li><li>根据RenderTree开始渲染和展示</li><li>遇到<code>&lt;script&gt;</code>时，会执行并阻塞渲染</li></ul></li><li><strong>问题</strong><ul><li>从输入url到得到html的详细过程<ul><li>根据DNS得到域名IP-向该IP发送请求-服务器收到处理返回请求-浏览器得到返回内容</li></ul></li><li>window.onload和DOMCotentLoaded的区别<ul><li>onload：页面全部资源加载完，包括图片视频等才会执行</li><li>CotentLoaded：DOM渲染完即可执行，图片还没有加载完</li><li><img src="https://i.imgur.com/5qnJxGf.png" alt=""></li></ul></li><li>为什么把css文件放在head中？<ul><li>因为渲染默认是顺序的，保证在渲染body时候浏览器已经知道对应的样式了</li></ul></li><li>为什么把js放在body最下面？<ul><li>不会阻塞之前body中html的渲染</li><li>保证script能拿到所有的html节点标签</li></ul></li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;加载资源的形式&lt;ul&gt;
-&lt;li&gt;输入url(或跳转页面)加载html &lt;/li&gt;
-&lt;li&gt;加载html中的静态资源&lt;ul&gt;
-&lt;li&gt;如&lt;code&gt;&amp;lt;script&amp;gt;&amp;lt;img&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理13-上线回滚流程</title>
-    <link href="http://yoursite.com/2019/05/17/Javascript%E6%95%B4%E7%90%8613-%E4%B8%8A%E7%BA%BF%E5%9B%9E%E6%BB%9A%E6%B5%81%E7%A8%8B/"/>
-    <id>http://yoursite.com/2019/05/17/Javascript整理13-上线回滚流程/</id>
-    <published>2019-05-17T09:46:14.000Z</published>
-    <updated>2019-07-28T17:57:11.154Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>上线的基本流程<ul><li>将测试完成的代码提交到git版本库的master分支</li><li>将当前服务器的代码全部打包并记录版本号，备份</li><li>将master分支的代码提交覆盖到线上服务器，生成新版本号</li></ul></li><li>回滚的基本流程<ul><li>将当前服务器的代码全部打包并记录版本号，备份</li><li>将备份的上一个版本号解压，覆盖到线上服务器，并生成新的版本号</li></ul></li><li>linux基本命令<ul><li>mkdir</li><li>ls</li><li>ll 列表形式的ls</li><li>pwd</li><li>cd</li><li>cd ..</li><li>rm -rf 文件夹名 //删除当前目录下所有文件</li><li>vi a.js //创建并进入a.js<ul><li>i //insert</li><li>: //最下行</li><li>w //写</li><li>q //退出</li></ul></li><li>cp a1 a2 //创建a2，把a1复制到a2</li><li>mv a1 f1 //把a1移动到f1文件夹</li><li>cat a1 //查看当前文件</li><li>grep ‘2’ a.js //查找a.js中的2</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;上线的基本流程&lt;ul&gt;
-&lt;li&gt;将测试完成的代码提交到git版本库的master分支&lt;/li&gt;
-&lt;li&gt;将当前服务器的代码全部打包并记录版本号，备份&lt;/li&gt;
-&lt;li&gt;将master分支的代码提交覆盖到线上服务器，生成新版本号&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理12-打包工具</title>
-    <link href="http://yoursite.com/2019/05/16/Javascript%E6%95%B4%E7%90%8612-%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/"/>
-    <id>http://yoursite.com/2019/05/16/Javascript整理12-打包工具/</id>
-    <published>2019-05-16T20:55:37.000Z</published>
-    <updated>2019-07-28T17:57:06.805Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><p>webpack</p><ul><li>启动一个服务，先全局安装，<code>npm install http-server =g</code>，然后在要访问的页面根目录启动服务 <code>http-server 8080</code></li><li><code>npm init</code> 初始化，完成后多处package.json文件</li><li><code>npm install webpack --save -dev</code> 安装webpack</li></ul></li><li><p>配置webpack</p><ul><li>创建webpack.config.js <img src="https://i.imgur.com/pfvAftc.png" alt=""></li><li>创建src app.js等文件</li><li>在package.json scripts里加入”start”: “webpack”，就可以在命令行执行start进行打包输出     </li></ul></li><li>webpack进行代码压缩：<ul><li>在config的exports中追加<code>plugins: [new webpack.optimize.UglifyJsPlugin()]</code></li></ul></li><li>webpack的主要作用：<ul><li>代码合并：合并commonjs的语法规范，否则前端无法识别</li><li>代码压缩：保证代码上线</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;webpack&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;启动一个服务，先全局安装，&lt;code&gt;npm install http-server =g&lt;/code&gt;，然后在要访问的页面根目录启动服务 &lt;code&gt;http-server 8080&lt;/code&gt;&lt;/li&gt;
-&lt;l
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理11-模块化</title>
-    <link href="http://yoursite.com/2019/05/15/Javascript%E6%95%B4%E7%90%8611-%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
-    <id>http://yoursite.com/2019/05/15/Javascript整理11-模块化/</id>
-    <published>2019-05-15T08:45:26.000Z</published>
-    <updated>2019-07-28T17:57:02.124Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>不适用模块化的情况<ul><li>如果a.js, b.js, c.js, c依赖b，b依赖a，引用的时候要按顺序</li><li>容易出现问题：全局变量容易被污染；不知道祖先依赖关系<img src="https://i.imgur.com/lIpUfS6.png" alt=""></li></ul></li><li>使用模块化<ul><li>a.js 传递出别人所需要的功能函数，b和a需要哪个函数引用哪个函数<img src="https://i.imgur.com/n0xFoID.png" alt=""></li><li>引用的时候直接引用最表层的js文件即可</li></ul></li><li>AMD 异步模块定义规范<ul><li>require.js</li><li>全局define函数</li><li>全局require函数</li><li>依赖的js会自动、异步加载</li><li><img src="https://i.imgur.com/kfdTYDt.png" alt=""></li><li>html用：<code>&lt;script src=&quot;/require.js&quot; data-main=&quot;./main.js&quot;&gt;&lt;/script&gt;</code></li><li>好处：异步加载，不使用（依赖）就不加载</li></ul></li><li>CommonJs<ul><li>nodejs模块化规划，现在被大量用于前端</li><li>前端开发依赖的插件和库，都可以用npm中获取</li><li>构建工具的高度自动化，使得使用npm的成本非常低</li><li>CommonJS不会异步加载js，而是同步一次性加载出来</li><li><img src="https://i.imgur.com/7hvXgIb.png" alt=""></li></ul></li><li>AMD和CommonJS的使用场景<ul><li>需要异步加载，用AMD</li><li>使用了npm之后建议使用CommonJs</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;不适用模块化的情况&lt;ul&gt;
-&lt;li&gt;如果a.js, b.js, c.js, c依赖b，b依赖a，引用的时候要按顺序&lt;/li&gt;
-&lt;li&gt;容易出现问题：全局变量容易被污染；不知道祖先依赖关系&lt;img src=&quot;https://i.imgur.com/lIpUfS6.
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理10-存储</title>
-    <link href="http://yoursite.com/2019/05/11/Javascript%E6%95%B4%E7%90%8610-%E5%AD%98%E5%82%A8/"/>
-    <id>http://yoursite.com/2019/05/11/Javascript整理10-存储/</id>
-    <published>2019-05-11T14:35:08.000Z</published>
-    <updated>2019-07-28T17:56:57.420Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>cookie<ul><li>属于http的东西，本身用于客户端和服务端通信</li><li>但是它有本地存储的功能，于是被“借用”</li><li>使用<code>document.cookie=...</code>获取和修改即可</li><li>限制：<ul><li>存储量太小，只有4kb</li><li>所有http请求都带着，会影响获取资源的效率</li><li>API简单，需要封装才能用<code>document.coockie</code></li></ul></li></ul></li><li><p>sessionStorage和localStorage</p><ul><li>H5专门为存储而设计，最大容量5M</li><li>API简单易用,key+value<ul><li><pre>localStorage.setItem(key,value)localStorage.getItem(key)</pre></li></ul></li></ul></li><li><p><strong>问题</strong></p><ul><li>描述一下cookie（h5之前），sessionStorage和localStorage的区别 <ul><li>cookie和后两者的区别<ul><li>容量</li><li>是否会携带到ajax请求中</li><li>API易用性</li></ul></li><li>后两者的区别<ul><li>localStorage不会主动删除，sessionStorage随着每次会话结束会清除，95%的场景存储到localStorage中</li></ul></li></ul></li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;cookie&lt;ul&gt;
-&lt;li&gt;属于http的东西，本身用于客户端和服务端通信&lt;/li&gt;
-&lt;li&gt;但是它有本地存储的功能，于是被“借用”&lt;/li&gt;
-&lt;li&gt;使用&lt;code&gt;document.cookie=...&lt;/code&gt;获取和修改即可&lt;/li&gt;
-&lt;li&gt;限制：
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理09-事件绑定</title>
-    <link href="http://yoursite.com/2019/05/10/Javascript%E6%95%B4%E7%90%8609-%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A/"/>
-    <id>http://yoursite.com/2019/05/10/Javascript整理09-事件绑定/</id>
-    <published>2019-05-10T10:31:59.000Z</published>
-    <updated>2019-07-28T17:56:50.988Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>通用事件绑定<ul><li><img src="https://i.imgur.com/3n74SBB.png" alt=""></li></ul></li><li>事件冒泡<ul><li>若底层和父层节点有相同绑定事件，底层业务节点的事件（如点击）会先执行，然后会一层层网上执行，先执行底层的事件，然后上一层的事件，然后…</li><li>点击激活弹出激活，点击取消弹出取消<img src="https://i.imgur.com/CS0jTZh.png" alt=""><br>（<code>e.stopPropatation()</code>：阻止冒泡）</li></ul></li><li>代理 事件冒泡的应用<ul><li>点击a标签的元素，会弹出相应文字<img src="https://i.imgur.com/uRTP2p5.png" alt=""><br>（这里target可以定位到当前点击的元素）</li></ul></li><li><strong>问题</strong><ul><li>编写一个通用的事件监听函数<ul><li><img src="https://i.imgur.com/BBOT3t6.png" alt=""></li></ul></li><li>描述事件冒泡流程<ul><li>dom树形结构</li><li>冒泡</li><li>阻止冒泡</li><li>应用：代理</li></ul></li><li>对于一个无限下拉加载图片的页面，如何给每个图片绑定事件<ul><li>使用代理：代码简洁，对浏览器压力小</li></ul></li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;通用事件绑定&lt;ul&gt;
-&lt;li&gt;&lt;img src=&quot;https://i.imgur.com/3n74SBB.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;事件冒泡&lt;ul&gt;
-&lt;li&gt;若底层和父层节点有相同绑定事件，底层业务节点的事件（如点击）会
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理08-ajax</title>
-    <link href="http://yoursite.com/2019/05/04/Javascript%E6%95%B4%E7%90%8608-ajax/"/>
-    <id>http://yoursite.com/2019/05/04/Javascript整理08-ajax/</id>
-    <published>2019-05-04T16:14:38.000Z</published>
-    <updated>2019-07-28T17:56:44.963Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>XMLHttpRequest<ul><li><img src="https://i.imgur.com/dfRzR2h.png" alt=""></li></ul></li><li>状态码说明<ul><li><code>readyState == 4</code> ajax状态码<ul><li>0-（未初始化）还没有调用send()方法</li><li>1-（载入）已调用send()方法，正在发送请求</li><li>2-（载入完成）send()方法执行完成，已经接收到全部响应内容</li><li>3-（交互）正在解析响应内容</li><li>4-（完成）响应内容解析完成，可以在客户端调用了</li></ul></li><li><code>status == 200</code> http标准状态码<ul><li>2xx - 表示成功处理请求。如200</li><li>3xx - 需要重定向，浏览器直接跳转</li><li>4xx - 客户端请求错误，如404</li><li>5xx - 服务端错误</li></ul></li></ul></li><li>跨域<ul><li>什么是跨域<ul><li>浏览器有同源策略，不允许ajax访问其他接口，如<a href="http://www.a.com:80不能访问http://www.b.com" target="_blank" rel="noopener">http://www.a.com:80不能访问http://www.b.com</a></li><li>跨域条件：协议(http)、域名(<a href="http://www.a.com)、端口(:80)有一个不同就算跨域" target="_blank" rel="noopener">www.a.com)、端口(:80)有一个不同就算跨域</a></li></ul></li><li>可以跨域的三个标签<ul><li><code>&lt;img src=xxx&gt;</code><ul><li>用于打点统计，统计网站可能是其他域</li></ul></li><li><code>&lt;link href=xxx&gt;</code><ul><li>可以使用CDN，CDN也是其他域</li></ul></li><li><code>&lt;script src=xxx&gt;</code><ul><li>可以使用CDN，CDN也是其他域</li><li>可以用于JSONP</li></ul></li></ul></li><li>JSONP 前端<ul><li><img src="https://i.imgur.com/PYUD2il.png" alt=""></li><li>前端定义一个callback函数，得到信息。再用script标签获取一个跨域的信息，这个信息会调用callback({x:100, y:200})</li></ul></li><li>服务器端设置http header 后端<ul><li><img src="https://i.imgur.com/LwrJhv8.png" alt=""></li></ul></li></ul></li><li><strong>问题</strong><ul><li>手动编写一个ajax，不依赖第三方库<ul><li><img src="https://i.imgur.com/n7jIfMM.png" alt=""></li></ul></li><li>跨域的几种实现方式<ul><li>JSONP</li><li>服务器端设置http header</li></ul></li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;XMLHttpRequest&lt;ul&gt;
-&lt;li&gt;&lt;img src=&quot;https://i.imgur.com/dfRzR2h.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;状态码说明&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;readyState == 4&lt;
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理07-bom</title>
-    <link href="http://yoursite.com/2019/05/04/Javascript%E6%95%B4%E7%90%8607-bom/"/>
-    <id>http://yoursite.com/2019/05/04/Javascript整理07-bom/</id>
-    <published>2019-05-04T08:54:18.000Z</published>
-    <updated>2019-07-28T17:56:28.823Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>navigator浏览器<ul><li>判断浏览器类型 userAgent <pre>var ua = navigator.userAgent<br>var isChrome = ua.indexOf(‘Chrome’)<br>console.log(isChrome)</pre></li></ul></li><li>screen屏幕<ul><li><pre>console.log(screen.width)console.log(screen.height)</pre></li></ul></li><li>location地址栏信息 拆解url<ul><li><pre>  location.href //url  location.protocal //协议 http https  location.host //域名  location.pathname //路径 /learn/199  location.search //url ？ 后面的字符串  location.search //url # 后的hash</pre></li></ul></li><li><p>history历史 前进后退</p><ul><li><pre>history.backhistory.forward</pre></li></ul></li><li><p><strong>问题</strong></p><ul><li>如何检测目标浏览器的类型<ul><li><img src="https://i.imgur.com/o5DlvbW.png" alt=""></li></ul></li><li>拆解url的各部分<ul><li><pre>location.href //urllocation.protocal //协议 http httpslocation.host //域名location.pathname //路径 /learn/199location.search //url ？ 后面的字符串location.search //url # 后的hash</pre></li><li><img src="https://i.imgur.com/efoIRJM.jpg" alt=""></li></ul></li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;navigator浏览器&lt;ul&gt;
-&lt;li&gt;判断浏览器类型 userAgent &lt;pre&gt;var ua = navigator.userAgent&lt;br&gt;var isChrome = ua.indexOf(‘Chrome’)&lt;br&gt;console.log(isCh
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理06-api</title>
-    <link href="http://yoursite.com/2019/05/01/Javascript%E6%95%B4%E7%90%8606-api/"/>
-    <id>http://yoursite.com/2019/05/01/Javascript整理06-api/</id>
-    <published>2019-05-01T13:58:15.000Z</published>
-    <updated>2019-07-28T17:56:23.449Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>JS语法标准（基础知识）：ECMA 262标准</li><li>JS-WEB-API（浏览器）：W3C标准<ul><li>DOM操作</li><li>BOM操作：浏览器操作 获取当前地址 获取屏幕尺寸</li><li>事件绑定</li><li>AJAX请求（包括http协议）</li><li>存储</li><li>没有规定任何JS基础相关的东西</li></ul></li><li>全面考虑，JS内置的全局函数和对象（浏览器打造）<ul><li>Object，Array，Boolean等</li><li>window document</li><li>所有未定义的全局变量，如navigator.userAgent</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;JS语法标准（基础知识）：ECMA 262标准&lt;/li&gt;
-&lt;li&gt;JS-WEB-API（浏览器）：W3C标准&lt;ul&gt;
-&lt;li&gt;DOM操作&lt;/li&gt;
-&lt;li&gt;BOM操作：浏览器操作 获取当前地址 获取屏幕尺寸&lt;/li&gt;
-&lt;li&gt;事件绑定&lt;/li&gt;
-&lt;li&gt;AJAX
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理05-dom</title>
-    <link href="http://yoursite.com/2019/04/30/Javascript%E6%95%B4%E7%90%8605-dom/"/>
-    <id>http://yoursite.com/2019/04/30/Javascript整理05-dom/</id>
-    <published>2019-04-30T12:31:48.000Z</published>
-    <updated>2019-07-28T17:56:18.190Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>DOM本质<ul><li>浏览器拿到html代码后，把html结构化成浏览器可识别以及js可识别的东西，就是dom</li><li>dom本质是js的对象</li></ul></li><li>DOM节点操作<ul><li>获取dom节点<ul><li><img src="https://i.imgur.com/buzzJoD.png" alt=""></li></ul></li><li>property<ul><li>js对象中的属性</li><li><img src="https://i.imgur.com/Wtu93oq.png" alt=""></li></ul></li><li>attribute<ul><li>HTML文档中 标签的属性</li><li><img src="https://i.imgur.com/IJSJKq8.png" alt=""></li></ul></li></ul></li><li>DOM结构操作<ul><li>新增节点 <code>document.createElement(node)</code><ul><li><img src="https://i.imgur.com/7H8uSP8.png" alt=""></li></ul></li><li>获取父节点 <code>childNode.parentElement</code></li><li>获取子节点 <code>.parentNode.childNodes</code><ul><li><img src="https://i.imgur.com/JcAj6O8.png" alt=""></li><li><code>.childNodes返回所有节点包括文本和注释节点</code> <code>.children只返回元素节点</code></li></ul></li><li>删除节点 <code>parentNode.removeChild(childNode)</code><ul><li><img src="https://i.imgur.com/PG53s2T.png" alt=""></li></ul></li></ul></li><li><strong>问题</strong><ul><li>DOM是哪一种基本数据结构<ul><li>数</li></ul></li><li>DOM操作的常用API有哪些<ul><li>获取DOM节点，以及节点的property和attr</li><li>获取父节点，子节点</li><li>新增，删除，移动节点</li></ul></li><li>DOM节点的attr和property有何局别<ul><li>property是js属性的修改和获取</li><li>attr是对html标签的修改和获取</li></ul></li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;DOM本质&lt;ul&gt;
-&lt;li&gt;浏览器拿到html代码后，把html结构化成浏览器可识别以及js可识别的东西，就是dom&lt;/li&gt;
-&lt;li&gt;dom本质是js的对象&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;DOM节点操作&lt;ul&gt;
-&lt;li&gt;获取dom节点&lt;ul&gt;
-&lt;l
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理04-异步和单线程</title>
-    <link href="http://yoursite.com/2019/04/28/Javascript%E6%95%B4%E7%90%8604-%E5%BC%82%E6%AD%A5%E5%92%8C%E5%8D%95%E7%BA%BF%E7%A8%8B/"/>
-    <id>http://yoursite.com/2019/04/28/Javascript整理04-异步和单线程/</id>
-    <published>2019-04-28T16:13:35.000Z</published>
-    <updated>2019-07-28T17:56:12.494Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>什么是异步（对比同步）<ul><li>同步会阻塞，异步不会，遇到setTimeout会先执行后面的代码</li><li>何时使用：有可能发生等待的情况-等待的过程不能阻塞程序运行</li></ul></li><li>前端使用异步的场景<ul><li>定时任务：setTimeout，setInverral</li><li>网络请求：ajax请求，动态<img>加载 （时间不固定）</li><li>事件绑定：如点击事件，在不点击的时候不能阻塞程序运行</li></ul></li><li>异步和单线程<ul><li>单线程：代码一个个排队执行，不能同时干两件事</li><li>js是单线程，所以在遇到阻塞的情况，要用异步，现将不需要等待的代码执行完，再执行异步代码</li></ul></li><li><strong>问题</strong><ul><li>同步和异步的区别是什么？分别举一个同步和异步的例子<ul><li>同步会阻塞代码，异步不会，alert是同步，setTimeout是异步</li></ul></li><li>一个关于setTimeout的笔试题</li><li>前端使用异步的场景有哪些？<ul><li>定时任务-网络请求-时间绑定</li></ul></li></ul></li></ul><h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul><li>日期<ul><li><img src="https://i.imgur.com/WIOLL8V.png" alt=""></li></ul></li><li>Math<ul><li>获取随机数<code>Math.random()</code></li></ul></li><li>数组api<ul><li>forEach 遍历所有元素</li><li>every 判断所有元素是否都符合条件</li><li>some 判断是否有至少一个元素符合条件</li><li>sort 排序</li><li>map 对元素重新组装，生成新数组</li><li>filter 过滤符合条件的元素</li></ul></li><li>对象api<ul><li>for in</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;什么是异步（对比同步）&lt;ul&gt;
-&lt;li&gt;同步会阻塞，异步不会，遇到setTimeout会先执行后面的代码&lt;/li&gt;
-&lt;li&gt;何时使用：有可能发生等待的情况-等待的过程不能阻塞程序运行&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;前端使用异步的场景&lt;ul&gt;
-&lt;li&gt;
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
   </entry>
   
@@ -581,65 +154,160 @@
   </entry>
   
   <entry>
-    <title>Javascript整理03-作用域和闭包</title>
-    <link href="http://yoursite.com/2019/04/02/Javascript%E6%95%B4%E7%90%8603-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/"/>
-    <id>http://yoursite.com/2019/04/02/Javascript整理03-作用域和闭包/</id>
-    <published>2019-04-02T10:13:20.000Z</published>
-    <updated>2019-07-28T17:56:05.932Z</updated>
+    <title>c++tips笔记</title>
+    <link href="http://yoursite.com/2018/10/18/cpp%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2018/10/18/cpp笔记/</id>
+    <published>2018-10-18T15:19:02.000Z</published>
+    <updated>2019-07-28T17:52:43.745Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>执行上下文 代码执行的环境<ul><li>一段<code>&lt;script&gt;</code>：全局上下文<ul><li>变量定义-&gt;函数申明</li></ul></li><li>一个函数：函数上下文<ul><li>变量定义-&gt;函数申明-&gt;this-&gt;arguments</li></ul></li></ul></li><li>this<ul><li>this要在执行时才能确认值，定义时无法确认</li><li>call可以改变this的值：<code>a.fn.call({name:B})</code></li><li>1.作为构造函数执行：指向定义的对象 <pre>function Foo(name) {<br>this.name = name}<br>var f = new Foo(‘ted’)</pre></li><li>2.作为对象属性执行:指向该对象 <pre>var obj = {<br>name: ‘A’, printName: function () {console.log(this.name)}}<br>obj.printName()</pre></li><li>3.作为普通函数执行: 指向window <pre>function fn() {<br>console.log(this)}}</pre></li><li>4.call apply bind <pre>function fn1(name, age) {<br>alert(name); console.log(this)}<br>fn1(‘ted’,20)//普通函数的this，指向window<br>fn1.call({x:100},’ted’,20)//通过call函数改变this，指向{x:100}这个对象<br>fn1.apply({x:200}, [‘ted’, 20])//apply和call不同在于参数用数组传递<br></pre>  <pre>//bind:适用于函数表达式 var fn2 = function (name, age) {alert(name); console.log(this)}.bind({y:300})fn2('ted',20)//通过bind函数改变this，this也指向{y:300}这个对象</pre></li></ul></li><li>作用域<ul><li>JS没有块级作用域<ul><li>在函数中定义和赋值的变量可以在函数外使用</li><li>ES6中加入块级作用域：<pre>for(let i = 0; i&lt; 10; i++){}<br>console.log(i)//报错，let定义的变量有块级作用域，在for中定义的不能在for之外访问</pre></li></ul></li><li>JS有函数和全局作用域<ul><li>定义在函数中的变量，只能在函数中修改</li></ul></li><li>自由变量：当前作用域没有定义的变量，可以在父级作用域中去找</li></ul></li><li>作用域链<ul><li>当前作用域可访问父级作用域</li><li>一个元素的父级作用域是在它定义的时候的作用域，而非执行</li></ul></li><li>闭包<ul><li>函数作为返回值</li><li>函数作为参数传递</li><li>闭包中返回的函数，若有自由变量，则向（函数定义时）父作用域寻找</li></ul></li><li><strong>问题</strong><ul><li>说一下对变量提升的理解<ul><li>在各个执行上下文中，变量定义+函数声明都会提前</li></ul></li><li>说明this几种不同的使用场景<ul><li>作为构造函数：指向定义的对象</li><li>作为对象属性：指向该对象</li><li>作为普通函数：指向window</li><li>call apply bind： 指向改变的对象</li></ul></li><li>创建10个<code>&lt;a&gt;</code>标签，点击的时候弹出来对应的序号<br>  * </li><li>如何理解作用域<ul><li>自由变量</li><li>作用域链，自由变量的查找</li><li>闭包的两个场景</li></ul></li><li>闭包</li><li>实际开发中闭包的应用<ul><li>封装变量，收敛权限</li><li><img src="https://i.imgur.com/WHL94oZ.png" alt=""></li></ul></li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><h3 id=""><a href="#" class="headerlink" title="*"></a>*</h3><ul><li><ul><li>是取值运算符，对地址使用可以获得地址中储存的数值。对于指针a，*a表示取a中的值</li></ul></li><li>在 <em>定义</em> 时，<em> 是一个标识符，声明该变量是一个指针，比如说int </em>p; 那p就是一个指向int型的指针</li><li>在 <em>调用</em> 时，<em> p是指针p指向的那个变量，比如说之前有int a=5；int </em> p=&amp;a；那么p的值是a的地址，也就是指针p指向a，<em> p则等于a的值，即</em>p=5。</li></ul><h3 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h3><ul><li>&amp;在 <em>定义</em> 时则是引用，比如说有定义int a=5；再定义int b=&amp;a；那么这里的b则引用a的值，即b=5，而再给b赋值：b=10，a的值也会变为10。</li><li>&amp;在 <em>调用</em> 是地址运算符，对变量使用可以获得该变量的地址, 对于变量b，&amp;b表示取b的地址</li></ul><h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><ul><li>先定义有int x = 0；int *p = &amp;x；</li><li>若定义函数： void fun1（int a）{ a=5；} ，则调用：fun1(x); 之后，x还等于0；因为fun1函数只改变了形参a的值，a只是fun1函数里的局部变量，调用fun1(x)相当于是“a=x;a=5;”，x没变；</li><li>若定义函数：void fun2（int &amp;a）{ a=5；} ， 则调用：fun2(x); 之后，x等于5；因为这里的a引用了x的值；</li><li>若定义函数：void fun3（int <em> a）{ </em> a=5；} ， 则调用：fun3(p); 之后，x也等于5；因为fun3函数的参数a是一个指针，相当于a=p；<em> a则与</em> p指向同一地址，改变<em> a即改变</em>p即x</li><li>return *this:</li><li></li></ul><h2 id="strcpy和strncpy："><a href="#strcpy和strncpy：" class="headerlink" title="strcpy和strncpy："></a>strcpy和strncpy：</h2><p><code>strcpy(char *ch1, char *ch2)</code>：</p><ul><li>直接将ch2指向的由”\0”结束的字符串复制到ch1，ch1必须有足够的空间来存储ch2</li><li>若ch2长于ch1，还是会复制，但是ch1会溢出<br>*</li></ul><p><code>strncpy(char *ch1, char *ch2, n)</code>:</p><ul><li>将ch2中最多n个字符复制到ch1</li><li>如果n&gt;ch1长度，ch1溢出</li><li>如果n&lt;ch1长度，且如果<ul><li>ch2长度&lt;=ch1长度，则ch2前n个字符复制到ch1</li><li>ch2长度&gt;ch1长度，出错</li></ul></li><li>建议：将n设置为ch1长度</li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;ul&gt;
-&lt;li&gt;执行上下文 代码执行的环境&lt;ul&gt;
-&lt;li&gt;一段&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;：全局上下文&lt;ul&gt;
-&lt;li&gt;变量定义-&amp;gt;函数申明&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;一个函数：函数上下文&lt;ul&gt;
-&lt;li&gt;变量定义-&amp;gt;函数
+        &lt;h2 id=&quot;指针&quot;&gt;&lt;a href=&quot;#指针&quot; class=&quot;headerlink&quot; title=&quot;指针&quot;&gt;&lt;/a&gt;指针&lt;/h2&gt;&lt;h3 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;*&quot;&gt;&lt;/a&gt;*&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;ul
       
     
     </summary>
     
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+      <category term="cpp" scheme="http://yoursite.com/categories/cpp/"/>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="cpp" scheme="http://yoursite.com/tags/cpp/"/>
     
   </entry>
   
   <entry>
-    <title>Javascript整理02-原型</title>
-    <link href="http://yoursite.com/2019/04/01/Javascript%E6%95%B4%E7%90%8602-%E5%8E%9F%E5%9E%8B/"/>
-    <id>http://yoursite.com/2019/04/01/Javascript整理02-原型/</id>
-    <published>2019-04-01T09:22:22.000Z</published>
-    <updated>2019-07-28T17:56:01.125Z</updated>
+    <title>mac常用指令</title>
+    <link href="http://yoursite.com/2018/10/10/mac%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+    <id>http://yoursite.com/2018/10/10/mac常用指令/</id>
+    <published>2018-10-10T01:55:04.000Z</published>
+    <updated>2019-07-28T17:57:50.521Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>构造函数<ul><li><code>function Foo(name,age) {this.name=name; this.age=age return this}</code> <code>var f = new Foo(&#39;ted&#39;,20)</code></li><li>var a ={}是var a =new Object()的语法糖//数组，函数同理</li><li>函数名大写字母开头</li></ul></li><li>原型规则和示例<ul><li>所有的引用类型（数组对象函数）都具有对象特性，即可自由扩展属性(null除外)</li><li>所有的引用类型都有一个<code>__proto__</code>属性，属性值是一个普通对象 </li><li>所有的函数都有一个prototype属性，属性值也是一个普通的对象</li><li><code>__proto__</code>对象指向它的构造函数的prototype对象（完全等于）</li><li>当试图得到一个引用类型的某个属性时，如果这个变量本身没有这个属性，那么会去它的<code>__proto__</code>，即它的构造函数的prototype中找</li><li>例子：不遍历原型上的属性：<code>if(f.hasOwnProperty(item))</code></li></ul></li><li>原型链<ul><li>一个对象，对象自身不存在的属性到它的隐式原型找，它的隐式原型不存的的话，再到它的隐式原型的隐式原型中找</li><li>Object.prototype指向null，防止死循环</li></ul></li><li>instanceof<ul><li>instanceof判断一个函数是否是一个变量的构造函数</li><li><code>var f = new Foo(&#39;ted&#39;)</code> <code>f instanceof Foo//true</code></li><li>判断逻辑：f的<code>__proto__</code>一层层往上，能否对应到Foo.prototype</li></ul></li><li><strong>问题</strong><ul><li>如何准确判断一个变量是数组<ul><li><code>var arr = []</code> <code>arr instanceof Array//true</code></li></ul></li><li>写一个原型链继承的例子<ul><li><code>function Animal(){this.eat = function(){console.log(&#39;eat&#39;)}}</code> <code>function Dog(){this.bark(){console.log(&#39;bark&#39;)}}</code> <code>Dog.prototype=new Animal()</code> <code>var haski=new Dog()</code> //这个比较low</li><li><code>function Elem(id){this.elem=document.getElementById(id)}</code> <pre>Elem.prototype.html=function(val) {<pre><code>  var elem=this.elem   if(val){      elem.innerHTML=val      return this  } else{       return elem.innerHTML}}&lt;/pre&gt; </code></pre>  <pre>Elem.prototype.on=function(type,fn){<pre><code>  var elem=this.elem  elem.addEventListener(type,fn)      &lt;/pre&gt;</code></pre>  <code>var div1 = new Elem(&#39;div1&#39;)</code></pre></pre></li></ul></li><li>描述new一个对象的过程<ul><li>创建一个新对象</li><li>this指向这个新对象</li><li>执行构造函数的代码，即对this赋值</li><li>返回this</li></ul></li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>ps: * 指令名称 <code>指令</code> <code>实例</code></p><p>参考：<a href="https://www.jianshu.com/p/8803bf591956" target="_blank" rel="noopener">https://www.jianshu.com/p/8803bf591956</a></p><h1 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h1><h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><ul><li>创建目录 <code>mkdir</code> <code>mkdir dirname</code></li><li>删除目录 <code>rmdir</code> <code>rmdir dirname</code></li><li>移动或重命名一个目录 <code>mvdir</code> <code>mvdir dir1 dir2</code></li><li>改变当前目录 <code>rmdir</code> <code>rmdir dirname</code></li><li>显示当前目录的路径名 <code>pwd</code> <code>pwd</code></li><li>显示当前目录的内容 <code>ls</code> <code>ls -la</code></li></ul><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><ul><li>显示文件内容或连接文件 <code>cat</code> <code>cat filename</code></li><li>显示非文本文件的内容 <code>od</code> <code>od -c filename</code></li><li>复制文件或目录 <code>cp</code> <code>cp file1 file2</code></li><li>删除文件或目录 <code>rm</code> <code>rm filename</code></li><li>改变文件名或所在目录 <code>mv</code> <code>mv file1 file2</code></li><li>使用匹配表达式查找文件 <code>find</code> <code>find . -name &quot;*.c&quot; -print</code></li><li>显示文件类型 <code>file</code> <code>file filename</code></li></ul><h2 id="选择操作"><a href="#选择操作" class="headerlink" title="选择操作"></a>选择操作</h2><ul><li>显示文件的最初几行 <code>head</code> <code>head -20 filename</code></li><li>显示文件的最后几行 <code>tail</code> <code>tail -15 filename</code></li><li>显示文件每行中的某些域 <code>cut</code> <code>cut -f1,7 -d: /etc/passwd</code></li><li>从标准输入中删除若干列 <code>colrm</code> <code>colrm 8 20 file2</code></li><li>排序或归并文件 <code>sort</code> <code>sort -d -f -u file1</code></li><li>去掉文件中的重复行 <code>uniq</code> <code>uniq file1 file2</code></li><li>显示两有序文件的公共和非公共行 <code>comm</code> <code>comm file1 file2</code></li><li>统计文件的字符数、词数和行数 <code>wc</code> <code>wc filename</code></li><li>给文件加上行号 <code>nl</code> <code>nl file1 &gt;file2</code></li></ul><h2 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h2><ul><li>显示进程当前状态 <code>ps</code> <code>ps u</code></li><li>终止进程 <code>kill</code> <code>kill -9 30142</code></li></ul><h2 id="时间操作"><a href="#时间操作" class="headerlink" title="时间操作"></a>时间操作</h2><ul><li>显示系统的当前日期和时间 <code>diff</code> <code>diff file1 file2</code></li><li>显示⽇日历 <code>cal</code> <code>cal 8 1996</code></li><li>统计程序的执⾏行行时间 <code>time</code> <code>time a.out</code></li></ul><h2 id="网络与通信操作"><a href="#网络与通信操作" class="headerlink" title="网络与通信操作"></a>网络与通信操作</h2><ul><li>远程登录 <code>telnet</code> <code>telnet hpc.sp.net.edu.cn</code></li><li>远程登录 <code>rlogin</code> <code>rlogin hostname -l username</code></li><li>在远程主机执⾏行行指定命令 <code>rsh</code> <code>rsh f01n03 date</code></li><li>在本地主机与远程主机之间传输⽂文件 <code>ftp</code> <code>ftp[ftp.sp.net.edu.cn]</code></li><li>在本地主机与远程主机之间复制⽂文件 <code>rcp</code> <code>rcp[ftp.sp.net.edu.cn]</code></li><li>给⼀一个⽹网络主机发送 回应请求 <code>ping</code> <code>ping hpc.sp.net.edu.cn</code></li><li>阅读和发送电⼦子邮件 <code>mail</code> <code>mail</code></li><li>允许或拒绝接收报⽂文 <code>mesg</code> <code>mesg n</code></li></ul><h2 id="core-shell-指令"><a href="#core-shell-指令" class="headerlink" title="core shell 指令"></a>core shell 指令</h2><ul><li>列列出最近执⾏行行过的⼏条命令及编号 <code>history</code> <code>history</code></li><li>重复执⾏行行最近执⾏过的某条命令 <code>r</code> <code>r-2</code></li><li>给某个命令定义别名 <code>alias</code> <code>alias del=rm -i</code></li><li>取消对某个别名的定义 <code>diff</code> <code>diff file1 file2</code></li><li>比较并显示两个文件的差异 <code>unalias</code> <code>unalias del</code></li></ul><h2 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h2><ul><li>显示操作系统的有关信息 <code>uname</code> <code>uname -a</code></li><li>清除屏幕或窗⼝口内容 <code>clear</code> <code>clear</code></li><li>显示当前所有设置过的环境变量量 <code>env</code> <code>env</code></li><li>列列出当前登录的所有⽤用户 <code>who</code> <code>who</code></li><li>显示当前正进⾏行行操作的⽤用户名 <code>whoami</code> <code>whoami</code></li><li>显示终端或伪终端的名称 <code>tty</code> <code>tty</code></li><li>显示或重置控制键定义 <code>stty</code> <code>stty -a</code></li><li>查询磁盘使⽤用情况 <code>du</code> <code>du -k subdirdf</code></li><li>显示⽂文件系统的总空间和可⽤用空间 <code>/tmp</code> </li><li>显示当前系统活动的总信息 <code>w</code> </li><li>在本地主机与远程主机之间复制⽂文件 <code>rcp</code> <code>rcp[ftp.sp.net.edu.cn]</code></li><li>给⼀一个⽹网络主机发送 回应请求 <code>ping</code> </li></ul><h2 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a>sudo命令</h2><ul><li>临时使⽤用root权限来编辑/etc/shadow密码⽂文件 <code>sudo gedit /etc/shadow</code> </li><li>注意$和#的变化，#表示你在最⾼高权限root⾥里里⾯面</li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;ul&gt;
-&lt;li&gt;构造函数&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;function Foo(name,age) {this.name=name; this.age=age return this}&lt;/code&gt; &lt;code&gt;var f = new Foo(&amp;#39;ted&amp;#39;,20)
+        &lt;p&gt;ps: * 指令名称 &lt;code&gt;指令&lt;/code&gt; &lt;code&gt;实例&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.jianshu.com/p/8803bf591956&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http
       
     
     </summary>
     
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+      <category term="基础知识" scheme="http://yoursite.com/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo搭建blog常用命令</title>
+    <link href="http://yoursite.com/2018/10/10/hexo%E6%90%AD%E5%BB%BAblog%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2018/10/10/hexo搭建blog常用命令/</id>
+    <published>2018-10-10T01:29:32.000Z</published>
+    <updated>2019-07-28T17:55:28.956Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="常规搭建"><a href="#常规搭建" class="headerlink" title="常规搭建"></a>常规搭建</h2><h2 id="常规指令"><a href="#常规指令" class="headerlink" title="常规指令"></a>常规指令</h2><p><code>hexo new &quot;blogname&quot; #新建博客</code></p><p><code>hexo g #生成</code></p><p><code>hexo s #启动服务器预览</code></p><p><code>hexo d #部署</code> </p><p><code>hexo clean #清除缓存</code> </p><h2 id="更换设备搭建"><a href="#更换设备搭建" class="headerlink" title="更换设备搭建"></a>更换设备搭建</h2><p>参考：<a href="https://www.zhihu.com/question/21193762/answer/103097754" target="_blank" rel="noopener">https://www.zhihu.com/question/21193762/answer/103097754</a></p><ul><li>打开git bash，在用户主目录下运行：</li></ul><p><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code> </p><p>把其中的邮件地址换成自己的邮件地址，然后一路回车</p><ul><li><p>最后完成后，会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，千万不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。</p></li><li><p>登陆GitHub，打开「Settings」-&gt;「SSH and GPG keys」，然后点击「new SSH key」，填上任意Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」，你就应该看到已经添加的Key。<br>注意：不要在git版本库中运行ssh，然后又将它提交，这样就把密码泄露出去了。</p></li><li>下载Node.js，并安装.</li><li>打开git bash客户端，输入 npm install hexo-cli -g，开始安装hexo</li><li><p>下面就将原来的文件拷贝到新电脑中，但是要注意哪些文件是必须的，哪些文件是可以删除的。</p><pre><code>      1）讨论下哪些文件是必须拷贝的：首先是之前自己修改的文      件，像站点配置_config.yml，theme文件夹里面的主题，      以及source里面自己写的博客文件，这些肯定要拷贝的。除      此之外，还有      三个文件需要有，就是scaffolds文件夹（文章的模板）、      package.json（说明使用哪些包）和.gitignore（限定在      提交的时候哪些文件可以忽略）。其实，这三个文件不是我们      修改的，所以即使丢失了，也没有关系，我们可以建立一个新      的文件夹，然后在里面执行hexo init，就会生成这三个文      件，我们只需要将它们拷贝过来使用即可。总结：      _config.yml，theme/，source/，scaffolds/，      package.json，.gitignore，是需要拷贝的。</code></pre><p>&nbsp;</p><pre><code>      （2）再讨论下哪些文件是不必拷贝的，或者说可以删除的：      首先是.git文件，无论是在站点根目录下，还是主题目录下      的.git文件，都可以删掉。然后是文件夹      node_modules（在用npm install会重新生成），      public（这个在用hexo g时会重新生成），.deploy_git      文件夹（在使用hexo d时也会重新生成），db.json文件。      其实上面这些文件也就是.gitignore文件里面记载的可以忽      略的内容。总结：.git/，node_modules/，      public/，.deploy_git/，db.json文件需要删除。</code></pre></li><li><p>在git bash中切换目录到新拷贝的文件夹里，使用 npm install 命令，进行模块安装。很明显我们这里没用hexo init初始化，因为有的文件我们已经拷贝生成过来了，所以不必用hexo init去整体初始化，如果不慎在此时用了hexo init，则站点的配置文件_config.yml里面内容会被清空使用默认值，所以这一步一定要慎重，不要用hexo init。</p></li><li><p>安装其他的一些必要组件，如果在node_modules里面有的，就不要重复安装了：</p><pre><code>  （1）为了使用hexo d来部署到git上，需要安装</code></pre><p>  <code>npm install hexo-deployer-git --save</code></p><pre><code>  （2）为了建立RSS订阅，需要安装</code></pre><p>  <code>npm install hexo-generator-feed --save</code></p><pre><code>  （3）为了建立站点地图，需要安装</code></pre><p>  <code>npm install hexo-generator-sitemap --save</code></p><p>  插件安装后，有的需要对配置文件_config.yml进行配置，具体怎么配置，可以参考上面插件在github主页上的具体说明</p></li><li><p>使用hexo g，然后使用hexo d进行部署，如果都没有出错，就转移成功了！</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;常规搭建&quot;&gt;&lt;a href=&quot;#常规搭建&quot; class=&quot;headerlink&quot; title=&quot;常规搭建&quot;&gt;&lt;/a&gt;常规搭建&lt;/h2&gt;&lt;h2 id=&quot;常规指令&quot;&gt;&lt;a href=&quot;#常规指令&quot; class=&quot;headerlink&quot; title=&quot;常规指令&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+      <category term="blog" scheme="http://yoursite.com/categories/blog/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/blog/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用CNN实现深度生成对抗网络GAN</title>
+    <link href="http://yoursite.com/2018/09/10/%E7%94%A8CNN%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9CGAN/"/>
+    <id>http://yoursite.com/2018/09/10/用CNN实现深度生成对抗网络GAN/</id>
+    <published>2018-09-10T21:32:01.000Z</published>
+    <updated>2019-07-29T05:24:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><p>生成对抗网络（Generative Adversarial Network，GAN）是近几年很热门的一种深度学习神经网络模型，是目前在复杂分布上进行无监督学习最前沿的模型之一，这个概念由Ian Goodfellow和Yoshua Bengio等人在2014年提出，GAN的核心思想源自博弈论，它通过构造生成器（Generator）和判别器（Discriminator）在训练过程中互相博弈学习，最终得到理想的结果。其中生成器的目的在于生成虚假的样本分布，判别器的目的在于判别出输入的样本是否真实。由于GAN模型“博弈”的这一特点，它已经开始被应用到语音和语言处理、电脑病毒监测、棋类比赛程序等问题的研究当中。另外，GAN最常用的领域还是图像处理和计算机视觉，进行图像生成，构成各种逼真的室内外场景。</p><h2 id="GAN的基本模型"><a href="#GAN的基本模型" class="headerlink" title="GAN的基本模型"></a>GAN的基本模型</h2><p><img src="https://i.imgur.com/nRb1Q8a.png" alt=""></p><h2 id="CNN实现GAN"><a href="#CNN实现GAN" class="headerlink" title="CNN实现GAN"></a>CNN实现GAN</h2><p>GAN提出的是一种对抗模型的思想，而要实现它，目前流行的是使用感知器或者多层神经网络。而用CNN来实现，可以大大解决GAN难以训练和不够稳定的问题，并且可以提高生成样本的质量、收敛速度，以及拓展维度。<br>CNN实现的改进：</p><ul><li>去掉了G和D中的池化层（pooling layer），并用微步幅卷积替代，能够分别使得G和D的下采样和上采样效率更高。</li><li>在G和D中使用批量规范化（Batch Normalization），通过将输入的每个样本单元标准化为0均值和单位方差来稳定学习，这有助于处理初始化不良导致的训练问题，也有助于梯度流向更深的网络层。</li><li>去掉最后一层卷积层后面的全连接层（fully layer），将生成器和判别器直接相连，能够有效提高模型收敛速率。</li><li>生成器中除了输出层采用Tanh激活函数，其余所有层都采用ReLU激活函数。</li><li>判别器中所有层都采用Leaky ReLU激活函数。</li></ul><h2 id="模型设计"><a href="#模型设计" class="headerlink" title="模型设计"></a>模型设计</h2><h3 id="生成器模型"><a href="#生成器模型" class="headerlink" title="生成器模型"></a>生成器模型</h3><p>生成器的网络由4层卷积层构成</p><ul><li>第1层：卷积核大小为5”×” 5，步长2，“same”填充，深度512，输出样本尺寸8”×” 8，生成函数ReLU</li><li>第2层：卷积核大小为5”×” 5，步长2，“same”填充，深度256，输出样本尺寸16”×” 16，生成函数ReLU</li><li>第3层：卷积核大小为5”×” 5，步长2，“same”填充，深度128，输出样本尺寸32”×” 32，生成函数ReLU</li><li>第4层：卷积核大小为5”×” 5，步长2，“same”填充，深度3，输出样本尺寸64”×” 64，生成函数Tanh</li></ul><p><img src="https://i.imgur.com/3mgI8Vf.png" alt=""></p><h3 id="判别器模型"><a href="#判别器模型" class="headerlink" title="判别器模型"></a>判别器模型</h3><p>判别器的4层卷积层具体如下：</p><ul><li>第1层：卷积核大小为5”×” 5，步长2，“same”填充，深度64，输出样本尺寸32”×” 32，生成函数Leaky ReLU。</li><li>第2层：卷积核大小为5”×” 5，步长2，“same”填充，深度128，输出样本尺寸16”×” 16，生成函数Leaky ReLU。</li><li>第3层：卷积核大小为5”×” 5，步长2，“same”填充，深度256，输出样本尺寸8”×” 8，生成函数Leaky ReLU。</li><li>第4层：卷积核大小为5”×” 5，步长2，“same”填充，深度512，输出样本尺寸4”×” 4，生成函数Sigmoid。</li></ul><p><img src="https://i.imgur.com/Olp9lpp.png" alt=""></p><h3 id="构建模型"><a href="#构建模型" class="headerlink" title="构建模型"></a>构建模型</h3><ul><li><p>构建生成器模型<br><pre>def generator(self, z):<br>  self.z_, self.h0_w, self.h0_b = linear(z, self.gf_dim<em>8</em>4*4,</pre></p><pre><code>                                     &#39;g_h0_lin&#39;, with_w=True)</code></pre><p>  self.h0 = tf.reshape(self.z_, [-1, 4, 4, self.gf_dim * 8])<br>h0 = tf.nn.relu(self.g_bn0(self.h0))</p></li></ul><p>//第1层微步幅卷积层<br>    self.h1, self.h1_w, self.h1_b = conv2d_transpose(h0,[self.batch_size, 8, 8, self.gf_dim*4], name=’g_h1’, with_w=True)<br>h1 = tf.nn.relu(self.g_bn1(self.h1))</p><p>//第2层微步幅卷积层<br>    h2, self.h2_w, self.h2_b = conv2d_transpose(h1,<br>        [self.batch_size, 16, 16, self.gf_dim*2], name=’g_h2’, with_w=True)<br>h2 = tf.nn.relu(self.g_bn2(h2))</p><p>//第3层微步幅卷积层<br>    h3, self.h3_w, self.h3_b = conv2d_transpose(h2,<br>        [self.batch_size, 32, 32, self.gf_dim*1], name=’g_h3’, with_w=True)<br>    h3 = tf.nn.relu(self.g_bn3(h3))</p><p>//第4层微步幅卷积层，4层微步幅卷积后，矩阵维度变为（64, 64, 3）<br>    h4, self.h4_w, self.h4_b = conv2d_transpose(h3,<br>        [self.batch_size, 64, 64, 3], name=’g_h4’, with_w=True)<br>    return tf.nn.tanh(h4)</p><p></p><ul><li>构建判别器模型<br><pre><br>def discriminator(self, image, reuse=False):<br>//第1层卷积<br>h0 = lrelu(conv2d(image, self.df_dim, name=’d_h0_conv’))</pre></li></ul><p>//第2层卷积<br>h1 = lrelu(self.d_bn1(conv2d(h0, self.df_dim*2, name=’d_h1_conv’)))</p><p>//第3层卷积<br>h2 = lrelu(self.d_bn2(conv2d(h1, self.df_dim*4, name=’d_h2_conv’)))</p><p>//第4层卷积<br>    h3 = lrelu(self.d_bn3(conv2d(h2, self.df_dim*8, name=’d_h3_conv’)))<br>    h4 = linear(tf.reshape(h3, [-1, 8192]), 1, ‘d_h3_lin’)<br>    return tf.nn.sigmoid(h4), h4<br></p><ul><li>构建优化器<br><pre><br>//判别器优化器，最小化损失函数<br>d_optim = tf.train.AdamOptimizer(config.learning_rate, beta1=config.beta1) \<pre><code>              .minimize(self.d_loss, var_list=self.d_vars)</code></pre>//判别器优化器，最小化损失函数<br>g_optim = tf.train.AdamOptimizer(config.learning_rate, beta1=config.beta1) \<pre><code>              .minimize(self.g_loss, var_list=self.g_vars)</code></pre></pre></li></ul><p></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;GAN&quot;&gt;&lt;a href=&quot;#GAN&quot; class=&quot;headerlink&quot; title=&quot;GAN&quot;&gt;&lt;/a&gt;GAN&lt;/h2&gt;&lt;p&gt;生成对抗网络（Generative Adversarial Network，GAN）是近几年很热门的一种深度学习神经网络模型，是目前
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="http://yoursite.com/categories/machine-learning/"/>
+    
+      <category term="gan" scheme="http://yoursite.com/categories/machine-learning/gan/"/>
+    
+    
+      <category term="machine learning, python" scheme="http://yoursite.com/tags/machine-learning-python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>目前的learning plan</title>
+    <link href="http://yoursite.com/2018/07/15/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <id>http://yoursite.com/2018/07/15/基础知识/</id>
+    <published>2018-07-15T20:23:22.000Z</published>
+    <updated>2019-07-29T05:03:56.987Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新"><a href="#必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新" class="headerlink" title="必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新"></a>必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新</h4><p>数据结构</p><ul><li>表</li><li>堆栈</li><li>队列</li><li>数组</li><li><p>树</p><ul><li>完全二叉树：除了最后一层以外，其余层必满；最后一层可以是满，如果不满，则节点必须集中在左边</li><li>最大堆：1.必须是完全二叉树 2.节点的值必须大于左右子树的值</li><li>二叉搜索树：左孩子比父母小，右孩子比父母大。</li><li>avl树：一种平衡二叉搜索树，并且任意节点的孩子节点高度差最大为1.</li><li>平衡因子：某节点的平衡因子是该节点左子树的高度减右子树的高度（avl只能是0，1，-1</li><li><p>红黑树：</p><p>  节点是红色或黑色。<br>  根是黑色。<br>  每个红色节点必须有两个黑色的子节点。（从每个叶子到根的所有路径上不能有两个连续的红色节点。）<br>  从任一节点到其每个叶子的所有简单路径都包含相同数目的黑色节点。</p></li></ul></li><li>图</li></ul><p>算法</p><ul><li>排序</li><li>查找</li><li>hash</li><li>算法思想-递归</li><li>算法思想-贪心</li><li>算法思想-回溯</li><li>算法思想-分支</li><li>算法思想-动态规划</li></ul><p>数据库</p><ul><li>索引</li><li>视图</li><li>触发器</li><li>范式</li><li>锁</li><li>存储过程</li><li>事物</li><li>B+树</li><li>E-R图</li><li>3.10补充-mysql、mongodb</li></ul><p>操作系统</p><ul><li><p>并发性（concurrence）</p><p>  在一个系统（或者一段时间）中，有多个同时执行的程序进行计算，并且它们之间存在潜在的交互。优点：资源利用率高、程序设计更简化、程序响应更快、系统性能更高；缺点：存在并发性的系统会有不同的程序运行路径，所以系统的处理结果会有不确定性。</p></li><li><p>进程（process）、线程（thread）</p><p>  一个应用程序包含一个或多个相互协作的进程。</p><pre><code>  进程：一块包含一些资源的内存区域，组成为一段一定大小（4GB）的线性内存空间。  线程：进程中包含的一个或多个执行单元，无内存空间，只有指针、栈、寄存器、数据区。</code></pre><p>  一个程序至少有一个进程，一个进程至少有一个线程。进程和线程都是系统（程序）的执行单元。<br>  差别：进程具有独立的地址空间（供它包含的线程访问），线程没有，所以如果一个进程崩溃，在保护模式下不会对其他进程产生影响；而一个线程死掉就等于整个进程死掉（多进程程序比多线程程序健壮），但是进程切换时耗费的资源多，效率差。</p></li><li><p>异步、同步处理、阻塞和非阻塞</p><pre><code>  同步调用：调用之后就能得到结果  异步调用：调用之后需要其他方法（状态、通知、回调函数）来得到结果。  同步线程：两个线程的步调要一致，如果二者运行速度不一样，则快的等慢的（快的阻塞一下等慢的）。  异步线程：两个线程的步调不一致，各自独立运行。  同步I/O：不发送成功或失败状态，一直等待。  异步I/O：输入/输出时立即返回成功或失败的状态。</code></pre><p>  阻塞：进程或线程停止。</p><pre><code>  阻塞I/O：资源不可用时（输入/输出未完成，I/O一直阻塞，直到完成。  非阻塞I/O：资源不可用超过一定时间后，直接结束本次I/O。</code></pre></li><li><p>调度、死锁</p><p>  死锁：两个或多个执行单元之间相互等待对方结束而引起阻塞的情况。</p><pre><code>  例：T1有R1的访问权、T2有R2的访问权。      T1想访问R2，同时T2想访问R1，此时T1和T2都要等待对方给出权限，形成死锁。</code></pre></li><li>存储器管理</li><li>文件管理</li><li>IO阻塞</li><li>用户态、核心态</li></ul><p>nodejs</p><pre><code>express框架、es6、es7</code></pre><p>前端框架</p><pre><code>react、vuejs、angularjs</code></pre><p>IOS开发</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新&quot;&gt;&lt;a href=&quot;#必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新&quot; class=&quot;headerlink&quot; title=&quot;必须掌握的基础知识，主要
+      
+    
+    </summary>
+    
+      <category term="基础知识" scheme="http://yoursite.com/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="plan" scheme="http://yoursite.com/tags/plan/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《深入浅出NodeJS》读书笔记</title>
+    <link href="http://yoursite.com/2018/07/15/%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BANodeJS%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2018/07/15/《深入浅出NodeJS》读书笔记/</id>
+    <published>2018-07-15T19:20:07.000Z</published>
+    <updated>2019-07-28T17:49:30.458Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><ul><li><p>Node</p><p>  Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形成一个大型的网路应用，每一个node为一个节点”，这是书中给的解释原文</p></li><li><p>非阻塞I/O</p><p>  书中多次提到的概念，我理解的非阻塞就是线程或进程的停止，</p></li><li>特点</li><li><pre><code>  1.异步  2.事件（随意绑定事件），时间绑定轻量级、松耦合  3.回调函数    </code></pre></li><li><p>Ajax请求：快速动态刷新网页，不刷新，直接更新参数</p></li></ul><p>读完第一章以后，觉得云里雾里，这本书对于没有JS基础的人来说有点头疼。不过能肯定的是nodejs是一门异步I/O的语言，和python等编程习惯不一样，需要适应。</p><p>至此，我决定先啃《js高级程序设计第三版》这本书，对js有一定的了解以后再来学习nodejs。</p><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>C/S模式：客户/服务器模式，例如微信等<br>B/S模式：浏览器/服务器模式，例如各种web应用</p><ul><li><p>CommonJS规范：</p><p>  相比于python的import，JAVA的类文件等，js是没有模块引入机制的，只能通过&lt;script&gt;标签这种杂乱的方式引入代码。在nodejs未出现之前，js只能用于前端，只有Rhino等后端javascript运行环境来作为小工具。node这么多年发展以来，已经形成了一套响应的规范，也就是CommonJS规范。</p><pre><code>  1.模块引用：var math = require(&#39;math&#39;);  2.模块定义：export.add = function(){...;return sum};             export.increment = function(val){};  3.模块标识：</code></pre></li><li><p>node模块实现：</p><p>  node引入模块需要3个步骤：路径分析、文件定位、编译执行，其中系统自带的模块为核心模块，直接随node启动时加载进内存，加载速度快；用户自定义的模块称为文件模块，在运行时动态加载，慢。</p><pre><code>  1.路径分析：require(&#39;标识符&#39;)；//分析标识符，标识符主要分为：      *核心模块，如http、fs、path等。      *.或..等相对路径文件模块      *以/开始的绝对路径文件模块      *非路径形式的文件模块，如自定义的connect模块          （自定义模块非核心模块和路径形式的模块，分析速度最慢）  2.文件定位：      *扩展名分析：模块文件可以不带扩展名，自动按.js、.json、.node顺序补全。      *目标分析和包：  3.模块编译      *核心模块一般为C/C++或javascript编译，所有的都转换为C/C++然后编译  4.内建模块：全由C/C++编译的模块，使用：      process.binding(&#39;标识符&#39;)      来进行导出</code></pre></li><li><p>包与NPM：</p><pre><code>  &quot;package.json&quot;：包含包的所有信息（版本、名称、作者等）  NPM已经是一个包共享平台，实现第三方模块的发布、安装和依赖。</code></pre></li><li><p>前后端共用模块：</p><p>  前端规范：AMD规范、CMD规范</p><pre><code>  1.AMD规范定义的模块需要用define：  define(function(){...})  2.CMD规范申明时要指定所有的依赖</code></pre></li></ul><h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h2 id="tips：js异步"><a href="#tips：js异步" class="headerlink" title="tips：js异步"></a>tips：js异步</h2><h3 id="回调函数复习"><a href="#回调函数复习" class="headerlink" title="回调函数复习"></a>回调函数复习</h3><h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise()"></a>Promise()</h3><ul><li><p>resolve()： </p><pre><code>  pending-&gt;fulfilled    pending-&gt;rejected</code></pre></li><li><p>reject()</p></li><li></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Node&lt;/p&gt;
+&lt;p&gt;  Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形
+      
+    
+    </summary>
+    
+      <category term="node.js" scheme="http://yoursite.com/categories/node-js/"/>
+    
+    
+      <category term="read" scheme="http://yoursite.com/tags/read/"/>
     
   </entry>
   

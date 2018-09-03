@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://i.imgur.com/qm2Ofif.png">
 <meta property="og:image" content="https://i.imgur.com/SOuRIsz.png">
 <meta property="og:image" content="https://i.imgur.com/pWERo64.png">
-<meta property="og:updated_time" content="2019-07-29T05:48:36.503Z">
+<meta property="og:updated_time" content="2019-07-29T06:03:48.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Alexnet图像分类">
 <meta name="twitter:description" content="github链接：https://github.com/tedqin/Alexnet_Imagenet 背景 概述  Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3">
@@ -404,10 +404,8 @@
 <li>第五卷积层用256个3<em>3</em>192的卷积核，得到13<em>13</em>128*2的卷积层。<br>每个全连接层有4096个神经元。</li>
 </ul>
 <p>总体而言，Alexnet网络的结构如下：<br><img src="https://i.imgur.com/wYZay5v.png" alt=""></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ul>
-<li>数据集<br><img src="https://i.imgur.com/qm2Ofif.png" alt=""></li>
-</ul>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>caffe提供的预训练模型一共包括了1000类图像，涵盖了生物、天文、自然、科技等多个方面的相关图像，具体在caffe_classes.py下，由于文件本身较大就没放在github上，可以很容易在网上找到<br>测试集包括1000张图像，共200类，标签存储在lable.txt当中。取测试图像概率最大类的下标作为测试的分类结果（即top-1测试），并且与label对比，最后计算得出整个测试集得precision在75%左右，算是比较好的结果。<br><img src="https://i.imgur.com/SOuRIsz.png" alt=""><br><img src="https://i.imgur.com/pWERo64.png" alt=""></p>
+<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="https://i.imgur.com/qm2Ofif.png" alt=""></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>caffe提供的预训练模型一共包括了1000类图像，涵盖了生物、天文、自然、科技等多个方面的相关图像，具体在caffe_classes.py下，由于文件本身较大就没放在github上，可以很容易在网上找到<br>测试集包括1000张图像，共200类，标签存储在lable.txt当中。取测试图像概率最大类的下标作为测试的分类结果（即top-1测试），并且与label对比，最后计算得出整个测试集得precision在75%左右，算是比较好的结果。<br><img src="https://i.imgur.com/SOuRIsz.png" alt=""><br><img src="https://i.imgur.com/pWERo64.png" alt=""></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>AlexNet可以说是深度神经网络的鼻祖，相比于后来的VGG和googlenet而言，它的构造更加简单，而且结构也已经非常的成熟和稳固。<br>作为学校的大创项目用alexnet有点蠢，但是时间紧迫，也分享下自己学习cnn的过程。</p>
 
       
@@ -439,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/20/Javascript整理15-性能优化/" rel="next" title="Javascript整理15-性能优化">
-                <i class="fa fa-chevron-left"></i> Javascript整理15-性能优化
+              <a href="/2019/04/17/面试总结和知识梳理/" rel="next" title="面试总结和知识梳理">
+                <i class="fa fa-chevron-left"></i> 面试总结和知识梳理
               </a>
             
           </div>
@@ -449,8 +447,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/01/Javascript整理16-安全性/" rel="prev" title="Javascript整理16-安全性">
-                Javascript整理16-安全性 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/01/知识整理css/" rel="prev" title="知识整理CSS">
+                知识整理CSS <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -528,7 +526,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -620,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型结构"><span class="nav-number">2.</span> <span class="nav-text">模型结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">3.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-1"><span class="nav-number">4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型结构"><span class="nav-number">2.</span> <span class="nav-text">模型结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据集"><span class="nav-number">3.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
