@@ -273,6 +273,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/11/Javascript整理10-存储/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/11/Javascript整理10-存储/" itemprop="url">Javascript整理10-存储</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-11T15:35:08+01:00">
+                2019-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>cookie<ul>
+<li>属于http的东西，本身用于客户端和服务端通信</li>
+<li>但是它有本地存储的功能，于是被“借用”</li>
+<li>使用<code>document.cookie=...</code>获取和修改即可</li>
+<li>限制：<ul>
+<li>存储量太小，只有4kb</li>
+<li>所有http请求都带着，会影响获取资源的效率</li>
+<li>API简单，需要封装才能用<code>document.coockie</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>sessionStorage和localStorage</p>
+<ul>
+<li>H5专门为存储而设计，最大容量5M</li>
+<li>API简单易用,key+value<ul>
+<li><pre>localStorage.setItem(key,value)
+localStorage.getItem(key)</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>问题</strong></p>
+<ul>
+<li>描述一下cookie（h5之前），sessionStorage和localStorage的区别 <ul>
+<li>cookie和后两者的区别<ul>
+<li>容量</li>
+<li>是否会携带到ajax请求中</li>
+<li>API易用性</li>
+</ul>
+</li>
+<li>后两者的区别<ul>
+<li>localStorage不会主动删除，sessionStorage随着每次会话结束会清除，95%的场景存储到localStorage中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/10/Javascript整理09-事件绑定/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2678,200 +2872,6 @@ fn2('ted',20)//通过bind函数改变this，this也指向{y:300}这个对象</pr
 <li>this指向这个新对象</li>
 <li>执行构造函数的代码，即对this赋值</li>
 <li>返回this</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/28/Javascript整理01-变量类型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/28/Javascript整理01-变量类型/" itemprop="url">Javascript整理01-变量类型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-28T17:52:29+00:00">
-                2019-03-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>值类型：a和b相等，改a，b不变 (直接赋值值)<ul>
-<li>undefined string number boolean</li>
-</ul>
-</li>
-<li>引用类型：a和b相等，改a，b变 （赋值地址）    <ul>
-<li>object function</li>
-</ul>
-</li>
-<li>强制类型转换<ul>
-<li>字符串拼接 <ul>
-<li><code>var a=10; var b=100 + &#39;10&#39;//string</code></li>
-</ul>
-</li>
-<li>== <ul>
-<li><code>100==&#39;100&#39;; 0==&#39;&#39;; null==undefined //true</code></li>
-</ul>
-</li>
-<li>if <ul>
-<li><code>if(b=100)//转换为true</code></li>
-</ul>
-</li>
-<li>逻辑运算符(&amp;，||) <ul>
-<li><code>10&amp;&amp;0；&#39;&#39;||&#39;abc&#39;; !window.abc//都转换为true或false</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>问题</strong><ul>
-<li>typeof能得到哪些类型<ul>
-<li>number, string, object, boolean, function, undefiend, symbol （null是object）</li>
-<li>symbol： 可以生成永不重复的值，可以用一个字符串标记 </li>
-</ul>
-</li>
-<li>何时使用===，何时使用==<ul>
-<li>===：内容相等数据类型也相同的严格模式；==：内容相等数据类型可以不相等</li>
-<li>使用==的唯一情况：’’if(obj.a==null){}’’</li>
 </ul>
 </li>
 </ul>

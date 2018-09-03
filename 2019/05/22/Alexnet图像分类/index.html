@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="read," />
+  <meta name="keywords" content="python, machine learning," />
 
 
 
@@ -94,18 +94,24 @@
 
 
 
-<meta name="description" content="第一章 Node   Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形成一个大型的网路应用，每一个node为一个节点”，这是书中给的解释原文  非阻塞I/O   书中多次提到的概念，我理解的非阻塞就是线程或进程的停止，  特点   1.异步   2.事件（随意绑定事件），时间绑定轻量级、松耦合   3.回调函数      Ajax请求：快速动态刷新网页，不刷新">
-<meta name="keywords" content="read">
+<meta name="description" content="github链接：https://github.com/tedqin/Alexnet_Imagenet 背景 概述  Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3">
+<meta name="keywords" content="python, machine learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《深入浅出NodeJS》读书笔记">
-<meta property="og:url" content="http://yoursite.com/2018/07/15/《深入浅出NodeJS》读书笔记/index.html">
+<meta property="og:title" content="Alexnet图像分类">
+<meta property="og:url" content="http://yoursite.com/2019/05/22/Alexnet图像分类/index.html">
 <meta property="og:site_name" content="TedQin">
-<meta property="og:description" content="第一章 Node   Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形成一个大型的网路应用，每一个node为一个节点”，这是书中给的解释原文  非阻塞I/O   书中多次提到的概念，我理解的非阻塞就是线程或进程的停止，  特点   1.异步   2.事件（随意绑定事件），时间绑定轻量级、松耦合   3.回调函数      Ajax请求：快速动态刷新网页，不刷新">
+<meta property="og:description" content="github链接：https://github.com/tedqin/Alexnet_Imagenet 背景 概述  Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-28T17:49:30.458Z">
+<meta property="og:image" content="https://i.imgur.com/0LFUfXp.png">
+<meta property="og:image" content="https://i.imgur.com/wYZay5v.png">
+<meta property="og:image" content="https://i.imgur.com/qm2Ofif.png">
+<meta property="og:image" content="https://i.imgur.com/SOuRIsz.png">
+<meta property="og:image" content="https://i.imgur.com/pWERo64.png">
+<meta property="og:updated_time" content="2019-07-29T05:48:36.503Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《深入浅出NodeJS》读书笔记">
-<meta name="twitter:description" content="第一章 Node   Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形成一个大型的网路应用，每一个node为一个节点”，这是书中给的解释原文  非阻塞I/O   书中多次提到的概念，我理解的非阻塞就是线程或进程的停止，  特点   1.异步   2.事件（随意绑定事件），时间绑定轻量级、松耦合   3.回调函数      Ajax请求：快速动态刷新网页，不刷新">
+<meta name="twitter:title" content="Alexnet图像分类">
+<meta name="twitter:description" content="github链接：https://github.com/tedqin/Alexnet_Imagenet 背景 概述  Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3">
+<meta name="twitter:image" content="https://i.imgur.com/0LFUfXp.png">
 
 
 
@@ -134,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/15/《深入浅出NodeJS》读书笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/05/22/Alexnet图像分类/"/>
 
 
 
 
 
-  <title>《深入浅出NodeJS》读书笔记 | TedQin</title>
+  <title>Alexnet图像分类 | TedQin</title>
   
 
 
@@ -273,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/《深入浅出NodeJS》读书笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/Alexnet图像分类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ted Qin">
@@ -290,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《深入浅出NodeJS》读书笔记</h1>
+          <h1 class="post-title" itemprop="name headline">Alexnet图像分类</h1>
         
 
         <div class="post-meta">
@@ -302,8 +308,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-15T20:20:07+01:00">
-                2018-07-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-22T21:12:11+01:00">
+                2019-05-22
               </time>
             
 
@@ -325,8 +331,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/node-js/" itemprop="url" rel="index">
-                    <span itemprop="name">node.js</span>
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">machine learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/cnn/" itemprop="url" rel="index">
+                    <span itemprop="name">cnn</span>
                   </a>
                 </span>
 
@@ -362,71 +379,36 @@
       
 
       
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><ul>
-<li><p>Node</p>
-<p>  Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形成一个大型的网路应用，每一个node为一个节点”，这是书中给的解释原文</p>
-</li>
-<li><p>非阻塞I/O</p>
-<p>  书中多次提到的概念，我理解的非阻塞就是线程或进程的停止，</p>
-</li>
-<li>特点</li>
-<li><pre><code>  1.异步
-  2.事件（随意绑定事件），时间绑定轻量级、松耦合
-  3.回调函数    
-</code></pre></li>
-<li><p>Ajax请求：快速动态刷新网页，不刷新，直接更新参数</p>
-</li>
-</ul>
-<p>读完第一章以后，觉得云里雾里，这本书对于没有JS基础的人来说有点头疼。不过能肯定的是nodejs是一门异步I/O的语言，和python等编程习惯不一样，需要适应。</p>
-<p>至此，我决定先啃《js高级程序设计第三版》这本书，对js有一定的了解以后再来学习nodejs。</p>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>C/S模式：客户/服务器模式，例如微信等<br>B/S模式：浏览器/服务器模式，例如各种web应用</p>
+        <p>github链接：<a href="https://github.com/tedqin/Alexnet_Imagenet" target="_blank" rel="noopener">https://github.com/tedqin/Alexnet_Imagenet</a></p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
+<li><p>概述</p>
 <ul>
-<li><p>CommonJS规范：</p>
-<p>  相比于python的import，JAVA的类文件等，js是没有模块引入机制的，只能通过&lt;script&gt;标签这种杂乱的方式引入代码。在nodejs未出现之前，js只能用于前端，只有Rhino等后端javascript运行环境来作为小工具。node这么多年发展以来，已经形成了一套响应的规范，也就是CommonJS规范。</p>
-<pre><code>  1.模块引用：var math = require(&#39;math&#39;);
-  2.模块定义：export.add = function(){...;return sum};
-             export.increment = function(val){};
-  3.模块标识：
-</code></pre></li>
-<li><p>node模块实现：</p>
-<p>  node引入模块需要3个步骤：路径分析、文件定位、编译执行，其中系统自带的模块为核心模块，直接随node启动时加载进内存，加载速度快；用户自定义的模块称为文件模块，在运行时动态加载，慢。</p>
-<pre><code>  1.路径分析：require(&#39;标识符&#39;)；//分析标识符，标识符主要分为：
-      *核心模块，如http、fs、path等。
-      *.或..等相对路径文件模块
-      *以/开始的绝对路径文件模块
-      *非路径形式的文件模块，如自定义的connect模块
-          （自定义模块非核心模块和路径形式的模块，分析速度最慢）
-
-  2.文件定位：
-      *扩展名分析：模块文件可以不带扩展名，自动按.js、.json、.node顺序补全。
-      *目标分析和包：
-  3.模块编译
-      *核心模块一般为C/C++或javascript编译，所有的都转换为C/C++然后编译
-  4.内建模块：全由C/C++编译的模块，使用：
-      process.binding(&#39;标识符&#39;)
-      来进行导出
-</code></pre></li>
-<li><p>包与NPM：</p>
-<pre><code>  &quot;package.json&quot;：包含包的所有信息（版本、名称、作者等）
-  NPM已经是一个包共享平台，实现第三方模块的发布、安装和依赖。
-</code></pre></li>
-<li><p>前后端共用模块：</p>
-<p>  前端规范：AMD规范、CMD规范</p>
-<pre><code>  1.AMD规范定义的模块需要用define：
-  define(function(){...})
-
-  2.CMD规范申明时要指定所有的依赖
-</code></pre></li>
+<li>Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3个全连接层（1000类的softmax分类器）。Alexnet模型由Alex Krizhevsky 等人在两个GTX 580 3GB GPU上训练5、6天左右得到。目前是深度学习图像处理领域当中最常用的模型之一。<br>AlexNet相比于以前的一些网络模型来说，做出了很多创新，主要包括以下几点</li>
 </ul>
-<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h2 id="tips：js异步"><a href="#tips：js异步" class="headerlink" title="tips：js异步"></a>tips：js异步</h2><h3 id="回调函数复习"><a href="#回调函数复习" class="headerlink" title="回调函数复习"></a>回调函数复习</h3><h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise()"></a>Promise()</h3><ul>
-<li><p>resolve()： </p>
-<pre><code>  pending-&gt;fulfilled  
-  pending-&gt;rejected
-</code></pre></li>
-<li><p>reject()</p>
 </li>
-<li></li>
+<li><p>框架</p>
+<ul>
+<li>使用激活函数ReLu</li>
+<li>多GPU并行训练</li>
+<li>局部影响标准化</li>
+<li>重叠池化</li>
 </ul>
+</li>
+</ul>
+<h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p>Alexnet有5个卷积层和3个全连接层，并且Alex发现移除任意一层都会降低最终的效果。网络结构如图</p>
+<p><img src="https://i.imgur.com/0LFUfXp.png" alt=""></p>
+<p>这个网络前面5层是卷积层，后面三层是全连接层，最终softmax输出是1000类。</p>
+<ul>
+<li>第三卷积层用384个3<em>3</em>256的卷积核,得到13<em>13</em>192*2的卷积层。 </li>
+<li>第四卷积层用384个3<em>3</em>192的卷积核，得到13<em>13</em>192*2的卷积层。 </li>
+<li>第五卷积层用256个3<em>3</em>192的卷积核，得到13<em>13</em>128*2的卷积层。<br>每个全连接层有4096个神经元。</li>
+</ul>
+<p>总体而言，Alexnet网络的结构如下：<br><img src="https://i.imgur.com/wYZay5v.png" alt=""></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ul>
+<li>数据集<br><img src="https://i.imgur.com/qm2Ofif.png" alt=""></li>
+</ul>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>caffe提供的预训练模型一共包括了1000类图像，涵盖了生物、天文、自然、科技等多个方面的相关图像，具体在caffe_classes.py下，由于文件本身较大就没放在github上，可以很容易在网上找到<br>测试集包括1000张图像，共200类，标签存储在lable.txt当中。取测试图像概率最大类的下标作为测试的分类结果（即top-1测试），并且与label对比，最后计算得出整个测试集得precision在75%左右，算是比较好的结果。<br><img src="https://i.imgur.com/SOuRIsz.png" alt=""><br><img src="https://i.imgur.com/pWERo64.png" alt=""></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>AlexNet可以说是深度神经网络的鼻祖，相比于后来的VGG和googlenet而言，它的构造更加简单，而且结构也已经非常的成熟和稳固。<br>作为学校的大创项目用alexnet有点蠢，但是时间紧迫，也分享下自己学习cnn的过程。</p>
 
       
     </div>
@@ -444,7 +426,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/read/" rel="tag"># read</a>
+            <a href="/tags/python-machine-learning/" rel="tag"># python, machine learning</a>
           
         </div>
       
@@ -457,14 +439,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/05/20/Javascript整理15-性能优化/" rel="next" title="Javascript整理15-性能优化">
+                <i class="fa fa-chevron-left"></i> Javascript整理15-性能优化
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/15/基础知识/" rel="prev" title="目前的learning plan">
-                目前的learning plan <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/01/Javascript整理16-安全性/" rel="prev" title="Javascript整理16-安全性">
+                Javascript整理16-安全性 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -634,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章"><span class="nav-number">1.</span> <span class="nav-text">第一章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章"><span class="nav-number">2.</span> <span class="nav-text">第二章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章"><span class="nav-number">3.</span> <span class="nav-text">第三章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tips：js异步"><span class="nav-number">4.</span> <span class="nav-text">tips：js异步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回调函数复习"><span class="nav-number">4.1.</span> <span class="nav-text">回调函数复习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise"><span class="nav-number">4.2.</span> <span class="nav-text">Promise()</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型结构"><span class="nav-number">2.</span> <span class="nav-text">模型结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">3.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-1"><span class="nav-number">4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

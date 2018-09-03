@@ -132,6 +132,33 @@
   </entry>
   
   <entry>
+    <title>Alexnet图像分类</title>
+    <link href="http://yoursite.com/2019/05/22/Alexnet%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    <id>http://yoursite.com/2019/05/22/Alexnet图像分类/</id>
+    <published>2019-05-22T20:12:11.000Z</published>
+    <updated>2019-07-29T05:48:36.503Z</updated>
+    
+    <content type="html"><![CDATA[<p>github链接：<a href="https://github.com/tedqin/Alexnet_Imagenet" target="_blank" rel="noopener">https://github.com/tedqin/Alexnet_Imagenet</a></p><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul><li><p>概述</p><ul><li>Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3个全连接层（1000类的softmax分类器）。Alexnet模型由Alex Krizhevsky 等人在两个GTX 580 3GB GPU上训练5、6天左右得到。目前是深度学习图像处理领域当中最常用的模型之一。<br>AlexNet相比于以前的一些网络模型来说，做出了很多创新，主要包括以下几点</li></ul></li><li><p>框架</p><ul><li>使用激活函数ReLu</li><li>多GPU并行训练</li><li>局部影响标准化</li><li>重叠池化</li></ul></li></ul><h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p>Alexnet有5个卷积层和3个全连接层，并且Alex发现移除任意一层都会降低最终的效果。网络结构如图</p><p><img src="https://i.imgur.com/0LFUfXp.png" alt=""></p><p>这个网络前面5层是卷积层，后面三层是全连接层，最终softmax输出是1000类。</p><ul><li>第三卷积层用384个3<em>3</em>256的卷积核,得到13<em>13</em>192*2的卷积层。 </li><li>第四卷积层用384个3<em>3</em>192的卷积核，得到13<em>13</em>192*2的卷积层。 </li><li>第五卷积层用256个3<em>3</em>192的卷积核，得到13<em>13</em>128*2的卷积层。<br>每个全连接层有4096个神经元。</li></ul><p>总体而言，Alexnet网络的结构如下：<br><img src="https://i.imgur.com/wYZay5v.png" alt=""></p><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ul><li>数据集<br><img src="https://i.imgur.com/qm2Ofif.png" alt=""></li></ul><h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>caffe提供的预训练模型一共包括了1000类图像，涵盖了生物、天文、自然、科技等多个方面的相关图像，具体在caffe_classes.py下，由于文件本身较大就没放在github上，可以很容易在网上找到<br>测试集包括1000张图像，共200类，标签存储在lable.txt当中。取测试图像概率最大类的下标作为测试的分类结果（即top-1测试），并且与label对比，最后计算得出整个测试集得precision在75%左右，算是比较好的结果。<br><img src="https://i.imgur.com/SOuRIsz.png" alt=""><br><img src="https://i.imgur.com/pWERo64.png" alt=""></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>AlexNet可以说是深度神经网络的鼻祖，相比于后来的VGG和googlenet而言，它的构造更加简单，而且结构也已经非常的成熟和稳固。<br>作为学校的大创项目用alexnet有点蠢，但是时间紧迫，也分享下自己学习cnn的过程。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;github链接：&lt;a href=&quot;https://github.com/tedqin/Alexnet_Imagenet&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/tedqin/Alexnet_Imagenet&lt;/
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="http://yoursite.com/categories/machine-learning/"/>
+    
+      <category term="cnn" scheme="http://yoursite.com/categories/machine-learning/cnn/"/>
+    
+    
+      <category term="python, machine learning" scheme="http://yoursite.com/tags/python-machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Javascript整理15-性能优化</title>
     <link href="http://yoursite.com/2019/05/20/Javascript%E6%95%B4%E7%90%8615-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <id>http://yoursite.com/2019/05/20/Javascript整理15-性能优化/</id>
@@ -603,39 +630,6 @@
         &lt;ul&gt;
 &lt;li&gt;构造函数&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;function Foo(name,age) {this.name=name; this.age=age return this}&lt;/code&gt; &lt;code&gt;var f = new Foo(&amp;#39;ted&amp;#39;,20)
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javascript整理01-变量类型</title>
-    <link href="http://yoursite.com/2019/03/28/Javascript%E6%95%B4%E7%90%8601-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B/"/>
-    <id>http://yoursite.com/2019/03/28/Javascript整理01-变量类型/</id>
-    <published>2019-03-28T17:52:29.000Z</published>
-    <updated>2019-07-28T17:55:55.930Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>值类型：a和b相等，改a，b不变 (直接赋值值)<ul><li>undefined string number boolean</li></ul></li><li>引用类型：a和b相等，改a，b变 （赋值地址）    <ul><li>object function</li></ul></li><li>强制类型转换<ul><li>字符串拼接 <ul><li><code>var a=10; var b=100 + &#39;10&#39;//string</code></li></ul></li><li>== <ul><li><code>100==&#39;100&#39;; 0==&#39;&#39;; null==undefined //true</code></li></ul></li><li>if <ul><li><code>if(b=100)//转换为true</code></li></ul></li><li>逻辑运算符(&amp;，||) <ul><li><code>10&amp;&amp;0；&#39;&#39;||&#39;abc&#39;; !window.abc//都转换为true或false</code></li></ul></li></ul></li><li><strong>问题</strong><ul><li>typeof能得到哪些类型<ul><li>number, string, object, boolean, function, undefiend, symbol （null是object）</li><li>symbol： 可以生成永不重复的值，可以用一个字符串标记 </li></ul></li><li>何时使用===，何时使用==<ul><li>===：内容相等数据类型也相同的严格模式；==：内容相等数据类型可以不相等</li><li>使用==的唯一情况：’’if(obj.a==null){}’’</li></ul></li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;值类型：a和b相等，改a，b不变 (直接赋值值)&lt;ul&gt;
-&lt;li&gt;undefined string number boolean&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;引用类型：a和b相等，改a，b变 （赋值地址）    &lt;ul&gt;
-&lt;li&gt;object fu
       
     
     </summary>
