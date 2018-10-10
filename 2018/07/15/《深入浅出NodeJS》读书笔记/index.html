@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>《深入浅出NodeJS》读书笔记 | 一条想成为大佬的咸鱼</title>
+    <meta name="author" content="Ted Qin" />
+    <meta name="version" content="1.0.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="##第一章 
+
+Node
+  Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形成一个大型的网路应用，每一个node为一个节点”，这是书中给的解释原文
+
+非阻塞I/O
+  书中多次提到的概念，我理解的非阻塞就是线程或进程的停止，
+
+特点
+  1.异步
+  2.事件（随意绑定事件），时间绑定轻量级、松耦合
+  3.回调函数    
+
+Ajax请求：快速动态刷新网页，不刷新，直接更新参数
+
+
+读完第一章以后，觉得云里雾里，这本书对于没有JS基础的人来说有点头疼。不" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="baidu-site-verification" content="F0CXvmUgA9" />
+
+    
+    
+    <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <button id="open-panel" class="open-panel"><i class="icon-library"></i></button>
+
+    <nav class="nav-inner">
+
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/archives">归档</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/atom.xml">订阅</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/about">关于</a>
+        </li>
+        
+        
+        
+
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+
+        
+        
+        
+        
+
+        
+        <div class="author-meta">
+            
+            <div class="author-avatar">
+                <a href="/">
+                    <img src="/images/avatar.jpg" title="Sanonz">
+                </a>
+            </div>
+            
+            <div class="author-name">TedQin</div>
+            <div class="author-work"></div>
+            <div class="author-location">
+                <i class="icon-location vm"></i>
+                <span class="vm">Shanghai, China</span>
+            </div>
+            
+            <div class="author-thread-wrap">
+                <div class="author-threads clearfix">
+                    
+                    <a class="thread-item" href="https://github.com/tedqin" target="_blank" rel="noopener"><i class="icon-github"></i></a>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            《深入浅出NodeJS》读书笔记
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/07/15/《深入浅出NodeJS》读书笔记/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-07-15T19:20:07.000Z" itemprop="datePublished">2018-07-15</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/read/">read</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>##第一章 </p>
+<ul>
+<li><p>Node</p>
+<p>  Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形成一个大型的网路应用，每一个node为一个节点”，这是书中给的解释原文</p>
+</li>
+<li><p>非阻塞I/O</p>
+<p>  书中多次提到的概念，我理解的非阻塞就是线程或进程的停止，</p>
+</li>
+<li>特点</li>
+<li><pre><code>  1.异步
+  2.事件（随意绑定事件），时间绑定轻量级、松耦合
+  3.回调函数    
+</code></pre></li>
+<li><p>Ajax请求：快速动态刷新网页，不刷新，直接更新参数</p>
+</li>
+</ul>
+<p>读完第一章以后，觉得云里雾里，这本书对于没有JS基础的人来说有点头疼。不过能肯定的是nodejs是一门异步I/O的语言，和python等编程习惯不一样，需要适应。</p>
+<p>至此，我决定先啃《js高级程序设计第三版》这本书，对js有一定的了解以后再来学习nodejs。</p>
+<p>##第二章</p>
+<p>C/S模式：客户/服务器模式，例如微信等<br>B/S模式：浏览器/服务器模式，例如各种web应用</p>
+<ul>
+<li><p>CommonJS规范：</p>
+<p>  相比于python的import，JAVA的类文件等，js是没有模块引入机制的，只能通过&lt;script&gt;标签这种杂乱的方式引入代码。在nodejs未出现之前，js只能用于前端，只有Rhino等后端javascript运行环境来作为小工具。node这么多年发展以来，已经形成了一套响应的规范，也就是CommonJS规范。</p>
+<pre><code>  1.模块引用：var math = require(&#39;math&#39;);
+  2.模块定义：export.add = function(){...;return sum};
+             export.increment = function(val){};
+  3.模块标识：
+</code></pre></li>
+<li><p>node模块实现：</p>
+<p>  node引入模块需要3个步骤：路径分析、文件定位、编译执行，其中系统自带的模块为核心模块，直接随node启动时加载进内存，加载速度快；用户自定义的模块称为文件模块，在运行时动态加载，慢。</p>
+<pre><code>  1.路径分析：require(&#39;标识符&#39;)；//分析标识符，标识符主要分为：
+      *核心模块，如http、fs、path等。
+      *.或..等相对路径文件模块
+      *以/开始的绝对路径文件模块
+      *非路径形式的文件模块，如自定义的connect模块
+          （自定义模块非核心模块和路径形式的模块，分析速度最慢）
+
+  2.文件定位：
+      *扩展名分析：模块文件可以不带扩展名，自动按.js、.json、.node顺序补全。
+      *目标分析和包：
+  3.模块编译
+      *核心模块一般为C/C++或javascript编译，所有的都转换为C/C++然后编译
+  4.内建模块：全由C/C++编译的模块，使用：
+      process.binding(&#39;标识符&#39;)
+      来进行导出
+</code></pre></li>
+<li><p>包与NPM：</p>
+<pre><code>  &quot;package.json&quot;：包含包的所有信息（版本、名称、作者等）
+  NPM已经是一个包共享平台，实现第三方模块的发布、安装和依赖。
+</code></pre></li>
+<li><p>前后端共用模块：</p>
+<p>  前端规范：AMD规范、CMD规范</p>
+<pre><code>  1.AMD规范定义的模块需要用define：
+  define(function(){...})
+
+  2.CMD规范申明时要指定所有的依赖
+</code></pre></li>
+</ul>
+<p>##第三章</p>
+
+        
+    </section>
+</article>
+
+
+
+<div class="comments">
+    <div id="disqus_thread">
+        <p class="comment-tips">国内查看评论需要代理~</p>
+    </div>
+    <script>
+    window.disqus_config = function () {
+        this.language = 'zh';
+        this.page.url = 'http://yoursite.com/2018/07/15/《深入浅出NodeJS》读书笔记/';
+        this.page.title = '《深入浅出NodeJS》读书笔记';
+        this.page.identifier = '2018/07/15/《深入浅出NodeJS》读书笔记/';
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://name.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+</div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+</footer>
+
+<script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
+
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function() {
+            var nodes = {
+                nav: $('#nav'),
+                aside: $('#aside'),
+                navTags: $('#nav-tags')
+            };
+
+            $('#open-panel, #aside-mask').on('click', function() {
+                nodes.aside.toggleClass('panel-show');
+            });
+            $('#nav-tag').on('click', function(event) {
+                event.preventDefault();console.log(nodes.navTags.attr('class'))
+                nodes.navTags.toggleClass('tag-show');console.log(nodes.navTags.attr('class'))
+            })/*.hover(function() {
+                nodes.navTags.addClass('tag-show');
+            }, function() {
+                nodes.navTags.removeClass('tag-show');
+            });*/
+
+            
+            $(document.body).scrollspy({target: '#aside-inner'});
+            
+        });
+    </script>
+
+</body>
+</html>
