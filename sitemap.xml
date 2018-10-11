@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2018/10/10/mac%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</loc>
+    <loc>http://yoursite.com/2018/10/12/xcode%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E6%96%AD%E7%82%B9/</loc>
     
-    <lastmod>2018-10-10T01:57:05.052Z</lastmod>
+    <lastmod>2018-10-11T23:50:14.674Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/10/10/hexo%E6%90%AD%E5%BB%BAblog%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     
-    <lastmod>2018-10-10T01:29:32.449Z</lastmod>
+    <lastmod>2018-10-11T23:50:07.360Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/10/mac%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</loc>
+    
+    <lastmod>2018-10-11T23:49:42.943Z</lastmod>
     
   </url>
   

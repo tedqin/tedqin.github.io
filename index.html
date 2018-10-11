@@ -109,6 +109,36 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2018/10/12/xcode调试技巧-常用命令和断点/">xcode调试技巧-常用命令和断点</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/10/12/xcode调试技巧-常用命令和断点/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-10-11T23:07:51.000Z" itemprop="datePublished">2018-10-12</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>新坑</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2018/10/10/mac常用指令/">mac常用指令</a>
         </h1>
         
@@ -121,13 +151,66 @@
 </a>
 
             
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/基础/">基础</a>
+</div>
+
 
         </div>
     </header>
     
     <section class="article-body markdown-body">
         
-        <p>新坑</p>
+        <p>ps: * 指令名称 <code>指令</code> <code>实例</code></p>
+<h1 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h1><h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><ul>
+<li>创建目录 <code>mkdir</code> <code>mkdir dirname</code></li>
+<li>删除目录 <code>rmdir</code> <code>rmdir dirname</code></li>
+<li>移动或重命名一个目录 <code>mvdir</code> <code>mvdir dir1 dir2</code></li>
+<li>改变当前目录 <code>rmdir</code> <code>rmdir dirname</code></li>
+<li>显示当前目录的路径名 <code>pwd</code> <code>pwd</code></li>
+<li>显示当前目录的内容 <code>ls</code> <code>ls -la</code></li>
+</ul>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><ul>
+<li>显示文件内容或连接文件 <code>cat</code> <code>cat filename</code></li>
+<li>显示非文本文件的内容 <code>od</code> <code>od -c filename</code></li>
+<li>复制文件或目录 <code>cp</code> <code>cp file1 file2</code></li>
+<li>删除文件或目录 <code>rm</code> <code>rm filename</code></li>
+<li>改变文件名或所在目录 <code>mv</code> <code>mv file1 file2</code></li>
+<li>使用匹配表达式查找文件 <code>find</code> <code>find . -name &quot;*.c&quot; -print</code></li>
+<li>显示文件类型 <code>file</code> <code>file filename</code></li>
+</ul>
+<h2 id="选择操作"><a href="#选择操作" class="headerlink" title="选择操作"></a>选择操作</h2><ul>
+<li>显示文件的最初几行 <code>head</code> <code>head -20 filename</code></li>
+<li>显示文件的最后几行 <code>tail</code> <code>tail -15 filename</code></li>
+<li>显示文件每行中的某些域 <code>cut</code> <code>cut -f1,7 -d: /etc/passwd</code></li>
+<li>从标准输入中删除若干列 <code>colrm</code> <code>colrm 8 20 file2</code></li>
+<li>排序或归并文件 <code>sort</code> <code>sort -d -f -u file1</code></li>
+<li>去掉文件中的重复行 <code>uniq</code> <code>uniq file1 file2</code></li>
+<li>显示两有序文件的公共和非公共行 <code>comm</code> <code>comm file1 file2</code></li>
+<li>统计文件的字符数、词数和行数 <code>wc</code> <code>wc filename</code></li>
+<li>给文件加上行号 <code>nl</code> <code>nl file1 &gt;file2</code></li>
+</ul>
+<h2 id="以下未完待续—————————————"><a href="#以下未完待续—————————————" class="headerlink" title="以下未完待续—————————————"></a>以下未完待续—————————————</h2><h2 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h2><ul>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+<li>比较并显示两个文件的差异 <code>diff</code> <code>diff file1 file2</code></li>
+</ul>
 
         
     </section>
@@ -157,7 +240,8 @@
     
     <section class="article-body markdown-body">
         
-        
+        <p>新坑</p>
+
         
     </section>
 </article>
