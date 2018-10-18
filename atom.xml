@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-11T23:50:14.674Z</updated>
+  <updated>2018-10-18T16:16:02.203Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>c++tips笔记</title>
+    <link href="http://yoursite.com/2018/10/18/c-tips%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2018/10/18/c-tips笔记/</id>
+    <published>2018-10-18T15:19:02.000Z</published>
+    <updated>2018-10-18T16:16:02.203Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><ul><li><p>return *this:</p><h2 id="strcpy和strncpy："><a href="#strcpy和strncpy：" class="headerlink" title="strcpy和strncpy："></a>strcpy和strncpy：</h2><p><code>strcpy(char *ch1, char *ch2)</code>：</p></li><li><p>直接将ch2指向的由”\0”结束的字符串复制到ch1，ch1必须有足够的空间来存储ch2</p></li><li>若ch2长于ch1，还是会复制，但是ch1会溢出</li></ul><p><code>strncpy(char *ch1, char *ch2, n)</code>:</p><ul><li>将ch2中最多n个字符复制到ch1</li><li>如果n&gt;ch1长度，ch1溢出</li><li>如果n&lt;ch1长度，且如果<ul><li>ch2长度&lt;=ch1长度，则ch2前n个字符复制到ch1</li><li>ch2长度&gt;ch1长度，出错</li></ul></li><li>建议：将n设置为ch1长度</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;指针&quot;&gt;&lt;a href=&quot;#指针&quot; class=&quot;headerlink&quot; title=&quot;指针&quot;&gt;&lt;/a&gt;指针&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;return *this:&lt;/p&gt;
+&lt;h2 id=&quot;strcpy和strncpy：&quot;&gt;&lt;a href=&quot;#strcpy和s
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>xcode调试技巧-常用命令和断点</title>
