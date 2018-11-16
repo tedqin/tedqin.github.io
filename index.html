@@ -109,6 +109,64 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2018/11/16/zookeaper学习/">zookeaper学习</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/11/16/zookeaper学习/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-11-16T17:04:27.000Z" itemprop="datePublished">2018-11-16</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2018/11/16/kafka学习/">kafka学习</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/11/16/kafka学习/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-11-16T17:03:37.000Z" itemprop="datePublished">2018-11-16</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2018/11/16/DataStructure/">DataStructure</a>
         </h1>
         
@@ -516,205 +574,11 @@
 </article>
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2018/07/15/目前的learning-plan/">目前的learning plan</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2018/07/15/目前的learning-plan/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2018-07-15T20:23:22.000Z" itemprop="datePublished">2018-07-15</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/plan/">plan</a>
-</div>
 
 
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>数据结构</p>
-<ul>
-<li>表</li>
-<li>堆栈</li>
-<li>队列</li>
-<li>数组</li>
-<li>树</li>
-<li>图</li>
-</ul>
-<p>算法</p>
-<ul>
-<li>排序</li>
-<li>查找</li>
-<li>hash</li>
-<li>算法思想-递归</li>
-<li>算法思想-贪心</li>
-<li>算法思想-回溯</li>
-<li>算法思想-分支</li>
-<li>算法思想-动态规划</li>
-</ul>
-<p>数据库</p>
-<ul>
-<li>索引</li>
-<li>视图</li>
-<li>触发器</li>
-<li>范式</li>
-<li>锁</li>
-<li>存储过程</li>
-<li>事物</li>
-<li>B+树</li>
-<li>E-R图</li>
-<li>3.10补充-mysql、mongodb</li>
-</ul>
-<p>操作系统</p>
-<ul>
-<li><p>并发性（concurrence）</p>
-<p>  在一个系统（或者一段时间）中，有多个同时执行的程序进行计算，并且它们之间存在潜在的交互。优点：资源利用率高、程序设计更简化、程序响应更快、系统性能更高；缺点：存在并发性的系统会有不同的程序运行路径，所以系统的处理结果会有不确定性。</p>
-</li>
-<li><p>进程（process）、线程（thread）</p>
-<p>  一个应用程序包含一个或多个相互协作的进程。</p>
-<pre><code>  进程：一块包含一些资源的内存区域，组成为一段一定大小（4GB）的线性内存空间。
-
-  线程：进程中包含的一个或多个执行单元，无内存空间，只有指针、栈、寄存器、数据区。
-</code></pre><p>  一个程序至少有一个进程，一个进程至少有一个线程。进程和线程都是系统（程序）的执行单元。<br>  差别：进程具有独立的地址空间（供它包含的线程访问），线程没有，所以如果一个进程崩溃，在保护模式下不会对其他进程产生影响；而一个线程死掉就等于整个进程死掉（多进程程序比多线程程序健壮），但是进程切换时耗费的资源多，效率差。</p>
-</li>
-<li><p>异步、同步处理、阻塞和非阻塞</p>
-<pre><code>  同步调用：调用之后就能得到结果
-  异步调用：调用之后需要其他方法（状态、通知、回调函数）来得到结果。
-  同步线程：两个线程的步调要一致，如果二者运行速度不一样，则快的等慢的（快的阻塞一下等慢的）。
-  异步线程：两个线程的步调不一致，各自独立运行。
-  同步I/O：不发送成功或失败状态，一直等待。
-  异步I/O：输入/输出时立即返回成功或失败的状态。
-</code></pre><p>  阻塞：进程或线程停止。</p>
-<pre><code>  阻塞I/O：资源不可用时（输入/输出未完成，I/O一直阻塞，直到完成。
-  非阻塞I/O：资源不可用超过一定时间后，直接结束本次I/O。
-</code></pre></li>
-<li><p>调度、死锁</p>
-<p>  死锁：两个或多个执行单元之间相互等待对方结束而引起阻塞的情况。</p>
-<pre><code>  例：T1有R1的访问权、T2有R2的访问权。
-      T1想访问R2，同时T2想访问R1，此时T1和T2都要等待对方给出权限，形成死锁。
-</code></pre></li>
-<li>存储器管理</li>
-<li>文件管理</li>
-<li>IO阻塞</li>
-<li>用户态、核心态</li>
-</ul>
-<p>nodejs</p>
-<pre><code>express框架、es6、es7
-</code></pre><p>前端框架</p>
-<pre><code>react、vuejs、angularjs
-</code></pre><p>IOS开发</p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2018/07/15/《深入浅出NodeJS》读书笔记/">《深入浅出NodeJS》读书笔记</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2018/07/15/《深入浅出NodeJS》读书笔记/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2018-07-15T19:20:07.000Z" itemprop="datePublished">2018-07-15</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/read/">read</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>##第一章 </p>
-<ul>
-<li><p>Node</p>
-<p>  Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形成一个大型的网路应用，每一个node为一个节点”，这是书中给的解释原文</p>
-</li>
-<li><p>非阻塞I/O</p>
-<p>  书中多次提到的概念，我理解的非阻塞就是线程或进程的停止，</p>
-</li>
-<li>特点</li>
-<li><pre><code>  1.异步
-  2.事件（随意绑定事件），时间绑定轻量级、松耦合
-  3.回调函数    
-</code></pre></li>
-<li><p>Ajax请求：快速动态刷新网页，不刷新，直接更新参数</p>
-</li>
-</ul>
-<p>读完第一章以后，觉得云里雾里，这本书对于没有JS基础的人来说有点头疼。不过能肯定的是nodejs是一门异步I/O的语言，和python等编程习惯不一样，需要适应。</p>
-<p>至此，我决定先啃《js高级程序设计第三版》这本书，对js有一定的了解以后再来学习nodejs。</p>
-<p>##第二章</p>
-<p>C/S模式：客户/服务器模式，例如微信等<br>B/S模式：浏览器/服务器模式，例如各种web应用</p>
-<ul>
-<li><p>CommonJS规范：</p>
-<p>  相比于python的import，JAVA的类文件等，js是没有模块引入机制的，只能通过&lt;script&gt;标签这种杂乱的方式引入代码。在nodejs未出现之前，js只能用于前端，只有Rhino等后端javascript运行环境来作为小工具。node这么多年发展以来，已经形成了一套响应的规范，也就是CommonJS规范。</p>
-<pre><code>  1.模块引用：var math = require(&#39;math&#39;);
-  2.模块定义：export.add = function(){...;return sum};
-             export.increment = function(val){};
-  3.模块标识：
-</code></pre></li>
-<li><p>node模块实现：</p>
-<p>  node引入模块需要3个步骤：路径分析、文件定位、编译执行，其中系统自带的模块为核心模块，直接随node启动时加载进内存，加载速度快；用户自定义的模块称为文件模块，在运行时动态加载，慢。</p>
-<pre><code>  1.路径分析：require(&#39;标识符&#39;)；//分析标识符，标识符主要分为：
-      *核心模块，如http、fs、path等。
-      *.或..等相对路径文件模块
-      *以/开始的绝对路径文件模块
-      *非路径形式的文件模块，如自定义的connect模块
-          （自定义模块非核心模块和路径形式的模块，分析速度最慢）
-
-  2.文件定位：
-      *扩展名分析：模块文件可以不带扩展名，自动按.js、.json、.node顺序补全。
-      *目标分析和包：
-  3.模块编译
-      *核心模块一般为C/C++或javascript编译，所有的都转换为C/C++然后编译
-  4.内建模块：全由C/C++编译的模块，使用：
-      process.binding(&#39;标识符&#39;)
-      来进行导出
-</code></pre></li>
-<li><p>包与NPM：</p>
-<pre><code>  &quot;package.json&quot;：包含包的所有信息（版本、名称、作者等）
-  NPM已经是一个包共享平台，实现第三方模块的发布、安装和依赖。
-</code></pre></li>
-<li><p>前后端共用模块：</p>
-<p>  前端规范：AMD规范、CMD规范</p>
-<pre><code>  1.AMD规范定义的模块需要用define：
-  define(function(){...})
-
-  2.CMD规范申明时要指定所有的依赖
-</code></pre></li>
-</ul>
-<p>##第三章</p>
-
-        
-    </section>
-</article>
-
-
-
+<nav class="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+</nav>
 
 
 </div>

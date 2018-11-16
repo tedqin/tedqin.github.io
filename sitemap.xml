@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/11/16/kafka%E5%AD%A6%E4%B9%A0/</loc>
+    
+    <lastmod>2018-11-16T17:05:00.664Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/16/zookeaper%E5%AD%A6%E4%B9%A0/</loc>
+    
+    <lastmod>2018-11-16T17:04:27.174Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/11/16/DataStructure/</loc>
     
     <lastmod>2018-11-16T10:45:43.091Z</lastmod>
