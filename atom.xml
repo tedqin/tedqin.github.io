@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-25T16:49:38.833Z</updated>
+  <updated>2018-11-16T10:45:43.091Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DataStructure</title>
+    <link href="http://yoursite.com/2018/11/16/DataStructure/"/>
+    <id>http://yoursite.com/2018/11/16/DataStructure/</id>
+    <published>2018-11-16T09:17:57.000Z</published>
+    <updated>2018-11-16T10:45:43.091Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>完全二叉树：除了最后一层以外，其余层必满；最后一层可以是满，如果不满，则节点必须集中在左边</li><li>最大堆：1.必须是完全二叉树 2.节点的值必须大于左右子树的值</li><li>二叉搜索树：左孩子比父母小，右孩子比父母大。</li><li>avl树：一种平衡二叉搜索树，并且任意节点的孩子节点高度差最大为1.</li><li>平衡因子：某节点的平衡因子是该节点左子树的高度减右子树的高度（avl只能是0，1，-1</li><li></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;完全二叉树：除了最后一层以外，其余层必满；最后一层可以是满，如果不满，则节点必须集中在左边&lt;/li&gt;
+&lt;li&gt;最大堆：1.必须是完全二叉树 2.节点的值必须大于左右子树的值&lt;/li&gt;
+&lt;li&gt;二叉搜索树：左孩子比父母小，右孩子比父母大。&lt;/li&gt;
+&lt;li&gt;avl
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>分布式系统</title>
