@@ -1,311 +1,138 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="TedQin" type="application/atom+xml" />
-
-
-
-
-
-
-<meta name="description" content="Output is the best input">
-<meta property="og:type" content="website">
-<meta property="og:title" content="TedQin">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="TedQin">
-<meta property="og:description" content="Output is the best input">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TedQin">
-<meta name="twitter:description" content="Output is the best input">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/"/>
-
-
-
-
-
-  <title>TedQin</title>
-  
-
-
-
-
-
-
-
-
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>TedQin</title>
+    <meta name="author" content="Ted Qin" />
+    <meta name="version" content="1.0.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="Output is the best input" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="baidu-site-verification" content="F0CXvmUgA9" />
+
+    
+    
+    <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+<body>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+    <div class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <button id="open-panel" class="open-panel"><i class="icon-library"></i></button>
 
-  
-  
-    
-  
+    <nav class="nav-inner">
 
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="/">首页</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/archives">归档</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/atom.xml">订阅</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/about">关于</a>
+        </li>
+        
+        
+        
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">TedQin</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+    </nav>
 </div>
 
-<nav class="site-nav">
-  
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
 
-  
-    <ul id="menu" class="menu">
-      
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+
+        
+        <div class="author-meta">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            <div class="author-avatar">
+                <a href="/">
+                    <img src="/images/avatar.jpg" title="Sanonz">
+                </a>
+            </div>
             
-            Archives
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+            <div class="author-name">TedQin</div>
+            <div class="author-work"></div>
+            <div class="author-location">
+                <i class="icon-location vm"></i>
+                <span class="vm">Shanghai, China</span>
+            </div>
             
-  <section id="posts" class="posts-expand">
+            <div class="author-thread-wrap">
+                <div class="author-threads clearfix">
+                    
+                    <a class="thread-item" href="https://github.com/tedqin" target="_blank" rel="noopener"><i class="icon-github"></i></a>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+    <article class="article" itemscope itemprop="blogPost">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/17/前端工程师面试总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2019/04/17/前端工程师面试总结/">前端工程师面试总结</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2019/04/17/前端工程师面试总结/">
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/17/前端工程师面试总结/" itemprop="url">前端工程师面试总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T10:29:13+01:00">
-                2019-04-17
-              </time>
-            
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2019-04-17T09:29:13.000Z" itemprop="datePublished">2019-04-17</time>
+</a>
 
             
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/面试/">面试</a>
+</div>
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
-      </header>
+    </header>
     
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
+    <section class="article-body markdown-body">
         
-          
-            <p>##1 自我介绍</p>
+        <p>##1 自我介绍</p>
 <p>我叫秦乐天，本科毕业于同济大学电子与信息工程学院信息安全专业，主要学习计算机科学方面的课程，研究生正就读于伦敦国王学院计算机系统与管理专业，（1学习方面）本科期间参加过程序设计比赛，数学建模和创新实践项目等，获得了上创免答辩立项，全国数学建模大赛二等奖等，本科毕业设计获得了同济大学优秀论文奖。（2工作经历方面）我曾经在饿了么，中科院自动化所和四川长虹股份有限公司的研发岗实习。（3特质）我认为自己的学习能力抗压能力都很强，本科期间自学了python和tensorflow等j机器学习相关工具，以及前端和对应的框架。擅长团队协作，本科期间作为组长带领团队获得了上海大学生创业大赛优秀项目奖。（4工作）我非常喜欢华为“以奋斗者为本”的理念，我一直都想通过自己的努力不断提升和进步，希望自己能够进入华为研发岗并尽自己的一份力</p>
 <p>##2 项目介绍<br>    简单介绍 采用技术/担任职责 主要问题&amp;解决方法 闪光点</p>
 <p>###2.1 上创：</p>
@@ -991,125 +818,35 @@
 </li>
 </ul>
 
-          
         
-      
-    </div>
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
     
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/cpp笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
+    <header class="article-header">
         
+        <h1 itemprop="name">
+            <a href="/2018/10/18/cpp笔记/">c++tips笔记</a>
+        </h1>
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/18/cpp笔记/" itemprop="url">c++tips笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T16:19:02+01:00">
-                2018-10-18
-              </time>
-            
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/10/18/cpp笔记/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-10-18T15:19:02.000Z" itemprop="datePublished">2018-10-18</time>
+</a>
 
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
-      </header>
+    </header>
     
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
+    <section class="article-body markdown-body">
         
-          
-            <h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><h3 id=""><a href="#" class="headerlink" title="*"></a>*</h3><ul>
+        <h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><h3 id=""><a href="#" class="headerlink" title="*"></a>*</h3><ul>
 <li><ul>
 <li>是取值运算符，对地址使用可以获得地址中储存的数值。对于指针a，*a表示取a中的值</li>
 </ul>
@@ -1146,125 +883,40 @@
 <li>建议：将n设置为ch1长度</li>
 </ul>
 
-          
         
-      
-    </div>
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
     
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/mac常用指令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
+    <header class="article-header">
         
+        <h1 itemprop="name">
+            <a href="/2018/10/10/mac常用指令/">mac常用指令</a>
+        </h1>
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/10/mac常用指令/" itemprop="url">mac常用指令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-10T02:55:04+01:00">
-                2018-10-10
-              </time>
-            
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/10/10/mac常用指令/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-10-10T01:55:04.000Z" itemprop="datePublished">2018-10-10</time>
+</a>
 
             
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/基础/">基础</a>
+</div>
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
-      </header>
+    </header>
     
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
+    <section class="article-body markdown-body">
         
-          
-            <p>ps: * 指令名称 <code>指令</code> <code>实例</code></p>
+        <p>ps: * 指令名称 <code>指令</code> <code>实例</code></p>
 <p>参考：<a href="https://www.jianshu.com/p/8803bf591956" target="_blank" rel="noopener">https://www.jianshu.com/p/8803bf591956</a></p>
 <h1 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h1><h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><ul>
 <li>创建目录 <code>mkdir</code> <code>mkdir dirname</code></li>
@@ -1339,125 +991,35 @@
 <li>注意$和#的变化，#表示你在最⾼高权限root⾥里里⾯面</li>
 </ul>
 
-          
         
-      
-    </div>
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
     
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/hexo搭建blog常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
+    <header class="article-header">
         
+        <h1 itemprop="name">
+            <a href="/2018/10/10/hexo搭建blog常用命令/">hexo搭建blog常用命令</a>
+        </h1>
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/10/hexo搭建blog常用命令/" itemprop="url">hexo搭建blog常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-10T02:29:32+01:00">
-                2018-10-10
-              </time>
-            
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/10/10/hexo搭建blog常用命令/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-10-10T01:29:32.000Z" itemprop="datePublished">2018-10-10</time>
+</a>
 
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
-      </header>
+    </header>
     
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
+    <section class="article-body markdown-body">
         
-          
-            <h2 id="常规搭建"><a href="#常规搭建" class="headerlink" title="常规搭建"></a>常规搭建</h2><h2 id="常规指令"><a href="#常规指令" class="headerlink" title="常规指令"></a>常规指令</h2><p><code>hexo new &quot;blogname&quot; #新建博客</code></p>
+        <h2 id="常规搭建"><a href="#常规搭建" class="headerlink" title="常规搭建"></a>常规搭建</h2><h2 id="常规指令"><a href="#常规指令" class="headerlink" title="常规指令"></a>常规指令</h2><p><code>hexo new &quot;blogname&quot; #新建博客</code></p>
 <p><code>hexo g #生成</code></p>
 <p><code>hexo s #启动服务器预览</code></p>
 <p><code>hexo d #部署</code> </p>
@@ -1514,125 +1076,40 @@
 </li>
 </ul>
 
-          
         
-      
-    </div>
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
     
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/基础知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
+    <header class="article-header">
         
+        <h1 itemprop="name">
+            <a href="/2018/07/15/基础知识/">目前的learning plan</a>
+        </h1>
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/15/基础知识/" itemprop="url">目前的learning plan</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-15T21:23:22+01:00">
-                2018-07-15
-              </time>
-            
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/07/15/基础知识/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-07-15T20:23:22.000Z" itemprop="datePublished">2018-07-15</time>
+</a>
 
             
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/plan/">plan</a>
+</div>
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
-      </header>
+    </header>
     
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
+    <section class="article-body markdown-body">
         
-          
-            <p>####必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新</p>
+        <p>####必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新</p>
 <p>数据结构</p>
 <ul>
 <li>表</li>
@@ -1716,125 +1193,40 @@
 <pre><code>react、vuejs、angularjs
 </code></pre><p>IOS开发</p>
 
-          
         
-      
-    </div>
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
     
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/《深入浅出NodeJS》读书笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
+    <header class="article-header">
         
+        <h1 itemprop="name">
+            <a href="/2018/07/15/《深入浅出NodeJS》读书笔记/">《深入浅出NodeJS》读书笔记</a>
+        </h1>
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/15/《深入浅出NodeJS》读书笔记/" itemprop="url">《深入浅出NodeJS》读书笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-15T20:20:07+01:00">
-                2018-07-15
-              </time>
-            
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/07/15/《深入浅出NodeJS》读书笔记/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-07-15T19:20:07.000Z" itemprop="datePublished">2018-07-15</time>
+</a>
 
             
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/read/">read</a>
+</div>
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
-      </header>
+    </header>
     
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
+    <section class="article-body markdown-body">
         
-          
-            <p>##第一章 </p>
+        <p>##第一章 </p>
 <ul>
 <li><p>Node</p>
 <p>  Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形成一个大型的网路应用，每一个node为一个节点”，这是书中给的解释原文</p>
@@ -1903,323 +1295,49 @@
 <li></li>
 </ul>
 
-          
         
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
+    </section>
+</article>
 
 
-    
-  </section>
-
-  
 
 
-          </div>
-          
 
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Ted Qin</p>
-              <p class="site-description motion-element" itemprop="description">Output is the best input</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">tags</span>
-                
-              </div>
-            
-
-          </nav>
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Ted Qin</span>
-
-  
 </div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+</footer>
+
+<script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+    </div>
 
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
+    <script type="text/javascript">
+        $(function() {
+            var nodes = {
+                nav: $('#nav'),
+                aside: $('#aside'),
+                navTags: $('#nav-tags')
+            };
+
+            $('#open-panel, #aside-mask').on('click', function() {
+                nodes.aside.toggleClass('panel-show');
+            });
+            $('#nav-tag').on('click', function(event) {
+                event.preventDefault();console.log(nodes.navTags.attr('class'))
+                nodes.navTags.toggleClass('tag-show');console.log(nodes.navTags.attr('class'))
+            })/*.hover(function() {
+                nodes.navTags.addClass('tag-show');
+            }, function() {
+                nodes.navTags.removeClass('tag-show');
+            });*/
+
+            
+        });
+    </script>
 
 </body>
 </html>
