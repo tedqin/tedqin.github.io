@@ -234,7 +234,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/17/前端工程师面试总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/知识整理css/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ted Qin">
@@ -253,7 +253,654 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/17/前端工程师面试总结/" itemprop="url">前端工程师面试总结</a></h1>
+                <a class="post-title-link" href="/2019/07/14/知识整理css/" itemprop="url">知识整理CSS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T16:19:02+01:00">
+                2019-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><p>标签：p{}<br>class: .class{}<br>同一类，不同标签： p.class{}<br>同一标签，多个类：p.class1{} .class2{<br>id：#id {}<br>集体选择器：p,.class1,#id1 {}<br>后代选择器：<code>&lt;p&gt;&lt;em&gt;&lt;a&gt;123&lt;a&gt;&lt;/em&gt;&lt;/p&gt;</code>:p em a {}<br>链接伪类 <code>:link</code>:未访问的链接 <code>:visited</code>：已访问的链接 <code>:hover</code>：鼠标悬停状态 <code>:active</code>：鼠标点击到松开的阶段<br>（hover和active可用于任何标签）</p>
+<h2 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h2><p>文字粗细：<code>font-weight: normal/bold</code><br>文字斜度：<code>font-style: normal/italic/oblique</code><br>文字粗细：<code>font-weight: 600</code><br>文字粗细：<code>font-weight: 600</code><br>文字粗细：<code>font-weight: 600</code>  </p>
+<h2 id="文本对齐方式"><a href="#文本对齐方式" class="headerlink" title="文本对齐方式"></a>文本对齐方式</h2><p>文本水平对齐方式：<code>text-align: left/right/center/justify</code><br>左对齐/右对齐/居中对齐/两端对齐 只对块级元素有效 </p>
+<h2 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h2><p>首行缩进：<code>text-indent: 2em</code><br>行高：<code>line-height: 120em</code> 最好用em防止字体过大导致显示不全</p>
+<h2 id="元素内容的垂直方式"><a href="#元素内容的垂直方式" class="headerlink" title="元素内容的垂直方式"></a>元素内容的垂直方式</h2><p>只对行内元素有效<br><code>vertical-align: sub/supper/</code>文字向上向下对齐</p>
+<h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><ul>
+<li>height：长度/百分比/auto</li>
+<li>width： </li>
+<li>border边框<ul>
+<li>边框粗细<code>border-(top/l/r/bottom)-width: thin/medium/thick/长度值</code></li>
+<li>边框颜色 <code>border-color:</code></li>
+<li>样式<code>border-style: none/solid实线/dotted点状</code></li>
+<li>简写: 粗细-样式-颜色</li>
+</ul>
+</li>
+<li>padding内边距 主要用来设置空隙 盒子与边框的距离<ul>
+<li>padding粗细<code>padding-(top/l/r/bottom): thin/medium/thick/长度值</code></li>
+<li>padding粗细简写：全/上下 左右/上 左右 下/上 右 下 左</li>
+</ul>
+</li>
+<li>margin外边距 边框与外界的距离 <ul>
+<li>可以为负值</li>
+<li>设置为auto：实现水平方向居中</li>
+</ul>
+</li>
+</ul>
+<h2 id="display属性"><a href="#display属性" class="headerlink" title="display属性"></a>display属性</h2><p>将元素显示为内联元素: <code>inline</code><br>将元素显示为块级元素: <code>block</code><br>将元素显示为内联元素具有快级属性可以设置宽高: <code>inline-block</code> </p>
+<p>ps：宽高设为100%，表示和父元素相同</p>
+<h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><ul>
+<li>脱离文档流，只能左右</li>
+<li><code>float:left/right/none</code> </li>
+<li>浮动后出现的问题：<ul>
+<li>浮动溢出（高度塌陷）</li>
+</ul>
+</li>
+<li>解决：清楚浮动<ul>
+<li><code>clear:none/left/right/both</code></li>
+<li>1.<code>&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;</code></li>
+<li>2.给父元素添加<code>overflow:hidden</code></li>
+<li>3.css3 <code>clearfix :after{content:&quot;.&quot;;display:block;height:0;visibility:hidden;clear:both}</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="position-定位模型"><a href="#position-定位模型" class="headerlink" title="position 定位模型"></a>position 定位模型</h2><ul>
+<li>static：常规流 忽略跑偏移量</li>
+<li>relative： <ul>
+<li>相对常规流，设置偏移量 <code>top/bottom/left/right:10px</code></li>
+<li>常规流的位置会留下，不会影响其他元素</li>
+</ul>
+</li>
+<li>absolute：绝对定位<ul>
+<li>相对于最近的祖先元素做绝对定位</li>
+<li>常规流的位置会被占据，会影响其他元素</li>
+<li>如果设置上下左右偏移量为0，margin：autoauto，子元素就会相对于父元素居中</li>
+</ul>
+</li>
+<li>常用： 父元素设置为relative，子元素设置为absolute，子元素就可以设置相对于父元素的偏移量 </li>
+<li>fixed：相对定位 <ul>
+<li>不会随着视图滚动而滚动，其余和absolute一样</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h2><ul>
+<li>新增的元素选择器<ul>
+<li>子元素选择器：<code>father &gt; son1 {}</code></li>
+<li>相邻兄弟元素选择器:<code>father &gt; son1 + son2 {}</code> </li>
+<li>通用兄弟选择器: <code>father &gt; son1 ~ son5 {}</code></li>
+<li>群组选择器: <code>father &gt; son1, father &gt; son2, father &gt; son3 {}</code></li>
+</ul>
+</li>
+<li>属性选择器<ul>
+<li><code>a[href] {}</code></li>
+</ul>
+</li>
+<li>伪类选择器<ul>
+<li>动态伪类（之前有）：<ul>
+<li>锚点伪类 <code>a:link{} a:visited{}</code></li>
+<li>用户行为伪类 :hover :active :focus</li>
+</ul>
+</li>
+<li>UI元素状态伪类<ul>
+<li><code>input:enabled {} :disabled :checked</code> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>结构类选择器<ul>
+<li>first/last子类选择器<code>section:first-child {}</code></li>
+<li>父元素的第N个子元素<code>ul&gt;li:nth-child(3){}</code><ul>
+<li>选择多个： <code>nth-child(n){}</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边框与圆角    <ul>
+<li>圆角 <code>border-radius:10px/10rem/10%</code></li>
+<li>盒阴影 <code>box-shadow:水平偏移 垂直偏移 模糊 扩展 颜色</code></li>
+<li>边界图片 <code></code>border-image:source </li>
+</ul>
+</li>
+<li>文本<ul>
+<li>文本阴影 <code>text-shadow:h v blur color</code></li>
+<li>自动换行 <code>word-break</code></li>
+<li>文本属性</li>
+</ul>
+</li>
+<li>字体 @font-face<ul>
+<li><code>@font-face {font-familt:&lt;name&gt; src:&lt;source&gt; [&lt;format&gt;]}</code></li>
+</ul>
+</li>
+<li>transform 转换<ul>
+<li>旋转<code>transform:rotate(&lt;angle&gt;)</code></li>
+<li>平移<code>trandform:translate(x,y)</code><ul>
+<li><code>trandform:translateX(200px)</code></li>
+<li><code>trandform:translateY(200px)</code>    </li>
+</ul>
+</li>
+<li>缩放：水平 垂直 都有    <ul>
+<li><code>trandform:scaleX(.5)</code>    </li>
+</ul>
+</li>
+<li>扭曲: 三种<ul>
+<li><code>skewX(&lt;angle&gt;)``</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>3D transform<ul>
+<li>rotateX</li>
+<li>translate3d(x,y,z)</li>
+<li>scale3d(x,y,z) scaleZ(z)</li>
+</ul>
+</li>
+<li>动画<ul>
+<li>animation-name: keyframename</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/15/知识整理Javascript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/15/知识整理Javascript/" itemprop="url">知识整理_javascript</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T21:23:22+01:00">
+                2019-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="知识整理-javascript"><a href="#知识整理-javascript" class="headerlink" title="知识整理_javascript"></a>知识整理_javascript</h1><h2 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1 基础知识"></a>1 基础知识</h2><h3 id="1-1-变量类型"><a href="#1-1-变量类型" class="headerlink" title="1.1 变量类型"></a>1.1 变量类型</h3><ul>
+<li>值类型：a和b相等，改a，b不变 (直接赋值值)<ul>
+<li>undefined string number boolean</li>
+</ul>
+</li>
+<li>引用类型：a和b相等，改a，b变 （赋值地址）    <ul>
+<li>object function</li>
+</ul>
+</li>
+<li>强制类型转换<ul>
+<li>字符串拼接 <ul>
+<li><code>var a=10; var b=100 + &#39;10&#39;//string</code></li>
+</ul>
+</li>
+<li>== <ul>
+<li><code>100==&#39;100&#39;; 0==&#39;&#39;; null==undefined //true</code></li>
+</ul>
+</li>
+<li>if <ul>
+<li><code>if(b=100)//转换为true</code></li>
+</ul>
+</li>
+<li>逻辑运算符(&amp;，||) <ul>
+<li><code>10&amp;&amp;0；&#39;&#39;||&#39;abc&#39;; !window.abc//都转换为true或false</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>题目</strong><ul>
+<li>typeof能得到哪些类型<ul>
+<li>number, string, object, boolean, function, undefiend, symbol （null是object）</li>
+<li>symbol： 可以生成永不重复的值，可以用一个字符串标记 </li>
+</ul>
+</li>
+<li>何时使用===，何时使用==<ul>
+<li>===：内容相等数据类型也相同的严格模式；==：内容相等数据类型可以不相等</li>
+<li>使用==的唯一情况：’’if(obj.a==null){}’’</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-原型-原型链"><a href="#1-2-原型-原型链" class="headerlink" title="1.2 原型 原型链"></a>1.2 原型 原型链</h3><ul>
+<li>构造函数<ul>
+<li><code>function Foo(name,age) {this.name=name; this.age=age return this}</code> <code>var f = new Foo(&#39;ted&#39;,20)</code></li>
+<li>var a ={}是var a =new Object()的语法糖//数组，函数同理</li>
+<li>函数名大写字母开头</li>
+</ul>
+</li>
+<li>原型规则和示例<ul>
+<li>所有的引用类型（数组对象函数）都具有对象特性，即可自由扩展属性(null除外)</li>
+<li>所有的引用类型都有一个<code>__proto__</code>属性，属性值是一个普通对象 </li>
+<li>所有的函数都有一个prototype属性，属性值也是一个普通的对象</li>
+<li><code>__proto__</code>对象指向它的构造函数的prototype对象（完全等于）</li>
+<li>当试图得到一个引用类型的某个属性时，如果这个变量本身没有这个属性，那么会去它的<code>__proto__</code>，即它的构造函数的prototype中找</li>
+<li>例子：不遍历原型上的属性：<code>if(f.hasOwnProperty(item))</code></li>
+</ul>
+</li>
+<li>原型链<ul>
+<li>一个对象，对象自身不存在的属性到它的隐式原型找，它的隐式原型不存的的话，再到它的隐式原型的隐式原型中找</li>
+<li>Object.prototype指向null，防止死循环</li>
+</ul>
+</li>
+<li>instanceof<ul>
+<li>instanceof判断一个函数是否是一个变量的构造函数</li>
+<li><code>var f = new Foo(&#39;ted&#39;)</code> <code>f instanceof Foo//true</code></li>
+<li>判断逻辑：f的<code>__proto__</code>一层层往上，能否对应到Foo.prototype</li>
+</ul>
+</li>
+<li><strong>题目</strong><ul>
+<li>如何准确判断一个变量是数组<ul>
+<li><code>var arr = []</code> <code>arr instanceof Array//true</code></li>
+</ul>
+</li>
+<li>写一个原型链继承的例子<ul>
+<li><code>function Animal(){this.eat = function(){console.log(&#39;eat&#39;)}}</code> <code>function Dog(){this.bark(){console.log(&#39;bark&#39;)}}</code> <code>Dog.prototype=new Animal()</code> <code>var haski=new Dog()</code> //这个比较low</li>
+<li><code>function Elem(id){this.elem=document.getElementById(id)}</code> <pre>Elem.prototype.html=function(val) {<pre><code>  var elem=this.elem 
+  if(val){
+      elem.innerHTML=val
+      return this
+  } else{ 
+      return elem.innerHTML}}&lt;/pre&gt; 
+</code></pre>  <pre>Elem.prototype.on=function(type,fn){<pre><code>  var elem=this.elem
+  elem.addEventListener(type,fn)
+      &lt;/pre&gt;
+</code></pre>  <code>var div1 = new Elem(&#39;div1&#39;)</code></pre></pre></li>
+</ul>
+</li>
+<li>描述new一个对象的过程<ul>
+<li>创建一个新对象</li>
+<li>this指向这个新对象</li>
+<li>执行构造函数的代码，即对this赋值</li>
+<li>返回this</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="作用域-闭包"><a href="#作用域-闭包" class="headerlink" title="作用域 闭包"></a>作用域 闭包</h3><ul>
+<li>执行上下文 代码执行的环境<ul>
+<li>一段<code>&lt;script&gt;</code>：全局上下文<ul>
+<li>变量定义-&gt;函数申明</li>
+</ul>
+</li>
+<li>一个函数：函数上下文<ul>
+<li>变量定义-&gt;函数申明-&gt;this-&gt;arguments</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>this<ul>
+<li>this要在执行时才能确认值，定义时无法确认</li>
+<li>call可以改变this的值：<code>a.fn.call({name:B})</code></li>
+<li>1.作为构造函数执行：指向定义的对象 <pre>function Foo(name) {<br>this.name = name}<br>var f = new Foo(‘ted’)</pre></li>
+<li>2.作为对象属性执行:指向该对象 <pre>var obj = {<br>name: ‘A’, printName: function () {console.log(this.name)}}<br>obj.printName()</pre></li>
+<li>3.作为普通函数执行: 指向window <pre>function fn() {<br>console.log(this)}}</pre></li>
+<li>4.call apply bind <pre>function fn1(name, age) {<br>alert(name); console.log(this)}<br>fn1(‘ted’,20)//普通函数的this，指向window<br>fn1.call({x:100},’ted’,20)//通过call函数改变this，指向{x:100}这个对象<br>fn1.apply({x:200}, [‘ted’, 20])//apply和call不同在于参数用数组传递<br></pre>  <pre>//bind:适用于函数表达式 
+var fn2 = function (name, age) {
+alert(name); console.log(this)}
+.bind({y:300})
+fn2('ted',20)//通过bind函数改变this，this也指向{y:300}这个对象</pre></li>
+</ul>
+</li>
+<li>作用域<ul>
+<li>JS没有块级作用域<ul>
+<li>在函数中定义和赋值的变量可以在函数外使用</li>
+<li>ES6中加入块级作用域：<pre>for(let i = 0; i&lt; 10; i++){}<br>console.log(i)//报错，let定义的变量有块级作用域，在for中定义的不能在for之外访问</pre></li>
+</ul>
+</li>
+<li>JS有函数和全局作用域<ul>
+<li>定义在函数中的变量，只能在函数中修改</li>
+</ul>
+</li>
+<li>自由变量：当前作用域没有定义的变量，可以在父级作用域中去找</li>
+</ul>
+</li>
+<li>作用域链<ul>
+<li>当前作用域可访问父级作用域</li>
+<li>一个元素的父级作用域是在它定义的时候的作用域，而非执行</li>
+</ul>
+</li>
+<li>闭包<ul>
+<li>函数作为返回值</li>
+<li>函数作为参数传递</li>
+<li>闭包中返回的函数，若有自由变量，则向（函数定义时）父作用域寻找</li>
+</ul>
+</li>
+<li><strong>题目</strong><ul>
+<li>说一下对变量提升的理解<ul>
+<li>在各个执行上下文中，变量定义+函数声明都会提前</li>
+</ul>
+</li>
+<li>说明this几种不同的使用场景<ul>
+<li>作为构造函数：指向定义的对象</li>
+<li>作为对象属性：指向该对象</li>
+<li>作为普通函数：指向window</li>
+<li>call apply bind： 指向改变的对象</li>
+</ul>
+</li>
+<li>创建10个<code>&lt;a&gt;</code>标签，点击的时候弹出来对应的序号<br>  * </li>
+<li>如何理解作用域<ul>
+<li>自由变量</li>
+<li>作用域链，自由变量的查找</li>
+<li>闭包的两个场景</li>
+</ul>
+</li>
+<li>闭包</li>
+<li>实际开发中闭包的应用<ul>
+<li>封装变量，收敛权限</li>
+<li><img src="https://i.imgur.com/WHL94oZ.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="异步和单线程"><a href="#异步和单线程" class="headerlink" title="异步和单线程"></a>异步和单线程</h3><ul>
+<li>什么是异步（对比同步）<ul>
+<li>同步会阻塞，异步不会，遇到setTimeout会先执行后面的代码</li>
+<li>何时使用：有可能发生等待的情况-等待的过程不能阻塞程序运行</li>
+</ul>
+</li>
+<li>前端使用异步的场景<ul>
+<li>定时任务：setTimeout，setInverral</li>
+<li>网络请求：ajax请求，动态<img>加载 （时间不固定）</li>
+<li>事件绑定：如点击事件，在不点击的时候不能阻塞程序运行</li>
+</ul>
+</li>
+<li>异步和单线程<ul>
+<li>单线程：代码一个个排队执行，不能同时干两件事</li>
+<li>js是单线程，所以在遇到阻塞的情况，要用异步，现将不需要等待的代码执行完，再执行异步代码</li>
+</ul>
+</li>
+<li><strong>题目</strong><ul>
+<li>同步和异步的区别是什么？分别举一个同步和异步的例子<ul>
+<li>同步会阻塞代码，异步不会，alert是同步，setTimeout是异步</li>
+</ul>
+</li>
+<li>一个关于setTimeout的笔试题</li>
+<li>前端使用异步的场景有哪些？<ul>
+<li>定时任务-网络请求-时间绑定</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###补充</p>
+<ul>
+<li>日期<ul>
+<li><img src="https://i.imgur.com/WIOLL8V.png" alt=""></li>
+</ul>
+</li>
+<li>Math<ul>
+<li>获取随机数<code>Math.random()</code></li>
+</ul>
+</li>
+<li>数组api<ul>
+<li>forEach 遍历所有元素</li>
+<li>every 判断所有元素是否都符合条件</li>
+<li>some 判断是否有至少一个元素符合条件</li>
+<li>sort 排序</li>
+<li>map 对元素重新组装，生成新数组</li>
+<li>filter 过滤符合条件的元素</li>
+</ul>
+</li>
+<li>对象api<ul>
+<li>for in</li>
+</ul>
+</li>
+<li><strong>题目</strong><ul>
+<li>获取2019-07-25格式的日期<ul>
+<li><img src="https://i.imgur.com/I9MSkph.png" alt=""></li>
+</ul>
+</li>
+<li>获取随机数，要求是长度一致的字符串格式<ul>
+<li><img src="https://i.imgur.com/M8L70aG.png" alt=""></li>
+</ul>
+</li>
+<li>写一个能遍历对象和数组的通用forEach函数<ul>
+<li><img src="https://i.imgur.com/KvR1Jfd.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-JS-API"><a href="#2-JS-API" class="headerlink" title="2 JS API"></a>2 JS API</h2><h3 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h3><h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><h3 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h3><h2 id="3-开发环境"><a href="#3-开发环境" class="headerlink" title="3 开发环境"></a>3 开发环境</h2><h3 id="版本管理"><a href="#版本管理" class="headerlink" title="版本管理"></a>版本管理</h3><h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><h3 id="打包工具"><a href="#打包工具" class="headerlink" title="打包工具"></a>打包工具</h3><h2 id="4-运行环境"><a href="#4-运行环境" class="headerlink" title="4 运行环境"></a>4 运行环境</h2><h3 id="页面渲染"><a href="#页面渲染" class="headerlink" title="页面渲染"></a>页面渲染</h3><h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><h2 id="5-面试技巧"><a href="#5-面试技巧" class="headerlink" title="5 面试技巧"></a>5 面试技巧</h2><h2 id="6-面试题"><a href="#6-面试题" class="headerlink" title="6 面试题"></a>6 面试题</h2><ul>
+<li>window.onload和DOMCotentLoaded的区别<ul>
+<li>onload事件触发：页面上所有dom，样式表，脚本，图片，flash都已经加载完；DOMCotentLoaded：仅dom加载完</li>
+</ul>
+</li>
+<li>如何理解JSON<ul>
+<li>是一个JS对象，有两个API：<ul>
+<li><code>JSON.stringify(obj)//将js的对象转换成json字符串</code></li>
+<li><code>JSON.parse(&#39;{&quot;a&quot;:5}&#39;)</code>//json字符串转js对象</li>
+</ul>
+</li>
+<li>是一个数据格式</li>
+</ul>
+</li>
+<li>js有哪些内置函数<ul>
+<li>Object</li>
+<li>Array</li>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+<li>Function(以上为构造函数)</li>
+<li>Date    </li>
+<li>RegExp</li>
+<li>Error</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/17/面试总结和知识梳理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/17/面试总结和知识梳理/" itemprop="url">面试总结和知识梳理</a></h1>
         
 
         <div class="post-meta">
@@ -305,7 +952,7 @@
       
         
           
-            <h2 id="1-自我介绍"><a href="#1-自我介绍" class="headerlink" title="1 自我介绍"></a>1 自我介绍</h2><p>我叫秦乐天，本科毕业于同济大学电子与信息工程学院信息安全专业，主要学习计算机科学方面的课程，研究生正就读于伦敦国王学院计算机系统与管理专业，（1学习方面）本科期间参加过程序设计比赛，数学建模和创新实践项目等，获得了上创免答辩立项，全国数学建模大赛二等奖等，本科毕业设计获得了同济大学优秀论文奖。（2工作经历方面）我曾经在饿了么，中科院自动化所和四川长虹股份有限公司的研发岗实习。（3特质）我认为自己的学习能力抗压能力都很强，本科期间自学了python和tensorflow等j机器学习相关工具，以及前端和对应的框架。擅长团队协作，本科期间作为组长带领团队获得了上海大学生创业大赛优秀项目奖。（4工作）我非常喜欢华为“以奋斗者为本”的理念，我一直都想通过自己的努力不断提升和进步，希望自己能够进入华为研发岗并尽自己的一份力</p>
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>整理下自己准备面试以及面试过程中所遇到的一些问题，包括自己曾经的项目内容的简单整理，以及一些基本的面试点</p>
 <h2 id="2-项目介绍"><a href="#2-项目介绍" class="headerlink" title="2 项目介绍"></a>2 项目介绍</h2><pre><code>简单介绍 采用技术/担任职责 主要问题&amp;解决方法 闪光点
 </code></pre><h3 id="2-1-上创："><a href="#2-1-上创：" class="headerlink" title="2.1 上创："></a>2.1 上创：</h3><ul>
 <li>小组组长 主要负责flask项目中的后端算法，参与前后端整合</li>
@@ -1625,8 +2272,7 @@
       
         
           
-            <p>####必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新</p>
-<p>数据结构</p>
+            <h4 id="必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新"><a href="#必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新" class="headerlink" title="必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新"></a>必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新</h4><p>数据结构</p>
 <ul>
 <li>表</li>
 <li>堆栈</li>
@@ -1973,7 +2619,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
