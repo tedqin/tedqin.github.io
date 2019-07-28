@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/05/15/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86Javascript/</loc>
+    
+    <lastmod>2019-07-28T16:08:44.434Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2019-07-25T14:41:55.720Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2018/07/15/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     
     <lastmod>2019-07-25T13:47:54.329Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/05/15/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86Javascript/</loc>
-    
-    <lastmod>2019-07-25T13:47:42.535Z</lastmod>
     
   </url>
   
