@@ -273,6 +273,315 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/vue2.0仿去哪儿网移动端Webapp遇到的问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/31/vue2.0仿去哪儿网移动端Webapp遇到的问题/" itemprop="url">vue2.0仿去哪儿网移动端Webapp遇到的问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T23:20:07+01:00">
+                2019-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="vue2-0仿去哪儿网移动端Webapp遇到的问题"><a href="#vue2-0仿去哪儿网移动端Webapp遇到的问题" class="headerlink" title="vue2.0仿去哪儿网移动端Webapp遇到的问题"></a>vue2.0仿去哪儿网移动端Webapp遇到的问题</h2><p>github地址：<a href="https://github.com/tedqin/Travel" target="_blank" rel="noopener">https://github.com/tedqin/Travel</a><br>demo：<a href="https://tedqin.github.io/Travel/" target="_blank" rel="noopener">https://tedqin.github.io/Travel/</a></p>
+<p>使用vue2.0对去哪儿网的移动端web页面的复现，做个总结。</p>
+<h2 id="为什么使用单页面应用"><a href="#为什么使用单页面应用" class="headerlink" title="为什么使用单页面应用"></a>为什么使用单页面应用</h2><h3 id="多页面应用"><a href="#多页面应用" class="headerlink" title="多页面应用"></a>多页面应用</h3><ul>
+<li>每次页面跳转，后端返回一个新的html<ul>
+<li>优点：首屏时间快、seo效果好（搜索引擎可以识别跳转的多个链接）</li>
+<li>缺点：页面切换慢（每次跳转需发送http请求）<h3 id="单页面应用"><a href="#单页面应用" class="headerlink" title="单页面应用"></a>单页面应用</h3></li>
+</ul>
+</li>
+<li>js感知路由变化，动态清除页面内容并将新页面渲染<ul>
+<li>优点：页面切换快</li>
+<li>缺点：首屏时间慢，seo差</li>
+</ul>
+</li>
+</ul>
+<h2 id="移动web端配置"><a href="#移动web端配置" class="headerlink" title="移动web端配置"></a>移动web端配置</h2><ul>
+<li>使用rem单位</li>
+<li>防止手指放大缩小页面，修改index.js</li>
+</ul>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, 
+initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;&gt;
+</code></pre><h2 id="组件开发"><a href="#组件开发" class="headerlink" title="组件开发"></a>组件开发</h2><p>合理拆分组件，提高开发效率。父组件通过import方式导入子组件，并且</p>
+<pre><code>export default {
+  name: &#39;xxx&#39;,
+  components: {注册子组件名}
+</code></pre><h2 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h2><p>使用场景：当组件的内容希望父组件去定制</p>
+<h2 id="stylus"><a href="#stylus" class="headerlink" title="stylus"></a>stylus</h2><p>style库，增加开发效率。<br>其中，<code>.a &gt;&gt;&gt; .b</code>具有穿透scoped限制的效果</p>
+<h2 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h2><p>为了防止图片加载的过程中，页面抖动（图片未加载完毕的时候，文字会在上方，加载完毕后会抖动）</p>
+<pre><code>.wrapper
+    width: 100%
+    height: 0
+    overflow: hidden
+    padding-bottom: 26.7% //图片的宽高比
+</code></pre><h2 id="vuex进行非父子组件数据传递"><a href="#vuex进行非父子组件数据传递" class="headerlink" title="vuex进行非父子组件数据传递"></a>vuex进行非父子组件数据传递</h2><h3 id="一般使用"><a href="#一般使用" class="headerlink" title="一般使用"></a>一般使用</h3><p>vuex中有几个关键：单向数据的改变过程<br><code>state</code>存放公用数据，组件改数据必须调用<code>actions</code>，做一些异步处理或者批量的同步操作。然后actions调用<code>mutations</code>，只有通过改变mutations的值才能改变state</p>
+<ul>
+<li>在state中设置默认值<br>  <code>attr = &#39;aaa&#39;</code></li>
+<li>在组件中通过dispatch向actions派发数据（如果没有异步请求，可以直接使用commit，跳过这步）<br>  <code>this.$store.dispatch(&#39;actionsName&#39;, data)</code></li>
+<li><p>在actions中通过commit向mutations发送数据</p>
+<pre><code>  actionnName(tcx, data) {
+      tcx.commit(&#39;mutationsName&#39;, data)
+      }
+</code></pre></li>
+<li><p>然后在mutations中修改state中的值</p>
+<pre><code>  mutationsName(state, data) {
+      state.attr = data
+      }
+</code></pre></li>
+</ul>
+<h3 id="高级使用"><a href="#高级使用" class="headerlink" title="高级使用"></a>高级使用</h3><ul>
+<li>引入mapState, mapMutations <code>import [mapState, mapMutations] from &#39;vuex</code></li>
+<li>把mapState添加到计算属性（compute）中，把mapMutations添加到方法（methods）中<pre><code>  computed: {
+      ...mapState({
+          currentCity: &#39;city
+      })
+  },
+  methods: {
+      ...mapMutations(
+          [&#39;changeCity&#39;]
+      )
+  }
+</code></pre></li>
+</ul>
+<h2 id="axios发送ajax请求"><a href="#axios发送ajax请求" class="headerlink" title="axios发送ajax请求"></a>axios发送ajax请求</h2><ul>
+<li>使用生命周期函数mounted函数获取ajax数据，此时vue实例被挂载，但dom还没有渲染，可以节省性能   </li>
+<li>请求url：<code>axios.get(&#39;xxx/xxx.json&#39;)</code></li>
+<li><p>axios返回的是promise对象，可以使用then</p>
+<pre><code>  methods: {
+      getCityInfo () {
+        axios.get(&#39;/Travel/static/mock/city.json&#39;)
+          .then(this.handleGetCityInfoSucc)
+      },
+      handleGetCityInfoSucc (res) {
+        res = res.data
+        if (res.ret &amp;&amp; res.data) {
+          const data = res.data
+          this.cities = data.cities
+          this.hotCities = data.hotCities
+        }
+        ...
+</code></pre></li>
+<li>对以上代码的解释：<ul>
+<li>在mounted钩子函数里面定义一个A方法，只要页面加载完毕就执行A方法</li>
+<li>A方法用于获取后端的数据，它是一个promise函数，只要获取到了函数就then一个B函数</li>
+<li>B函数可以接收一个res参数，这个参数就是返回的结果 </li>
+</ul>
+</li>
+<li>ajax请求一般放在最外层的组件，这样只需要一次请求就可以获取所有页面的内容</li>
+</ul>
+<h2 id="ajax获取动态数据"><a href="#ajax获取动态数据" class="headerlink" title="ajax获取动态数据"></a>ajax获取动态数据</h2><ul>
+<li>在路由里的地址后面写:id，表示把对应的id参数存在了id变量中</li>
+<li>在获取ajax请求的地址上，可以写<code>axios.get(&#39;xxx/xxx.json?id=&#39; + this.$route.params.id)</code></li>
+<li>也可以写<code>axios.get(&#39;xxx/xxx.json&#39;, {params: {id: this.$route.params.id}})</code></li>
+</ul>
+<h2 id="router-link"><a href="#router-link" class="headerlink" title="router-link"></a>router-link</h2><ul>
+<li>vue中的内置路由组件<br>  <code>&lt;router-link to=&#39;/city&#39;&gt;&lt;/router-link&gt;</code>  </li>
+<li>使用前先在router/index.js中配置路由  </li>
+<li>可以通过配置tag属性改成别的标签</li>
+</ul>
+<h2 id="单行内容超出范围"><a href="#单行内容超出范围" class="headerlink" title="单行内容超出范围"></a>单行内容超出范围</h2><p>当单行文字内容超出显示范围，而显示<code>......</code>时，可以</p>
+<pre><code>overflow: hidden
+white-space: nowrap
+text-overflow: ellipsis
+</code></pre><h2 id="betterscroll"><a href="#betterscroll" class="headerlink" title="betterscroll"></a>betterscroll</h2><p>页面滚动插件</p>
+<h2 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h2><p>当鼠标在字母表上来回移动的时候，touchMove执行的频率是非常高的，通过函数节流限制下执行的频率：增加延时器</p>
+<h2 id="localstorage"><a href="#localstorage" class="headerlink" title="localstorage"></a>localstorage</h2><p>自动缓存，刷新页面的时候已经选择的城市不发生改变</p>
+<ul>
+<li>相当于cookie，但是用法要简单很多</li>
+<li>用法：<br>  <code>localStorage.arrt = va;ue</code></li>
+<li>最好使用try catch包裹，因为在部分浏览器会报错</li>
+</ul>
+<h2 id="keepalive"><a href="#keepalive" class="headerlink" title="keepalive"></a>keepalive</h2><p>优化问题：缓存页面数据，防止切换页面会发生多次ajax请求</p>
+<pre><code>&lt;keep-alive&gt;
+    &lt;router-view/&gt;
+&lt;/keep-alive&gt;
+</code></pre><p>它的意思是，路由内容每被加载一次，就把路由中的内容放到内存之中，下一次再进这个路由的时候，不需要再次渲染这个组件去重新执行钩子函数，只需要你从内存把以前的内容拿出来显示到页面上就可以</p>
+<h2 id="组件中name属性"><a href="#组件中name属性" class="headerlink" title="组件中name属性"></a>组件中name属性</h2><ul>
+<li>在递归组件时使用</li>
+<li>keepalive取消缓存在exclude=’组件name’中使用</li>
+<li>vue devtool调试工具中显示项目结构的名字</li>
+</ul>
+<h2 id="组件异步加载"><a href="#组件异步加载" class="headerlink" title="组件异步加载"></a>组件异步加载</h2><p>正常情况下，单页应用会在进入首页时加载所有组件<br>可以删除import特定的组件，然后通过<code>component: () =&gt; import(&#39;@/pages/home/Home)</code>按需加载</p>
+<h2 id="全局事件解绑"><a href="#全局事件解绑" class="headerlink" title="全局事件解绑"></a>全局事件解绑</h2><ul>
+<li>window是全局事件，无论那个页面都会监听这个事件，会影响到其他页面，所以要解绑</li>
+<li>在有keep-alive时会出现两个新的钩子函数：<ul>
+<li>activated 在页面被显示时执行</li>
+<li>deactivated 在页面即将被隐藏或页面被替换的时候执行 </li>
+</ul>
+</li>
+</ul>
+<h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><ul>
+<li>@表示src目录</li>
+<li>es6中，键值对相同写一个就可以</li>
+</ul>
+<h2 id="组件一览"><a href="#组件一览" class="headerlink" title="组件一览"></a>组件一览</h2><ul>
+<li>home <ul>
+<li>Header 头部 </li>
+<li>Icon 原型图标区域 </li>
+<li>Recommend 推荐 </li>
+<li>Swiper 图片轮播 </li>
+<li>Weekend 周末推荐</li>
+</ul>
+</li>
+<li>city <ul>
+<li>Header 头部 </li>
+<li>Alphabet 右侧城市首字母下拉列表 </li>
+<li>List 城市列表 </li>
+<li>Search 搜索</li>
+</ul>
+</li>
+<li>detail <ul>
+<li>Header 头部 </li>
+<li>Banner 主页面 </li>
+<li>List 图片详情页的轮播</li>
+</ul>
+</li>
+</ul>
+<h2 id="部署到GitHub-pages"><a href="#部署到GitHub-pages" class="headerlink" title="部署到GitHub pages"></a>部署到GitHub pages</h2><p>参考 <a href="https://medium.com/@Roli_Dori/deploy-vue-cli-3-project-to-github-pages-ebeda0705fbd" target="_blank" rel="noopener">https://medium.com/@Roli_Dori/deploy-vue-cli-3-project-to-github-pages-ebeda0705fbd</a></p>
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><p>后期更新</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/javascript整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2678,6 +2987,197 @@ localStorage.getItem(key)</pre>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/13/learningJS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/13/learningJS/" itemprop="url">learningJS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-13T17:02:36+00:00">
+                2018-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="output-is-the-best-input，以下每一项都可以单独写一篇文章"><a href="#output-is-the-best-input，以下每一项都可以单独写一篇文章" class="headerlink" title="output is the best input，以下每一项都可以单独写一篇文章"></a>output is the best input，以下每一项都可以单独写一篇文章</h5><h2 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h2><ul>
+<li>原型、原型链</li>
+<li>闭包</li>
+<li>es6的新特性</li>
+<li><p>作用域 </p>
+<ul>
+<li>全局和局部环境 </li>
+<li>var let const的区别</li>
+</ul>
+</li>
+<li><p>ajax xhr</p>
+</li>
+<li>this 箭头函数</li>
+<li>事件绑定、监听、委托、代理</li>
+<li>继承</li>
+<li>常用数组方法</li>
+<li>defer和async</li>
+<li>虚拟dom</li>
+</ul>
+<h2 id="html"><a href="#html" class="headerlink" title="html"></a>html</h2><ul>
+<li>html的语义标签</li>
+<li>html5新特性</li>
+<li>canvas</li>
+</ul>
+<h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><ul>
+<li>bootstrap</li>
+</ul>
+<h2 id="dom"><a href="#dom" class="headerlink" title="dom"></a>dom</h2><ul>
+<li>定位元素的几种方法</li>
+<li>遍历</li>
+</ul>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul>
+<li>渲染和绘制</li>
+<li>兼容性</li>
+<li>布局</li>
+</ul>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><ul>
+<li>webpack</li>
+</ul>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/cpp笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3265,430 +3765,6 @@ localStorage.getItem(key)</pre>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/用CNN实现深度生成对抗网络GAN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/10/用CNN实现深度生成对抗网络GAN/" itemprop="url">用CNN实现深度生成对抗网络GAN</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-10T22:32:01+01:00">
-                2018-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
-                    <span itemprop="name">machine learning</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/machine-learning/gan/" itemprop="url" rel="index">
-                    <span itemprop="name">gan</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><p>生成对抗网络（Generative Adversarial Network，GAN）是近几年很热门的一种深度学习神经网络模型，是目前在复杂分布上进行无监督学习最前沿的模型之一，这个概念由Ian Goodfellow和Yoshua Bengio等人在2014年提出，GAN的核心思想源自博弈论，它通过构造生成器（Generator）和判别器（Discriminator）在训练过程中互相博弈学习，最终得到理想的结果。其中生成器的目的在于生成虚假的样本分布，判别器的目的在于判别出输入的样本是否真实。由于GAN模型“博弈”的这一特点，它已经开始被应用到语音和语言处理、电脑病毒监测、棋类比赛程序等问题的研究当中。另外，GAN最常用的领域还是图像处理和计算机视觉，进行图像生成，构成各种逼真的室内外场景。</p>
-<h2 id="GAN的基本模型"><a href="#GAN的基本模型" class="headerlink" title="GAN的基本模型"></a>GAN的基本模型</h2><p><img src="https://i.imgur.com/nRb1Q8a.png" alt=""></p>
-<h2 id="CNN实现GAN"><a href="#CNN实现GAN" class="headerlink" title="CNN实现GAN"></a>CNN实现GAN</h2><p>GAN提出的是一种对抗模型的思想，而要实现它，目前流行的是使用感知器或者多层神经网络。而用CNN来实现，可以大大解决GAN难以训练和不够稳定的问题，并且可以提高生成样本的质量、收敛速度，以及拓展维度。<br>CNN实现的改进：</p>
-<ul>
-<li>去掉了G和D中的池化层（pooling layer），并用微步幅卷积替代，能够分别使得G和D的下采样和上采样效率更高。</li>
-<li>在G和D中使用批量规范化（Batch Normalization），通过将输入的每个样本单元标准化为0均值和单位方差来稳定学习，这有助于处理初始化不良导致的训练问题，也有助于梯度流向更深的网络层。</li>
-<li>去掉最后一层卷积层后面的全连接层（fully layer），将生成器和判别器直接相连，能够有效提高模型收敛速率。</li>
-<li>生成器中除了输出层采用Tanh激活函数，其余所有层都采用ReLU激活函数。</li>
-<li>判别器中所有层都采用Leaky ReLU激活函数。</li>
-</ul>
-<h2 id="模型设计"><a href="#模型设计" class="headerlink" title="模型设计"></a>模型设计</h2><h3 id="生成器模型"><a href="#生成器模型" class="headerlink" title="生成器模型"></a>生成器模型</h3><p>生成器的网络由4层卷积层构成</p>
-<ul>
-<li>第1层：卷积核大小为5”×” 5，步长2，“same”填充，深度512，输出样本尺寸8”×” 8，生成函数ReLU</li>
-<li>第2层：卷积核大小为5”×” 5，步长2，“same”填充，深度256，输出样本尺寸16”×” 16，生成函数ReLU</li>
-<li>第3层：卷积核大小为5”×” 5，步长2，“same”填充，深度128，输出样本尺寸32”×” 32，生成函数ReLU</li>
-<li>第4层：卷积核大小为5”×” 5，步长2，“same”填充，深度3，输出样本尺寸64”×” 64，生成函数Tanh</li>
-</ul>
-<p><img src="https://i.imgur.com/3mgI8Vf.png" alt=""></p>
-<h3 id="判别器模型"><a href="#判别器模型" class="headerlink" title="判别器模型"></a>判别器模型</h3><p>判别器的4层卷积层具体如下：</p>
-<ul>
-<li>第1层：卷积核大小为5”×” 5，步长2，“same”填充，深度64，输出样本尺寸32”×” 32，生成函数Leaky ReLU。</li>
-<li>第2层：卷积核大小为5”×” 5，步长2，“same”填充，深度128，输出样本尺寸16”×” 16，生成函数Leaky ReLU。</li>
-<li>第3层：卷积核大小为5”×” 5，步长2，“same”填充，深度256，输出样本尺寸8”×” 8，生成函数Leaky ReLU。</li>
-<li>第4层：卷积核大小为5”×” 5，步长2，“same”填充，深度512，输出样本尺寸4”×” 4，生成函数Sigmoid。</li>
-</ul>
-<p><img src="https://i.imgur.com/Olp9lpp.png" alt=""></p>
-<h3 id="构建模型"><a href="#构建模型" class="headerlink" title="构建模型"></a>构建模型</h3><ul>
-<li><p>构建生成器模型<br><pre>def generator(self, z):<br>  self.z_, self.h0_w, self.h0_b = linear(z, self.gf_dim<em>8</em>4*4,</pre></p>
-<pre><code>                                     &#39;g_h0_lin&#39;, with_w=True)
-</code></pre><p>  self.h0 = tf.reshape(self.z_, [-1, 4, 4, self.gf_dim * 8])<br>h0 = tf.nn.relu(self.g_bn0(self.h0))</p>
-</li>
-</ul>
-<p>//第1层微步幅卷积层<br>    self.h1, self.h1_w, self.h1_b = conv2d_transpose(h0,[self.batch_size, 8, 8, self.gf_dim*4], name=’g_h1’, with_w=True)<br>h1 = tf.nn.relu(self.g_bn1(self.h1))</p>
-<p>//第2层微步幅卷积层<br>    h2, self.h2_w, self.h2_b = conv2d_transpose(h1,<br>        [self.batch_size, 16, 16, self.gf_dim*2], name=’g_h2’, with_w=True)<br>h2 = tf.nn.relu(self.g_bn2(h2))</p>
-<p>//第3层微步幅卷积层<br>    h3, self.h3_w, self.h3_b = conv2d_transpose(h2,<br>        [self.batch_size, 32, 32, self.gf_dim*1], name=’g_h3’, with_w=True)<br>    h3 = tf.nn.relu(self.g_bn3(h3))</p>
-<p>//第4层微步幅卷积层，4层微步幅卷积后，矩阵维度变为（64, 64, 3）<br>    h4, self.h4_w, self.h4_b = conv2d_transpose(h3,<br>        [self.batch_size, 64, 64, 3], name=’g_h4’, with_w=True)<br>    return tf.nn.tanh(h4)</p>
-<p></p>
-<ul>
-<li>构建判别器模型<br><pre><br>def discriminator(self, image, reuse=False):<br>//第1层卷积<br>h0 = lrelu(conv2d(image, self.df_dim, name=’d_h0_conv’))</pre></li>
-</ul>
-<p>//第2层卷积<br>h1 = lrelu(self.d_bn1(conv2d(h0, self.df_dim*2, name=’d_h1_conv’)))</p>
-<p>//第3层卷积<br>h2 = lrelu(self.d_bn2(conv2d(h1, self.df_dim*4, name=’d_h2_conv’)))</p>
-<p>//第4层卷积<br>    h3 = lrelu(self.d_bn3(conv2d(h2, self.df_dim*8, name=’d_h3_conv’)))<br>    h4 = linear(tf.reshape(h3, [-1, 8192]), 1, ‘d_h3_lin’)<br>    return tf.nn.sigmoid(h4), h4<br></p>
-<ul>
-<li>构建优化器<br><pre><br>//判别器优化器，最小化损失函数<br>d_optim = tf.train.AdamOptimizer(config.learning_rate, beta1=config.beta1) \<pre><code>              .minimize(self.d_loss, var_list=self.d_vars)
-</code></pre>//判别器优化器，最小化损失函数<br>g_optim = tf.train.AdamOptimizer(config.learning_rate, beta1=config.beta1) \<pre><code>              .minimize(self.g_loss, var_list=self.g_vars)
-</code></pre></pre></li>
-</ul>
-<p></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/基础知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/15/基础知识/" itemprop="url">目前的learning plan</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-15T21:23:22+01:00">
-                2018-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基础知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新"><a href="#必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新" class="headerlink" title="必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新"></a>必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新</h4><p>数据结构</p>
-<ul>
-<li>表</li>
-<li>堆栈</li>
-<li>队列</li>
-<li>数组</li>
-<li><p>树</p>
-<ul>
-<li>完全二叉树：除了最后一层以外，其余层必满；最后一层可以是满，如果不满，则节点必须集中在左边</li>
-<li>最大堆：1.必须是完全二叉树 2.节点的值必须大于左右子树的值</li>
-<li>二叉搜索树：左孩子比父母小，右孩子比父母大。</li>
-<li>avl树：一种平衡二叉搜索树，并且任意节点的孩子节点高度差最大为1.</li>
-<li>平衡因子：某节点的平衡因子是该节点左子树的高度减右子树的高度（avl只能是0，1，-1</li>
-<li><p>红黑树：</p>
-<p>  节点是红色或黑色。<br>  根是黑色。<br>  每个红色节点必须有两个黑色的子节点。（从每个叶子到根的所有路径上不能有两个连续的红色节点。）<br>  从任一节点到其每个叶子的所有简单路径都包含相同数目的黑色节点。</p>
-</li>
-</ul>
-</li>
-<li>图</li>
-</ul>
-<p>算法</p>
-<ul>
-<li>排序</li>
-<li>查找</li>
-<li>hash</li>
-<li>算法思想-递归</li>
-<li>算法思想-贪心</li>
-<li>算法思想-回溯</li>
-<li>算法思想-分支</li>
-<li>算法思想-动态规划</li>
-</ul>
-<p>数据库</p>
-<ul>
-<li>索引</li>
-<li>视图</li>
-<li>触发器</li>
-<li>范式</li>
-<li>锁</li>
-<li>存储过程</li>
-<li>事物</li>
-<li>B+树</li>
-<li>E-R图</li>
-<li>3.10补充-mysql、mongodb</li>
-</ul>
-<p>操作系统</p>
-<ul>
-<li><p>并发性（concurrence）</p>
-<p>  在一个系统（或者一段时间）中，有多个同时执行的程序进行计算，并且它们之间存在潜在的交互。优点：资源利用率高、程序设计更简化、程序响应更快、系统性能更高；缺点：存在并发性的系统会有不同的程序运行路径，所以系统的处理结果会有不确定性。</p>
-</li>
-<li><p>进程（process）、线程（thread）</p>
-<p>  一个应用程序包含一个或多个相互协作的进程。</p>
-<pre><code>  进程：一块包含一些资源的内存区域，组成为一段一定大小（4GB）的线性内存空间。
-
-  线程：进程中包含的一个或多个执行单元，无内存空间，只有指针、栈、寄存器、数据区。
-</code></pre><p>  一个程序至少有一个进程，一个进程至少有一个线程。进程和线程都是系统（程序）的执行单元。<br>  差别：进程具有独立的地址空间（供它包含的线程访问），线程没有，所以如果一个进程崩溃，在保护模式下不会对其他进程产生影响；而一个线程死掉就等于整个进程死掉（多进程程序比多线程程序健壮），但是进程切换时耗费的资源多，效率差。</p>
-</li>
-<li><p>异步、同步处理、阻塞和非阻塞</p>
-<pre><code>  同步调用：调用之后就能得到结果
-  异步调用：调用之后需要其他方法（状态、通知、回调函数）来得到结果。
-  同步线程：两个线程的步调要一致，如果二者运行速度不一样，则快的等慢的（快的阻塞一下等慢的）。
-  异步线程：两个线程的步调不一致，各自独立运行。
-  同步I/O：不发送成功或失败状态，一直等待。
-  异步I/O：输入/输出时立即返回成功或失败的状态。
-</code></pre><p>  阻塞：进程或线程停止。</p>
-<pre><code>  阻塞I/O：资源不可用时（输入/输出未完成，I/O一直阻塞，直到完成。
-  非阻塞I/O：资源不可用超过一定时间后，直接结束本次I/O。
-</code></pre></li>
-<li><p>调度、死锁</p>
-<p>  死锁：两个或多个执行单元之间相互等待对方结束而引起阻塞的情况。</p>
-<pre><code>  例：T1有R1的访问权、T2有R2的访问权。
-      T1想访问R2，同时T2想访问R1，此时T1和T2都要等待对方给出权限，形成死锁。
-</code></pre></li>
-<li>存储器管理</li>
-<li>文件管理</li>
-<li>IO阻塞</li>
-<li>用户态、核心态</li>
-</ul>
-<p>nodejs</p>
-<pre><code>express框架、es6、es7
-</code></pre><p>前端框架</p>
-<pre><code>react、vuejs、angularjs
-</code></pre><p>IOS开发</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3739,7 +3815,7 @@ localStorage.getItem(key)</pre>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -3750,7 +3826,7 @@ localStorage.getItem(key)</pre>
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -3761,7 +3837,7 @@ localStorage.getItem(key)</pre>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

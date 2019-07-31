@@ -273,6 +273,430 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/用CNN实现深度生成对抗网络GAN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/10/用CNN实现深度生成对抗网络GAN/" itemprop="url">用CNN实现深度生成对抗网络GAN</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-10T22:32:01+01:00">
+                2018-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">machine learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/gan/" itemprop="url" rel="index">
+                    <span itemprop="name">gan</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><p>生成对抗网络（Generative Adversarial Network，GAN）是近几年很热门的一种深度学习神经网络模型，是目前在复杂分布上进行无监督学习最前沿的模型之一，这个概念由Ian Goodfellow和Yoshua Bengio等人在2014年提出，GAN的核心思想源自博弈论，它通过构造生成器（Generator）和判别器（Discriminator）在训练过程中互相博弈学习，最终得到理想的结果。其中生成器的目的在于生成虚假的样本分布，判别器的目的在于判别出输入的样本是否真实。由于GAN模型“博弈”的这一特点，它已经开始被应用到语音和语言处理、电脑病毒监测、棋类比赛程序等问题的研究当中。另外，GAN最常用的领域还是图像处理和计算机视觉，进行图像生成，构成各种逼真的室内外场景。</p>
+<h2 id="GAN的基本模型"><a href="#GAN的基本模型" class="headerlink" title="GAN的基本模型"></a>GAN的基本模型</h2><p><img src="https://i.imgur.com/nRb1Q8a.png" alt=""></p>
+<h2 id="CNN实现GAN"><a href="#CNN实现GAN" class="headerlink" title="CNN实现GAN"></a>CNN实现GAN</h2><p>GAN提出的是一种对抗模型的思想，而要实现它，目前流行的是使用感知器或者多层神经网络。而用CNN来实现，可以大大解决GAN难以训练和不够稳定的问题，并且可以提高生成样本的质量、收敛速度，以及拓展维度。<br>CNN实现的改进：</p>
+<ul>
+<li>去掉了G和D中的池化层（pooling layer），并用微步幅卷积替代，能够分别使得G和D的下采样和上采样效率更高。</li>
+<li>在G和D中使用批量规范化（Batch Normalization），通过将输入的每个样本单元标准化为0均值和单位方差来稳定学习，这有助于处理初始化不良导致的训练问题，也有助于梯度流向更深的网络层。</li>
+<li>去掉最后一层卷积层后面的全连接层（fully layer），将生成器和判别器直接相连，能够有效提高模型收敛速率。</li>
+<li>生成器中除了输出层采用Tanh激活函数，其余所有层都采用ReLU激活函数。</li>
+<li>判别器中所有层都采用Leaky ReLU激活函数。</li>
+</ul>
+<h2 id="模型设计"><a href="#模型设计" class="headerlink" title="模型设计"></a>模型设计</h2><h3 id="生成器模型"><a href="#生成器模型" class="headerlink" title="生成器模型"></a>生成器模型</h3><p>生成器的网络由4层卷积层构成</p>
+<ul>
+<li>第1层：卷积核大小为5”×” 5，步长2，“same”填充，深度512，输出样本尺寸8”×” 8，生成函数ReLU</li>
+<li>第2层：卷积核大小为5”×” 5，步长2，“same”填充，深度256，输出样本尺寸16”×” 16，生成函数ReLU</li>
+<li>第3层：卷积核大小为5”×” 5，步长2，“same”填充，深度128，输出样本尺寸32”×” 32，生成函数ReLU</li>
+<li>第4层：卷积核大小为5”×” 5，步长2，“same”填充，深度3，输出样本尺寸64”×” 64，生成函数Tanh</li>
+</ul>
+<p><img src="https://i.imgur.com/3mgI8Vf.png" alt=""></p>
+<h3 id="判别器模型"><a href="#判别器模型" class="headerlink" title="判别器模型"></a>判别器模型</h3><p>判别器的4层卷积层具体如下：</p>
+<ul>
+<li>第1层：卷积核大小为5”×” 5，步长2，“same”填充，深度64，输出样本尺寸32”×” 32，生成函数Leaky ReLU。</li>
+<li>第2层：卷积核大小为5”×” 5，步长2，“same”填充，深度128，输出样本尺寸16”×” 16，生成函数Leaky ReLU。</li>
+<li>第3层：卷积核大小为5”×” 5，步长2，“same”填充，深度256，输出样本尺寸8”×” 8，生成函数Leaky ReLU。</li>
+<li>第4层：卷积核大小为5”×” 5，步长2，“same”填充，深度512，输出样本尺寸4”×” 4，生成函数Sigmoid。</li>
+</ul>
+<p><img src="https://i.imgur.com/Olp9lpp.png" alt=""></p>
+<h3 id="构建模型"><a href="#构建模型" class="headerlink" title="构建模型"></a>构建模型</h3><ul>
+<li><p>构建生成器模型<br><pre>def generator(self, z):<br>  self.z_, self.h0_w, self.h0_b = linear(z, self.gf_dim<em>8</em>4*4,</pre></p>
+<pre><code>                                     &#39;g_h0_lin&#39;, with_w=True)
+</code></pre><p>  self.h0 = tf.reshape(self.z_, [-1, 4, 4, self.gf_dim * 8])<br>h0 = tf.nn.relu(self.g_bn0(self.h0))</p>
+</li>
+</ul>
+<p>//第1层微步幅卷积层<br>    self.h1, self.h1_w, self.h1_b = conv2d_transpose(h0,[self.batch_size, 8, 8, self.gf_dim*4], name=’g_h1’, with_w=True)<br>h1 = tf.nn.relu(self.g_bn1(self.h1))</p>
+<p>//第2层微步幅卷积层<br>    h2, self.h2_w, self.h2_b = conv2d_transpose(h1,<br>        [self.batch_size, 16, 16, self.gf_dim*2], name=’g_h2’, with_w=True)<br>h2 = tf.nn.relu(self.g_bn2(h2))</p>
+<p>//第3层微步幅卷积层<br>    h3, self.h3_w, self.h3_b = conv2d_transpose(h2,<br>        [self.batch_size, 32, 32, self.gf_dim*1], name=’g_h3’, with_w=True)<br>    h3 = tf.nn.relu(self.g_bn3(h3))</p>
+<p>//第4层微步幅卷积层，4层微步幅卷积后，矩阵维度变为（64, 64, 3）<br>    h4, self.h4_w, self.h4_b = conv2d_transpose(h3,<br>        [self.batch_size, 64, 64, 3], name=’g_h4’, with_w=True)<br>    return tf.nn.tanh(h4)</p>
+<p></p>
+<ul>
+<li>构建判别器模型<br><pre><br>def discriminator(self, image, reuse=False):<br>//第1层卷积<br>h0 = lrelu(conv2d(image, self.df_dim, name=’d_h0_conv’))</pre></li>
+</ul>
+<p>//第2层卷积<br>h1 = lrelu(self.d_bn1(conv2d(h0, self.df_dim*2, name=’d_h1_conv’)))</p>
+<p>//第3层卷积<br>h2 = lrelu(self.d_bn2(conv2d(h1, self.df_dim*4, name=’d_h2_conv’)))</p>
+<p>//第4层卷积<br>    h3 = lrelu(self.d_bn3(conv2d(h2, self.df_dim*8, name=’d_h3_conv’)))<br>    h4 = linear(tf.reshape(h3, [-1, 8192]), 1, ‘d_h3_lin’)<br>    return tf.nn.sigmoid(h4), h4<br></p>
+<ul>
+<li>构建优化器<br><pre><br>//判别器优化器，最小化损失函数<br>d_optim = tf.train.AdamOptimizer(config.learning_rate, beta1=config.beta1) \<pre><code>              .minimize(self.d_loss, var_list=self.d_vars)
+</code></pre>//判别器优化器，最小化损失函数<br>g_optim = tf.train.AdamOptimizer(config.learning_rate, beta1=config.beta1) \<pre><code>              .minimize(self.g_loss, var_list=self.g_vars)
+</code></pre></pre></li>
+</ul>
+<p></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/15/基础知识/" itemprop="url">目前的learning plan</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-15T21:23:22+01:00">
+                2018-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">基础知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新"><a href="#必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新" class="headerlink" title="必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新"></a>必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新</h4><p>数据结构</p>
+<ul>
+<li>表</li>
+<li>堆栈</li>
+<li>队列</li>
+<li>数组</li>
+<li><p>树</p>
+<ul>
+<li>完全二叉树：除了最后一层以外，其余层必满；最后一层可以是满，如果不满，则节点必须集中在左边</li>
+<li>最大堆：1.必须是完全二叉树 2.节点的值必须大于左右子树的值</li>
+<li>二叉搜索树：左孩子比父母小，右孩子比父母大。</li>
+<li>avl树：一种平衡二叉搜索树，并且任意节点的孩子节点高度差最大为1.</li>
+<li>平衡因子：某节点的平衡因子是该节点左子树的高度减右子树的高度（avl只能是0，1，-1</li>
+<li><p>红黑树：</p>
+<p>  节点是红色或黑色。<br>  根是黑色。<br>  每个红色节点必须有两个黑色的子节点。（从每个叶子到根的所有路径上不能有两个连续的红色节点。）<br>  从任一节点到其每个叶子的所有简单路径都包含相同数目的黑色节点。</p>
+</li>
+</ul>
+</li>
+<li>图</li>
+</ul>
+<p>算法</p>
+<ul>
+<li>排序</li>
+<li>查找</li>
+<li>hash</li>
+<li>算法思想-递归</li>
+<li>算法思想-贪心</li>
+<li>算法思想-回溯</li>
+<li>算法思想-分支</li>
+<li>算法思想-动态规划</li>
+</ul>
+<p>数据库</p>
+<ul>
+<li>索引</li>
+<li>视图</li>
+<li>触发器</li>
+<li>范式</li>
+<li>锁</li>
+<li>存储过程</li>
+<li>事物</li>
+<li>B+树</li>
+<li>E-R图</li>
+<li>3.10补充-mysql、mongodb</li>
+</ul>
+<p>操作系统</p>
+<ul>
+<li><p>并发性（concurrence）</p>
+<p>  在一个系统（或者一段时间）中，有多个同时执行的程序进行计算，并且它们之间存在潜在的交互。优点：资源利用率高、程序设计更简化、程序响应更快、系统性能更高；缺点：存在并发性的系统会有不同的程序运行路径，所以系统的处理结果会有不确定性。</p>
+</li>
+<li><p>进程（process）、线程（thread）</p>
+<p>  一个应用程序包含一个或多个相互协作的进程。</p>
+<pre><code>  进程：一块包含一些资源的内存区域，组成为一段一定大小（4GB）的线性内存空间。
+
+  线程：进程中包含的一个或多个执行单元，无内存空间，只有指针、栈、寄存器、数据区。
+</code></pre><p>  一个程序至少有一个进程，一个进程至少有一个线程。进程和线程都是系统（程序）的执行单元。<br>  差别：进程具有独立的地址空间（供它包含的线程访问），线程没有，所以如果一个进程崩溃，在保护模式下不会对其他进程产生影响；而一个线程死掉就等于整个进程死掉（多进程程序比多线程程序健壮），但是进程切换时耗费的资源多，效率差。</p>
+</li>
+<li><p>异步、同步处理、阻塞和非阻塞</p>
+<pre><code>  同步调用：调用之后就能得到结果
+  异步调用：调用之后需要其他方法（状态、通知、回调函数）来得到结果。
+  同步线程：两个线程的步调要一致，如果二者运行速度不一样，则快的等慢的（快的阻塞一下等慢的）。
+  异步线程：两个线程的步调不一致，各自独立运行。
+  同步I/O：不发送成功或失败状态，一直等待。
+  异步I/O：输入/输出时立即返回成功或失败的状态。
+</code></pre><p>  阻塞：进程或线程停止。</p>
+<pre><code>  阻塞I/O：资源不可用时（输入/输出未完成，I/O一直阻塞，直到完成。
+  非阻塞I/O：资源不可用超过一定时间后，直接结束本次I/O。
+</code></pre></li>
+<li><p>调度、死锁</p>
+<p>  死锁：两个或多个执行单元之间相互等待对方结束而引起阻塞的情况。</p>
+<pre><code>  例：T1有R1的访问权、T2有R2的访问权。
+      T1想访问R2，同时T2想访问R1，此时T1和T2都要等待对方给出权限，形成死锁。
+</code></pre></li>
+<li>存储器管理</li>
+<li>文件管理</li>
+<li>IO阻塞</li>
+<li>用户态、核心态</li>
+</ul>
+<p>nodejs</p>
+<pre><code>express框架、es6、es7
+</code></pre><p>前端框架</p>
+<pre><code>react、vuejs、angularjs
+</code></pre><p>IOS开发</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/《深入浅出NodeJS》读书笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -516,7 +940,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -527,7 +951,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -538,7 +962,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
