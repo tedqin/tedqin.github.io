@@ -273,6 +273,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/牛客网JavascriptV8输入格式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/03/牛客网JavascriptV8输入格式/" itemprop="url">牛客网JavascriptV8输入格式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-03T23:38:20+01:00">
+                2019-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>相比Leetcode，牛客和赛码网等网站对于Javascript真的太不友好了，光是输入就可以折腾半天。整理了一下牛客网上Javascript V8的输入</p>
+<ol>
+<li><p>输入一行，空格隔开</p>
+<pre><code> 1 2
+</code></pre><pre><code> while (line = readline()) {
+     var lines = line.split(&#39; &#39;)
+     var a = parseInt(lines[0])
+     var b = parseInt(lines[1])
+ }
+ console.log(a, b)
+
+</code></pre></li>
+<li><p>多行，每行输入一个</p>
+<pre><code> 2
+ 1
+ 2
+</code></pre><pre><code> var lines = []
+ while (line = readline()) {
+     lines.push(parseInt(line))
+ }
+
+ console.log(lines)
+</code></pre></li>
+<li><p>多行，第一行为参数,后面行为数组</p>
+<pre><code> //第一行为参数m和n，接下里为数组
+ 2 3 //m, n
+ 1 2 3 4 
+ 11 22 33 44 
+</code></pre><pre><code> var lines = readline().split(&#39; &#39;)
+ var n = parseInt(lines[0])
+ var m = parseInt(lines[1])
+ var Arr1 = readline().split(&#39; &#39;)
+ var Arr2 = readline().split(&#39; &#39;)
+
+ console.log(n,m,Arr1,Arr2)
+
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/vue2.0仿去哪儿网移动端Webapp遇到的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1804,10 +1983,14 @@ localStorage.getItem(key)</pre>
       
         
           
-            <h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><p>标签：p{}<br>class: .class{}<br>同一类，不同标签： p.class{}<br>同一标签，多个类：p.class1{} .class2{<br>id：#id {}<br>集体选择器：p,.class1,#id1 {}<br>后代选择器：<code>&lt;p&gt;&lt;em&gt;&lt;a&gt;123&lt;a&gt;&lt;/em&gt;&lt;/p&gt;</code>:p em a {}<br>链接伪类 <code>:link</code>:未访问的链接 <code>:visited</code>：已访问的链接 <code>:hover</code>：鼠标悬停状态 <code>:active</code>：鼠标点击到松开的阶段<br>（hover和active可用于任何标签）</p>
-<h2 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h2><p>文字粗细：<code>font-weight: normal/bold</code><br>文字斜度：<code>font-style: normal/italic/oblique</code><br>文字粗细：<code>font-weight: 600</code><br>文字粗细：<code>font-weight: 600</code><br>文字粗细：<code>font-weight: 600</code>  </p>
+            <h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><p><img src="https://i.imgur.com/WXXW3BE.png" alt=""></p>
+<p>标签：p{}<br>class: .class{}<br>同一类，不同标签： p.class{}<br>同一标签，多个类：p.class1{} .class2{<br>id：#id {}<br>集体选择器：p,.class1,#id1 {}<br>后代选择器：<code>&lt;p&gt;&lt;em&gt;&lt;a&gt;123&lt;a&gt;&lt;/em&gt;&lt;/p&gt;</code>:p em a {}<br>链接伪类 <code>:link</code>:未访问的链接 <code>:visited</code>：已访问的链接 <code>:hover</code>：鼠标悬停状态 <code>:active</code>：鼠标点击到松开的阶段<br>（hover和active可用于任何标签）<br>权重：id &gt; 类 属性 伪类 &gt; 元素 伪元素 &gt; 其他  </p>
+<h2 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h2><p>文字粗细：<code>font-weight: normal/bold</code><br>文字斜度：<code>font-style: normal/italic/oblique</code><br>文字粗细：<code>font-weight: 600</code>    </p>
+<h3 id="装饰器属性"><a href="#装饰器属性" class="headerlink" title="装饰器属性"></a>装饰器属性</h3><p>字重（粗体）font-weight<br>斜体 font-style<br>下划线 text-decoration<br>指针 cursor</p>
 <h2 id="文本对齐方式"><a href="#文本对齐方式" class="headerlink" title="文本对齐方式"></a>文本对齐方式</h2><p>文本水平对齐方式：<code>text-align: left/right/center/justify</code><br>左对齐/右对齐/居中对齐/两端对齐 只对块级元素有效 </p>
-<h2 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h2><p>首行缩进：<code>text-indent: 2em</code><br>行高：<code>line-height: 120em</code> 最好用em防止字体过大导致显示不全</p>
+<h2 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h2><p>首行缩进：<code>text-indent: 2em</code><br>行高：<code>line-height: 120em</code> 最好用em防止字体过大导致显示不全<br>注意：图片是按照inline元素做的排版，会涉及字体对齐，默认按照baseline对齐，和底线有空隙。 为了删除这个空隙，可以直接<code>vertical-align: bottom</code>或者<code>display: block</code></p>
+<h2 id="滚动"><a href="#滚动" class="headerlink" title="滚动"></a>滚动</h2><p>overflow  </p>
+<p><img src="https://i.imgur.com/f8LJyC0.png" alt=""></p>
 <h2 id="元素内容的垂直方式"><a href="#元素内容的垂直方式" class="headerlink" title="元素内容的垂直方式"></a>元素内容的垂直方式</h2><p>只对行内元素有效<br><code>vertical-align: sub/supper/</code>文字向上向下对齐</p>
 <h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><ul>
 <li>height：长度/百分比/auto</li>
@@ -1843,9 +2026,12 @@ localStorage.getItem(key)</pre>
 <li><code>clear:none/left/right/both</code></li>
 <li>1.<code>&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;</code></li>
 <li>2.给父元素添加<code>overflow:hidden</code></li>
-<li>3.css3 <code>clearfix :after{content:&quot;.&quot;;display:block;height:0;visibility:hidden;clear:both}</code></li>
+<li>3.css3 <code></code>clearfix :after</li>
+<li>4.添加一个空行，style为clearboth {content:”.”;display:block;height:0;visibility:hidden;clear:both}<code></code> </li>
 </ul>
 </li>
+<li>可以让行内元素行程块级元素</li>
+<li>位置会尽量靠上，尽量靠左</li>
 </ul>
 <h2 id="position-定位模型"><a href="#position-定位模型" class="headerlink" title="position 定位模型"></a>position 定位模型</h2><ul>
 <li>static：常规流 忽略跑偏移量</li>
@@ -1865,6 +2051,7 @@ localStorage.getItem(key)</pre>
 <li>不会随着视图滚动而滚动，其余和absolute一样</li>
 </ul>
 </li>
+<li>后三者可以设置z-index</li>
 </ul>
 <h2 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h2><ul>
 <li>新增的元素选择器<ul>
@@ -1891,7 +2078,11 @@ localStorage.getItem(key)</pre>
 </ul>
 </li>
 <li>结构类选择器<ul>
-<li>first/last子类选择器<code>section:first-child {}</code></li>
+<li>first/last子类选择器<code>section:fi&lt;div class=&quot;a2&quot;&gt;123
+&lt;/div&gt;&lt;div class=&quot;a2&quot;&gt;123
+&lt;/div&gt;&lt;div class=&quot;a2&quot;&gt;123
+&lt;/div&gt;&lt;div class=&quot;a2&quot;&gt;123
+&lt;/div&gt;rst-child {}</code></li>
 <li>父元素的第N个子元素<code>ul&gt;li:nth-child(3){}</code><ul>
 <li>选择多个： <code>nth-child(n){}</code></li>
 </ul>
@@ -1938,7 +2129,224 @@ localStorage.getItem(key)</pre>
 </ul>
 </li>
 <li>动画<ul>
-<li>animation-name: keyframename</li>
+<li>transition 补间动画 两个状态</li>
+<li>keyframe 关键帧动画 有很多状态</li>
+<li>逐帧动画 没有补间</li>
+</ul>
+</li>
+</ul>
+<h2 id="常用布局方式"><a href="#常用布局方式" class="headerlink" title="常用布局方式"></a>常用布局方式</h2><h3 id="表格布局"><a href="#表格布局" class="headerlink" title="表格布局"></a>表格布局</h3><pre><code>    &lt;table&gt;   
+        &lt;tr&gt;   
+            &lt;td class=&quot;left&quot;&gt;left&lt;/td&gt;   
+            &lt;td class=&quot;right&quot;&gt;right&lt;/td&gt;   
+        &lt;/tr&gt;      
+    &lt;/table&gt;
+
+</code></pre><h3 id="float-margin"><a href="#float-margin" class="headerlink" title="float+margin"></a>float+margin</h3><pre><code>    &lt;style&gt;
+        .container {
+            width: 500px;
+            height: 500px;
+        }
+        .left {
+            width: 100px;
+            height: 100%;
+            float: left;
+            background: green;
+        }
+        .middle {
+            margin-left: 100px; /*空出和左边width一样*/
+            margin-right: 200px; /*空出和右边width一样*/
+            background: #000
+        }
+        .right {
+            height: 100%;
+            width: 200px;
+            float: right;
+            background: yellow;
+        }
+    &lt;/style&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;left&lt;/div&gt;
+        &lt;div class=&quot;right&quot;&gt;right&lt;/div&gt;  &lt;!--先写right，right写在最后会因为float上靠--&gt;
+        &lt;div class=&quot;middle&quot;&gt;middle&lt;/div&gt;
+    &lt;/div&gt;
+
+</code></pre><h3 id="inline-block"><a href="#inline-block" class="headerlink" title="inline-block"></a>inline-block</h3><ul>
+<li>像文本一样排block元素</li>
+<li>问题:中间有间隙：<ul>
+<li>解决方法：把父元素字体大小设为0，并在子元素中设置字体大小</li>
+</ul>
+</li>
+</ul>
+<pre><code>    &lt;style&gt;
+        .container {
+            width: 500px;
+            height: 500px;
+        }
+        .left {
+            width: 100px;
+            height: 100%;
+            display: inline-block;
+            background: green;
+        }
+        .right {
+            height: 100%;
+            width: 200px;
+            display: inline-block;
+            background: yellow;
+        }
+    &lt;/style&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;left&lt;/div&gt;
+        &lt;div class=&quot;right&quot;&gt;right&lt;/div&gt; 
+    &lt;/div&gt;
+
+</code></pre><h3 id="flexbox"><a href="#flexbox" class="headerlink" title="flexbox"></a>flexbox</h3><pre><code>    &lt;style&gt;
+        .a1 {
+            display: flex;
+            height:100px;
+            width: 500px;
+            background: #000
+        }
+        .a2 {
+            flex: 1;
+            background: red
+        }
+    &lt;/style&gt;
+
+    &lt;div class=&quot;a1&quot;&gt;
+        &lt;div class=&quot;a2&quot;&gt;123
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre><h3 id="响应式设计和布局"><a href="#响应式设计和布局" class="headerlink" title="响应式设计和布局"></a>响应式设计和布局</h3><ul>
+<li>主要考虑屏幕大小</li>
+<li>主要方法：<ul>
+<li>隐藏：隐藏导航栏等不重要的东西</li>
+<li>折行：pc端一行显示多个的在移动端一行显示少一些</li>
+<li>自适应空间：多留出自适应空间</li>
+</ul>
+</li>
+<li><p>方式：</p>
+<ul>
+<li>rem：通过html的字体大小确定元素大小<ul>
+<li>html默认的样式字体大小为16px，1rem=16px，不同屏幕在mediaquery中改html的字体大小即</li>
+</ul>
+</li>
+<li>viewport：在meta中手工确定屏幕大小<code>content=&quot;width=320&quot;</code></li>
+<li><p>media query：为不同屏幕写样式</p>
+<pre><code>  @media (max-width: 640px) {
+      .left{display: none} /*为移动端隐藏样式*/
+  }
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h2 id="css问题"><a href="#css问题" class="headerlink" title="css问题"></a>css问题</h2><ul>
+<li>css优先级<ul>
+<li>权重：id&gt;class&gt;tag</li>
+<li>!important: 最高</li>
+<li>内联样式高</li>
+<li>后写的优先级高</li>
+</ul>
+</li>
+<li>伪类和伪元素的区别<ul>
+<li>伪类表状态 hoover等</li>
+<li>伪元素是真的元素 before after 在页面中会显示</li>
+<li>前者单冒号 后者双冒号</li>
+</ul>
+</li>
+<li>实现两栏（三栏）布局的方法<ul>
+<li>表格布局</li>
+<li>float+margin 清楚浮动</li>
+<li>inline-block 处理间隙</li>
+<li>flexbox 兼容性差</li>
+</ul>
+</li>
+<li>absolute和fix有什么区别<ul>
+<li>absolute相对于最近的absolute/relative来定位</li>
+<li>fix相对于屏幕/viewport定位</li>
+</ul>
+</li>
+<li>inlineblock为什么有间隙<ul>
+<li>空白字符</li>
+<li>解决：消灭字符；父元素字体设为0</li>
+</ul>
+</li>
+<li>清除浮动<ul>
+<li>为什么有浮动：浮动的元素不会占据父元素的布局空间，父元素不会管浮动元素，所以可能会高度塌陷</li>
+<li>清除：给父元素加定高宽；父元素加overflowhidden；给父元素加:after{clearboth}；最后加一行空行clearboth</li>
+</ul>
+</li>
+<li>如何适配移动端页面<ul>
+<li>viewport</li>
+<li>rem/viewport/media query</li>
+<li>设计上：隐藏/折行/自适应<br>visibility: hidden;<br>display: block;<br>font-size: 0;<br>content: “ “;<br>clear: both;<br>height: 0;</li>
+</ul>
+</li>
+</ul>
+<h2 id="关于html的一些补充"><a href="#关于html的一些补充" class="headerlink" title="关于html的一些补充"></a>关于html的一些补充</h2><h3 id="常见标签"><a href="#常见标签" class="headerlink" title="常见标签"></a>常见标签</h3><p><img src="https://i.imgur.com/wj7EEvF.png" alt=""></p>
+<h3 id="h5新增"><a href="#h5新增" class="headerlink" title="h5新增"></a>h5新增</h3><ul>
+<li>新区块标签<ul>
+<li>section</li>
+<li>article</li>
+<li>anv 导航</li>
+<li>aside 侧边栏，一般表示不重要的内容</li>
+</ul>
+</li>
+<li>表单增强属性<ul>
+<li>日期、时间、搜索</li>
+<li>表单验证 （required必填，minmax输入范围，正则）</li>
+<li>placeholder 表单空的时候显示什么内容 自动聚焦</li>
+</ul>
+</li>
+<li>新增语义<ul>
+<li>header/footer</li>
+<li>section/article 区域 </li>
+<li>nav 导航</li>
+<li>aside</li>
+<li>em/strong 强调</li>
+</ul>
+</li>
+</ul>
+<h3 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h3><ul>
+<li>块级一般不能嵌套块级（但div可以嵌套p）</li>
+<li>a可以包含div</li>
+</ul>
+<h3 id="html问题"><a href="#html问题" class="headerlink" title="html问题"></a>html问题</h3><ul>
+<li>doctype的意义是什么<ul>
+<li>让浏览器以标准模式渲染</li>
+<li>让浏览器知道元素的合法性</li>
+</ul>
+</li>
+<li>html xhtml h5的关系<ul>
+<li>html属于sgml</li>
+<li>xhtml属于xml，是html进行xml严格化的结果 </li>
+<li>h5是一个独立的规范，比hxtml宽松</li>
+</ul>
+</li>
+<li>H5有什么变化<ul>
+<li>新的语义化元素section article header footer aside</li>
+<li>表单增强</li>
+<li>新的API</li>
+</ul>
+</li>
+<li>em和i有什么区别<ul>
+<li>都是斜体，em是语义化标签，i是纯样式</li>
+</ul>
+</li>
+<li>语义化的意义<ul>
+<li>维护的开发者容易理解</li>
+<li>机器容易理解结构</li>
+<li>有助于seo</li>
+</ul>
+</li>
+<li>哪些标签可以自闭和（不能嵌套其他标签）<ul>
+<li>input</li>
+<li>img</li>
+<li>br（换行） hr（水平线）</li>
+<li>meta link</li>
 </ul>
 </li>
 </ul>
@@ -3570,214 +3978,6 @@ localStorage.getItem(key)</pre>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/hexo搭建blog常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/10/hexo搭建blog常用命令/" itemprop="url">hexo搭建blog常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-10T02:29:32+01:00">
-                2018-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/blog/" itemprop="url" rel="index">
-                    <span itemprop="name">blog</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/blog/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="常规搭建"><a href="#常规搭建" class="headerlink" title="常规搭建"></a>常规搭建</h2><h2 id="常规指令"><a href="#常规指令" class="headerlink" title="常规指令"></a>常规指令</h2><p><code>hexo new &quot;blogname&quot; #新建博客</code></p>
-<p><code>hexo g #生成</code></p>
-<p><code>hexo s #启动服务器预览</code></p>
-<p><code>hexo d #部署</code> </p>
-<p><code>hexo clean #清除缓存</code> </p>
-<h2 id="更换设备搭建"><a href="#更换设备搭建" class="headerlink" title="更换设备搭建"></a>更换设备搭建</h2><p>参考：<a href="https://www.zhihu.com/question/21193762/answer/103097754" target="_blank" rel="noopener">https://www.zhihu.com/question/21193762/answer/103097754</a></p>
-<ul>
-<li>打开git bash，在用户主目录下运行：</li>
-</ul>
-<p><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code> </p>
-<p>把其中的邮件地址换成自己的邮件地址，然后一路回车</p>
-<ul>
-<li><p>最后完成后，会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，千万不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。</p>
-</li>
-<li><p>登陆GitHub，打开「Settings」-&gt;「SSH and GPG keys」，然后点击「new SSH key」，填上任意Title，在Key文本框里粘贴公钥id_rsa.pub文件的内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」，你就应该看到已经添加的Key。<br>注意：不要在git版本库中运行ssh，然后又将它提交，这样就把密码泄露出去了。</p>
-</li>
-<li>下载Node.js，并安装.</li>
-<li>打开git bash客户端，输入 npm install hexo-cli -g，开始安装hexo</li>
-<li><p>下面就将原来的文件拷贝到新电脑中，但是要注意哪些文件是必须的，哪些文件是可以删除的。</p>
-<pre><code>      1）讨论下哪些文件是必须拷贝的：首先是之前自己修改的文
-      件，像站点配置_config.yml，theme文件夹里面的主题，
-      以及source里面自己写的博客文件，这些肯定要拷贝的。除
-      此之外，还有
-      三个文件需要有，就是scaffolds文件夹（文章的模板）、
-      package.json（说明使用哪些包）和.gitignore（限定在
-      提交的时候哪些文件可以忽略）。其实，这三个文件不是我们
-      修改的，所以即使丢失了，也没有关系，我们可以建立一个新
-      的文件夹，然后在里面执行hexo init，就会生成这三个文
-      件，我们只需要将它们拷贝过来使用即可。总结：
-      _config.yml，theme/，source/，scaffolds/，
-      package.json，.gitignore，是需要拷贝的。
-</code></pre><p>&nbsp;</p>
-<pre><code>      （2）再讨论下哪些文件是不必拷贝的，或者说可以删除的：
-      首先是.git文件，无论是在站点根目录下，还是主题目录下
-      的.git文件，都可以删掉。然后是文件夹
-      node_modules（在用npm install会重新生成），
-      public（这个在用hexo g时会重新生成），.deploy_git
-      文件夹（在使用hexo d时也会重新生成），db.json文件。
-      其实上面这些文件也就是.gitignore文件里面记载的可以忽
-      略的内容。总结：.git/，node_modules/，
-      public/，.deploy_git/，db.json文件需要删除。
-</code></pre></li>
-<li><p>在git bash中切换目录到新拷贝的文件夹里，使用 npm install 命令，进行模块安装。很明显我们这里没用hexo init初始化，因为有的文件我们已经拷贝生成过来了，所以不必用hexo init去整体初始化，如果不慎在此时用了hexo init，则站点的配置文件_config.yml里面内容会被清空使用默认值，所以这一步一定要慎重，不要用hexo init。</p>
-</li>
-<li><p>安装其他的一些必要组件，如果在node_modules里面有的，就不要重复安装了：</p>
-<pre><code>  （1）为了使用hexo d来部署到git上，需要安装
-</code></pre><p>  <code>npm install hexo-deployer-git --save</code></p>
-<pre><code>  （2）为了建立RSS订阅，需要安装
-</code></pre><p>  <code>npm install hexo-generator-feed --save</code></p>
-<pre><code>  （3）为了建立站点地图，需要安装
-</code></pre><p>  <code>npm install hexo-generator-sitemap --save</code></p>
-<p>  插件安装后，有的需要对配置文件_config.yml进行配置，具体怎么配置，可以参考上面插件在github主页上的具体说明</p>
-</li>
-<li><p>使用hexo g，然后使用hexo d进行部署，如果都没有出错，就转移成功了！</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3828,7 +4028,7 @@ localStorage.getItem(key)</pre>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

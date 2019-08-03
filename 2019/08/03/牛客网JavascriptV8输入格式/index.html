@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="javascript,前端," />
+  <meta name="keywords" content="javascript,基础," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="output is the best input，以下每一项都可以单独写一篇文章javascript 原型、原型链 闭包 es6的新特性 作用域   全局和局部环境  var let const的区别   ajax xhr  this 箭头函数 事件绑定、监听、委托、代理 继承 常用数组方法 defer和async 虚拟dom  html html的语义标签 html5新特性 canvas  cs">
-<meta name="keywords" content="javascript,前端">
+<meta name="description" content="相比Leetcode，牛客和赛码网等网站对于Javascript真的太不友好了，光是输入就可以折腾半天。整理了一下牛客网上Javascript V8的输入  输入一行，空格隔开  1 2  while (line = readline()) {      var lines = line.split(&amp;#39; &amp;#39;)      var a = parseInt(lines[0])">
+<meta name="keywords" content="javascript,基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="learningJS">
-<meta property="og:url" content="http://yoursite.com/2018/12/13/learningJS/index.html">
+<meta property="og:title" content="牛客网JavascriptV8输入格式">
+<meta property="og:url" content="http://yoursite.com/2019/08/03/牛客网JavascriptV8输入格式/index.html">
 <meta property="og:site_name" content="TedQin">
-<meta property="og:description" content="output is the best input，以下每一项都可以单独写一篇文章javascript 原型、原型链 闭包 es6的新特性 作用域   全局和局部环境  var let const的区别   ajax xhr  this 箭头函数 事件绑定、监听、委托、代理 继承 常用数组方法 defer和async 虚拟dom  html html的语义标签 html5新特性 canvas  cs">
+<meta property="og:description" content="相比Leetcode，牛客和赛码网等网站对于Javascript真的太不友好了，光是输入就可以折腾半天。整理了一下牛客网上Javascript V8的输入  输入一行，空格隔开  1 2  while (line = readline()) {      var lines = line.split(&amp;#39; &amp;#39;)      var a = parseInt(lines[0])">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-31T01:51:16.146Z">
+<meta property="og:updated_time" content="2019-08-03T22:42:28.094Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="learningJS">
-<meta name="twitter:description" content="output is the best input，以下每一项都可以单独写一篇文章javascript 原型、原型链 闭包 es6的新特性 作用域   全局和局部环境  var let const的区别   ajax xhr  this 箭头函数 事件绑定、监听、委托、代理 继承 常用数组方法 defer和async 虚拟dom  html html的语义标签 html5新特性 canvas  cs">
+<meta name="twitter:title" content="牛客网JavascriptV8输入格式">
+<meta name="twitter:description" content="相比Leetcode，牛客和赛码网等网站对于Javascript真的太不友好了，光是输入就可以折腾半天。整理了一下牛客网上Javascript V8的输入  输入一行，空格隔开  1 2  while (line = readline()) {      var lines = line.split(&amp;#39; &amp;#39;)      var a = parseInt(lines[0])">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/13/learningJS/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/08/03/牛客网JavascriptV8输入格式/"/>
 
 
 
 
 
-  <title>learningJS | TedQin</title>
+  <title>牛客网JavascriptV8输入格式 | TedQin</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/13/learningJS/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/牛客网JavascriptV8输入格式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ted Qin">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">learningJS</h1>
+          <h1 class="post-title" itemprop="name headline">牛客网JavascriptV8输入格式</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-13T17:02:36+00:00">
-                2018-12-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-03T23:38:20+01:00">
+                2019-08-03
               </time>
             
 
@@ -325,18 +325,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
                     <span itemprop="name">javascript</span>
                   </a>
                 </span>
@@ -373,46 +362,45 @@
       
 
       
-        <h5 id="output-is-the-best-input，以下每一项都可以单独写一篇文章"><a href="#output-is-the-best-input，以下每一项都可以单独写一篇文章" class="headerlink" title="output is the best input，以下每一项都可以单独写一篇文章"></a>output is the best input，以下每一项都可以单独写一篇文章</h5><h2 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h2><ul>
-<li>原型、原型链</li>
-<li>闭包</li>
-<li>es6的新特性</li>
-<li><p>作用域 </p>
-<ul>
-<li>全局和局部环境 </li>
-<li>var let const的区别</li>
-</ul>
-</li>
-<li><p>ajax xhr</p>
-</li>
-<li>this 箭头函数</li>
-<li>事件绑定、监听、委托、代理</li>
-<li>继承</li>
-<li>常用数组方法</li>
-<li>defer和async</li>
-<li>虚拟dom</li>
-</ul>
-<h2 id="html"><a href="#html" class="headerlink" title="html"></a>html</h2><ul>
-<li>html的语义标签</li>
-<li>html5新特性</li>
-<li>canvas</li>
-</ul>
-<h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><ul>
-<li>bootstrap</li>
-</ul>
-<h2 id="dom"><a href="#dom" class="headerlink" title="dom"></a>dom</h2><ul>
-<li>定位元素的几种方法</li>
-<li>遍历</li>
-</ul>
-<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul>
-<li>渲染和绘制</li>
-<li>兼容性</li>
-<li>布局</li>
-</ul>
-<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><ul>
-<li>webpack</li>
-</ul>
-<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2>
+        <p>相比Leetcode，牛客和赛码网等网站对于Javascript真的太不友好了，光是输入就可以折腾半天。整理了一下牛客网上Javascript V8的输入</p>
+<ol>
+<li><p>输入一行，空格隔开</p>
+<pre><code> 1 2
+</code></pre><pre><code> while (line = readline()) {
+     var lines = line.split(&#39; &#39;)
+     var a = parseInt(lines[0])
+     var b = parseInt(lines[1])
+ }
+ console.log(a, b)
+
+</code></pre></li>
+<li><p>多行，每行输入一个</p>
+<pre><code> 2
+ 1
+ 2
+</code></pre><pre><code> var lines = []
+ while (line = readline()) {
+     lines.push(parseInt(line))
+ }
+
+ console.log(lines)
+</code></pre></li>
+<li><p>多行，第一行为参数,后面行为数组</p>
+<pre><code> //第一行为参数m和n，接下里为数组
+ 2 3 //m, n
+ 1 2 3 4 
+ 11 22 33 44 
+</code></pre><pre><code> var lines = readline().split(&#39; &#39;)
+ var n = parseInt(lines[0])
+ var m = parseInt(lines[1])
+ var Arr1 = readline().split(&#39; &#39;)
+ var Arr2 = readline().split(&#39; &#39;)
+
+ console.log(n,m,Arr1,Arr2)
+
+</code></pre></li>
+</ol>
+
       
     </div>
     
@@ -431,7 +419,7 @@
           
             <a href="/tags/javascript/" rel="tag"># javascript</a>
           
-            <a href="/tags/前端/" rel="tag"># 前端</a>
+            <a href="/tags/基础/" rel="tag"># 基础</a>
           
         </div>
       
@@ -444,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/18/cpp笔记/" rel="next" title="c++tips笔记">
-                <i class="fa fa-chevron-left"></i> c++tips笔记
+              <a href="/2019/07/31/vue2.0仿去哪儿网移动端Webapp遇到的问题/" rel="next" title="vue2.0仿去哪儿网移动端Webapp遇到的问题">
+                <i class="fa fa-chevron-left"></i> vue2.0仿去哪儿网移动端Webapp遇到的问题
               </a>
             
           </div>
@@ -453,10 +441,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/17/面试总结和知识梳理/" rel="prev" title="面试总结和知识梳理">
-                面试总结和知识梳理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,17 +492,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -615,22 +590,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#output-is-the-best-input，以下每一项都可以单独写一篇文章"><span class="nav-number">1.</span> <span class="nav-text">output is the best input，以下每一项都可以单独写一篇文章</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript"><span class="nav-number"></span> <span class="nav-text">javascript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html"><span class="nav-number"></span> <span class="nav-text">html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number"></span> <span class="nav-text">css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dom"><span class="nav-number"></span> <span class="nav-text">dom</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器"><span class="nav-number"></span> <span class="nav-text">浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化"><span class="nav-number"></span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能优化"><span class="nav-number"></span> <span class="nav-text">性能优化</span></a></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
