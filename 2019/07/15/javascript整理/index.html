@@ -102,14 +102,6 @@
 <meta property="og:site_name" content="TedQin">
 <meta property="og:description" content="闲来无事，把之前的笔记整理一下。    基础知识变量类型 值类型：a和b相等，改a，b不变 (直接赋值值) undefined string number boolean   引用类型：a和b相等，改a，b变 （赋值地址）     object function   强制类型转换 字符串拼接  var a=10; var b=100 + &amp;#39;10&amp;#39;//string   ==  100">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/WHL94oZ.png">
-<meta property="og:image" content="https://i.imgur.com/WIOLL8V.png">
-<meta property="og:image" content="https://i.imgur.com/I9MSkph.png">
-<meta property="og:image" content="https://i.imgur.com/M8L70aG.png">
-<meta property="og:image" content="https://i.imgur.com/KvR1Jfd.png">
-<meta property="og:image" content="https://i.imgur.com/buzzJoD.png">
-<meta property="og:image" content="https://i.imgur.com/Wtu93oq.png">
-<meta property="og:image" content="https://i.imgur.com/IJSJKq8.png">
 <meta property="og:image" content="https://i.imgur.com/7H8uSP8.png">
 <meta property="og:image" content="https://i.imgur.com/JcAj6O8.png">
 <meta property="og:image" content="https://i.imgur.com/PG53s2T.png">
@@ -130,11 +122,11 @@
 <meta property="og:image" content="https://i.imgur.com/pfvAftc.png">
 <meta property="og:image" content="https://i.imgur.com/5qnJxGf.png">
 <meta property="og:image" content="https://i.imgur.com/QCxbPgv.png">
-<meta property="og:updated_time" content="2019-07-31T01:51:31.198Z">
+<meta property="og:updated_time" content="2019-09-17T18:25:30.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript整理">
 <meta name="twitter:description" content="闲来无事，把之前的笔记整理一下。    基础知识变量类型 值类型：a和b相等，改a，b不变 (直接赋值值) undefined string number boolean   引用类型：a和b相等，改a，b变 （赋值地址）     object function   强制类型转换 字符串拼接  var a=10; var b=100 + &amp;#39;10&amp;#39;//string   ==  100">
-<meta name="twitter:image" content="https://i.imgur.com/WHL94oZ.png">
+<meta name="twitter:image" content="https://i.imgur.com/7H8uSP8.png">
 
 
 
@@ -331,7 +323,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T21:23:22+01:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T21:23:22+08:00">
                 2019-07-15
               </time>
             
@@ -550,7 +542,8 @@ fn2('ted',20)//通过bind函数改变this，this也指向{y:300}这个对象</pr
 <li>闭包中返回的函数，若有自由变量，则向（函数定义时）父作用域寻找</li>
 </ul>
 </li>
-<li><strong>问题</strong><ul>
+<li><p><strong>问题</strong></p>
+<ul>
 <li>说一下对变量提升的理解<ul>
 <li>在各个执行上下文中，变量定义+函数声明都会提前</li>
 </ul>
@@ -570,9 +563,27 @@ fn2('ted',20)//通过bind函数改变this，this也指向{y:300}这个对象</pr
 </ul>
 </li>
 <li>闭包</li>
-<li>实际开发中闭包的应用<ul>
-<li>封装变量，收敛权限</li>
-<li><img src="https://i.imgur.com/WHL94oZ.png" alt=""></li>
+<li><p>实际开发中闭包的应用</p>
+<ul>
+<li><p>封装变量，收敛权限</p>
+<pre><code>let isFirstLoad = function () {
+  let _list = []
+  return function (el) {
+      if (_list.indexOf(el) &gt;= 0) {
+          return false
+      } else {
+          _list.push(el)
+          return true
+      }
+  }
+}
+
+let firstLoad = isFirstLoad()
+isFirstLoad(10) //true
+isFirstLoad(10) //false
+isFirstLoad(20) //true
+
+</code></pre></li>
 </ul>
 </li>
 </ul>
@@ -609,11 +620,22 @@ fn2('ted',20)//通过bind函数改变this，this也指向{y:300}这个对象</pr
 </li>
 </ul>
 <h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul>
-<li>日期<ul>
-<li><img src="https://i.imgur.com/WIOLL8V.png" alt=""></li>
-</ul>
-</li>
-<li>Math<ul>
+<li><p>日期</p>
+<pre><code>      Date.now() //获取时间戳
+
+      //2019/09/17/23:41:44
+      let dt = new Date()
+      dt.getTime() //获取时间戳
+      dt.getFullYear() //2019
+      dt.getMonth() //8 (0-11)
+      dt.getDate() //17 (0-31)
+      dt.getHours() //23 (0-23)
+      dt.getMinutes() //41 (0-59)
+      dt.getSeconds() //44 (0-59) 
+
+</code></pre></li>
+<li><p>Math</p>
+<ul>
 <li>获取随机数<code>Math.random()</code></li>
 </ul>
 </li>
@@ -630,19 +652,41 @@ fn2('ted',20)//通过bind函数改变this，this也指向{y:300}这个对象</pr
 <li>for in</li>
 </ul>
 </li>
-<li><strong>题目</strong><ul>
-<li>获取2019-07-25格式的日期<ul>
-<li><img src="https://i.imgur.com/I9MSkph.png" alt=""></li>
-</ul>
-</li>
-<li>获取随机数，要求是长度一致的字符串格式<ul>
-<li><img src="https://i.imgur.com/M8L70aG.png" alt=""></li>
-</ul>
-</li>
-<li>写一个能遍历对象和数组的通用forEach函数<ul>
-<li><img src="https://i.imgur.com/KvR1Jfd.png" alt=""></li>
-</ul>
-</li>
+<li><p><strong>题目</strong></p>
+<ul>
+<li><p>获取2019-07-25格式的日期</p>
+<pre><code>  let formatDate = function (dt) {
+      if (!dt) {
+          dt = new Date()
+      }
+
+      let year = dt.getFullYear()
+      let month = dt.getMonth() + 1
+      let date = dt.getDate()
+
+      if (month &lt; 10) {
+          month = &#39;0&#39; + month
+      }
+      if (date &lt; 10) {
+          date = &#39;0&#39; + date
+      }
+
+      return year + &#39;-&#39; + month + &#39;-&#39; + date
+  }
+
+  let dt = new Date()
+  console.log(formatDate(dt))
+</code></pre></li>
+<li><p>获取随机数，要求是长度一致的字符串格式</p>
+<pre><code>  //获取长度一致的随机数
+  let formatRandom = function () {
+      let random = Math.random()
+      random = random + &#39;0000000000&#39;
+      return random.slice(0, 10)
+  }
+
+  console.log(formatRandom())
+</code></pre></li>
 </ul>
 </li>
 </ul>
@@ -671,22 +715,61 @@ fn2('ted',20)//通过bind函数改变this，this也指向{y:300}这个对象</pr
 </ul>
 </li>
 <li>DOM节点操作<ul>
-<li>获取dom节点<ul>
-<li><img src="https://i.imgur.com/buzzJoD.png" alt=""></li>
-</ul>
-</li>
-<li>property<ul>
-<li>js对象中的属性</li>
-<li><img src="https://i.imgur.com/Wtu93oq.png" alt=""></li>
-</ul>
-</li>
-<li>attribute<ul>
-<li>HTML文档中 标签的属性</li>
-<li><img src="https://i.imgur.com/IJSJKq8.png" alt=""></li>
+<li>获取dom节点</li>
 </ul>
 </li>
 </ul>
-</li>
+<pre><code>
+        //获取DOM节点
+        //get
+        let id1 = document.getElementById(&#39;id1&#39;) //id
+
+        let divs = document.getElementByTagName(&#39;div&#39;) //元素集合
+        let div0 = document.getElementByTagName(&#39;div&#39;)[0] //元素
+
+        let classes = document.getElementsByClassName(&#39;class1&#39;) //class集合
+        let class0 = document.getElementsByClassName(&#39;class1&#39;)[0] //class
+
+        //query
+        let id1 = document.querySelector(&#39;#id1&#39;) //id
+
+        let divs = document.querySelectorAll(&#39;div&#39;) //元素集合
+        let div0 = document.querySelector(&#39;div&#39;) //元素，选择第一个div
+        let div0 = document.querySelector(&#39;div&#39;)[0] //元素，选择第一个div
+
+        let classes = document.querySelectorAll(&#39;.class0&#39;) //class集合
+        let class0 = document.querySelector(&#39;class0&#39;) //class，选择第一个class
+        let class0 = document.querySelector(&#39;class0&#39;)[0] //class，选择第一个class
+
+</code></pre><pre><code>* property
+    * js对象中的属性
+
+    ```
+    //获取attribute
+    let p0 = document.quertSelectorAll(&#39;p&#39;)[0]
+
+    console.log(p0.style.width) //获取样式
+    p0.style.width = &#39;200px&#39; //修改样式
+    console.log(p0.className) //获取class
+    p0.className = &#39;p0&#39; //修改class
+
+    console.log(p0.nodeName) //p
+    console.log(p0.nodeType) //1 
+    ```
+
+* attribute
+    * HTML文档中 标签的属性
+    ```
+
+    //获取attribute
+    let p0 = document.querySelectorAll(&#39;p&#39;)[0]
+    p0.getAttribute(&#39;attr1&#39;) //获取p0上的attr1属性的值
+    p0.getAttribute(&#39;attr1&#39;, &#39;abc&#39;) //修改属性
+    p0.getAttribute(&#39;style&#39;) //获取style，元素上必须有style才行
+    p0.getAttribute(&#39;style&#39;, &#39;font-size:30px&#39;)
+
+    ```
+</code></pre><ul>
 <li>DOM结构操作<ul>
 <li>新增节点 <code>document.createElement(node)</code><ul>
 <li><img src="https://i.imgur.com/7H8uSP8.png" alt=""></li>
