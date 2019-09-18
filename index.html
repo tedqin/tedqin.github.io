@@ -1198,80 +1198,99 @@ isFirstLoad(20) //true
 <li>dom本质是js的对象</li>
 </ul>
 </li>
-<li>DOM节点操作<ul>
-<li>获取dom节点</li>
-</ul>
-</li>
-</ul>
+<li><p>DOM节点操作</p>
+<ul>
+<li><p>获取dom节点</p>
 <pre><code>
-        //获取DOM节点
-        //get
-        let id1 = document.getElementById(&#39;id1&#39;) //id
+  //获取DOM节点
+  //get
+  let id1 = document.getElementById(&#39;id1&#39;) //id
 
-        let divs = document.getElementByTagName(&#39;div&#39;) //元素集合
-        let div0 = document.getElementByTagName(&#39;div&#39;)[0] //元素
+  let divs = document.getElementByTagName(&#39;div&#39;) //元素集合
+  let div0 = document.getElementByTagName(&#39;div&#39;)[0] //元素
 
-        let classes = document.getElementsByClassName(&#39;class1&#39;) //class集合
-        let class0 = document.getElementsByClassName(&#39;class1&#39;)[0] //class
+  let classes = document.getElementsByClassName(&#39;class1&#39;) //class集合
+  let class0 = document.getElementsByClassName(&#39;class1&#39;)[0] //class
 
-        //query
-        let id1 = document.querySelector(&#39;#id1&#39;) //id
+  //query
+  let id1 = document.querySelector(&#39;#id1&#39;) //id
 
-        let divs = document.querySelectorAll(&#39;div&#39;) //元素集合
-        let div0 = document.querySelector(&#39;div&#39;) //元素，选择第一个div
-        let div0 = document.querySelector(&#39;div&#39;)[0] //元素，选择第一个div
+  let divs = document.querySelectorAll(&#39;div&#39;) //元素集合
+  let div0 = document.querySelector(&#39;div&#39;) //元素，选择第一个div
+  let div0 = document.querySelector(&#39;div&#39;)[0] //元素，选择第一个div
 
-        let classes = document.querySelectorAll(&#39;.class0&#39;) //class集合
-        let class0 = document.querySelector(&#39;class0&#39;) //class，选择第一个class
-        let class0 = document.querySelector(&#39;class0&#39;)[0] //class，选择第一个class
+  let classes = document.querySelectorAll(&#39;.class0&#39;) //class集合
+  let class0 = document.querySelector(&#39;class0&#39;) //class，选择第一个class
+  let class0 = document.querySelector(&#39;class0&#39;)[0] //class，选择第一个class
 
-</code></pre><pre><code>* property
-    * js对象中的属性
+</code></pre></li>
+<li><p>property</p>
+<ul>
+<li><p>js对象中的属性</p>
+<pre><code>//获取attribute
+let p0 = document.quertSelectorAll(&#39;p&#39;)[0]
 
-    ```
-    //获取attribute
-    let p0 = document.quertSelectorAll(&#39;p&#39;)[0]
+console.log(p0.style.width) //获取样式
+p0.style.width = &#39;200px&#39; //修改样式
+console.log(p0.className) //获取class
+p0.className = &#39;p0&#39; //修改class
 
-    console.log(p0.style.width) //获取样式
-    p0.style.width = &#39;200px&#39; //修改样式
-    console.log(p0.className) //获取class
-    p0.className = &#39;p0&#39; //修改class
+console.log(p0.nodeName) //p
+console.log(p0.nodeType) //1 
+</code></pre></li>
+</ul>
+</li>
+<li><p>attribute</p>
+<ul>
+<li><p>HTML文档中 标签的属性</p>
+<pre><code>
+//获取attribute
+let p0 = document.querySelectorAll(&#39;p&#39;)[0]
+p0.getAttribute(&#39;attr1&#39;) //获取p0上的attr1属性的值
+p0.getAttribute(&#39;attr1&#39;, &#39;abc&#39;) //修改属性
+p0.getAttribute(&#39;style&#39;) //获取style，元素上必须有style才行
+p0.getAttribute(&#39;style&#39;, &#39;font-size:30px&#39;)
 
-    console.log(p0.nodeName) //p
-    console.log(p0.nodeType) //1 
-    ```
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DOM结构操作</p>
+<ul>
+<li><p>新增节点 <code>document.createElement(node)</code></p>
+<pre><code>  //添加新节点
+  let div1 = document.getElementById(&#39;div1&#39;)
+  let p1 = documemt.createElement(&#39;p&#39;)
+  div1.appendChild(div1)
+  //移动现有节点
+  let p2 = document.getElementById(&#39;p2&#39;)
+  div1.appendChild(p2)
 
-* attribute
-    * HTML文档中 标签的属性
-    ```
+</code></pre></li>
+<li><p>获取父节点 <code>childNode.parentElement</code></p>
+<pre><code>  let div1 = getElementById(div1)
+  let parent = div1.parentElement
 
-    //获取attribute
-    let p0 = document.querySelectorAll(&#39;p&#39;)[0]
-    p0.getAttribute(&#39;attr1&#39;) //获取p0上的attr1属性的值
-    p0.getAttribute(&#39;attr1&#39;, &#39;abc&#39;) //修改属性
-    p0.getAttribute(&#39;style&#39;) //获取style，元素上必须有style才行
-    p0.getAttribute(&#39;style&#39;, &#39;font-size:30px&#39;)
+</code></pre></li>
+<li><p>获取子节点 <code>.parentNode.childNodes</code></p>
+<pre><code>  let div1 = getElementById(div1)
+  let parent = div1.parentElement
 
-    ```
 </code></pre><ul>
-<li>DOM结构操作<ul>
-<li>新增节点 <code>document.createElement(node)</code><ul>
-<li><img src="https://i.imgur.com/7H8uSP8.png" alt=""></li>
+<li><code>.childNodes</code>返回所有节点包括文本和注释节点 <code>.children</code>只返回元素节点</li>
 </ul>
 </li>
-<li>获取父节点 <code>childNode.parentElement</code></li>
-<li>获取子节点 <code>.parentNode.childNodes</code><ul>
-<li><img src="https://i.imgur.com/JcAj6O8.png" alt=""></li>
-<li><code>.childNodes返回所有节点包括文本和注释节点</code> <code>.children只返回元素节点</code></li>
+<li><p>删除节点 <code>parentNode.removeChild(childNode)</code></p>
+<pre><code>  let div1 = getElementById(div1)
+  let child = div1.childNodes
+  //删除第一个子元素
+  div1.removeChild(child[0])
+</code></pre></li>
 </ul>
 </li>
-<li>删除节点 <code>parentNode.removeChild(childNode)</code><ul>
-<li><img src="https://i.imgur.com/PG53s2T.png" alt=""></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>问题</strong><ul>
+<li><p><strong>问题</strong></p>
+<ul>
 <li>DOM是哪一种基本数据结构<ul>
 <li>数</li>
 </ul>
@@ -1319,30 +1338,40 @@ history.forward</pre>
 </li>
 <li><p><strong>问题</strong></p>
 <ul>
-<li>如何检测目标浏览器的类型<ul>
-<li><img src="https://i.imgur.com/o5DlvbW.png" alt=""></li>
-</ul>
-</li>
-<li>拆解url的各部分<ul>
-<li><pre>
-location.href //url
-location.protocal //协议 http https
-location.host //域名
-location.pathname //路径 /learn/199
-location.search //url ？ 后面的字符串
-location.search //url # 后的hash</pre></li>
-<li><img src="https://i.imgur.com/efoIRJM.jpg" alt=""></li>
-</ul>
-</li>
+<li><p>如何检测目标浏览器的类型</p>
+<pre><code>  let ua = navigator.userAgent
+  let isChrome = ua.indexOf(&#39;Chrome&#39;)
+  console.log(isChrome)
+
+</code></pre></li>
+<li><p>拆解url的各部分</p>
+<pre><code>  location.href //url
+  location.protocal //协议 http https
+  location.host //域名
+  location.pathname //路径 /learn/199
+  location.search //url ？ 后面的字符串
+  location.search //url # 后的hash
+</code></pre></li>
 </ul>
 </li>
 </ul>
 <h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><ul>
-<li>XMLHttpRequest<ul>
-<li><img src="https://i.imgur.com/dfRzR2h.png" alt=""></li>
-</ul>
-</li>
-<li>状态码说明<ul>
+<li><p>XMLHttpRequest</p>
+<pre><code>
+  let xhr = new XMLHttpRequest() 
+  xhr.open(&quot;GET&quot;, &quot;/api&quot;, &quot;false&quot;)
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+              alert(xhr.responseText)
+          }
+      }
+  }
+  xhr.send(null)
+
+</code></pre></li>
+<li><p>状态码说明</p>
+<ul>
 <li><code>readyState == 4</code> ajax状态码<ul>
 <li>0-（未初始化）还没有调用send()方法</li>
 <li>1-（载入）已调用send()方法，正在发送请求</li>
@@ -1360,7 +1389,8 @@ location.search //url # 后的hash</pre></li>
 </li>
 </ul>
 </li>
-<li>跨域<ul>
+<li><p>跨域</p>
+<ul>
 <li>什么是跨域<ul>
 <li>浏览器有同源策略，不允许ajax访问其他接口，如<a href="http://www.a.com:80不能访问http://www.b.com" target="_blank" rel="noopener">http://www.a.com:80不能访问http://www.b.com</a></li>
 <li>跨域条件：协议(http)、域名(<a href="http://www.a.com)、端口(:80)有一个不同就算跨域" target="_blank" rel="noopener">www.a.com)、端口(:80)有一个不同就算跨域</a></li>
@@ -1382,20 +1412,35 @@ location.search //url # 后的hash</pre></li>
 </li>
 </ul>
 </li>
-<li>JSONP 前端<ul>
-<li><img src="https://i.imgur.com/PYUD2il.png" alt=""></li>
+<li><p>JSONP 前端</p>
+<pre><code>  &lt;!-- jsonp跨域 --&gt;
+  &lt;script&gt;
+    function callbackFunc (data) {
+      alert(data)
+  }
+
+  &lt;/script&gt;
+
+  &lt;script src=&quot;http://www.baidu.com/api/data.js&quot;&gt;&lt;/script&gt;
+
+</code></pre><ul>
 <li>前端定义一个callback函数，得到信息。再用script标签获取一个跨域的信息，这个信息会调用callback({x:100, y:200})</li>
 </ul>
 </li>
-<li>服务器端设置http header 后端<ul>
-<li><img src="https://i.imgur.com/LwrJhv8.png" alt=""></li>
+<li><p>服务器端设置http header 后端</p>
+<pre><code>  //后端通过设置httpheader跨域
+  response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;http://a.com, http://b.com&quot;);
+  response.setHeader(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With&quot;);
+  response.setHeader(&quot;Access-Control-Allow-Methods&quot;, &quot;PUT, POST,GET, OPTIONS, DELETE&quot;);
+  //允许接收跨域的cookie
+  response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;);
+</code></pre></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><strong>问题</strong><ul>
+<li><p><strong>问题</strong></p>
+<ul>
 <li>手动编写一个ajax，不依赖第三方库<ul>
-<li><img src="https://i.imgur.com/n7jIfMM.png" alt=""></li>
+<li>前面有</li>
 </ul>
 </li>
 <li>跨域的几种实现方式<ul>
@@ -1407,24 +1452,45 @@ location.search //url # 后的hash</pre></li>
 </li>
 </ul>
 <h3 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h3><ul>
-<li>通用事件绑定<ul>
-<li><img src="https://i.imgur.com/3n74SBB.png" alt=""></li>
-</ul>
-</li>
-<li>事件冒泡<ul>
+<li><p>通用事件绑定</p>
+<pre><code>
+  //通用事件绑定函数
+  function bindEvent (elem, type, fn) {
+      elem.addEventListener(type, fn)
+  }
+
+  let a1 = document.getElementById(&#39;a1&#39;)
+  bindEvent(a1, &#39;click&#39;, function (e) {
+      e.preventDefault()
+      alert(&#39;clicked&#39;)
+  })
+
+</code></pre></li>
+<li><p>事件冒泡</p>
+<ul>
 <li>若底层和父层节点有相同绑定事件，底层业务节点的事件（如点击）会先执行，然后会一层层网上执行，先执行底层的事件，然后上一层的事件，然后…</li>
-<li>点击激活弹出激活，点击取消弹出取消<img src="https://i.imgur.com/CS0jTZh.png" alt=""><br>（<code>e.stopPropatation()</code>：阻止冒泡）</li>
+<li>点击激活弹出激活，点击取消弹出取消<br>（<code>e.stopPropatation()</code>：阻止冒泡）</li>
 </ul>
 </li>
-<li>代理 事件冒泡的应用<ul>
-<li>点击a标签的元素，会弹出相应文字<img src="https://i.imgur.com/uRTP2p5.png" alt=""><br>（这里target可以定位到当前点击的元素）</li>
+<li><p>代理 事件冒泡的应用</p>
+<ul>
+<li><p>点击a标签的元素，会弹出相应文字</p>
+<p>  <code>`</code></p>
+  <!-- 冒泡的应用，代理，点击每个标签都会弹出对应的内容，直接给div1绑定一个事件即可 -->
+<p>  &lt;!DOCTYPE html&gt;</p>
+  <html lang="en"><br>  <head><br>    <meta charset="UTF-8"><br>    <title>propogation</title><br>  </head><br>  <body><br>    <div id="div1"><br>      <a href="#">a1</a><br>      <a href="#">a2</a><br>      <a href="#">a3</a><br>      <a href="#">a4</a><br>    </div><br><br>    <script><br>      let div1 = document.getElementById(“div1”)<br>      div1.addEventListener(“click”, function(e) {<br>        alert(e.target.innerHTML)<br>      })<br>    </script><br>  </body><br>  </html>
+
+
+</li>
 </ul>
 </li>
+</ul>
+<pre><code>    ```
+
+（这里target可以定位到当前点击的元素）
+</code></pre><ul>
 <li><strong>问题</strong><ul>
-<li>编写一个通用的事件监听函数<ul>
-<li><img src="https://i.imgur.com/BBOT3t6.png" alt=""></li>
-</ul>
-</li>
+<li>编写一个通用的事件监听函数</li>
 <li>描述事件冒泡流程<ul>
 <li>dom树形结构</li>
 <li>冒泡</li>
@@ -1502,34 +1568,69 @@ localStorage.getItem(key)</pre>
 </ul>
 <h3 id="js模块化"><a href="#js模块化" class="headerlink" title="js模块化"></a>js模块化</h3><ul>
 <li>不适用模块化的情况<ul>
-<li>如果a.js, b.js, c.js, c依赖b，b依赖a，引用的时候要按顺序</li>
-<li>容易出现问题：全局变量容易被污染；不知道祖先依赖关系<img src="https://i.imgur.com/lIpUfS6.png" alt=""></li>
+<li>如果a.js, b.js, c.js, c依赖b，b依赖a，引用的时候必须要按顺序，如果顺序错就会报错</li>
+<li>引用的文件的变量必须是全局变量，容易被污染</li>
 </ul>
 </li>
 <li>使用模块化<ul>
-<li>a.js 传递出别人所需要的功能函数，b和a需要哪个函数引用哪个函数<img src="https://i.imgur.com/n0xFoID.png" alt=""></li>
+<li>a.js 传递出别人所需要的功能函数，b和a需要哪个函数引用哪个函数</li>
 <li>引用的时候直接引用最表层的js文件即可</li>
 </ul>
 </li>
-<li>AMD 异步模块定义规范<ul>
+<li><p>AMD 异步模块定义规范</p>
+<ul>
 <li>require.js</li>
 <li>全局define函数</li>
 <li>全局require函数</li>
-<li>依赖的js会自动、异步加载</li>
-<li><img src="https://i.imgur.com/kfdTYDt.png" alt=""></li>
-<li>html用：<code>&lt;script src=&quot;/require.js&quot; data-main=&quot;./main.js&quot;&gt;&lt;/script&gt;</code></li>
-<li>好处：异步加载，不使用（依赖）就不加载</li>
+<li><p>依赖的js会自动、异步加载</p>
+<p> <code>`</code><br> //util.js<br> define(function() {</p>
+<pre><code> return {
+     func: function () {
+         return 1
+     }
+ }
+</code></pre><p> })</p>
+<p> //a-utils.js<br> define([‘./utils.js’], function(util) {</p>
+<pre><code> return {
+     func2: function () {
+         return util.func()
+     }
+ }
+</code></pre><p> })</p>
+</li>
 </ul>
 </li>
-<li>CommonJs<ul>
+</ul>
+<pre><code>    ```
+
+*  html用：``&lt;script src=&quot;/require.js&quot; data-main=&quot;./main.js&quot;&gt;&lt;/script&gt; ``
+*  好处：异步加载，不使用（依赖）就不加载
+</code></pre><ul>
+<li><p>CommonJs</p>
+<ul>
 <li>nodejs模块化规划，现在被大量用于前端</li>
 <li>前端开发依赖的插件和库，都可以用npm中获取</li>
 <li>构建工具的高度自动化，使得使用npm的成本非常低</li>
-<li>CommonJS不会异步加载js，而是同步一次性加载出来</li>
-<li><img src="https://i.imgur.com/7hvXgIb.png" alt=""></li>
+<li><p>CommonJS不会异步加载js，而是同步一次性加载出来</p>
+<pre><code>  //util.js
+  module.exports = {
+      func: function () {
+          return 1
+      }
+  }
+
+  //a-util.js
+  let util = require(&#39;./util.js&#39;)
+  module.exports = {
+      func2: function () {
+          return utils()
+      }
+  }
+</code></pre></li>
 </ul>
 </li>
-<li>AMD和CommonJS的使用场景<ul>
+<li><p>AMD和CommonJS的使用场景</p>
+<ul>
 <li>需要异步加载，用AMD</li>
 <li>使用了npm之后建议使用CommonJs</li>
 </ul>
@@ -1545,8 +1646,23 @@ localStorage.getItem(key)</pre>
 </li>
 <li><p>配置webpack</p>
 <ul>
-<li>创建webpack.config.js <img src="https://i.imgur.com/pfvAftc.png" alt=""></li>
-<li>创建src app.js等文件</li>
+<li><p>创建webpack.config.js</p>
+<pre><code>  var path = require(&#39;path&#39;)
+  var webpack = require(&#39;require&#39;)
+
+  module.exports = {
+      context: path.resolve(__dirname, &#39;./src&#39;),
+      extry: {
+          app: &#39;./app.js&#39;
+      }.
+      output: {
+          path: path.resolve(__dirname, &#39;./dist&#39;)
+          filename: &#39;bundle.js&#39;
+      }
+  }
+</code></pre></li>
+<li><p>创建src app.js等文件</p>
+</li>
 <li>在package.json scripts里加入”start”: “webpack”，就可以在命令行执行start进行打包输出     </li>
 </ul>
 </li>
@@ -1626,7 +1742,6 @@ localStorage.getItem(key)</pre>
 <li>window.onload和DOMCotentLoaded的区别<ul>
 <li>onload：页面全部资源加载完，包括图片视频等才会执行</li>
 <li>CotentLoaded：DOM渲染完即可执行，图片还没有加载完</li>
-<li><img src="https://i.imgur.com/5qnJxGf.png" alt=""></li>
 </ul>
 </li>
 <li>为什么把css文件放在head中？<ul>
@@ -1664,7 +1779,8 @@ localStorage.getItem(key)</pre>
 <li>使用SSR后端渲染，数据直接输出到HTML中（不同ajax请求数据）</li>
 </ul>
 </li>
-<li>页面渲染优化<ul>
+<li><p>页面渲染优化</p>
+<ul>
 <li>CSS放前面，JS放后面</li>
 <li>懒加载（图片懒加载，下拉加载更多/先用一张模糊的图片代替原图，要用的时候再加载） 什么时候用什么时候加载</li>
 <li>减少DOM查询，对DOM查询做缓存</li>
@@ -1672,11 +1788,57 @@ localStorage.getItem(key)</pre>
 <li>先创建一个片段<code>frag=document.createDocumentFragment()</code></li>
 </ul>
 </li>
-<li>事件节流<ul>
-<li>如键盘输入，输入快的时候不执行，异步<br><img src="https://i.imgur.com/QCxbPgv.png" alt=""></li>
+<li><p>事件节流</p>
+<ul>
+<li>间隔一段时间执行一次 </li>
+<li><p>如键盘输入，在ns内执行一次事件, 不停的输入，也会在一段时间后输出一次</p>
+<pre><code>  //时间戳版
+  function throttle(fn, delay) {
+      let previous = 0
+      return function (args) {
+          let _args = args
+          let _this = this
+          let now = Date.now()
+          if (now-previous &gt; wait) {
+              fn.call(_this, _args)
+              previous = now
+          }
+      }
+  }
+</code></pre></li>
 </ul>
 </li>
-<li>尽早执行操作（DOMCotentLoaded）</li>
+<li><p>事件防抖</p>
+<ul>
+<li>超过一段时间不输入，执行一次 </li>
+<li><p>防止输入一个就输出一个这样的抖动情况，设置一个延迟，超过这个延迟不执行输入的情况下，才会执行输出。也就是输入一堆，停5ms不输入以后，才会输出    </p>
+<pre><code>  function debounce (fn, delay) {
+      let timeout
+      return function (args) {
+          let _this = this
+          let _args = args
+          clearTimeout(timeout)
+          timout = setTimeout(function (_args, _this) {
+              fn.call(_this, _args)
+          }, delay)
+      }
+  }
+
+  //使用防抖
+  function print (content) {
+      console.log(content)
+  }
+
+  let input = document.getElementById(&#39;text&#39;)
+  let debounceInput = debounce(print, 100)
+  input.addEventListener(&#39;keyup&#39;, function () {
+      debounceAjax(e.target.innerHTML)
+  })
+</code></pre></li>
+</ul>
+</li>
+<li><p>尽早执行操作（DOMCotentLoaded）</p>
+</li>
 </ul>
 </li>
 </ul>
