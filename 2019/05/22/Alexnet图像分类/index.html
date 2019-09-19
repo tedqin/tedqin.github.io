@@ -102,16 +102,16 @@
 <meta property="og:site_name" content="TedQin">
 <meta property="og:description" content="github链接：https://github.com/tedqin/Alexnet_Imagenet 背景 概述  Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/0LFUfXp.png">
-<meta property="og:image" content="https://i.imgur.com/wYZay5v.png">
-<meta property="og:image" content="https://i.imgur.com/qm2Ofif.png">
-<meta property="og:image" content="https://i.imgur.com/SOuRIsz.png">
-<meta property="og:image" content="https://i.imgur.com/pWERo64.png">
-<meta property="og:updated_time" content="2019-07-31T01:52:21.215Z">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/MDI.lWfmb18X9HJ8Z9Z8wW2rzZpaVeOGvTdioB70oT0!/b/dL4AAAAAAAAA&bo=KQK3AAAAAAARB6w!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/v1PDIDyPpakIA.VFTtFuNauV8xNbFsDq1fxoAv54csA!/b/dL8AAAAAAAAA&bo=KwEuAQAAAAARBzU!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Tdt6xdlo.9zf*.y5KUjYTKADk2Ni3Ljk9p6pbMSioUA!/b/dLsAAAAAAAAA&bo=sgHaAAAAAAARB1k!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Y6zGEfjfPaAqty*cwwmXV0bvwVgfvNPZFjUwZEgPBTg!/b/dLgAAAAAAAAA&bo=TQFRAAAAAAARFz0!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/yOEEimKxBk**qfEFj8joIpFiUHAQl2xnRDDayqC*h8I!/b/dMMAAAAAAAAA&bo=sQFJAAAAAAARF9k!&rf=viewer_4">
+<meta property="og:updated_time" content="2019-09-19T09:45:17.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Alexnet图像分类">
 <meta name="twitter:description" content="github链接：https://github.com/tedqin/Alexnet_Imagenet 背景 概述  Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3">
-<meta name="twitter:image" content="https://i.imgur.com/0LFUfXp.png">
+<meta name="twitter:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/MDI.lWfmb18X9HJ8Z9Z8wW2rzZpaVeOGvTdioB70oT0!/b/dL4AAAAAAAAA&bo=KQK3AAAAAAARB6w!&rf=viewer_4">
 
 
 
@@ -396,16 +396,16 @@
 </li>
 </ul>
 <h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p>Alexnet有5个卷积层和3个全连接层，并且Alex发现移除任意一层都会降低最终的效果。网络结构如图</p>
-<p><img src="https://i.imgur.com/0LFUfXp.png" alt=""></p>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/MDI.lWfmb18X9HJ8Z9Z8wW2rzZpaVeOGvTdioB70oT0!/b/dL4AAAAAAAAA&amp;bo=KQK3AAAAAAARB6w!&amp;rf=viewer_4" alt=""></p>
 <p>这个网络前面5层是卷积层，后面三层是全连接层，最终softmax输出是1000类。</p>
 <ul>
 <li>第三卷积层用384个3<em>3</em>256的卷积核,得到13<em>13</em>192*2的卷积层。 </li>
 <li>第四卷积层用384个3<em>3</em>192的卷积核，得到13<em>13</em>192*2的卷积层。 </li>
 <li>第五卷积层用256个3<em>3</em>192的卷积核，得到13<em>13</em>128*2的卷积层。<br>每个全连接层有4096个神经元。</li>
 </ul>
-<p>总体而言，Alexnet网络的结构如下：<br><img src="https://i.imgur.com/wYZay5v.png" alt=""></p>
-<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="https://i.imgur.com/qm2Ofif.png" alt=""></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>caffe提供的预训练模型一共包括了1000类图像，涵盖了生物、天文、自然、科技等多个方面的相关图像，具体在caffe_classes.py下，由于文件本身较大就没放在github上，可以很容易在网上找到<br>测试集包括1000张图像，共200类，标签存储在lable.txt当中。取测试图像概率最大类的下标作为测试的分类结果（即top-1测试），并且与label对比，最后计算得出整个测试集得precision在75%左右，算是比较好的结果。<br><img src="https://i.imgur.com/SOuRIsz.png" alt=""><br><img src="https://i.imgur.com/pWERo64.png" alt=""></p>
+<p>总体而言，Alexnet网络的结构如下：<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/v1PDIDyPpakIA.VFTtFuNauV8xNbFsDq1fxoAv54csA!/b/dL8AAAAAAAAA&amp;bo=KwEuAQAAAAARBzU!&amp;rf=viewer_4" alt=""></p>
+<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Tdt6xdlo.9zf*.y5KUjYTKADk2Ni3Ljk9p6pbMSioUA!/b/dLsAAAAAAAAA&amp;bo=sgHaAAAAAAARB1k!&amp;rf=viewer_4" alt=""></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>caffe提供的预训练模型一共包括了1000类图像，涵盖了生物、天文、自然、科技等多个方面的相关图像，具体在caffe_classes.py下，由于文件本身较大就没放在github上，可以很容易在网上找到<br>测试集包括1000张图像，共200类，标签存储在lable.txt当中。取测试图像概率最大类的下标作为测试的分类结果（即top-1测试），并且与label对比，最后计算得出整个测试集得precision在75%左右，算是比较好的结果。<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Y6zGEfjfPaAqty*cwwmXV0bvwVgfvNPZFjUwZEgPBTg!/b/dLgAAAAAAAAA&amp;bo=TQFRAAAAAAARFz0!&amp;rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/yOEEimKxBk**qfEFj8joIpFiUHAQl2xnRDDayqC*h8I!/b/dMMAAAAAAAAA&amp;bo=sQFJAAAAAAARF9k!&amp;rf=viewer_4" alt=""></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>AlexNet可以说是深度神经网络的鼻祖，相比于后来的VGG和googlenet而言，它的构造更加简单，而且结构也已经非常的成熟和稳固。<br>作为学校的大创项目用alexnet有点蠢，但是时间紧迫，也分享下自己学习cnn的过程。</p>
 
       

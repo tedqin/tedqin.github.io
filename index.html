@@ -2062,7 +2062,7 @@ localStorage.getItem(key)</pre>
         
           
             <p>本文已置于<a href="https://github.com/tedqin/GAN-ImageRepairing" title="github" target="_blank" rel="noopener">https://github.com/tedqin/GAN-ImageRepairing</a></p>
-<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="./img/model.png" alt="avatar"></p>
+<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/yVOoj8uvJYCJ5gmqMhDyThY8AGvsPFGaIXyu5tpGOvM!/b/dLYAAAAAAAAA&amp;bo=KARmBgAAAAARB3w!&amp;rf=viewer_4" alt=""></p>
 <p>和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。<br>首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神经网络需要矩阵形式的输入，所以修复流程的首要步骤就是将图像分解为样本点，这个步骤可以由判别器的卷积实现，然后生成器和判别器进行博弈，得到训练好的模型，由生成器快速生成伪造的图像，然后建立适当的损失函数和惩罚因子来寻找修复图像所需要的最佳伪造图像。<br>由此，总的系统流程主要可以分为三步：</p>
 <ul>
 <li>图像预处理。</li>
@@ -2076,14 +2076,14 @@ localStorage.getItem(key)</pre>
 <li>使用深度神经网络将面部表示（或嵌入）在128维单位超球面上。这种嵌入方法可以通用于任何人脸表示上面。与其他的一些人脸表征方法不同，这种人脸嵌入方法具有很好的性质，两个嵌入人脸间的距离较大就意味着这两幅面孔可能不是来自于同一个人。</li>
 </ul>
 <p>运用Openface来消除除了人脸外的其他的因素，比如背景、发型等等，然后移动图像，使得数据集中的每个人的人脸区域居于整张图片的中央。</p>
-<p><img src="https://i.imgur.com/rci95K5.png" alt=""></p>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/9PoRdd1OpU6LxVWa3S5PrnnPN1sTaiaV8nfGBkIy*H4!/b/dLYAAAAAAAAA&amp;bo=TQPUAAAAAAADB7g!&amp;rf=viewer_4" alt=""></p>
 <h3 id="构建掩膜"><a href="#构建掩膜" class="headerlink" title="构建掩膜"></a>构建掩膜</h3><p>为了能够评估修复结果，需要知道被损坏图像之前的样子。我采用给未损坏图像一个二进制掩膜来作为损坏区域，这样就可以在修复掩膜之后，对比修复前的图像进行修复效果评估。</p>
-<p><img src="https://i.imgur.com/iFx1IJJ.png" alt=""></p>
-<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p><img src="https://i.imgur.com/hvRAj2E.png" alt=""></p>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/6nuXgTq1zgTWTF4FTdaEeDIDCOD8.SqI862rbBU3kUY!/b/dLYAAAAAAAAA&amp;bo=9gLOAAAAAAARBwo!&amp;rf=viewer_4" alt=""></p>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/WoaTn*w37HUMJXa4HFQq068VxZ0T4JxKUl2HGOpsTZc!/b/dL4AAAAAAAAA&amp;bo=KgXCAgAAAAARB98!&amp;rf=viewer_4" alt=""></p>
 <p>训练过程中，定义了一个采样器，在每一个epoch训练完成以后，用采样器对生成器进行采样并且保存样例图像</p>
 <p>在20个epoch训练完成以后，生成的图像效果已经比较好，此时生成器和判别器的损失函数变化如图</p>
-<p><img src="https://i.imgur.com/mWpdlIY.png" alt=""></p>
-<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><p>部分结果如下：<br><img src="https://i.imgur.com/XfwNfoa.png" alt=""></p>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/w*B.kfsi1f0fuE.dV.5yXy8C4Rr1H4EKZeX7.Nr73XU!/b/dD4BAAAAAAAA&amp;bo=qAP2AwAAAAARB24!&amp;rf=viewer_4" alt=""></p>
+<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><p>部分结果如下：<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/IyOO0Qhkojl14WspCfqMMT5iuIvZKBBJvedjKog8i60!/b/dL8AAAAAAAAA&amp;bo=3gQwAgAAAAARB9g!&amp;rf=viewer_4" alt=""></p>
 
           
         
@@ -2769,16 +2769,16 @@ localStorage.getItem(key)</pre>
 </li>
 </ul>
 <h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p>Alexnet有5个卷积层和3个全连接层，并且Alex发现移除任意一层都会降低最终的效果。网络结构如图</p>
-<p><img src="https://i.imgur.com/0LFUfXp.png" alt=""></p>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/MDI.lWfmb18X9HJ8Z9Z8wW2rzZpaVeOGvTdioB70oT0!/b/dL4AAAAAAAAA&amp;bo=KQK3AAAAAAARB6w!&amp;rf=viewer_4" alt=""></p>
 <p>这个网络前面5层是卷积层，后面三层是全连接层，最终softmax输出是1000类。</p>
 <ul>
 <li>第三卷积层用384个3<em>3</em>256的卷积核,得到13<em>13</em>192*2的卷积层。 </li>
 <li>第四卷积层用384个3<em>3</em>192的卷积核，得到13<em>13</em>192*2的卷积层。 </li>
 <li>第五卷积层用256个3<em>3</em>192的卷积核，得到13<em>13</em>128*2的卷积层。<br>每个全连接层有4096个神经元。</li>
 </ul>
-<p>总体而言，Alexnet网络的结构如下：<br><img src="https://i.imgur.com/wYZay5v.png" alt=""></p>
-<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="https://i.imgur.com/qm2Ofif.png" alt=""></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>caffe提供的预训练模型一共包括了1000类图像，涵盖了生物、天文、自然、科技等多个方面的相关图像，具体在caffe_classes.py下，由于文件本身较大就没放在github上，可以很容易在网上找到<br>测试集包括1000张图像，共200类，标签存储在lable.txt当中。取测试图像概率最大类的下标作为测试的分类结果（即top-1测试），并且与label对比，最后计算得出整个测试集得precision在75%左右，算是比较好的结果。<br><img src="https://i.imgur.com/SOuRIsz.png" alt=""><br><img src="https://i.imgur.com/pWERo64.png" alt=""></p>
+<p>总体而言，Alexnet网络的结构如下：<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/v1PDIDyPpakIA.VFTtFuNauV8xNbFsDq1fxoAv54csA!/b/dL8AAAAAAAAA&amp;bo=KwEuAQAAAAARBzU!&amp;rf=viewer_4" alt=""></p>
+<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Tdt6xdlo.9zf*.y5KUjYTKADk2Ni3Ljk9p6pbMSioUA!/b/dLsAAAAAAAAA&amp;bo=sgHaAAAAAAARB1k!&amp;rf=viewer_4" alt=""></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>caffe提供的预训练模型一共包括了1000类图像，涵盖了生物、天文、自然、科技等多个方面的相关图像，具体在caffe_classes.py下，由于文件本身较大就没放在github上，可以很容易在网上找到<br>测试集包括1000张图像，共200类，标签存储在lable.txt当中。取测试图像概率最大类的下标作为测试的分类结果（即top-1测试），并且与label对比，最后计算得出整个测试集得precision在75%左右，算是比较好的结果。<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Y6zGEfjfPaAqty*cwwmXV0bvwVgfvNPZFjUwZEgPBTg!/b/dLgAAAAAAAAA&amp;bo=TQFRAAAAAAARFz0!&amp;rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/yOEEimKxBk**qfEFj8joIpFiUHAQl2xnRDDayqC*h8I!/b/dMMAAAAAAAAA&amp;bo=sQFJAAAAAAARF9k!&amp;rf=viewer_4" alt=""></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>AlexNet可以说是深度神经网络的鼻祖，相比于后来的VGG和googlenet而言，它的构造更加简单，而且结构也已经非常的成熟和稳固。<br>作为学校的大创项目用alexnet有点蠢，但是时间紧迫，也分享下自己学习cnn的过程。</p>
 
           

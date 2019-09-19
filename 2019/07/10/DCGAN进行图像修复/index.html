@@ -102,17 +102,17 @@
 <meta property="og:site_name" content="TedQin">
 <meta property="og:description" content="本文已置于https://github.com/tedqin/GAN-ImageRepairing 总体设计 和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/07/10/DCGAN进行图像修复/img/model.png">
-<meta property="og:image" content="https://i.imgur.com/rci95K5.png">
-<meta property="og:image" content="https://i.imgur.com/iFx1IJJ.png">
-<meta property="og:image" content="https://i.imgur.com/hvRAj2E.png">
-<meta property="og:image" content="https://i.imgur.com/mWpdlIY.png">
-<meta property="og:image" content="https://i.imgur.com/XfwNfoa.png">
-<meta property="og:updated_time" content="2019-09-19T09:03:33.058Z">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/yVOoj8uvJYCJ5gmqMhDyThY8AGvsPFGaIXyu5tpGOvM!/b/dLYAAAAAAAAA&bo=KARmBgAAAAARB3w!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/9PoRdd1OpU6LxVWa3S5PrnnPN1sTaiaV8nfGBkIy*H4!/b/dLYAAAAAAAAA&bo=TQPUAAAAAAADB7g!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/6nuXgTq1zgTWTF4FTdaEeDIDCOD8.SqI862rbBU3kUY!/b/dLYAAAAAAAAA&bo=9gLOAAAAAAARBwo!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/WoaTn*w37HUMJXa4HFQq068VxZ0T4JxKUl2HGOpsTZc!/b/dL4AAAAAAAAA&bo=KgXCAgAAAAARB98!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/w*B.kfsi1f0fuE.dV.5yXy8C4Rr1H4EKZeX7.Nr73XU!/b/dD4BAAAAAAAA&bo=qAP2AwAAAAARB24!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/IyOO0Qhkojl14WspCfqMMT5iuIvZKBBJvedjKog8i60!/b/dL8AAAAAAAAA&bo=3gQwAgAAAAARB9g!&rf=viewer_4">
+<meta property="og:updated_time" content="2019-09-19T09:33:02.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DCGAN进行图像修复">
 <meta name="twitter:description" content="本文已置于https://github.com/tedqin/GAN-ImageRepairing 总体设计 和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/10/DCGAN进行图像修复/img/model.png">
+<meta name="twitter:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/yVOoj8uvJYCJ5gmqMhDyThY8AGvsPFGaIXyu5tpGOvM!/b/dLYAAAAAAAAA&bo=KARmBgAAAAARB3w!&rf=viewer_4">
 
 
 
@@ -381,7 +381,7 @@
 
       
         <p>本文已置于<a href="https://github.com/tedqin/GAN-ImageRepairing" title="github" target="_blank" rel="noopener">https://github.com/tedqin/GAN-ImageRepairing</a></p>
-<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="./img/model.png" alt="avatar"></p>
+<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/yVOoj8uvJYCJ5gmqMhDyThY8AGvsPFGaIXyu5tpGOvM!/b/dLYAAAAAAAAA&amp;bo=KARmBgAAAAARB3w!&amp;rf=viewer_4" alt=""></p>
 <p>和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。<br>首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神经网络需要矩阵形式的输入，所以修复流程的首要步骤就是将图像分解为样本点，这个步骤可以由判别器的卷积实现，然后生成器和判别器进行博弈，得到训练好的模型，由生成器快速生成伪造的图像，然后建立适当的损失函数和惩罚因子来寻找修复图像所需要的最佳伪造图像。<br>由此，总的系统流程主要可以分为三步：</p>
 <ul>
 <li>图像预处理。</li>
@@ -395,14 +395,14 @@
 <li>使用深度神经网络将面部表示（或嵌入）在128维单位超球面上。这种嵌入方法可以通用于任何人脸表示上面。与其他的一些人脸表征方法不同，这种人脸嵌入方法具有很好的性质，两个嵌入人脸间的距离较大就意味着这两幅面孔可能不是来自于同一个人。</li>
 </ul>
 <p>运用Openface来消除除了人脸外的其他的因素，比如背景、发型等等，然后移动图像，使得数据集中的每个人的人脸区域居于整张图片的中央。</p>
-<p><img src="https://i.imgur.com/rci95K5.png" alt=""></p>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/9PoRdd1OpU6LxVWa3S5PrnnPN1sTaiaV8nfGBkIy*H4!/b/dLYAAAAAAAAA&amp;bo=TQPUAAAAAAADB7g!&amp;rf=viewer_4" alt=""></p>
 <h3 id="构建掩膜"><a href="#构建掩膜" class="headerlink" title="构建掩膜"></a>构建掩膜</h3><p>为了能够评估修复结果，需要知道被损坏图像之前的样子。我采用给未损坏图像一个二进制掩膜来作为损坏区域，这样就可以在修复掩膜之后，对比修复前的图像进行修复效果评估。</p>
-<p><img src="https://i.imgur.com/iFx1IJJ.png" alt=""></p>
-<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p><img src="https://i.imgur.com/hvRAj2E.png" alt=""></p>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/6nuXgTq1zgTWTF4FTdaEeDIDCOD8.SqI862rbBU3kUY!/b/dLYAAAAAAAAA&amp;bo=9gLOAAAAAAARBwo!&amp;rf=viewer_4" alt=""></p>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/WoaTn*w37HUMJXa4HFQq068VxZ0T4JxKUl2HGOpsTZc!/b/dL4AAAAAAAAA&amp;bo=KgXCAgAAAAARB98!&amp;rf=viewer_4" alt=""></p>
 <p>训练过程中，定义了一个采样器，在每一个epoch训练完成以后，用采样器对生成器进行采样并且保存样例图像</p>
 <p>在20个epoch训练完成以后，生成的图像效果已经比较好，此时生成器和判别器的损失函数变化如图</p>
-<p><img src="https://i.imgur.com/mWpdlIY.png" alt=""></p>
-<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><p>部分结果如下：<br><img src="https://i.imgur.com/XfwNfoa.png" alt=""></p>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/w*B.kfsi1f0fuE.dV.5yXy8C4Rr1H4EKZeX7.Nr73XU!/b/dD4BAAAAAAAA&amp;bo=qAP2AwAAAAARB24!&amp;rf=viewer_4" alt=""></p>
+<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><p>部分结果如下：<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/IyOO0Qhkojl14WspCfqMMT5iuIvZKBBJvedjKog8i60!/b/dL8AAAAAAAAA&amp;bo=3gQwAgAAAAARB9g!&amp;rf=viewer_4" alt=""></p>
 
       
     </div>
