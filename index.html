@@ -2062,7 +2062,7 @@ localStorage.getItem(key)</pre>
         
           
             <p>本文已置于<a href="https://github.com/tedqin/GAN-ImageRepairing" title="github" target="_blank" rel="noopener">https://github.com/tedqin/GAN-ImageRepairing</a></p>
-<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="https://i.imgur.com/V0qUcr6.png" alt=""></p>
+<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="./img/model.png" alt="avatar"></p>
 <p>和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。<br>首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神经网络需要矩阵形式的输入，所以修复流程的首要步骤就是将图像分解为样本点，这个步骤可以由判别器的卷积实现，然后生成器和判别器进行博弈，得到训练好的模型，由生成器快速生成伪造的图像，然后建立适当的损失函数和惩罚因子来寻找修复图像所需要的最佳伪造图像。<br>由此，总的系统流程主要可以分为三步：</p>
 <ul>
 <li>图像预处理。</li>
@@ -2236,14 +2236,12 @@ localStorage.getItem(key)</pre>
       
         
           
-            <h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><p><img src="https://i.imgur.com/WXXW3BE.png" alt=""></p>
-<p>标签：p{}<br>class: .class{}<br>同一类，不同标签： p.class{}<br>同一标签，多个类：p.class1{} .class2{<br>id：#id {}<br>集体选择器：p,.class1,#id1 {}<br>后代选择器：<code>&lt;p&gt;&lt;em&gt;&lt;a&gt;123&lt;a&gt;&lt;/em&gt;&lt;/p&gt;</code>:p em a {}<br>链接伪类 <code>:link</code>:未访问的链接 <code>:visited</code>：已访问的链接 <code>:hover</code>：鼠标悬停状态 <code>:active</code>：鼠标点击到松开的阶段<br>（hover和active可用于任何标签）<br>权重：id &gt; 类 属性 伪类 &gt; 元素 伪元素 &gt; 其他  </p>
+            <h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><p>标签：p{}<br>class: .class{}<br>同一类，不同标签： p.class{}<br>同一标签，多个类：p.class1{} .class2{<br>id：#id {}<br>集体选择器：p,.class1,#id1 {}<br>后代选择器：<code>&lt;p&gt;&lt;em&gt;&lt;a&gt;123&lt;a&gt;&lt;/em&gt;&lt;/p&gt;</code>:p em a {}<br>链接伪类 <code>:link</code>:未访问的链接 <code>:visited</code>：已访问的链接 <code>:hover</code>：鼠标悬停状态 <code>:active</code>：鼠标点击到松开的阶段<br>（hover和active可用于任何标签）<br>权重：id &gt; 类 属性 伪类 &gt; 元素 伪元素 &gt; 其他  </p>
 <h2 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h2><p>文字粗细：<code>font-weight: normal/bold</code><br>文字斜度：<code>font-style: normal/italic/oblique</code><br>文字粗细：<code>font-weight: 600</code>    </p>
 <h3 id="装饰器属性"><a href="#装饰器属性" class="headerlink" title="装饰器属性"></a>装饰器属性</h3><p>字重（粗体）font-weight<br>斜体 font-style<br>下划线 text-decoration<br>指针 cursor</p>
 <h2 id="文本对齐方式"><a href="#文本对齐方式" class="headerlink" title="文本对齐方式"></a>文本对齐方式</h2><p>文本水平对齐方式：<code>text-align: left/right/center/justify</code><br>左对齐/右对齐/居中对齐/两端对齐 只对块级元素有效 </p>
 <h2 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h2><p>首行缩进：<code>text-indent: 2em</code><br>行高：<code>line-height: 120em</code> 最好用em防止字体过大导致显示不全<br>注意：图片是按照inline元素做的排版，会涉及字体对齐，默认按照baseline对齐，和底线有空隙。 为了删除这个空隙，可以直接<code>vertical-align: bottom</code>或者<code>display: block</code></p>
 <h2 id="滚动"><a href="#滚动" class="headerlink" title="滚动"></a>滚动</h2><p>overflow  </p>
-<p><img src="https://i.imgur.com/f8LJyC0.png" alt=""></p>
 <h2 id="元素内容的垂直方式"><a href="#元素内容的垂直方式" class="headerlink" title="元素内容的垂直方式"></a>元素内容的垂直方式</h2><p>只对行内元素有效<br><code>vertical-align: sub/supper/</code>文字向上向下对齐</p>
 <h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><ul>
 <li>height：长度/百分比/auto</li>
@@ -2539,8 +2537,7 @@ localStorage.getItem(key)</pre>
 </ul>
 </li>
 </ul>
-<h2 id="关于html的一些补充"><a href="#关于html的一些补充" class="headerlink" title="关于html的一些补充"></a>关于html的一些补充</h2><h3 id="常见标签"><a href="#常见标签" class="headerlink" title="常见标签"></a>常见标签</h3><p><img src="https://i.imgur.com/wj7EEvF.png" alt=""></p>
-<h3 id="h5新增"><a href="#h5新增" class="headerlink" title="h5新增"></a>h5新增</h3><ul>
+<h2 id="关于html的一些补充"><a href="#关于html的一些补充" class="headerlink" title="关于html的一些补充"></a>关于html的一些补充</h2><h3 id="h5新增标签"><a href="#h5新增标签" class="headerlink" title="h5新增标签"></a>h5新增标签</h3><ul>
 <li>新区块标签<ul>
 <li>section</li>
 <li>article</li>

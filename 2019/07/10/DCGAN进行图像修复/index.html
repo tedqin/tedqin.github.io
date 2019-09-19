@@ -102,17 +102,17 @@
 <meta property="og:site_name" content="TedQin">
 <meta property="og:description" content="本文已置于https://github.com/tedqin/GAN-ImageRepairing 总体设计 和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/V0qUcr6.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/10/DCGAN进行图像修复/img/model.png">
 <meta property="og:image" content="https://i.imgur.com/rci95K5.png">
 <meta property="og:image" content="https://i.imgur.com/iFx1IJJ.png">
 <meta property="og:image" content="https://i.imgur.com/hvRAj2E.png">
 <meta property="og:image" content="https://i.imgur.com/mWpdlIY.png">
 <meta property="og:image" content="https://i.imgur.com/XfwNfoa.png">
-<meta property="og:updated_time" content="2019-07-31T01:53:04.203Z">
+<meta property="og:updated_time" content="2019-09-19T09:03:33.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DCGAN进行图像修复">
 <meta name="twitter:description" content="本文已置于https://github.com/tedqin/GAN-ImageRepairing 总体设计 和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神">
-<meta name="twitter:image" content="https://i.imgur.com/V0qUcr6.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/10/DCGAN进行图像修复/img/model.png">
 
 
 
@@ -381,7 +381,7 @@
 
       
         <p>本文已置于<a href="https://github.com/tedqin/GAN-ImageRepairing" title="github" target="_blank" rel="noopener">https://github.com/tedqin/GAN-ImageRepairing</a></p>
-<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="https://i.imgur.com/V0qUcr6.png" alt=""></p>
+<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="./img/model.png" alt="avatar"></p>
 <p>和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。<br>首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神经网络需要矩阵形式的输入，所以修复流程的首要步骤就是将图像分解为样本点，这个步骤可以由判别器的卷积实现，然后生成器和判别器进行博弈，得到训练好的模型，由生成器快速生成伪造的图像，然后建立适当的损失函数和惩罚因子来寻找修复图像所需要的最佳伪造图像。<br>由此，总的系统流程主要可以分为三步：</p>
 <ul>
 <li>图像预处理。</li>

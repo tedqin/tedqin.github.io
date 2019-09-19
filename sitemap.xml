@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/07/10/DCGAN%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E4%BF%AE%E5%A4%8D/</loc>
+    
+    <lastmod>2019-09-19T09:03:33.058Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/09/10/%E7%94%A8CNN%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9CGAN/</loc>
+    
+    <lastmod>2019-09-19T09:01:00.912Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/06/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86css/</loc>
+    
+    <lastmod>2019-09-19T08:53:07.692Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/07/15/javascript%E6%95%B4%E7%90%86/</loc>
     
     <lastmod>2019-09-18T12:31:53.091Z</lastmod>
@@ -16,13 +37,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/06/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86css/</loc>
-    
-    <lastmod>2019-08-03T22:44:38.951Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2019/08/03/%E7%89%9B%E5%AE%A2%E7%BD%91JavascriptV8%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F/</loc>
     
     <lastmod>2019-08-03T22:42:28.094Z</lastmod>
@@ -33,20 +47,6 @@
     <loc>http://yoursite.com/2019/07/31/vue2.0%E4%BB%BF%E5%8E%BB%E5%93%AA%E5%84%BF%E7%BD%91%E7%A7%BB%E5%8A%A8%E7%AB%AFWebapp%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2019-08-01T02:52:01.197Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/10/DCGAN%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E4%BF%AE%E5%A4%8D/</loc>
-    
-    <lastmod>2019-07-31T01:53:04.203Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/09/10/%E7%94%A8CNN%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9CGAN/</loc>
-    
-    <lastmod>2019-07-31T01:52:33.777Z</lastmod>
     
   </url>
   

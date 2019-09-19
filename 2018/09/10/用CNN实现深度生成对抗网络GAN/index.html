@@ -102,14 +102,14 @@
 <meta property="og:site_name" content="TedQin">
 <meta property="og:description" content="GAN生成对抗网络（Generative Adversarial Network，GAN）是近几年很热门的一种深度学习神经网络模型，是目前在复杂分布上进行无监督学习最前沿的模型之一，这个概念由Ian Goodfellow和Yoshua Bengio等人在2014年提出，GAN的核心思想源自博弈论，它通过构造生成器（Generator）和判别器（Discriminator）在训练过程中互相博弈学习，">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/nRb1Q8a.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/10/用CNN实现深度生成对抗网络GAN/img/model.png">
 <meta property="og:image" content="https://i.imgur.com/3mgI8Vf.png">
 <meta property="og:image" content="https://i.imgur.com/Olp9lpp.png">
-<meta property="og:updated_time" content="2019-07-31T01:52:33.777Z">
+<meta property="og:updated_time" content="2019-09-19T09:01:00.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用CNN实现深度生成对抗网络GAN">
 <meta name="twitter:description" content="GAN生成对抗网络（Generative Adversarial Network，GAN）是近几年很热门的一种深度学习神经网络模型，是目前在复杂分布上进行无监督学习最前沿的模型之一，这个概念由Ian Goodfellow和Yoshua Bengio等人在2014年提出，GAN的核心思想源自博弈论，它通过构造生成器（Generator）和判别器（Discriminator）在训练过程中互相博弈学习，">
-<meta name="twitter:image" content="https://i.imgur.com/nRb1Q8a.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/10/用CNN实现深度生成对抗网络GAN/img/model.png">
 
 
 
@@ -378,7 +378,7 @@
 
       
         <h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><p>生成对抗网络（Generative Adversarial Network，GAN）是近几年很热门的一种深度学习神经网络模型，是目前在复杂分布上进行无监督学习最前沿的模型之一，这个概念由Ian Goodfellow和Yoshua Bengio等人在2014年提出，GAN的核心思想源自博弈论，它通过构造生成器（Generator）和判别器（Discriminator）在训练过程中互相博弈学习，最终得到理想的结果。其中生成器的目的在于生成虚假的样本分布，判别器的目的在于判别出输入的样本是否真实。由于GAN模型“博弈”的这一特点，它已经开始被应用到语音和语言处理、电脑病毒监测、棋类比赛程序等问题的研究当中。另外，GAN最常用的领域还是图像处理和计算机视觉，进行图像生成，构成各种逼真的室内外场景。</p>
-<h2 id="GAN的基本模型"><a href="#GAN的基本模型" class="headerlink" title="GAN的基本模型"></a>GAN的基本模型</h2><p><img src="https://i.imgur.com/nRb1Q8a.png" alt=""></p>
+<h2 id="GAN的基本模型"><a href="#GAN的基本模型" class="headerlink" title="GAN的基本模型"></a>GAN的基本模型</h2><p><img src="./img/model.png" alt="avatar"></p>
 <h2 id="CNN实现GAN"><a href="#CNN实现GAN" class="headerlink" title="CNN实现GAN"></a>CNN实现GAN</h2><p>GAN提出的是一种对抗模型的思想，而要实现它，目前流行的是使用感知器或者多层神经网络。而用CNN来实现，可以大大解决GAN难以训练和不够稳定的问题，并且可以提高生成样本的质量、收敛速度，以及拓展维度。<br>CNN实现的改进：</p>
 <ul>
 <li>去掉了G和D中的池化层（pooling layer），并用微步幅卷积替代，能够分别使得G和D的下采样和上采样效率更高。</li>
