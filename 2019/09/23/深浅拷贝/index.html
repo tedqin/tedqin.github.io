@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo,this is TedQin" />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -94,16 +94,18 @@
 
 
 
-<meta name="description" content="Output is the best input">
-<meta property="og:type" content="website">
-<meta property="og:title" content="TedQin">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+<meta name="description" content="简单的概念：  浅拷贝：将原对象/数组的引用赋值给新对象，新对象/数组只是一个引用 改变新对象的时候，同时改变原对象    深拷贝：创建一个新的对象/数组，将原对象/数组的各项属性的值拷贝过来 改变新对象的时候，不改变原对象    只对第一层做拷贝：浅拷贝对数组(基本类型数组) 直接遍历   let arr = [1,2,3,4]   let newArray=[]   遍历{       new">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈深浅拷贝.md">
+<meta property="og:url" content="http://yoursite.com/2019/09/23/深浅拷贝/index.html">
 <meta property="og:site_name" content="TedQin">
-<meta property="og:description" content="Output is the best input">
+<meta property="og:description" content="简单的概念：  浅拷贝：将原对象/数组的引用赋值给新对象，新对象/数组只是一个引用 改变新对象的时候，同时改变原对象    深拷贝：创建一个新的对象/数组，将原对象/数组的各项属性的值拷贝过来 改变新对象的时候，不改变原对象    只对第一层做拷贝：浅拷贝对数组(基本类型数组) 直接遍历   let arr = [1,2,3,4]   let newArray=[]   遍历{       new">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-22T17:47:42.067Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TedQin">
-<meta name="twitter:description" content="Output is the best input">
+<meta name="twitter:title" content="浅谈深浅拷贝.md">
+<meta name="twitter:description" content="简单的概念：  浅拷贝：将原对象/数组的引用赋值给新对象，新对象/数组只是一个引用 改变新对象的时候，同时改变原对象    深拷贝：创建一个新的对象/数组，将原对象/数组的各项属性的值拷贝过来 改变新对象的时候，不改变原对象    只对第一层做拷贝：浅拷贝对数组(基本类型数组) 直接遍历   let arr = [1,2,3,4]   let newArray=[]   遍历{       new">
 
 
 
@@ -132,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/09/23/深浅拷贝/"/>
 
 
 
 
 
-  <title>Archive | TedQin</title>
+  <title>浅谈深浅拷贝.md | TedQin</title>
   
 
 
@@ -163,7 +165,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,333 +259,232 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/深浅拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">浅谈深浅拷贝.md</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-23T00:27:23+08:00">
+                2019-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 15 posts in total. Keep on posting.
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
 
-      
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
 
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2019">2019</h2>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/23/深浅拷贝/" itemprop="url">
-              
-                <span itemprop="name">浅谈深浅拷贝.md</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-23T00:27:23+08:00"
-              content="2019-09-23" >
-          09-23
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/03/牛客网JavascriptV8输入格式/" itemprop="url">
-              
-                <span itemprop="name">牛客网JavascriptV8输入格式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-03T23:38:20+08:00"
-              content="2019-08-03" >
-          08-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/31/vue2.0仿去哪儿网移动端Webapp遇到的问题/" itemprop="url">
-              
-                <span itemprop="name">vue2.0仿去哪儿网移动端Webapp遇到的问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-07-31T23:20:07+08:00"
-              content="2019-07-31" >
-          07-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>简单的概念：</p>
+<ul>
+<li>浅拷贝：将原对象/数组的引用赋值给新对象，新对象/数组只是一个引用<ul>
+<li>改变新对象的时候，同时改变原对象 </li>
+</ul>
+</li>
+<li>深拷贝：创建一个新的对象/数组，将原对象/数组的各项属性的值拷贝过来<ul>
+<li>改变新对象的时候，不改变原对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="只对第一层做拷贝：浅拷贝"><a href="#只对第一层做拷贝：浅拷贝" class="headerlink" title="只对第一层做拷贝：浅拷贝"></a>只对第一层做拷贝：浅拷贝</h2><h3 id="对数组-基本类型数组"><a href="#对数组-基本类型数组" class="headerlink" title="对数组(基本类型数组)"></a>对数组(基本类型数组)</h3><ul>
+<li><p>直接遍历</p>
+<pre><code>  let arr = [1,2,3,4]
+  let newArray=[]
+  遍历{
+      newArray.push(item)
+      }
+</code></pre></li>
+<li><p>slice() <code>let newArray = arr.slice()</code></p>
+</li>
+<li>concat() <code>let newArray = arr.concat()</code></li>
+</ul>
+<h3 id="对对象"><a href="#对对象" class="headerlink" title="对对象"></a>对对象</h3><ul>
+<li>直接遍历</li>
+<li><p>Object.assign()</p>
+<pre><code>  var obj = {name: &#39;ted&#39;, age:23}
+  var copyObj = Object.assign({}, obj)
+</code></pre></li>
+<li>扩展运算符…(数组同样适用) <code>let copyObj = {...obj}</code></li>
+</ul>
+<h2 id="深拷贝：拷贝所有层级"><a href="#深拷贝：拷贝所有层级" class="headerlink" title="深拷贝：拷贝所有层级"></a>深拷贝：拷贝所有层级</h2><ul>
+<li><p>JSON.parse(JSON.stringify(XXXX))</p>
+<pre><code>  let arr = [
+      {number1: 1},
+      {number2: 2},
+      {number3: 3}
+  ]
+  let copyArr = JSON.parse(JSON.stringify(arr))
+</code></pre></li>
+<li><p>递归</p>
+<pre><code>  function myCopy(obj) {
+      let copyObj = obj.constructor === Array ? [] : {}
+      for (let i in obj) {
+          if (typeof obj[i] === &#39;object&#39;) {
+              copyObj[i] = myCopy(obj[i])
+          } else {
+              copyObj[i] = obj[i]
+          }
+      }
+  }
+</code></pre></li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/15/javascript整理/" itemprop="url">
-              
-                <span itemprop="name">javascript整理</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-07-15T21:23:22+08:00"
-              content="2019-07-15" >
-          07-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/10/DCGAN进行图像修复/" itemprop="url">
-              
-                <span itemprop="name">DCGAN进行图像修复</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-07-10T12:12:51+08:00"
-              content="2019-07-10" >
-          07-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/06/01/知识整理css/" itemprop="url">
-              
-                <span itemprop="name">知识整理CSS</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-06-01T16:19:02+08:00"
-              content="2019-06-01" >
-          06-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/22/Alexnet图像分类/" itemprop="url">
-              
-                <span itemprop="name">Alexnet图像分类</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-22T21:12:11+08:00"
-              content="2019-05-22" >
-          05-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/17/面试总结和知识梳理/" itemprop="url">
-              
-                <span itemprop="name">面试总结和知识梳理</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-04-17T10:29:13+08:00"
-              content="2019-04-17" >
-          04-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/03/牛客网JavascriptV8输入格式/" rel="next" title="牛客网JavascriptV8输入格式">
+                <i class="fa fa-chevron-left"></i> 牛客网JavascriptV8输入格式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -591,6 +492,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -611,8 +516,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -709,6 +623,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#只对第一层做拷贝：浅拷贝"><span class="nav-number">1.</span> <span class="nav-text">只对第一层做拷贝：浅拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对数组-基本类型数组"><span class="nav-number">1.1.</span> <span class="nav-text">对数组(基本类型数组)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对对象"><span class="nav-number">1.2.</span> <span class="nav-text">对对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深拷贝：拷贝所有层级"><span class="nav-number">2.</span> <span class="nav-text">深拷贝：拷贝所有层级</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -818,11 +748,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
 
 
   
