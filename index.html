@@ -273,6 +273,211 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/浅谈深浅拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/23/浅谈深浅拷贝/" itemprop="url">浅谈深浅拷贝.md</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-23T00:27:23+08:00">
+                2019-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>简单的概念：</p>
+<ul>
+<li>浅拷贝：将原对象/数组的引用赋值给新对象，新对象/数组只是一个引用<ul>
+<li>改变新对象的时候，同时改变原对象 </li>
+</ul>
+</li>
+<li>深拷贝：创建一个新的对象/数组，将原对象/数组的各项属性的值拷贝过来<ul>
+<li>改变新对象的时候，不改变原对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="只对第一层做拷贝：浅拷贝"><a href="#只对第一层做拷贝：浅拷贝" class="headerlink" title="只对第一层做拷贝：浅拷贝"></a>只对第一层做拷贝：浅拷贝</h2><h3 id="对数组-基本类型数组"><a href="#对数组-基本类型数组" class="headerlink" title="对数组(基本类型数组)"></a>对数组(基本类型数组)</h3><ul>
+<li><p>直接遍历</p>
+<pre><code>  let arr = [1,2,3,4]
+  let newArray=[]
+  遍历{
+      newArray.push(item)
+      }
+</code></pre></li>
+<li><p>slice() <code>let newArray = arr.slice()</code></p>
+</li>
+<li>concat() <code>let newArray = arr.concat()</code></li>
+</ul>
+<h3 id="对对象"><a href="#对对象" class="headerlink" title="对对象"></a>对对象</h3><ul>
+<li>直接遍历</li>
+<li><p>Object.assign()</p>
+<pre><code>  var obj = {name: &#39;ted&#39;, age:23}
+  var copyObj = Object.assign({}, obj)
+</code></pre></li>
+<li>扩展运算符…(数组同样适用) <code>let copyObj = {...obj}</code></li>
+</ul>
+<h2 id="深拷贝：拷贝所有层级"><a href="#深拷贝：拷贝所有层级" class="headerlink" title="深拷贝：拷贝所有层级"></a>深拷贝：拷贝所有层级</h2><ul>
+<li><p>JSON.parse(JSON.stringify(XXXX))</p>
+<pre><code>  let arr = [
+      {number1: 1},
+      {number2: 2},
+      {number3: 3}
+  ]
+  let copyArr = JSON.parse(JSON.stringify(arr))
+</code></pre></li>
+<li><p>递归</p>
+<pre><code>  function myCopy(obj) {
+      let copyObj = obj.constructor === Array ? [] : {}
+      for (let i in obj) {
+          if (typeof obj[i] === &#39;object&#39;) {
+              copyObj[i] = myCopy(obj[i])
+          } else {
+              copyObj[i] = obj[i]
+          }
+      }
+  }
+</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/牛客网JavascriptV8输入格式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -4037,221 +4242,6 @@ localStorage.getItem(key)</pre>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/mac常用指令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/10/mac常用指令/" itemprop="url">mac常用指令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-10T02:55:04+08:00">
-                2018-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基础知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ps: * 指令名称 <code>指令</code> <code>实例</code></p>
-<p>参考：<a href="https://www.jianshu.com/p/8803bf591956" target="_blank" rel="noopener">https://www.jianshu.com/p/8803bf591956</a></p>
-<h1 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h1><h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><ul>
-<li>创建目录 <code>mkdir</code> <code>mkdir dirname</code></li>
-<li>删除目录 <code>rmdir</code> <code>rmdir dirname</code></li>
-<li>移动或重命名一个目录 <code>mvdir</code> <code>mvdir dir1 dir2</code></li>
-<li>改变当前目录 <code>rmdir</code> <code>rmdir dirname</code></li>
-<li>显示当前目录的路径名 <code>pwd</code> <code>pwd</code></li>
-<li>显示当前目录的内容 <code>ls</code> <code>ls -la</code></li>
-</ul>
-<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><ul>
-<li>显示文件内容或连接文件 <code>cat</code> <code>cat filename</code></li>
-<li>显示非文本文件的内容 <code>od</code> <code>od -c filename</code></li>
-<li>复制文件或目录 <code>cp</code> <code>cp file1 file2</code></li>
-<li>删除文件或目录 <code>rm</code> <code>rm filename</code></li>
-<li>改变文件名或所在目录 <code>mv</code> <code>mv file1 file2</code></li>
-<li>使用匹配表达式查找文件 <code>find</code> <code>find . -name &quot;*.c&quot; -print</code></li>
-<li>显示文件类型 <code>file</code> <code>file filename</code></li>
-</ul>
-<h2 id="选择操作"><a href="#选择操作" class="headerlink" title="选择操作"></a>选择操作</h2><ul>
-<li>显示文件的最初几行 <code>head</code> <code>head -20 filename</code></li>
-<li>显示文件的最后几行 <code>tail</code> <code>tail -15 filename</code></li>
-<li>显示文件每行中的某些域 <code>cut</code> <code>cut -f1,7 -d: /etc/passwd</code></li>
-<li>从标准输入中删除若干列 <code>colrm</code> <code>colrm 8 20 file2</code></li>
-<li>排序或归并文件 <code>sort</code> <code>sort -d -f -u file1</code></li>
-<li>去掉文件中的重复行 <code>uniq</code> <code>uniq file1 file2</code></li>
-<li>显示两有序文件的公共和非公共行 <code>comm</code> <code>comm file1 file2</code></li>
-<li>统计文件的字符数、词数和行数 <code>wc</code> <code>wc filename</code></li>
-<li>给文件加上行号 <code>nl</code> <code>nl file1 &gt;file2</code></li>
-</ul>
-<h2 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h2><ul>
-<li>显示进程当前状态 <code>ps</code> <code>ps u</code></li>
-<li>终止进程 <code>kill</code> <code>kill -9 30142</code></li>
-</ul>
-<h2 id="时间操作"><a href="#时间操作" class="headerlink" title="时间操作"></a>时间操作</h2><ul>
-<li>显示系统的当前日期和时间 <code>diff</code> <code>diff file1 file2</code></li>
-<li>显示⽇日历 <code>cal</code> <code>cal 8 1996</code></li>
-<li>统计程序的执⾏行行时间 <code>time</code> <code>time a.out</code></li>
-</ul>
-<h2 id="网络与通信操作"><a href="#网络与通信操作" class="headerlink" title="网络与通信操作"></a>网络与通信操作</h2><ul>
-<li>远程登录 <code>telnet</code> <code>telnet hpc.sp.net.edu.cn</code></li>
-<li>远程登录 <code>rlogin</code> <code>rlogin hostname -l username</code></li>
-<li>在远程主机执⾏行行指定命令 <code>rsh</code> <code>rsh f01n03 date</code></li>
-<li>在本地主机与远程主机之间传输⽂文件 <code>ftp</code> <code>ftp[ftp.sp.net.edu.cn]</code></li>
-<li>在本地主机与远程主机之间复制⽂文件 <code>rcp</code> <code>rcp[ftp.sp.net.edu.cn]</code></li>
-<li>给⼀一个⽹网络主机发送 回应请求 <code>ping</code> <code>ping hpc.sp.net.edu.cn</code></li>
-<li>阅读和发送电⼦子邮件 <code>mail</code> <code>mail</code></li>
-<li>允许或拒绝接收报⽂文 <code>mesg</code> <code>mesg n</code></li>
-</ul>
-<h2 id="core-shell-指令"><a href="#core-shell-指令" class="headerlink" title="core shell 指令"></a>core shell 指令</h2><ul>
-<li>列列出最近执⾏行行过的⼏条命令及编号 <code>history</code> <code>history</code></li>
-<li>重复执⾏行行最近执⾏过的某条命令 <code>r</code> <code>r-2</code></li>
-<li>给某个命令定义别名 <code>alias</code> <code>alias del=rm -i</code></li>
-<li>取消对某个别名的定义 <code>diff</code> <code>diff file1 file2</code></li>
-<li>比较并显示两个文件的差异 <code>unalias</code> <code>unalias del</code></li>
-</ul>
-<h2 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h2><ul>
-<li>显示操作系统的有关信息 <code>uname</code> <code>uname -a</code></li>
-<li>清除屏幕或窗⼝口内容 <code>clear</code> <code>clear</code></li>
-<li>显示当前所有设置过的环境变量量 <code>env</code> <code>env</code></li>
-<li>列列出当前登录的所有⽤用户 <code>who</code> <code>who</code></li>
-<li>显示当前正进⾏行行操作的⽤用户名 <code>whoami</code> <code>whoami</code></li>
-<li>显示终端或伪终端的名称 <code>tty</code> <code>tty</code></li>
-<li>显示或重置控制键定义 <code>stty</code> <code>stty -a</code></li>
-<li>查询磁盘使⽤用情况 <code>du</code> <code>du -k subdirdf</code></li>
-<li>显示⽂文件系统的总空间和可⽤用空间 <code>/tmp</code> </li>
-<li>显示当前系统活动的总信息 <code>w</code> </li>
-<li>在本地主机与远程主机之间复制⽂文件 <code>rcp</code> <code>rcp[ftp.sp.net.edu.cn]</code></li>
-<li>给⼀一个⽹网络主机发送 回应请求 <code>ping</code> </li>
-</ul>
-<h2 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a>sudo命令</h2><ul>
-<li>临时使⽤用root权限来编辑/etc/shadow密码⽂文件 <code>sudo gedit /etc/shadow</code> </li>
-<li>注意$和#的变化，#表示你在最⾼高权限root⾥里里⾯面</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -4302,7 +4292,7 @@ localStorage.getItem(key)</pre>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

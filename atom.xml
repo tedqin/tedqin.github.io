@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-03T22:42:28.094Z</updated>
+  <updated>2019-09-22T17:44:04.221Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅谈深浅拷贝.md</title>
+    <link href="http://yoursite.com/2019/09/23/%E6%B5%85%E8%B0%88%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/"/>
+    <id>http://yoursite.com/2019/09/23/浅谈深浅拷贝/</id>
+    <published>2019-09-22T16:27:23.000Z</published>
+    <updated>2019-09-22T17:44:04.221Z</updated>
+    
+    <content type="html"><![CDATA[<p>简单的概念：</p><ul><li>浅拷贝：将原对象/数组的引用赋值给新对象，新对象/数组只是一个引用<ul><li>改变新对象的时候，同时改变原对象 </li></ul></li><li>深拷贝：创建一个新的对象/数组，将原对象/数组的各项属性的值拷贝过来<ul><li>改变新对象的时候，不改变原对象</li></ul></li></ul><h2 id="只对第一层做拷贝：浅拷贝"><a href="#只对第一层做拷贝：浅拷贝" class="headerlink" title="只对第一层做拷贝：浅拷贝"></a>只对第一层做拷贝：浅拷贝</h2><h3 id="对数组-基本类型数组"><a href="#对数组-基本类型数组" class="headerlink" title="对数组(基本类型数组)"></a>对数组(基本类型数组)</h3><ul><li><p>直接遍历</p><pre><code>  let arr = [1,2,3,4]  let newArray=[]  遍历{      newArray.push(item)      }</code></pre></li><li><p>slice() <code>let newArray = arr.slice()</code></p></li><li>concat() <code>let newArray = arr.concat()</code></li></ul><h3 id="对对象"><a href="#对对象" class="headerlink" title="对对象"></a>对对象</h3><ul><li>直接遍历</li><li><p>Object.assign()</p><pre><code>  var obj = {name: &#39;ted&#39;, age:23}  var copyObj = Object.assign({}, obj)</code></pre></li><li>扩展运算符…(数组同样适用) <code>let copyObj = {...obj}</code></li></ul><h2 id="深拷贝：拷贝所有层级"><a href="#深拷贝：拷贝所有层级" class="headerlink" title="深拷贝：拷贝所有层级"></a>深拷贝：拷贝所有层级</h2><ul><li><p>JSON.parse(JSON.stringify(XXXX))</p><pre><code>  let arr = [      {number1: 1},      {number2: 2},      {number3: 3}  ]  let copyArr = JSON.parse(JSON.stringify(arr))</code></pre></li><li><p>递归</p><pre><code>  function myCopy(obj) {      let copyObj = obj.constructor === Array ? [] : {}      for (let i in obj) {          if (typeof obj[i] === &#39;object&#39;) {              copyObj[i] = myCopy(obj[i])          } else {              copyObj[i] = obj[i]          }      }  }</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;简单的概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;浅拷贝：将原对象/数组的引用赋值给新对象，新对象/数组只是一个引用&lt;ul&gt;
+&lt;li&gt;改变新对象的时候，同时改变原对象 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;深拷贝：创建一个新的对象/数组，将原对象/数组的各项属性的值拷贝过来&lt;u
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>牛客网JavascriptV8输入格式</title>
@@ -41,9 +74,9 @@
       <category term="javascript" scheme="http://yoursite.com/categories/javascript/"/>
     
     
-      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
