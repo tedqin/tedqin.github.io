@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="基础," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="ps: * 指令名称 指令 实例 参考：https://www.jianshu.com/p/8803bf591956 基本指令目录操作 创建目录 mkdir mkdir dirname 删除目录 rmdir rmdir dirname 移动或重命名一个目录 mvdir mvdir dir1 dir2 改变当前目录 rmdir rmdir dirname 显示当前目录的路径名 pwd pwd 显示当">
-<meta name="keywords" content="基础">
+<meta name="description" content="整理一下目前javascript的几种继承方式 1. 利用构造函数和call/apply缺点：子类无法继承父类原型上的属性function Parent() {     this.name = &amp;#39;parentName&amp;#39; } function Child() {     Parent.call(this)     this.age = 10 } 2. 利用原型链缺点：如果改变一个实例">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mac常用指令">
-<meta property="og:url" content="http://yoursite.com/2018/10/10/mac常用指令/index.html">
+<meta property="og:title" content="Javascript的几种继承方法">
+<meta property="og:url" content="http://yoursite.com/2019/09/23/Javascript的几种继承方法/index.html">
 <meta property="og:site_name" content="TedQin">
-<meta property="og:description" content="ps: * 指令名称 指令 实例 参考：https://www.jianshu.com/p/8803bf591956 基本指令目录操作 创建目录 mkdir mkdir dirname 删除目录 rmdir rmdir dirname 移动或重命名一个目录 mvdir mvdir dir1 dir2 改变当前目录 rmdir rmdir dirname 显示当前目录的路径名 pwd pwd 显示当">
+<meta property="og:description" content="整理一下目前javascript的几种继承方式 1. 利用构造函数和call/apply缺点：子类无法继承父类原型上的属性function Parent() {     this.name = &amp;#39;parentName&amp;#39; } function Child() {     Parent.call(this)     this.age = 10 } 2. 利用原型链缺点：如果改变一个实例">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-28T17:57:50.521Z">
+<meta property="og:updated_time" content="2019-09-23T15:12:43.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mac常用指令">
-<meta name="twitter:description" content="ps: * 指令名称 指令 实例 参考：https://www.jianshu.com/p/8803bf591956 基本指令目录操作 创建目录 mkdir mkdir dirname 删除目录 rmdir rmdir dirname 移动或重命名一个目录 mvdir mvdir dir1 dir2 改变当前目录 rmdir rmdir dirname 显示当前目录的路径名 pwd pwd 显示当">
+<meta name="twitter:title" content="Javascript的几种继承方法">
+<meta name="twitter:description" content="整理一下目前javascript的几种继承方式 1. 利用构造函数和call/apply缺点：子类无法继承父类原型上的属性function Parent() {     this.name = &amp;#39;parentName&amp;#39; } function Child() {     Parent.call(this)     this.age = 10 } 2. 利用原型链缺点：如果改变一个实例">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/10/mac常用指令/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/09/23/Javascript的几种继承方法/"/>
 
 
 
 
 
-  <title>mac常用指令 | TedQin</title>
+  <title>Javascript的几种继承方法 | TedQin</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/mac常用指令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/Javascript的几种继承方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ted Qin">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mac常用指令</h1>
+          <h1 class="post-title" itemprop="name headline">Javascript的几种继承方法</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-10T02:55:04+08:00">
-                2018-10-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-23T22:36:54+08:00">
+                2019-09-23
               </time>
             
 
@@ -325,8 +325,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基础知识</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -362,81 +373,45 @@
       
 
       
-        <p>ps: * 指令名称 <code>指令</code> <code>实例</code></p>
-<p>参考：<a href="https://www.jianshu.com/p/8803bf591956" target="_blank" rel="noopener">https://www.jianshu.com/p/8803bf591956</a></p>
-<h1 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h1><h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><ul>
-<li>创建目录 <code>mkdir</code> <code>mkdir dirname</code></li>
-<li>删除目录 <code>rmdir</code> <code>rmdir dirname</code></li>
-<li>移动或重命名一个目录 <code>mvdir</code> <code>mvdir dir1 dir2</code></li>
-<li>改变当前目录 <code>rmdir</code> <code>rmdir dirname</code></li>
-<li>显示当前目录的路径名 <code>pwd</code> <code>pwd</code></li>
-<li>显示当前目录的内容 <code>ls</code> <code>ls -la</code></li>
-</ul>
-<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><ul>
-<li>显示文件内容或连接文件 <code>cat</code> <code>cat filename</code></li>
-<li>显示非文本文件的内容 <code>od</code> <code>od -c filename</code></li>
-<li>复制文件或目录 <code>cp</code> <code>cp file1 file2</code></li>
-<li>删除文件或目录 <code>rm</code> <code>rm filename</code></li>
-<li>改变文件名或所在目录 <code>mv</code> <code>mv file1 file2</code></li>
-<li>使用匹配表达式查找文件 <code>find</code> <code>find . -name &quot;*.c&quot; -print</code></li>
-<li>显示文件类型 <code>file</code> <code>file filename</code></li>
-</ul>
-<h2 id="选择操作"><a href="#选择操作" class="headerlink" title="选择操作"></a>选择操作</h2><ul>
-<li>显示文件的最初几行 <code>head</code> <code>head -20 filename</code></li>
-<li>显示文件的最后几行 <code>tail</code> <code>tail -15 filename</code></li>
-<li>显示文件每行中的某些域 <code>cut</code> <code>cut -f1,7 -d: /etc/passwd</code></li>
-<li>从标准输入中删除若干列 <code>colrm</code> <code>colrm 8 20 file2</code></li>
-<li>排序或归并文件 <code>sort</code> <code>sort -d -f -u file1</code></li>
-<li>去掉文件中的重复行 <code>uniq</code> <code>uniq file1 file2</code></li>
-<li>显示两有序文件的公共和非公共行 <code>comm</code> <code>comm file1 file2</code></li>
-<li>统计文件的字符数、词数和行数 <code>wc</code> <code>wc filename</code></li>
-<li>给文件加上行号 <code>nl</code> <code>nl file1 &gt;file2</code></li>
-</ul>
-<h2 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h2><ul>
-<li>显示进程当前状态 <code>ps</code> <code>ps u</code></li>
-<li>终止进程 <code>kill</code> <code>kill -9 30142</code></li>
-</ul>
-<h2 id="时间操作"><a href="#时间操作" class="headerlink" title="时间操作"></a>时间操作</h2><ul>
-<li>显示系统的当前日期和时间 <code>diff</code> <code>diff file1 file2</code></li>
-<li>显示⽇日历 <code>cal</code> <code>cal 8 1996</code></li>
-<li>统计程序的执⾏行行时间 <code>time</code> <code>time a.out</code></li>
-</ul>
-<h2 id="网络与通信操作"><a href="#网络与通信操作" class="headerlink" title="网络与通信操作"></a>网络与通信操作</h2><ul>
-<li>远程登录 <code>telnet</code> <code>telnet hpc.sp.net.edu.cn</code></li>
-<li>远程登录 <code>rlogin</code> <code>rlogin hostname -l username</code></li>
-<li>在远程主机执⾏行行指定命令 <code>rsh</code> <code>rsh f01n03 date</code></li>
-<li>在本地主机与远程主机之间传输⽂文件 <code>ftp</code> <code>ftp[ftp.sp.net.edu.cn]</code></li>
-<li>在本地主机与远程主机之间复制⽂文件 <code>rcp</code> <code>rcp[ftp.sp.net.edu.cn]</code></li>
-<li>给⼀一个⽹网络主机发送 回应请求 <code>ping</code> <code>ping hpc.sp.net.edu.cn</code></li>
-<li>阅读和发送电⼦子邮件 <code>mail</code> <code>mail</code></li>
-<li>允许或拒绝接收报⽂文 <code>mesg</code> <code>mesg n</code></li>
-</ul>
-<h2 id="core-shell-指令"><a href="#core-shell-指令" class="headerlink" title="core shell 指令"></a>core shell 指令</h2><ul>
-<li>列列出最近执⾏行行过的⼏条命令及编号 <code>history</code> <code>history</code></li>
-<li>重复执⾏行行最近执⾏过的某条命令 <code>r</code> <code>r-2</code></li>
-<li>给某个命令定义别名 <code>alias</code> <code>alias del=rm -i</code></li>
-<li>取消对某个别名的定义 <code>diff</code> <code>diff file1 file2</code></li>
-<li>比较并显示两个文件的差异 <code>unalias</code> <code>unalias del</code></li>
-</ul>
-<h2 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h2><ul>
-<li>显示操作系统的有关信息 <code>uname</code> <code>uname -a</code></li>
-<li>清除屏幕或窗⼝口内容 <code>clear</code> <code>clear</code></li>
-<li>显示当前所有设置过的环境变量量 <code>env</code> <code>env</code></li>
-<li>列列出当前登录的所有⽤用户 <code>who</code> <code>who</code></li>
-<li>显示当前正进⾏行行操作的⽤用户名 <code>whoami</code> <code>whoami</code></li>
-<li>显示终端或伪终端的名称 <code>tty</code> <code>tty</code></li>
-<li>显示或重置控制键定义 <code>stty</code> <code>stty -a</code></li>
-<li>查询磁盘使⽤用情况 <code>du</code> <code>du -k subdirdf</code></li>
-<li>显示⽂文件系统的总空间和可⽤用空间 <code>/tmp</code> </li>
-<li>显示当前系统活动的总信息 <code>w</code> </li>
-<li>在本地主机与远程主机之间复制⽂文件 <code>rcp</code> <code>rcp[ftp.sp.net.edu.cn]</code></li>
-<li>给⼀一个⽹网络主机发送 回应请求 <code>ping</code> </li>
-</ul>
-<h2 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a>sudo命令</h2><ul>
-<li>临时使⽤用root权限来编辑/etc/shadow密码⽂文件 <code>sudo gedit /etc/shadow</code> </li>
-<li>注意$和#的变化，#表示你在最⾼高权限root⾥里里⾯面</li>
-</ul>
+        <p>整理一下目前javascript的几种继承方式</p>
+<h2 id="1-利用构造函数和call-apply"><a href="#1-利用构造函数和call-apply" class="headerlink" title="1. 利用构造函数和call/apply"></a>1. 利用构造函数和call/apply</h2><h3 id="缺点：子类无法继承父类原型上的属性"><a href="#缺点：子类无法继承父类原型上的属性" class="headerlink" title="缺点：子类无法继承父类原型上的属性"></a>缺点：子类无法继承父类原型上的属性</h3><pre><code>function Parent() {
+    this.name = &#39;parentName&#39;
+}
+function Child() {
+    Parent.call(this)
+    this.age = 10
+}
+</code></pre><h2 id="2-利用原型链"><a href="#2-利用原型链" class="headerlink" title="2. 利用原型链"></a>2. 利用原型链</h2><h3 id="缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型"><a href="#缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型" class="headerlink" title="缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型"></a>缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型</h3><pre><code>function Parent() {
+    this.name = &#39;parentName&#39;
+}
+function Child() {
+    this.age = 10
+}
+Child.prototype = new Parent()
+</code></pre><h2 id="3-组合继承"><a href="#3-组合继承" class="headerlink" title="3. 组合继承"></a>3. 组合继承</h2><pre><code>function Parent() {
+    this.name = &#39;parentName&#39;
+}
+function Child() {
+    Parent.call(this)
+    this.age = 10
+}
+Child.prototype = new Parent()
+</code></pre><h2 id="4-es6-class继承"><a href="#4-es6-class继承" class="headerlink" title="4. es6 class继承"></a>4. es6 class继承</h2><pre><code>class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
 
+class ColorPoint extends Point {
+  constructor(x, y, color) {
+    super(x, y);
+    this.color = color;
+  }
+}
+
+let cp = new ColorPoint(25, 8, &#39;green&#39;);
+</code></pre>
       
     </div>
     
@@ -453,7 +428,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/基础/" rel="tag"># 基础</a>
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
@@ -466,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/10/hexo搭建blog常用命令/" rel="next" title="hexo搭建blog常用命令">
-                <i class="fa fa-chevron-left"></i> hexo搭建blog常用命令
+              <a href="/2019/09/23/深浅拷贝/" rel="next" title="深浅拷贝">
+                <i class="fa fa-chevron-left"></i> 深浅拷贝
               </a>
             
           </div>
@@ -475,10 +450,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/18/cpp笔记/" rel="prev" title="c++tips笔记">
-                c++tips笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -647,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本指令"><span class="nav-number">1.</span> <span class="nav-text">基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录操作"><span class="nav-number">1.1.</span> <span class="nav-text">目录操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件操作"><span class="nav-number">1.2.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择操作"><span class="nav-number">1.3.</span> <span class="nav-text">选择操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程操作"><span class="nav-number">1.4.</span> <span class="nav-text">进程操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间操作"><span class="nav-number">1.5.</span> <span class="nav-text">时间操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络与通信操作"><span class="nav-number">1.6.</span> <span class="nav-text">网络与通信操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#core-shell-指令"><span class="nav-number">1.7.</span> <span class="nav-text">core shell 指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它命令"><span class="nav-number">1.8.</span> <span class="nav-text">其它命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sudo命令"><span class="nav-number">1.9.</span> <span class="nav-text">sudo命令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-利用构造函数和call-apply"><span class="nav-number">1.</span> <span class="nav-text">1. 利用构造函数和call/apply</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点：子类无法继承父类原型上的属性"><span class="nav-number">1.1.</span> <span class="nav-text">缺点：子类无法继承父类原型上的属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-利用原型链"><span class="nav-number">2.</span> <span class="nav-text">2. 利用原型链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型"><span class="nav-number">2.1.</span> <span class="nav-text">缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-组合继承"><span class="nav-number">3.</span> <span class="nav-text">3. 组合继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-es6-class继承"><span class="nav-number">4.</span> <span class="nav-text">4. es6 class继承</span></a></li></ol></div>
             
 
           </div>
