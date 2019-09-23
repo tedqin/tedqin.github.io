@@ -94,18 +94,21 @@
 
 
 
-<meta name="description" content="整理一下目前javascript的几种继承方式 1. 利用构造函数和call/apply缺点：子类无法继承父类原型上的属性function Parent() {     this.name = &amp;#39;parentName&amp;#39; } function Child() {     Parent.call(this)     this.age = 10 } 2. 利用原型链缺点：如果改变一个实例">
+<meta name="description" content="原型构造函数一个普通函数，内部使用了this变量 实例对构造函数使用new运算符，就能生成实例对象，并且this会绑定在实例上 原型链一个实例对象，自身不存在的属性可以通过它的隐式原型proto向指向的原型对象找，若没有，则同理顺着该原型对象的proto到该原型对象的原型对象上找 原型（原型对象）原型对象是每个函数的prototype属性指向的一个对象，可以理解为一个仓库，可以在上面定义其他属性，">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javascript的几种继承方法">
-<meta property="og:url" content="http://yoursite.com/2019/09/23/Javascript的几种继承方法/index.html">
+<meta property="og:title" content="浅谈原型、执行上下文和作用域">
+<meta property="og:url" content="http://yoursite.com/2019/09/24/浅谈原型、执行上下文和作用域/index.html">
 <meta property="og:site_name" content="TedQin">
-<meta property="og:description" content="整理一下目前javascript的几种继承方式 1. 利用构造函数和call/apply缺点：子类无法继承父类原型上的属性function Parent() {     this.name = &amp;#39;parentName&amp;#39; } function Child() {     Parent.call(this)     this.age = 10 } 2. 利用原型链缺点：如果改变一个实例">
+<meta property="og:description" content="原型构造函数一个普通函数，内部使用了this变量 实例对构造函数使用new运算符，就能生成实例对象，并且this会绑定在实例上 原型链一个实例对象，自身不存在的属性可以通过它的隐式原型proto向指向的原型对象找，若没有，则同理顺着该原型对象的proto到该原型对象的原型对象上找 原型（原型对象）原型对象是每个函数的prototype属性指向的一个对象，可以理解为一个仓库，可以在上面定义其他属性，">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-23T15:12:43.741Z">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Gt9Oqvr24En4sIVKEL4jWTXBFwK6rK92CrYeFuEm7iM!/b/dFMBAAAAAAAA&bo=8gQMAgAAAAARB8g!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/tsDoSJkiA.YG52uhACzzXXkUPbZGarFDWC*80acIV9M!/b/dL8AAAAAAAAA&bo=GQMhAgAAAAARBwk!&rf=viewer_4">
+<meta property="og:updated_time" content="2019-09-23T17:29:07.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javascript的几种继承方法">
-<meta name="twitter:description" content="整理一下目前javascript的几种继承方式 1. 利用构造函数和call/apply缺点：子类无法继承父类原型上的属性function Parent() {     this.name = &amp;#39;parentName&amp;#39; } function Child() {     Parent.call(this)     this.age = 10 } 2. 利用原型链缺点：如果改变一个实例">
+<meta name="twitter:title" content="浅谈原型、执行上下文和作用域">
+<meta name="twitter:description" content="原型构造函数一个普通函数，内部使用了this变量 实例对构造函数使用new运算符，就能生成实例对象，并且this会绑定在实例上 原型链一个实例对象，自身不存在的属性可以通过它的隐式原型proto向指向的原型对象找，若没有，则同理顺着该原型对象的proto到该原型对象的原型对象上找 原型（原型对象）原型对象是每个函数的prototype属性指向的一个对象，可以理解为一个仓库，可以在上面定义其他属性，">
+<meta name="twitter:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Gt9Oqvr24En4sIVKEL4jWTXBFwK6rK92CrYeFuEm7iM!/b/dFMBAAAAAAAA&bo=8gQMAgAAAAARB8g!&rf=viewer_4">
 
 
 
@@ -134,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/23/Javascript的几种继承方法/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/09/24/浅谈原型、执行上下文和作用域/"/>
 
 
 
 
 
-  <title>Javascript的几种继承方法 | TedQin</title>
+  <title>浅谈原型、执行上下文和作用域 | TedQin</title>
   
 
 
@@ -273,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/Javascript的几种继承方法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/浅谈原型、执行上下文和作用域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ted Qin">
@@ -290,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Javascript的几种继承方法</h1>
+          <h1 class="post-title" itemprop="name headline">浅谈原型、执行上下文和作用域</h1>
         
 
         <div class="post-meta">
@@ -302,8 +305,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-23T22:36:54+08:00">
-                2019-09-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T01:28:59+08:00">
+                2019-09-24
               </time>
             
 
@@ -373,45 +376,48 @@
       
 
       
-        <p>整理一下目前javascript的几种继承方式</p>
-<h2 id="1-利用构造函数和call-apply"><a href="#1-利用构造函数和call-apply" class="headerlink" title="1. 利用构造函数和call/apply"></a>1. 利用构造函数和call/apply</h2><h3 id="缺点：子类无法继承父类原型上的属性"><a href="#缺点：子类无法继承父类原型上的属性" class="headerlink" title="缺点：子类无法继承父类原型上的属性"></a>缺点：子类无法继承父类原型上的属性</h3><pre><code>function Parent() {
-    this.name = &#39;parentName&#39;
-}
-function Child() {
-    Parent.call(this)
-    this.age = 10
-}
-</code></pre><h2 id="2-利用原型链"><a href="#2-利用原型链" class="headerlink" title="2. 利用原型链"></a>2. 利用原型链</h2><h3 id="缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型"><a href="#缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型" class="headerlink" title="缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型"></a>缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型</h3><pre><code>function Parent() {
-    this.name = &#39;parentName&#39;
-}
-function Child() {
-    this.age = 10
-}
-Child.prototype = new Parent()
-</code></pre><h2 id="3-组合继承"><a href="#3-组合继承" class="headerlink" title="3. 组合继承"></a>3. 组合继承</h2><pre><code>function Parent() {
-    this.name = &#39;parentName&#39;
-}
-function Child() {
-    Parent.call(this)
-    this.age = 10
-}
-Child.prototype = new Parent()
-</code></pre><h2 id="4-es6-class继承"><a href="#4-es6-class继承" class="headerlink" title="4. es6 class继承"></a>4. es6 class继承</h2><pre><code>class Point {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-}
+        <h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>一个普通函数，内部使用了this变量</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>对构造函数使用new运算符，就能生成实例对象，并且this会绑定在实例上</p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>一个实例对象，自身不存在的属性可以通过它的隐式原型<em>proto</em>向指向的原型对象找，若没有，则同理顺着该原型对象的<em>proto</em>到该原型对象的原型对象上找</p>
+<h3 id="原型（原型对象）"><a href="#原型（原型对象）" class="headerlink" title="原型（原型对象）"></a>原型（原型对象）</h3><p>原型对象是每个函数的prototype属性指向的一个对象，可以理解为一个仓库，可以在上面定义其他属性，它自带一个constructor,指向回它的构造函数</p>
+<ul>
+<li>每创建一个函数，该函数就会自带一个prototype属性（显式原型），该属性是一个指针，指向该函数的原型对象。</li>
+<li>若这个函数是构造函数，则由它构建的实例会自带一个<em>proto</em>属性（隐式原型），该属性是一个指针，指向原型对象</li>
+<li>原型对象上有一个属性constructor，该属性也是一个指针，指向其关联的构造函数</li>
+<li>如果Person的原型Person.prototype对象变成了某一个类的实例Person{},这个实例又会指向一个新的原型对象Object.prototype</li>
+</ul>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Gt9Oqvr24En4sIVKEL4jWTXBFwK6rK92CrYeFuEm7iM!/b/dFMBAAAAAAAA&amp;bo=8gQMAgAAAAARB8g!&amp;rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/tsDoSJkiA.YG52uhACzzXXkUPbZGarFDWC*80acIV9M!/b/dL8AAAAAAAAA&amp;bo=GQMhAgAAAAARBwk!&amp;rf=viewer_4" alt=""></p>
+<h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><p>针对对象或者函数，可以理解为this的值</p>
+<ul>
+<li>分类：<ul>
+<li>全局上下文：window为全局上下文</li>
+<li>函数（局部）上下文</li>
+</ul>
+</li>
+<li>特点：<ul>
+<li>动态的，函数调用的时候时创建，函数调用结束时释放</li>
+</ul>
+</li>
+</ul>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一块地盘，一个代码段所在的区域。</p>
+<ul>
+<li>分类：<ul>
+<li>全局作用域</li>
+<li>函数作用域</li>
+<li>块级作用域</li>
+</ul>
+</li>
+<li>作用：隔离变量，不同作用域下同名的变量名不会产生冲突</li>
+<li>特点：<ul>
+<li>静态的，只要定义好了就一直存在，不会改变</li>
+</ul>
+</li>
+</ul>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><p>由多个具有从属关系的作用域形成的链，查找变量时沿着作用域链查找</p>
+<ul>
+<li>自由变量：当前作用域没有定义的变量，可以顺着作用域链到父级作用域中去找</li>
+</ul>
 
-class ColorPoint extends Point {
-  constructor(x, y, color) {
-    super(x, y);
-    this.color = color;
-  }
-}
-
-let cp = new ColorPoint(25, 8, &#39;green&#39;);
-</code></pre>
       
     </div>
     
@@ -441,8 +447,8 @@ let cp = new ColorPoint(25, 8, &#39;green&#39;);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/23/深浅拷贝/" rel="next" title="深浅拷贝">
-                <i class="fa fa-chevron-left"></i> 深浅拷贝
+              <a href="/2019/09/23/Javascript的几种继承方法/" rel="next" title="Javascript的几种继承方法">
+                <i class="fa fa-chevron-left"></i> Javascript的几种继承方法
               </a>
             
           </div>
@@ -450,10 +456,6 @@ let cp = new ColorPoint(25, 8, &#39;green&#39;);
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/24/浅谈原型、执行上下文和作用域/" rel="prev" title="浅谈原型、执行上下文和作用域">
-                浅谈原型、执行上下文和作用域 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -622,7 +624,7 @@ let cp = new ColorPoint(25, 8, &#39;green&#39;);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-利用构造函数和call-apply"><span class="nav-number">1.</span> <span class="nav-text">1. 利用构造函数和call/apply</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点：子类无法继承父类原型上的属性"><span class="nav-number">1.1.</span> <span class="nav-text">缺点：子类无法继承父类原型上的属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-利用原型链"><span class="nav-number">2.</span> <span class="nav-text">2. 利用原型链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型"><span class="nav-number">2.1.</span> <span class="nav-text">缺点：如果改变一个实例的属性，其他的实例也会被改变，原因是公用一个原型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-组合继承"><span class="nav-number">3.</span> <span class="nav-text">3. 组合继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-es6-class继承"><span class="nav-number">4.</span> <span class="nav-text">4. es6 class继承</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">1.</span> <span class="nav-text">原型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数"><span class="nav-number">1.1.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">1.2.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链"><span class="nav-number">1.3.</span> <span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型（原型对象）"><span class="nav-number">1.4.</span> <span class="nav-text">原型（原型对象）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文"><span class="nav-number">2.</span> <span class="nav-text">执行上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">3.</span> <span class="nav-text">作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域链"><span class="nav-number">3.1.</span> <span class="nav-text">作用域链</span></a></li></ol></li></ol></div>
             
 
           </div>

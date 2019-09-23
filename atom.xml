@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-23T15:18:00.928Z</updated>
+  <updated>2019-09-23T17:29:07.289Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,16 +17,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>浅谈原型、构造函数和作用域</title>
-    <link href="http://yoursite.com/2019/09/23/%E6%B5%85%E8%B0%88%E5%8E%9F%E5%9E%8B%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
-    <id>http://yoursite.com/2019/09/23/浅谈原型、构造函数和作用域/</id>
-    <published>2019-09-23T15:18:00.000Z</published>
-    <updated>2019-09-23T15:18:00.928Z</updated>
+    <title>浅谈原型、执行上下文和作用域</title>
+    <link href="http://yoursite.com/2019/09/24/%E6%B5%85%E8%B0%88%E5%8E%9F%E5%9E%8B%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+    <id>http://yoursite.com/2019/09/24/浅谈原型、执行上下文和作用域/</id>
+    <published>2019-09-23T17:28:59.000Z</published>
+    <updated>2019-09-23T17:29:07.289Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>一个普通函数，内部使用了this变量</p><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>对构造函数使用new运算符，就能生成实例对象，并且this会绑定在实例上</p><h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>一个实例对象，自身不存在的属性可以通过它的隐式原型<em>proto</em>向指向的原型对象找，若没有，则同理顺着该原型对象的<em>proto</em>到该原型对象的原型对象上找</p><h3 id="原型（原型对象）"><a href="#原型（原型对象）" class="headerlink" title="原型（原型对象）"></a>原型（原型对象）</h3><p>原型对象是每个函数的prototype属性指向的一个对象，可以理解为一个仓库，可以在上面定义其他属性，它自带一个constructor,指向回它的构造函数</p><ul><li>每创建一个函数，该函数就会自带一个prototype属性（显式原型），该属性是一个指针，指向该函数的原型对象。</li><li>若这个函数是构造函数，则由它构建的实例会自带一个<em>proto</em>属性（隐式原型），该属性是一个指针，指向原型对象</li><li>原型对象上有一个属性constructor，该属性也是一个指针，指向其关联的构造函数</li><li>如果Person的原型Person.prototype对象变成了某一个类的实例Person{},这个实例又会指向一个新的原型对象Object.prototype</li></ul><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Gt9Oqvr24En4sIVKEL4jWTXBFwK6rK92CrYeFuEm7iM!/b/dFMBAAAAAAAA&amp;bo=8gQMAgAAAAARB8g!&amp;rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/tsDoSJkiA.YG52uhACzzXXkUPbZGarFDWC*80acIV9M!/b/dL8AAAAAAAAA&amp;bo=GQMhAgAAAAARBwk!&amp;rf=viewer_4" alt=""></p><h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><p>针对对象或者函数，可以理解为this的值</p><ul><li>分类：<ul><li>全局上下文：window为全局上下文</li><li>函数（局部）上下文</li></ul></li><li>特点：<ul><li>动态的，函数调用的时候时创建，函数调用结束时释放</li></ul></li></ul><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一块地盘，一个代码段所在的区域。</p><ul><li>分类：<ul><li>全局作用域</li><li>函数作用域</li><li>块级作用域</li></ul></li><li>作用：隔离变量，不同作用域下同名的变量名不会产生冲突</li><li>特点：<ul><li>静态的，只要定义好了就一直存在，不会改变</li></ul></li></ul><h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><p>由多个具有从属关系的作用域形成的链，查找变量时沿着作用域链查找</p><ul><li>自由变量：当前作用域没有定义的变量，可以顺着作用域链到父级作用域中去找</li></ul>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;h2 id=&quot;原型&quot;&gt;&lt;a href=&quot;#原型&quot; class=&quot;headerlink&quot; title=&quot;原型&quot;&gt;&lt;/a&gt;原型&lt;/h2&gt;&lt;h3 id=&quot;构造函数&quot;&gt;&lt;a href=&quot;#构造函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数&quot;&gt;&lt;/a&gt;构造函数&lt;/h
+      
+    
     </summary>
     
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
   </entry>
   
