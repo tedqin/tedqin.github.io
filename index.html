@@ -273,6 +273,271 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/es6中的async-await异步调用方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/25/es6中的async-await异步调用方法/" itemprop="url">es6中的async&await异步调用方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-25T17:13:18+08:00">
+                2019-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="async函数"><a href="#async函数" class="headerlink" title="async函数"></a>async函数</h3><ul>
+<li><p>async定义的函数返回一个Promise对象，可以使用then方法添加回调函数。</p>
+<pre><code>  async function timeout() {
+      return &#39;hello world&#39;
+  }
+  console.log(timeout());
+  console.log(&#39;虽然在后面，但是我先执行&#39;);
+</code></pre><p>  <img src="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205150941373-8971393.png" alt=""></p>
+</li>
+<li><p>它和promise一样，有异步回掉功能</p>
+<pre><code>  async function timeout() {
+      return &#39;hello world&#39;
+  }
+  timeout().then(result =&gt; {
+      console.log(result);
+  })
+  console.log(&#39;虽然在后面，但是我先执行&#39;);
+</code></pre><p>  <img src="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205151306873-401823311.png" alt=""></p>
+</li>
+<li><p>async原理：如果async成功返回一个promise对象，实际会调用Promise.resolve()返回，否则会调用Promise.reject()</p>
+<pre><code>  async function timeout(flag) {
+      if (flag) {
+          return &#39;hello world&#39;
+      } else {
+          throw &#39;my god, failure&#39;
+      }
+  }
+  console.log(timeout(true))  // 调用Promise.resolve() 返回promise 对象。
+  console.log(timeout(false)); // 调用Promise.reject() 返回promise 对象。
+</code></pre><p>  <img src="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205154012701-1737597385.png" alt=""></p>
+</li>
+</ul>
+<h3 id="await"><a href="#await" class="headerlink" title="await"></a>await</h3><p>当函数执行时，一旦遇到await(后面定义的也是一个promise对象)就会先返回，等异步操作完成，再执行后面的语句。</p>
+<p>await只能出现在async函数内部，等待async函数返回或执行promise，</p>
+<pre><code>// 2s 之后返回双倍的值
+function doubleAfter2seconds(num) {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            resolve(2 * num)
+        }, 2000);
+    } )
+}
+
+async function testResult() {
+    let result = await doubleAfter2seconds(30);
+    console.log(result);
+}
+
+testResult(); //2s后输出60
+</code></pre><p>代码执行过程：</p>
+<ol>
+<li>调用testResult()函数，遇到await，开始等待（后面的promise执行完毕）</li>
+<li>执行await后的doubleAfter2seconds(30)，返回promise开始执行，2s后执行完毕，值为60并返回</li>
+<li>await拿到60，赋值给result，等待结束，代码继续运行，执行console</li>
+</ol>
+<p>这里如果计算多个值，可以像写同步代码那样，避免回掉地狱</p>
+<pre><code>async function testResult() {
+    let first = await doubleAfter2seconds(30);
+    let second = await doubleAfter2seconds(50);
+    let third = await doubleAfter2seconds(30);
+    console.log(first + second + third);
+}
+</code></pre><h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><ul>
+<li>获取股票报价的函数（可以用.then处理async函数）</li>
+</ul>
+<pre><code>async function getStockPriceByName(name) {
+  const symbol = await getStockSymbol(name);
+  const stockPrice = await getStockPrice(symbol);
+  return stockPrice;
+}
+
+getStockPriceByName(&#39;goog&#39;).then(function (result) {
+  console.log(result);
+});
+</code></pre><ul>
+<li>在api中，把结果return 出去</li>
+</ul>
+<pre><code>export async function getRetailUnitPrice () {
+const reqBody = await get(&#39;/race/spot/racespot/enter/dayahead&#39;)
+return reqBody
+}
+</code></pre><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>async函数返回的promise对象，必须等到内部所有await命令后面的对象执行完，才会执行then</li>
+<li>当async返回一个常量，返回Promise.resolve(常量)自动构建promise返回值</li>
+<li>当async函数没有返回值的时候，返回Promise.resolve(undefiend)自动构建promise返回值</li>
+</ul>
+<pre><code>async function getTitle(url) {
+  let response = await fetch(url);
+  let html = await response.text();
+  return html.match(/&lt;title&gt;([\s\S]+)&lt;\/title&gt;/i)[1];
+}
+getTitle(&#39;https://tc39.github.io/ecma262/&#39;).then(console.log)
+// &quot;ECMAScript 2017 Language Specification&quot;
+</code></pre><h2 id="与promise相比"><a href="#与promise相比" class="headerlink" title="与promise相比"></a>与promise相比</h2><p>优点：处理.then链，不必把回掉嵌套在.then中，只要await即可</p>
+<pre><code>function sing() {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                resolve(`来一首好听的歌吧~~~`);
+            }, 1000);
+        });
+    }
+    async function demo() {
+        try {
+            const v = await say(); 
+            const s = await sing(); 
+            console.log(v); // 输出：hello, joel。今年我 26 岁
+            console.log(s) // 来一首好听的歌吧~~~
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    demo();
+</code></pre><p>如果使用原来的Promise 就是把回调放在then()中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/浅谈Javascript的垃圾回收机制与内存泄漏问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3200,186 +3465,11 @@ localStorage.getItem(key)</pre>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/DCGAN进行图像修复/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/10/DCGAN进行图像修复/" itemprop="url">DCGAN进行图像修复</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-10T12:12:51+08:00">
-                2019-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
-                    <span itemprop="name">machine learning</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/machine-learning/gan/" itemprop="url" rel="index">
-                    <span itemprop="name">gan</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本文已置于<a href="https://github.com/tedqin/GAN-ImageRepairing" title="github" target="_blank" rel="noopener">https://github.com/tedqin/GAN-ImageRepairing</a></p>
-<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/yVOoj8uvJYCJ5gmqMhDyThY8AGvsPFGaIXyu5tpGOvM!/b/dLYAAAAAAAAA&amp;bo=KARmBgAAAAARB3w!&amp;rf=viewer_4" alt=""></p>
-<p>和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。<br>首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神经网络需要矩阵形式的输入，所以修复流程的首要步骤就是将图像分解为样本点，这个步骤可以由判别器的卷积实现，然后生成器和判别器进行博弈，得到训练好的模型，由生成器快速生成伪造的图像，然后建立适当的损失函数和惩罚因子来寻找修复图像所需要的最佳伪造图像。<br>由此，总的系统流程主要可以分为三步：</p>
-<ul>
-<li>图像预处理。</li>
-<li>训练DCGAN模型。</li>
-<li>找到补全原图像所需要的最佳伪造图像，进行图像修复。</li>
-</ul>
-<h2 id="图像预处理"><a href="#图像预处理" class="headerlink" title="图像预处理"></a>图像预处理</h2><h3 id="Openface预处理"><a href="#Openface预处理" class="headerlink" title="Openface预处理"></a>Openface预处理</h3><p>Openface是一个基于深度神经网络的开源人脸识别系统。</p>
-<ul>
-<li>用OpenCV或者dlib中预训练好的模型检测人脸</li>
-<li>将人脸迁移到神经网络。利用dlib的实时姿态估计与OpenCV的仿射线变换来使人脸的眼睛和嘴唇出现在每个图像上的相同位置。</li>
-<li>使用深度神经网络将面部表示（或嵌入）在128维单位超球面上。这种嵌入方法可以通用于任何人脸表示上面。与其他的一些人脸表征方法不同，这种人脸嵌入方法具有很好的性质，两个嵌入人脸间的距离较大就意味着这两幅面孔可能不是来自于同一个人。</li>
-</ul>
-<p>运用Openface来消除除了人脸外的其他的因素，比如背景、发型等等，然后移动图像，使得数据集中的每个人的人脸区域居于整张图片的中央。</p>
-<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/9PoRdd1OpU6LxVWa3S5PrnnPN1sTaiaV8nfGBkIy*H4!/b/dLYAAAAAAAAA&amp;bo=TQPUAAAAAAADB7g!&amp;rf=viewer_4" alt=""></p>
-<h3 id="构建掩膜"><a href="#构建掩膜" class="headerlink" title="构建掩膜"></a>构建掩膜</h3><p>为了能够评估修复结果，需要知道被损坏图像之前的样子。我采用给未损坏图像一个二进制掩膜来作为损坏区域，这样就可以在修复掩膜之后，对比修复前的图像进行修复效果评估。</p>
-<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/6nuXgTq1zgTWTF4FTdaEeDIDCOD8.SqI862rbBU3kUY!/b/dLYAAAAAAAAA&amp;bo=9gLOAAAAAAARBwo!&amp;rf=viewer_4" alt=""></p>
-<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/WoaTn*w37HUMJXa4HFQq068VxZ0T4JxKUl2HGOpsTZc!/b/dL4AAAAAAAAA&amp;bo=KgXCAgAAAAARB98!&amp;rf=viewer_4" alt=""></p>
-<p>训练过程中，定义了一个采样器，在每一个epoch训练完成以后，用采样器对生成器进行采样并且保存样例图像</p>
-<p>在20个epoch训练完成以后，生成的图像效果已经比较好，此时生成器和判别器的损失函数变化如图</p>
-<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/w*B.kfsi1f0fuE.dV.5yXy8C4Rr1H4EKZeX7.Nr73XU!/b/dD4BAAAAAAAA&amp;bo=qAP2AwAAAAARB24!&amp;rf=viewer_4" alt=""></p>
-<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><p>部分结果如下：<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/IyOO0Qhkojl14WspCfqMMT5iuIvZKBBJvedjKog8i60!/b/dL8AAAAAAAAA&amp;bo=3gQwAgAAAAARB9g!&amp;rf=viewer_4" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -3425,7 +3515,7 @@ localStorage.getItem(key)</pre>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

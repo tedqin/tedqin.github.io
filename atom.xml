@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-25T03:50:46.938Z</updated>
+  <updated>2019-09-25T14:46:38.249Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>es6中的async&amp;await异步调用方法</title>
+    <link href="http://yoursite.com/2019/09/25/es6%E4%B8%AD%E7%9A%84async-await%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2019/09/25/es6中的async-await异步调用方法/</id>
+    <published>2019-09-25T09:13:18.000Z</published>
+    <updated>2019-09-25T14:46:38.249Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="async函数"><a href="#async函数" class="headerlink" title="async函数"></a>async函数</h3><ul><li><p>async定义的函数返回一个Promise对象，可以使用then方法添加回调函数。</p><pre><code>  async function timeout() {      return &#39;hello world&#39;  }  console.log(timeout());  console.log(&#39;虽然在后面，但是我先执行&#39;);</code></pre><p>  <img src="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205150941373-8971393.png" alt=""></p></li><li><p>它和promise一样，有异步回掉功能</p><pre><code>  async function timeout() {      return &#39;hello world&#39;  }  timeout().then(result =&gt; {      console.log(result);  })  console.log(&#39;虽然在后面，但是我先执行&#39;);</code></pre><p>  <img src="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205151306873-401823311.png" alt=""></p></li><li><p>async原理：如果async成功返回一个promise对象，实际会调用Promise.resolve()返回，否则会调用Promise.reject()</p><pre><code>  async function timeout(flag) {      if (flag) {          return &#39;hello world&#39;      } else {          throw &#39;my god, failure&#39;      }  }  console.log(timeout(true))  // 调用Promise.resolve() 返回promise 对象。  console.log(timeout(false)); // 调用Promise.reject() 返回promise 对象。</code></pre><p>  <img src="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205154012701-1737597385.png" alt=""></p></li></ul><h3 id="await"><a href="#await" class="headerlink" title="await"></a>await</h3><p>当函数执行时，一旦遇到await(后面定义的也是一个promise对象)就会先返回，等异步操作完成，再执行后面的语句。</p><p>await只能出现在async函数内部，等待async函数返回或执行promise，</p><pre><code>// 2s 之后返回双倍的值function doubleAfter2seconds(num) {    return new Promise((resolve, reject) =&gt; {        setTimeout(() =&gt; {            resolve(2 * num)        }, 2000);    } )}async function testResult() {    let result = await doubleAfter2seconds(30);    console.log(result);}testResult(); //2s后输出60</code></pre><p>代码执行过程：</p><ol><li>调用testResult()函数，遇到await，开始等待（后面的promise执行完毕）</li><li>执行await后的doubleAfter2seconds(30)，返回promise开始执行，2s后执行完毕，值为60并返回</li><li>await拿到60，赋值给result，等待结束，代码继续运行，执行console</li></ol><p>这里如果计算多个值，可以像写同步代码那样，避免回掉地狱</p><pre><code>async function testResult() {    let first = await doubleAfter2seconds(30);    let second = await doubleAfter2seconds(50);    let third = await doubleAfter2seconds(30);    console.log(first + second + third);}</code></pre><h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><ul><li>获取股票报价的函数（可以用.then处理async函数）</li></ul><pre><code>async function getStockPriceByName(name) {  const symbol = await getStockSymbol(name);  const stockPrice = await getStockPrice(symbol);  return stockPrice;}getStockPriceByName(&#39;goog&#39;).then(function (result) {  console.log(result);});</code></pre><ul><li>在api中，把结果return 出去</li></ul><pre><code>export async function getRetailUnitPrice () {const reqBody = await get(&#39;/race/spot/racespot/enter/dayahead&#39;)return reqBody}</code></pre><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul><li>async函数返回的promise对象，必须等到内部所有await命令后面的对象执行完，才会执行then</li><li>当async返回一个常量，返回Promise.resolve(常量)自动构建promise返回值</li><li>当async函数没有返回值的时候，返回Promise.resolve(undefiend)自动构建promise返回值</li></ul><pre><code>async function getTitle(url) {  let response = await fetch(url);  let html = await response.text();  return html.match(/&lt;title&gt;([\s\S]+)&lt;\/title&gt;/i)[1];}getTitle(&#39;https://tc39.github.io/ecma262/&#39;).then(console.log)// &quot;ECMAScript 2017 Language Specification&quot;</code></pre><h2 id="与promise相比"><a href="#与promise相比" class="headerlink" title="与promise相比"></a>与promise相比</h2><p>优点：处理.then链，不必把回掉嵌套在.then中，只要await即可</p><pre><code>function sing() {        return new Promise(function(resolve, reject) {            setTimeout(function() {                resolve(`来一首好听的歌吧~~~`);            }, 1000);        });    }    async function demo() {        try {            const v = await say();             const s = await sing();             console.log(v); // 输出：hello, joel。今年我 26 岁            console.log(s) // 来一首好听的歌吧~~~        } catch (e) {            console.log(e)        }    }    demo();</code></pre><p>如果使用原来的Promise 就是把回调放在then()中。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;基本用法&quot;&gt;&lt;a href=&quot;#基本用法&quot; class=&quot;headerlink&quot; title=&quot;基本用法&quot;&gt;&lt;/a&gt;基本用法&lt;/h2&gt;&lt;h3 id=&quot;async函数&quot;&gt;&lt;a href=&quot;#async函数&quot; class=&quot;headerlink&quot; title=&quot;asy
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>浅谈Javascript的垃圾回收机制与内存泄漏问题</title>
@@ -556,33 +583,6 @@
     
     
       <category term="plan" scheme="http://yoursite.com/tags/plan/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《深入浅出NodeJS》读书笔记</title>
-    <link href="http://yoursite.com/2018/07/15/%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BANodeJS%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2018/07/15/《深入浅出NodeJS》读书笔记/</id>
-    <published>2018-07-15T12:20:07.000Z</published>
-    <updated>2019-08-19T03:00:29.188Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><ul><li><p>Node</p><p>  Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形成一个大型的网路应用，每一个node为一个节点”，这是书中给的解释原文</p></li><li><p>非阻塞I/O</p><p>  书中多次提到的概念，我理解的非阻塞就是线程或进程的停止，</p></li><li>特点</li><li><pre><code>  1.异步  2.事件（随意绑定事件），时间绑定轻量级、松耦合  3.回调函数    </code></pre></li><li><p>Ajax请求：快速动态刷新网页，不刷新，直接更新参数</p></li></ul><p>读完第一章以后，觉得云里雾里，这本书对于没有JS基础的人来说有点头疼。不过能肯定的是nodejs是一门异步I/O的语言，和python等编程习惯不一样，需要适应。</p><p>至此，我决定先啃《js高级程序设计第三版》这本书，对js有一定的了解以后再来学习nodejs。</p><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>C/S模式：客户/服务器模式，例如微信等<br>B/S模式：浏览器/服务器模式，例如各种web应用</p><ul><li><p>CommonJS规范：</p><p>  相比于python的import，JAVA的类文件等，js是没有模块引入机制的，只能通过&lt;script&gt;标签这种杂乱的方式引入代码。在nodejs未出现之前，js只能用于前端，只有Rhino等后端javascript运行环境来作为小工具。node这么多年发展以来，已经形成了一套响应的规范，也就是CommonJS规范。</p><pre><code>  1.模块引用：var math = require(&#39;math&#39;);  2.模块定义：export.add = function(){...;return sum};             export.increment = function(val){};  3.模块标识：</code></pre></li><li><p>node模块实现：</p><p>  node引入模块需要3个步骤：路径分析、文件定位、编译执行，其中系统自带的模块为核心模块，直接随node启动时加载进内存，加载速度快；用户自定义的模块称为文件模块，在运行时动态加载，慢。</p><pre><code>  1.路径分析：require(&#39;标识符&#39;)；//分析标识符，标识符主要分为：      *核心模块，如http、fs、path等。      *.或..等相对路径文件模块      *以/开始的绝对路径文件模块      *非路径形式的文件模块，如自定义的connect模块          （自定义模块非核心模块和路径形式的模块，分析速度最慢）  2.文件定位：      *扩展名分析：模块文件可以不带扩展名，自动按.js、.json、.node顺序补全。      *目标分析和包：  3.模块编译      *核心模块一般为C/C++或javascript编译，所有的都转换为C/C++然后编译  4.内建模块：全由C/C++编译的模块，使用：      process.binding(&#39;标识符&#39;)      来进行导出</code></pre></li><li><p>包与NPM：</p><pre><code>  &quot;package.json&quot;：包含包的所有信息（版本、名称、作者等）  NPM已经是一个包共享平台，实现第三方模块的发布、安装和依赖。</code></pre></li><li><p>前后端共用模块：</p><p>  前端规范：AMD规范、CMD规范</p><pre><code>  1.AMD规范定义的模块需要用define：  define(function(){...})  2.CMD规范申明时要指定所有的依赖</code></pre></li></ul><h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h2 id="tips：js异步"><a href="#tips：js异步" class="headerlink" title="tips：js异步"></a>tips：js异步</h2><h3 id="回调函数复习"><a href="#回调函数复习" class="headerlink" title="回调函数复习"></a>回调函数复习</h3><h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise()"></a>Promise()</h3><ul><li><p>resolve()： </p><pre><code>  pending-&gt;fulfilled    pending-&gt;rejected</code></pre></li><li><p>reject()</p></li><li></li><li><img src="https://i.imgur.com/WHL94oZ.png" alt=""></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Node&lt;/p&gt;
-&lt;p&gt;  Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形
-      
-    
-    </summary>
-    
-      <category term="node.js" scheme="http://yoursite.com/categories/node-js/"/>
-    
-    
-      <category term="read" scheme="http://yoursite.com/tags/read/"/>
     
   </entry>
   

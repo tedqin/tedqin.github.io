@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="cpp," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -94,18 +94,22 @@
 
 
 
-<meta name="description" content="指针*  是取值运算符，对地址使用可以获得地址中储存的数值。对于指针a，*a表示取a中的值   在 定义 时， 是一个标识符，声明该变量是一个指针，比如说int p; 那p就是一个指向int型的指针 在 调用 时， p是指针p指向的那个变量，比如说之前有int a=5；int  p=&amp;amp;a；那么p的值是a的地址，也就是指针p指向a， p则等于a的值，即p=5。  &amp;amp; &amp;amp;在 定">
-<meta name="keywords" content="cpp">
+<meta name="description" content="基本用法async函数 async定义的函数返回一个Promise对象，可以使用then方法添加回调函数。   async function timeout() {       return &amp;#39;hello world&amp;#39;   }   console.log(timeout());   console.log(&amp;#39;虽然在后面，但是我先执行&amp;#39;);     它和promise">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c++tips笔记">
-<meta property="og:url" content="http://yoursite.com/2018/10/18/cpp笔记/index.html">
+<meta property="og:title" content="es6中的async&amp;await异步调用方法">
+<meta property="og:url" content="http://yoursite.com/2019/09/25/es6中的async-await异步调用方法/index.html">
 <meta property="og:site_name" content="TedQin">
-<meta property="og:description" content="指针*  是取值运算符，对地址使用可以获得地址中储存的数值。对于指针a，*a表示取a中的值   在 定义 时， 是一个标识符，声明该变量是一个指针，比如说int p; 那p就是一个指向int型的指针 在 调用 时， p是指针p指向的那个变量，比如说之前有int a=5；int  p=&amp;amp;a；那么p的值是a的地址，也就是指针p指向a， p则等于a的值，即p=5。  &amp;amp; &amp;amp;在 定">
+<meta property="og:description" content="基本用法async函数 async定义的函数返回一个Promise对象，可以使用then方法添加回调函数。   async function timeout() {       return &amp;#39;hello world&amp;#39;   }   console.log(timeout());   console.log(&amp;#39;虽然在后面，但是我先执行&amp;#39;);     它和promise">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-28T17:52:43.745Z">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205150941373-8971393.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205151306873-401823311.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205154012701-1737597385.png">
+<meta property="og:updated_time" content="2019-09-25T14:46:38.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="c++tips笔记">
-<meta name="twitter:description" content="指针*  是取值运算符，对地址使用可以获得地址中储存的数值。对于指针a，*a表示取a中的值   在 定义 时， 是一个标识符，声明该变量是一个指针，比如说int p; 那p就是一个指向int型的指针 在 调用 时， p是指针p指向的那个变量，比如说之前有int a=5；int  p=&amp;amp;a；那么p的值是a的地址，也就是指针p指向a， p则等于a的值，即p=5。  &amp;amp; &amp;amp;在 定">
+<meta name="twitter:title" content="es6中的async&amp;await异步调用方法">
+<meta name="twitter:description" content="基本用法async函数 async定义的函数返回一个Promise对象，可以使用then方法添加回调函数。   async function timeout() {       return &amp;#39;hello world&amp;#39;   }   console.log(timeout());   console.log(&amp;#39;虽然在后面，但是我先执行&amp;#39;);     它和promise">
+<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205150941373-8971393.png">
 
 
 
@@ -134,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/18/cpp笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/09/25/es6中的async-await异步调用方法/"/>
 
 
 
 
 
-  <title>c++tips笔记 | TedQin</title>
+  <title>es6中的async&await异步调用方法 | TedQin</title>
   
 
 
@@ -273,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/cpp笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/es6中的async-await异步调用方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ted Qin">
@@ -290,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">c++tips笔记</h1>
+          <h1 class="post-title" itemprop="name headline">es6中的async&await异步调用方法</h1>
         
 
         <div class="post-meta">
@@ -302,8 +306,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T16:19:02+08:00">
-                2018-10-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-25T17:13:18+08:00">
+                2019-09-25
               </time>
             
 
@@ -325,8 +329,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cpp/" itemprop="url" rel="index">
-                    <span itemprop="name">cpp</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -362,42 +377,119 @@
       
 
       
-        <h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><h3 id=""><a href="#" class="headerlink" title="*"></a>*</h3><ul>
-<li><ul>
-<li>是取值运算符，对地址使用可以获得地址中储存的数值。对于指针a，*a表示取a中的值</li>
-</ul>
+        <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="async函数"><a href="#async函数" class="headerlink" title="async函数"></a>async函数</h3><ul>
+<li><p>async定义的函数返回一个Promise对象，可以使用then方法添加回调函数。</p>
+<pre><code>  async function timeout() {
+      return &#39;hello world&#39;
+  }
+  console.log(timeout());
+  console.log(&#39;虽然在后面，但是我先执行&#39;);
+</code></pre><p>  <img src="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205150941373-8971393.png" alt=""></p>
 </li>
-<li>在 <em>定义</em> 时，<em> 是一个标识符，声明该变量是一个指针，比如说int </em>p; 那p就是一个指向int型的指针</li>
-<li>在 <em>调用</em> 时，<em> p是指针p指向的那个变量，比如说之前有int a=5；int </em> p=&amp;a；那么p的值是a的地址，也就是指针p指向a，<em> p则等于a的值，即</em>p=5。</li>
-</ul>
-<h3 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h3><ul>
-<li>&amp;在 <em>定义</em> 时则是引用，比如说有定义int a=5；再定义int b=&amp;a；那么这里的b则引用a的值，即b=5，而再给b赋值：b=10，a的值也会变为10。</li>
-<li>&amp;在 <em>调用</em> 是地址运算符，对变量使用可以获得该变量的地址, 对于变量b，&amp;b表示取b的地址</li>
-</ul>
-<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><ul>
-<li>先定义有int x = 0；int *p = &amp;x；</li>
-<li>若定义函数： void fun1（int a）{ a=5；} ，则调用：fun1(x); 之后，x还等于0；因为fun1函数只改变了形参a的值，a只是fun1函数里的局部变量，调用fun1(x)相当于是“a=x;a=5;”，x没变；</li>
-<li>若定义函数：void fun2（int &amp;a）{ a=5；} ， 则调用：fun2(x); 之后，x等于5；因为这里的a引用了x的值；</li>
-<li>若定义函数：void fun3（int <em> a）{ </em> a=5；} ， 则调用：fun3(p); 之后，x也等于5；因为fun3函数的参数a是一个指针，相当于a=p；<em> a则与</em> p指向同一地址，改变<em> a即改变</em>p即x</li>
-<li>return *this:</li>
-<li></li>
-</ul>
-<h2 id="strcpy和strncpy："><a href="#strcpy和strncpy：" class="headerlink" title="strcpy和strncpy："></a>strcpy和strncpy：</h2><p><code>strcpy(char *ch1, char *ch2)</code>：</p>
-<ul>
-<li>直接将ch2指向的由”\0”结束的字符串复制到ch1，ch1必须有足够的空间来存储ch2</li>
-<li>若ch2长于ch1，还是会复制，但是ch1会溢出<br>*</li>
-</ul>
-<p><code>strncpy(char *ch1, char *ch2, n)</code>:</p>
-<ul>
-<li>将ch2中最多n个字符复制到ch1</li>
-<li>如果n&gt;ch1长度，ch1溢出</li>
-<li>如果n&lt;ch1长度，且如果<ul>
-<li>ch2长度&lt;=ch1长度，则ch2前n个字符复制到ch1</li>
-<li>ch2长度&gt;ch1长度，出错</li>
-</ul>
+<li><p>它和promise一样，有异步回掉功能</p>
+<pre><code>  async function timeout() {
+      return &#39;hello world&#39;
+  }
+  timeout().then(result =&gt; {
+      console.log(result);
+  })
+  console.log(&#39;虽然在后面，但是我先执行&#39;);
+</code></pre><p>  <img src="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205151306873-401823311.png" alt=""></p>
 </li>
-<li>建议：将n设置为ch1长度</li>
+<li><p>async原理：如果async成功返回一个promise对象，实际会调用Promise.resolve()返回，否则会调用Promise.reject()</p>
+<pre><code>  async function timeout(flag) {
+      if (flag) {
+          return &#39;hello world&#39;
+      } else {
+          throw &#39;my god, failure&#39;
+      }
+  }
+  console.log(timeout(true))  // 调用Promise.resolve() 返回promise 对象。
+  console.log(timeout(false)); // 调用Promise.reject() 返回promise 对象。
+</code></pre><p>  <img src="https://images2017.cnblogs.com/blog/1013082/201802/1013082-20180205154012701-1737597385.png" alt=""></p>
+</li>
 </ul>
+<h3 id="await"><a href="#await" class="headerlink" title="await"></a>await</h3><p>当函数执行时，一旦遇到await(后面定义的也是一个promise对象)就会先返回，等异步操作完成，再执行后面的语句。</p>
+<p>await只能出现在async函数内部，等待async函数返回或执行promise，</p>
+<pre><code>// 2s 之后返回双倍的值
+function doubleAfter2seconds(num) {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            resolve(2 * num)
+        }, 2000);
+    } )
+}
+
+async function testResult() {
+    let result = await doubleAfter2seconds(30);
+    console.log(result);
+}
+
+testResult(); //2s后输出60
+</code></pre><p>代码执行过程：</p>
+<ol>
+<li>调用testResult()函数，遇到await，开始等待（后面的promise执行完毕）</li>
+<li>执行await后的doubleAfter2seconds(30)，返回promise开始执行，2s后执行完毕，值为60并返回</li>
+<li>await拿到60，赋值给result，等待结束，代码继续运行，执行console</li>
+</ol>
+<p>这里如果计算多个值，可以像写同步代码那样，避免回掉地狱</p>
+<pre><code>async function testResult() {
+    let first = await doubleAfter2seconds(30);
+    let second = await doubleAfter2seconds(50);
+    let third = await doubleAfter2seconds(30);
+    console.log(first + second + third);
+}
+</code></pre><h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><ul>
+<li>获取股票报价的函数（可以用.then处理async函数）</li>
+</ul>
+<pre><code>async function getStockPriceByName(name) {
+  const symbol = await getStockSymbol(name);
+  const stockPrice = await getStockPrice(symbol);
+  return stockPrice;
+}
+
+getStockPriceByName(&#39;goog&#39;).then(function (result) {
+  console.log(result);
+});
+</code></pre><ul>
+<li>在api中，把结果return 出去</li>
+</ul>
+<pre><code>export async function getRetailUnitPrice () {
+const reqBody = await get(&#39;/race/spot/racespot/enter/dayahead&#39;)
+return reqBody
+}
+</code></pre><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>async函数返回的promise对象，必须等到内部所有await命令后面的对象执行完，才会执行then</li>
+<li>当async返回一个常量，返回Promise.resolve(常量)自动构建promise返回值</li>
+<li>当async函数没有返回值的时候，返回Promise.resolve(undefiend)自动构建promise返回值</li>
+</ul>
+<pre><code>async function getTitle(url) {
+  let response = await fetch(url);
+  let html = await response.text();
+  return html.match(/&lt;title&gt;([\s\S]+)&lt;\/title&gt;/i)[1];
+}
+getTitle(&#39;https://tc39.github.io/ecma262/&#39;).then(console.log)
+// &quot;ECMAScript 2017 Language Specification&quot;
+</code></pre><h2 id="与promise相比"><a href="#与promise相比" class="headerlink" title="与promise相比"></a>与promise相比</h2><p>优点：处理.then链，不必把回掉嵌套在.then中，只要await即可</p>
+<pre><code>function sing() {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                resolve(`来一首好听的歌吧~~~`);
+            }, 1000);
+        });
+    }
+    async function demo() {
+        try {
+            const v = await say(); 
+            const s = await sing(); 
+            console.log(v); // 输出：hello, joel。今年我 26 岁
+            console.log(s) // 来一首好听的歌吧~~~
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    demo();
+</code></pre><p>如果使用原来的Promise 就是把回调放在then()中。</p>
 
       
     </div>
@@ -415,7 +507,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/cpp/" rel="tag"># cpp</a>
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
@@ -428,8 +520,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/10/mac常用指令/" rel="next" title="mac常用指令">
-                <i class="fa fa-chevron-left"></i> mac常用指令
+              <a href="/2019/09/25/浅谈Javascript的垃圾回收机制与内存泄漏问题/" rel="next" title="浅谈Javascript的垃圾回收机制与内存泄漏问题">
+                <i class="fa fa-chevron-left"></i> 浅谈Javascript的垃圾回收机制与内存泄漏问题
               </a>
             
           </div>
@@ -437,10 +529,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/13/learningJS/" rel="prev" title="learningJS">
-                learningJS <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -609,7 +697,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#指针"><span class="nav-number">1.</span> <span class="nav-text">指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text">*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#amp"><span class="nav-number">1.2.</span> <span class="nav-text">&amp;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-number">1.3.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strcpy和strncpy："><span class="nav-number">2.</span> <span class="nav-text">strcpy和strncpy：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本用法"><span class="nav-number">1.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#async函数"><span class="nav-number">1.1.</span> <span class="nav-text">async函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#await"><span class="nav-number">1.2.</span> <span class="nav-text">await</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo"><span class="nav-number">2.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意点"><span class="nav-number">3.</span> <span class="nav-text">注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与promise相比"><span class="nav-number">4.</span> <span class="nav-text">与promise相比</span></a></li></ol></div>
             
 
           </div>

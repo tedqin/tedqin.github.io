@@ -273,6 +273,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/DCGAN进行图像修复/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/10/DCGAN进行图像修复/" itemprop="url">DCGAN进行图像修复</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-10T12:12:51+08:00">
+                2019-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">machine learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/gan/" itemprop="url" rel="index">
+                    <span itemprop="name">gan</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文已置于<a href="https://github.com/tedqin/GAN-ImageRepairing" title="github" target="_blank" rel="noopener">https://github.com/tedqin/GAN-ImageRepairing</a></p>
+<h2 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h2><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/yVOoj8uvJYCJ5gmqMhDyThY8AGvsPFGaIXyu5tpGOvM!/b/dLYAAAAAAAAA&amp;bo=KARmBgAAAAARB3w!&amp;rf=viewer_4" alt=""></p>
+<p>和典型的使用神经网络来实现目的方法一样，简单来讲，基于DCGAN的图像修复首先需要先训练出一组优秀的生成器和判别器，然后利用这一组训练好的模型进行图像修复。<br>首先第一步需要进行图像预处理，这是因为DCGAN的模型结构决定了图像的尺寸大小是64”×” 64”×” 3，进行图像预处理之后，由于神经网络需要矩阵形式的输入，所以修复流程的首要步骤就是将图像分解为样本点，这个步骤可以由判别器的卷积实现，然后生成器和判别器进行博弈，得到训练好的模型，由生成器快速生成伪造的图像，然后建立适当的损失函数和惩罚因子来寻找修复图像所需要的最佳伪造图像。<br>由此，总的系统流程主要可以分为三步：</p>
+<ul>
+<li>图像预处理。</li>
+<li>训练DCGAN模型。</li>
+<li>找到补全原图像所需要的最佳伪造图像，进行图像修复。</li>
+</ul>
+<h2 id="图像预处理"><a href="#图像预处理" class="headerlink" title="图像预处理"></a>图像预处理</h2><h3 id="Openface预处理"><a href="#Openface预处理" class="headerlink" title="Openface预处理"></a>Openface预处理</h3><p>Openface是一个基于深度神经网络的开源人脸识别系统。</p>
+<ul>
+<li>用OpenCV或者dlib中预训练好的模型检测人脸</li>
+<li>将人脸迁移到神经网络。利用dlib的实时姿态估计与OpenCV的仿射线变换来使人脸的眼睛和嘴唇出现在每个图像上的相同位置。</li>
+<li>使用深度神经网络将面部表示（或嵌入）在128维单位超球面上。这种嵌入方法可以通用于任何人脸表示上面。与其他的一些人脸表征方法不同，这种人脸嵌入方法具有很好的性质，两个嵌入人脸间的距离较大就意味着这两幅面孔可能不是来自于同一个人。</li>
+</ul>
+<p>运用Openface来消除除了人脸外的其他的因素，比如背景、发型等等，然后移动图像，使得数据集中的每个人的人脸区域居于整张图片的中央。</p>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/9PoRdd1OpU6LxVWa3S5PrnnPN1sTaiaV8nfGBkIy*H4!/b/dLYAAAAAAAAA&amp;bo=TQPUAAAAAAADB7g!&amp;rf=viewer_4" alt=""></p>
+<h3 id="构建掩膜"><a href="#构建掩膜" class="headerlink" title="构建掩膜"></a>构建掩膜</h3><p>为了能够评估修复结果，需要知道被损坏图像之前的样子。我采用给未损坏图像一个二进制掩膜来作为损坏区域，这样就可以在修复掩膜之后，对比修复前的图像进行修复效果评估。</p>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/6nuXgTq1zgTWTF4FTdaEeDIDCOD8.SqI862rbBU3kUY!/b/dLYAAAAAAAAA&amp;bo=9gLOAAAAAAARBwo!&amp;rf=viewer_4" alt=""></p>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/WoaTn*w37HUMJXa4HFQq068VxZ0T4JxKUl2HGOpsTZc!/b/dL4AAAAAAAAA&amp;bo=KgXCAgAAAAARB98!&amp;rf=viewer_4" alt=""></p>
+<p>训练过程中，定义了一个采样器，在每一个epoch训练完成以后，用采样器对生成器进行采样并且保存样例图像</p>
+<p>在20个epoch训练完成以后，生成的图像效果已经比较好，此时生成器和判别器的损失函数变化如图</p>
+<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/w*B.kfsi1f0fuE.dV.5yXy8C4Rr1H4EKZeX7.Nr73XU!/b/dD4BAAAAAAAA&amp;bo=qAP2AwAAAAARB24!&amp;rf=viewer_4" alt=""></p>
+<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><p>部分结果如下：<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/IyOO0Qhkojl14WspCfqMMT5iuIvZKBBJvedjKog8i60!/b/dL8AAAAAAAAA&amp;bo=3gQwAgAAAAARB9g!&amp;rf=viewer_4" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/知识整理css/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3001,218 +3176,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/《深入浅出NodeJS》读书笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/15/《深入浅出NodeJS》读书笔记/" itemprop="url">《深入浅出NodeJS》读书笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-15T20:20:07+08:00">
-                2018-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/node-js/" itemprop="url" rel="index">
-                    <span itemprop="name">node.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><ul>
-<li><p>Node</p>
-<p>  Node：“一个强制不共享任何资源的单线程、单进程系统，通过协议构建不同的node来形成一个大型的网路应用，每一个node为一个节点”，这是书中给的解释原文</p>
-</li>
-<li><p>非阻塞I/O</p>
-<p>  书中多次提到的概念，我理解的非阻塞就是线程或进程的停止，</p>
-</li>
-<li>特点</li>
-<li><pre><code>  1.异步
-  2.事件（随意绑定事件），时间绑定轻量级、松耦合
-  3.回调函数    
-</code></pre></li>
-<li><p>Ajax请求：快速动态刷新网页，不刷新，直接更新参数</p>
-</li>
-</ul>
-<p>读完第一章以后，觉得云里雾里，这本书对于没有JS基础的人来说有点头疼。不过能肯定的是nodejs是一门异步I/O的语言，和python等编程习惯不一样，需要适应。</p>
-<p>至此，我决定先啃《js高级程序设计第三版》这本书，对js有一定的了解以后再来学习nodejs。</p>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>C/S模式：客户/服务器模式，例如微信等<br>B/S模式：浏览器/服务器模式，例如各种web应用</p>
-<ul>
-<li><p>CommonJS规范：</p>
-<p>  相比于python的import，JAVA的类文件等，js是没有模块引入机制的，只能通过&lt;script&gt;标签这种杂乱的方式引入代码。在nodejs未出现之前，js只能用于前端，只有Rhino等后端javascript运行环境来作为小工具。node这么多年发展以来，已经形成了一套响应的规范，也就是CommonJS规范。</p>
-<pre><code>  1.模块引用：var math = require(&#39;math&#39;);
-  2.模块定义：export.add = function(){...;return sum};
-             export.increment = function(val){};
-  3.模块标识：
-</code></pre></li>
-<li><p>node模块实现：</p>
-<p>  node引入模块需要3个步骤：路径分析、文件定位、编译执行，其中系统自带的模块为核心模块，直接随node启动时加载进内存，加载速度快；用户自定义的模块称为文件模块，在运行时动态加载，慢。</p>
-<pre><code>  1.路径分析：require(&#39;标识符&#39;)；//分析标识符，标识符主要分为：
-      *核心模块，如http、fs、path等。
-      *.或..等相对路径文件模块
-      *以/开始的绝对路径文件模块
-      *非路径形式的文件模块，如自定义的connect模块
-          （自定义模块非核心模块和路径形式的模块，分析速度最慢）
-
-  2.文件定位：
-      *扩展名分析：模块文件可以不带扩展名，自动按.js、.json、.node顺序补全。
-      *目标分析和包：
-  3.模块编译
-      *核心模块一般为C/C++或javascript编译，所有的都转换为C/C++然后编译
-  4.内建模块：全由C/C++编译的模块，使用：
-      process.binding(&#39;标识符&#39;)
-      来进行导出
-</code></pre></li>
-<li><p>包与NPM：</p>
-<pre><code>  &quot;package.json&quot;：包含包的所有信息（版本、名称、作者等）
-  NPM已经是一个包共享平台，实现第三方模块的发布、安装和依赖。
-</code></pre></li>
-<li><p>前后端共用模块：</p>
-<p>  前端规范：AMD规范、CMD规范</p>
-<pre><code>  1.AMD规范定义的模块需要用define：
-  define(function(){...})
-
-  2.CMD规范申明时要指定所有的依赖
-</code></pre></li>
-</ul>
-<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h2 id="tips：js异步"><a href="#tips：js异步" class="headerlink" title="tips：js异步"></a>tips：js异步</h2><h3 id="回调函数复习"><a href="#回调函数复习" class="headerlink" title="回调函数复习"></a>回调函数复习</h3><h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise()"></a>Promise()</h3><ul>
-<li><p>resolve()： </p>
-<pre><code>  pending-&gt;fulfilled  
-  pending-&gt;rejected
-</code></pre></li>
-<li><p>reject()</p>
-</li>
-<li></li>
-<li><img src="https://i.imgur.com/WHL94oZ.png" alt=""></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -3258,7 +3226,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
