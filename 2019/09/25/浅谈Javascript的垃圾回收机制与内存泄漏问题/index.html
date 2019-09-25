@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,machine learning," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -94,24 +94,22 @@
 
 
 
-<meta name="description" content="github链接：https://github.com/tedqin/Alexnet_Imagenet 背景 概述  Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3">
-<meta name="keywords" content="python,machine learning">
+<meta name="description" content="javascript的垃圾回收机制Javascript浏览器具有自动垃圾回收机制最常用的方式是标记清除(mark-and-sweep) 当申明一个变量时，就将这个变量标记为“进入环境”。从逻辑上来讲，永远都不能释放进入环境的变量。当变量离开环境时，标记为“离开环境” js定期进行垃圾回收（非实时），销毁带“离开环境”标记的变量，回收内存 function test(){ var a = 10 ;">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Alexnet图像分类">
-<meta property="og:url" content="http://yoursite.com/2019/05/22/Alexnet图像分类/index.html">
+<meta property="og:title" content="浅谈Javascript的垃圾回收机制与内存泄漏问题">
+<meta property="og:url" content="http://yoursite.com/2019/09/25/浅谈Javascript的垃圾回收机制与内存泄漏问题/index.html">
 <meta property="og:site_name" content="TedQin">
-<meta property="og:description" content="github链接：https://github.com/tedqin/Alexnet_Imagenet 背景 概述  Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3">
+<meta property="og:description" content="javascript的垃圾回收机制Javascript浏览器具有自动垃圾回收机制最常用的方式是标记清除(mark-and-sweep) 当申明一个变量时，就将这个变量标记为“进入环境”。从逻辑上来讲，永远都不能释放进入环境的变量。当变量离开环境时，标记为“离开环境” js定期进行垃圾回收（非实时），销毁带“离开环境”标记的变量，回收内存 function test(){ var a = 10 ;">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/MDI.lWfmb18X9HJ8Z9Z8wW2rzZpaVeOGvTdioB70oT0!/b/dL4AAAAAAAAA&bo=KQK3AAAAAAARB6w!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/v1PDIDyPpakIA.VFTtFuNauV8xNbFsDq1fxoAv54csA!/b/dL8AAAAAAAAA&bo=KwEuAQAAAAARBzU!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Tdt6xdlo.9zf*.y5KUjYTKADk2Ni3Ljk9p6pbMSioUA!/b/dLsAAAAAAAAA&bo=sgHaAAAAAAARB1k!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Y6zGEfjfPaAqty*cwwmXV0bvwVgfvNPZFjUwZEgPBTg!/b/dLgAAAAAAAAA&bo=TQFRAAAAAAARFz0!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/yOEEimKxBk**qfEFj8joIpFiUHAQl2xnRDDayqC*h8I!/b/dMMAAAAAAAAA&bo=sQFJAAAAAAARF9k!&rf=viewer_4">
-<meta property="og:updated_time" content="2019-09-19T09:45:17.230Z">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017041704.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017041705.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017041706.png">
+<meta property="og:updated_time" content="2019-09-25T03:50:46.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alexnet图像分类">
-<meta name="twitter:description" content="github链接：https://github.com/tedqin/Alexnet_Imagenet 背景 概述  Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3">
-<meta name="twitter:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/MDI.lWfmb18X9HJ8Z9Z8wW2rzZpaVeOGvTdioB70oT0!/b/dL4AAAAAAAAA&bo=KQK3AAAAAAARB6w!&rf=viewer_4">
+<meta name="twitter:title" content="浅谈Javascript的垃圾回收机制与内存泄漏问题">
+<meta name="twitter:description" content="javascript的垃圾回收机制Javascript浏览器具有自动垃圾回收机制最常用的方式是标记清除(mark-and-sweep) 当申明一个变量时，就将这个变量标记为“进入环境”。从逻辑上来讲，永远都不能释放进入环境的变量。当变量离开环境时，标记为“离开环境” js定期进行垃圾回收（非实时），销毁带“离开环境”标记的变量，回收内存 function test(){ var a = 10 ;">
+<meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017041704.png">
 
 
 
@@ -140,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/22/Alexnet图像分类/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/09/25/浅谈Javascript的垃圾回收机制与内存泄漏问题/"/>
 
 
 
 
 
-  <title>Alexnet图像分类 | TedQin</title>
+  <title>浅谈Javascript的垃圾回收机制与内存泄漏问题 | TedQin</title>
   
 
 
@@ -279,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/Alexnet图像分类/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/浅谈Javascript的垃圾回收机制与内存泄漏问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ted Qin">
@@ -296,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Alexnet图像分类</h1>
+          <h1 class="post-title" itemprop="name headline">浅谈Javascript的垃圾回收机制与内存泄漏问题</h1>
         
 
         <div class="post-meta">
@@ -308,8 +306,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-22T21:12:11+08:00">
-                2019-05-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-25T10:37:12+08:00">
+                2019-09-25
               </time>
             
 
@@ -331,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
-                    <span itemprop="name">machine learning</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -342,8 +340,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/machine-learning/cnn/" itemprop="url" rel="index">
-                    <span itemprop="name">cnn</span>
+                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -379,34 +377,79 @@
       
 
       
-        <p>github链接：<a href="https://github.com/tedqin/Alexnet_Imagenet" target="_blank" rel="noopener">https://github.com/tedqin/Alexnet_Imagenet</a></p>
-<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
-<li><p>概述</p>
-<ul>
-<li>Alexnet是Hinton小组在ImageNet图像处理大赛ISVRC2012中使用的神经网络模型，并获得了第一名，测试错误率相比往年的第一名都有大幅度的提升，top5测试错误率是15.3%，第二名是26.2%。Alexnet有60M个参数，650,000个神经元，5个卷积层和3个全连接层（1000类的softmax分类器）。Alexnet模型由Alex Krizhevsky 等人在两个GTX 580 3GB GPU上训练5、6天左右得到。目前是深度学习图像处理领域当中最常用的模型之一。<br>AlexNet相比于以前的一些网络模型来说，做出了很多创新，主要包括以下几点</li>
+        <h2 id="javascript的垃圾回收机制"><a href="#javascript的垃圾回收机制" class="headerlink" title="javascript的垃圾回收机制"></a>javascript的垃圾回收机制</h2><p>Javascript浏览器具有自动垃圾回收机制<br>最常用的方式是<b>标记清除(mark-and-sweep)</b></p>
+<p>当申明一个变量时，就将这个变量标记为“进入环境”。从逻辑上来讲，永远都不能释放进入环境的变量。当变量离开环境时，标记为“离开环境”</p>
+<p>js定期进行垃圾回收（非实时），销毁带“离开环境”标记的变量，回收内存</p>
+<pre><code>function test(){
+var a = 10 ;       // 被标记 ，进入环境 
+var b = 20 ;       // 被标记 ，进入环境
+}
+test();            // 执行完毕 之后 a、b又被标离开环境，被回收
+</code></pre><h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><p>内存泄漏是指一块被分配的内存即不能使用也不能回收</p>
+<p>浏览器会使用自动垃圾回收机制，但是也会产生一些内存泄漏问题</p>
+<h3 id="1-意外的全局变量"><a href="#1-意外的全局变量" class="headerlink" title="1. 意外的全局变量"></a>1. 意外的全局变量</h3><pre><code>function foo(arg) {
+    bar = &quot;this is a hidden global variable&quot;;
+}
+</code></pre><p>bar没被申明，会变成一个全局变量，在页面关闭之前不会被释放</p>
+<h3 id="2-被遗忘的计时器或callback函数"><a href="#2-被遗忘的计时器或callback函数" class="headerlink" title="2. 被遗忘的计时器或callback函数"></a>2. 被遗忘的计时器或callback函数</h3><pre><code>var someResource = getData();
+setInterval(function() {
+    var node = document.getElementById(&#39;Node&#39;);
+    if(node) {
+        // 处理 node 和 someResource
+        node.innerHTML = JSON.stringify(someResource));
+    }
+}, 1000);
+</code></pre><p>这里如果node元素从dom中移除，该定时器还是会存在；同时因为回掉函数中用了someResource，定时器外面的someResource也不会被释放</p>
+<h3 id="3-闭包"><a href="#3-闭包" class="headerlink" title="3. 闭包"></a>3. 闭包</h3><pre><code>function bindEvent(){
+  var obj=document.createElement(&#39;xxx&#39;)
+  obj.onclick=function(){
+    // Even if it is a empty function
+  }
+}
+</code></pre><p>闭包可以维持函数内的局部变量，使得闭包内返回的函数可以调用返回外的局部变量，使其得不到释放，所以会形成内存泄漏</p>
+<pre><code>// 将事件处理函数定义在外面
+function bindEvent() {
+  var obj = document.createElement(&#39;xxx&#39;)
+  obj.onclick = onclickHandler
+}
+// 或者在定义事件处理函数的外部函数中，删除对dom的引用
+function bindEvent() {
+  var obj = document.createElement(&#39;xxx&#39;)
+  obj.onclick = function() {
+    // Even if it is a empty function
+  }
+  obj = null
+}
+</code></pre><p>解决方法：将事件处理函数定义在外部，或者在定义事件处理函数的外部函数中，删除对dom的引用。</p>
+<h3 id="4-没有清理的dom元素引用"><a href="#4-没有清理的dom元素引用" class="headerlink" title="4. 没有清理的dom元素引用"></a>4. 没有清理的dom元素引用</h3><pre><code>var elements = {
+    button: document.getElementById(&#39;button&#39;),
+    image: document.getElementById(&#39;image&#39;),
+    text: document.getElementById(&#39;text&#39;)
+};
+
+function removeButton() {
+    document.body.removeChild(document.getElementById(&#39;button&#39;));
+    // 此时，仍旧存在一个全局的 #button 的引用
+    // elements 字典。button 元素仍旧在内存中，不能被 GC 回收。
+}
+</code></pre><p>虽然我们用removeChild移除了button，但是还在elements对象里保存着#button的引用，换言之，DOM元素还在内存里面。</p>
+<h2 id="避免内存泄漏的方法"><a href="#避免内存泄漏的方法" class="headerlink" title="避免内存泄漏的方法"></a>避免内存泄漏的方法</h2><ul>
+<li>减少不必要的全局变量，或者生命周期较长的对象，及时对无用的数据进行垃圾回收</li>
+<li>注意程序逻辑，避免“死循环”之类的</li>
+<li>避免创建过多的对象</li>
 </ul>
-</li>
-<li><p>框架</p>
-<ul>
-<li>使用激活函数ReLu</li>
-<li>多GPU并行训练</li>
-<li>局部影响标准化</li>
-<li>重叠池化</li>
-</ul>
-</li>
-</ul>
-<h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p>Alexnet有5个卷积层和3个全连接层，并且Alex发现移除任意一层都会降低最终的效果。网络结构如图</p>
-<p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/MDI.lWfmb18X9HJ8Z9Z8wW2rzZpaVeOGvTdioB70oT0!/b/dL4AAAAAAAAA&amp;bo=KQK3AAAAAAARB6w!&amp;rf=viewer_4" alt=""></p>
-<p>这个网络前面5层是卷积层，后面三层是全连接层，最终softmax输出是1000类。</p>
-<ul>
-<li>第三卷积层用384个3<em>3</em>256的卷积核,得到13<em>13</em>192*2的卷积层。 </li>
-<li>第四卷积层用384个3<em>3</em>192的卷积核，得到13<em>13</em>192*2的卷积层。 </li>
-<li>第五卷积层用256个3<em>3</em>192的卷积核，得到13<em>13</em>128*2的卷积层。<br>每个全连接层有4096个神经元。</li>
-</ul>
-<p>总体而言，Alexnet网络的结构如下：<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/v1PDIDyPpakIA.VFTtFuNauV8xNbFsDq1fxoAv54csA!/b/dL8AAAAAAAAA&amp;bo=KwEuAQAAAAARBzU!&amp;rf=viewer_4" alt=""></p>
-<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Tdt6xdlo.9zf*.y5KUjYTKADk2Ni3Ljk9p6pbMSioUA!/b/dLsAAAAAAAAA&amp;bo=sgHaAAAAAAARB1k!&amp;rf=viewer_4" alt=""></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>caffe提供的预训练模型一共包括了1000类图像，涵盖了生物、天文、自然、科技等多个方面的相关图像，具体在caffe_classes.py下，由于文件本身较大就没放在github上，可以很容易在网上找到<br>测试集包括1000张图像，共200类，标签存储在lable.txt当中。取测试图像概率最大类的下标作为测试的分类结果（即top-1测试），并且与label对比，最后计算得出整个测试集得precision在75%左右，算是比较好的结果。<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/Y6zGEfjfPaAqty*cwwmXV0bvwVgfvNPZFjUwZEgPBTg!/b/dLgAAAAAAAAA&amp;bo=TQFRAAAAAAARFz0!&amp;rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/yOEEimKxBk**qfEFj8joIpFiUHAQl2xnRDDayqC*h8I!/b/dMMAAAAAAAAA&amp;bo=sQFJAAAAAAARF9k!&amp;rf=viewer_4" alt=""></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>AlexNet可以说是深度神经网络的鼻祖，相比于后来的VGG和googlenet而言，它的构造更加简单，而且结构也已经非常的成熟和稳固。<br>作为学校的大创项目用alexnet有点蠢，但是时间紧迫，也分享下自己学习cnn的过程。</p>
+<p>总而言之需要遵循一条原则：不用了的东西要及时归还</p>
+<h2 id="内存泄漏查看方法"><a href="#内存泄漏查看方法" class="headerlink" title="内存泄漏查看方法"></a>内存泄漏查看方法</h2><p>chrome中</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017041704.png" alt=""></p>
+<ol>
+<li>打开开发者工具，选择 performance 面板</li>
+<li>勾选 Memory和screenshots</li>
+<li>点击左上角的录制按钮。</li>
+<li>在页面上进行各种操作，模拟用户的使用情况。</li>
+<li>一段时间后，点击对话框的 stop 按钮，面板上就会显示这段时间的内存占用情况。</li>
+</ol>
+<p>如果内存占用基本平稳，接近水平，就说明不存在内存泄漏。<br><img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017041705.png" alt=""></p>
+<p>反之，就是内存泄漏了。<br><img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017041706.png" alt=""></p>
 
       
     </div>
@@ -424,9 +467,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
@@ -439,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/17/面试总结和知识梳理/" rel="next" title="面试总结和知识梳理">
-                <i class="fa fa-chevron-left"></i> 面试总结和知识梳理
+              <a href="/2019/09/24/vue源码研读/" rel="next" title="vue源码研读">
+                <i class="fa fa-chevron-left"></i> vue源码研读
               </a>
             
           </div>
@@ -448,10 +489,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/01/知识整理css/" rel="prev" title="知识整理CSS">
-                知识整理CSS <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -620,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型结构"><span class="nav-number">2.</span> <span class="nav-text">模型结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据集"><span class="nav-number">3.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript的垃圾回收机制"><span class="nav-number">1.</span> <span class="nav-text">javascript的垃圾回收机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存泄漏"><span class="nav-number">2.</span> <span class="nav-text">内存泄漏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-意外的全局变量"><span class="nav-number">2.1.</span> <span class="nav-text">1. 意外的全局变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-被遗忘的计时器或callback函数"><span class="nav-number">2.2.</span> <span class="nav-text">2. 被遗忘的计时器或callback函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-闭包"><span class="nav-number">2.3.</span> <span class="nav-text">3. 闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-没有清理的dom元素引用"><span class="nav-number">2.4.</span> <span class="nav-text">4. 没有清理的dom元素引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免内存泄漏的方法"><span class="nav-number">3.</span> <span class="nav-text">避免内存泄漏的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存泄漏查看方法"><span class="nav-number">4.</span> <span class="nav-text">内存泄漏查看方法</span></a></li></ol></div>
             
 
           </div>
