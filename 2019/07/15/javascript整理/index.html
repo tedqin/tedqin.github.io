@@ -103,7 +103,7 @@
 <meta property="og:description" content="闲来无事，把之前的笔记整理一下。    基础知识变量类型 值类型：a和b相等，改a，b不变 (直接赋值值) undefined string number boolean   引用类型：a和b相等，改a，b变 （赋值地址）     object function   强制类型转换 字符串拼接  var a=10; var b=100 + &amp;#39;10&amp;#39;//string   ==  100">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/a0WToHqioHq*CO965eYmwE*yUghrJYJ9upHFVSChdzQ!/b/dLYAAAAAAAAA&bo=9AQSAgAAAAARB9A!&rf=viewer_4">
-<meta property="og:updated_time" content="2019-09-21T01:16:20.864Z">
+<meta property="og:updated_time" content="2019-09-25T16:28:52.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript整理">
 <meta name="twitter:description" content="闲来无事，把之前的笔记整理一下。    基础知识变量类型 值类型：a和b相等，改a，b不变 (直接赋值值) undefined string number boolean   引用类型：a和b相等，改a，b变 （赋值地址）     object function   强制类型转换 字符串拼接  var a=10; var b=100 + &amp;#39;10&amp;#39;//string   ==  100">
@@ -1405,6 +1405,18 @@ localStorage.getItem(key)</pre>
 <li>Error</li>
 </ul>
 </li>
+<li>new一个vue对象发生了什么？<ol>
+<li>执行this._init()方法，初始化对象：<ul>
+<li>合并配置options</li>
+<li>初始化生命周期</li>
+<li>初始化事件中心</li>
+<li>初始化渲染</li>
+<li>初始化data,props,computed,watcher等</li>
+</ul>
+</li>
+<li>初始化完成，检查如果有el属性，就调用vm.$mount方法挂载</li>
+</ol>
+</li>
 </ul>
 <h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><h3 id="一种异步解决方案，类似一个容器，包括未来会执行的任务"><a href="#一种异步解决方案，类似一个容器，包括未来会执行的任务" class="headerlink" title="一种异步解决方案，类似一个容器，包括未来会执行的任务"></a>一种异步解决方案，类似一个容器，包括未来会执行的任务</h3><p><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/a0WToHqioHq*CO965eYmwE*yUghrJYJ9upHFVSChdzQ!/b/dLYAAAAAAAAA&amp;bo=9AQSAgAAAAARB9A!&amp;rf=viewer_4" alt=""></p>
 <h3 id="then"><a href="#then" class="headerlink" title=".then()"></a>.then()</h3><p>参数1为resolve的内容，参数2（可以不要）为reject的内容</p>
@@ -1549,7 +1561,7 @@ localStorage.getItem(key)</pre>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1571,7 +1583,7 @@ localStorage.getItem(key)</pre>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

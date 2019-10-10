@@ -94,18 +94,25 @@
 
 
 
-<meta name="description" content="CSS选择器标签：p{}class: .class{}同一类，不同标签： p.class{}同一标签，多个类：p.class1{} .class2{id：#id {}集体选择器：p,.class1,#id1 {}后代选择器：&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;&amp;lt;a&amp;gt;123&amp;lt;a&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;:p em a {}链接伪类 :link:未访问的链接">
+<meta name="description" content="CSS选择器标签：p{}class: .class{}id：#id {}同一标签，多个类：p.class1{} .class2{集体选择器：p,.class1,#id1 {}后代选择器(选择子孙代)：p em a {}子代选择器(只能选择子代)：div &amp;gt; p相邻选择：div + p通配符选择：*否定选择：not(.link) {}属性选择器：[title] {}伪类选择：:link {}链">
 <meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="知识整理CSS">
 <meta property="og:url" content="http://yoursite.com/2019/06/01/知识整理css/index.html">
 <meta property="og:site_name" content="TedQin">
-<meta property="og:description" content="CSS选择器标签：p{}class: .class{}同一类，不同标签： p.class{}同一标签，多个类：p.class1{} .class2{id：#id {}集体选择器：p,.class1,#id1 {}后代选择器：&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;&amp;lt;a&amp;gt;123&amp;lt;a&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;:p em a {}链接伪类 :link:未访问的链接">
+<meta property="og:description" content="CSS选择器标签：p{}class: .class{}id：#id {}同一标签，多个类：p.class1{} .class2{集体选择器：p,.class1,#id1 {}后代选择器(选择子孙代)：p em a {}子代选择器(只能选择子代)：div &amp;gt; p相邻选择：div + p通配符选择：*否定选择：not(.link) {}属性选择器：[title] {}伪类选择：:link {}链">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-19T08:53:07.692Z">
+<meta property="og:image" content="https://github.com/huyaocode/webKnowledge/raw/master/img/stadardBox.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/HmfhpRiWOBUiqhWg7nSjo8JdKXTfAM3LotdEYntiRLg!/b/dAcBAAAAAAAA&bo=5gKqAQAAAAADB20!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/UiHoQ6RDkWO.LfVZIG5bem*UjUZOg1z0kFIrKQ94KEc!/b/dL8AAAAAAAAA&bo=1wINAQAAAAADF.s!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/rGiGnulgayVLLScrCfPXfr48PlAlDPhZaz5S*RhN*aY!/b/dLgAAAAAAAAA&bo=ywKiAAAAAAADF1k!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/g9JbXTvs5iHtLE3lZdF.b04G4xmre5IYTTXNJ8z4CMk!/b/dL8AAAAAAAAA&bo=BgO1AAAAAAADF4I!&rf=viewer_4">
+<meta property="og:updated_time" content="2019-09-30T03:08:03.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="知识整理CSS">
-<meta name="twitter:description" content="CSS选择器标签：p{}class: .class{}同一类，不同标签： p.class{}同一标签，多个类：p.class1{} .class2{id：#id {}集体选择器：p,.class1,#id1 {}后代选择器：&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;&amp;lt;a&amp;gt;123&amp;lt;a&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;:p em a {}链接伪类 :link:未访问的链接">
+<meta name="twitter:description" content="CSS选择器标签：p{}class: .class{}id：#id {}同一标签，多个类：p.class1{} .class2{集体选择器：p,.class1,#id1 {}后代选择器(选择子孙代)：p em a {}子代选择器(只能选择子代)：div &amp;gt; p相邻选择：div + p通配符选择：*否定选择：not(.link) {}属性选择器：[title] {}伪类选择：:link {}链">
+<meta name="twitter:image" content="https://github.com/huyaocode/webKnowledge/raw/master/img/stadardBox.png">
 
 
 
@@ -373,14 +380,73 @@
       
 
       
-        <h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><p>标签：p{}<br>class: .class{}<br>同一类，不同标签： p.class{}<br>同一标签，多个类：p.class1{} .class2{<br>id：#id {}<br>集体选择器：p,.class1,#id1 {}<br>后代选择器：<code>&lt;p&gt;&lt;em&gt;&lt;a&gt;123&lt;a&gt;&lt;/em&gt;&lt;/p&gt;</code>:p em a {}<br>链接伪类 <code>:link</code>:未访问的链接 <code>:visited</code>：已访问的链接 <code>:hover</code>：鼠标悬停状态 <code>:active</code>：鼠标点击到松开的阶段<br>（hover和active可用于任何标签）<br>权重：id &gt; 类 属性 伪类 &gt; 元素 伪元素 &gt; 其他  </p>
-<h2 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h2><p>文字粗细：<code>font-weight: normal/bold</code><br>文字斜度：<code>font-style: normal/italic/oblique</code><br>文字粗细：<code>font-weight: 600</code>    </p>
-<h3 id="装饰器属性"><a href="#装饰器属性" class="headerlink" title="装饰器属性"></a>装饰器属性</h3><p>字重（粗体）font-weight<br>斜体 font-style<br>下划线 text-decoration<br>指针 cursor</p>
-<h2 id="文本对齐方式"><a href="#文本对齐方式" class="headerlink" title="文本对齐方式"></a>文本对齐方式</h2><p>文本水平对齐方式：<code>text-align: left/right/center/justify</code><br>左对齐/右对齐/居中对齐/两端对齐 只对块级元素有效 </p>
-<h2 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h2><p>首行缩进：<code>text-indent: 2em</code><br>行高：<code>line-height: 120em</code> 最好用em防止字体过大导致显示不全<br>注意：图片是按照inline元素做的排版，会涉及字体对齐，默认按照baseline对齐，和底线有空隙。 为了删除这个空隙，可以直接<code>vertical-align: bottom</code>或者<code>display: block</code></p>
-<h2 id="滚动"><a href="#滚动" class="headerlink" title="滚动"></a>滚动</h2><p>overflow  </p>
-<h2 id="元素内容的垂直方式"><a href="#元素内容的垂直方式" class="headerlink" title="元素内容的垂直方式"></a>元素内容的垂直方式</h2><p>只对行内元素有效<br><code>vertical-align: sub/supper/</code>文字向上向下对齐</p>
-<h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><ul>
+        <h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><p>标签：p{}<br>class: .class{}<br>id：#id {}<br>同一标签，多个类：p.class1{} .class2{<br>集体选择器：p,.class1,#id1 {}<br>后代选择器(选择子孙代)：p em a {}<br>子代选择器(只能选择子代)：div &gt; p<br>相邻选择：div + p<br>通配符选择：*<br>否定选择：not(.link) {}<br>属性选择器：[title] {}<br>伪类选择：:link {}<br><code>链接伪类 ``:link``:未访问的链接 ``:visited``：已访问的链接 ``:hover``：鼠标悬停状态 ``:active``：鼠标点击到松开的阶段
+（hover和active可用于任何标签）</code><br>伪元素选择：::before {}</p>
+<h3 id="权重"><a href="#权重" class="headerlink" title="权重"></a>权重</h3><ul>
+<li>!important 优先级最高，但也会被权重高的important所覆盖</li>
+<li>行内样式总会覆盖外部样式表的任何样式(除了!important)</li>
+<li>如果两个相同权重的选择器作用在同一元素上：以后面出现的选择器为最后规则，以与元素距离近的选择器为最后规则      </li>
+</ul>
+<p>一句话总结： !important &gt; 行内样式 &gt; ID选择器 &gt; (类选择器 | 属性选择器 | 伪类选择器 ) &gt; 元素选择器 | 伪元素选择弃 &gt; *    </p>
+<h3 id="css3-属性选择器"><a href="#css3-属性选择器" class="headerlink" title="css3 属性选择器"></a>css3 属性选择器</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">[attribute]</td>
+<td style="text-align:left">用于选取带有指定属性的元素。</td>
+</tr>
+<tr>
+<td style="text-align:left">[attribute=value]</td>
+<td style="text-align:left">用于选取带有指定属性和值的元素。</td>
+</tr>
+<tr>
+<td style="text-align:left">[attribute~=value]</td>
+<td style="text-align:left">用于选取属性值中包含指定词汇的元素。</td>
+</tr>
+<tr>
+<td style="text-align:left">`[attribute</td>
+<td style="text-align:left">=value]`</td>
+<td>用于选取带有以指定值开头的属性值的元素，该值必须是整个单词。</td>
+</tr>
+<tr>
+<td style="text-align:left">[attribute^=value]</td>
+<td style="text-align:left">匹配属性值以指定值开头的每个元素。</td>
+</tr>
+<tr>
+<td style="text-align:left">[attribute$=value]</td>
+<td style="text-align:left">匹配属性值以指定值结尾的每个元素。</td>
+</tr>
+<tr>
+<td style="text-align:left">[attribute*=value]</td>
+<td style="text-align:left">匹配属性值中包含指定值的每个元素。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="伪类和伪元素区别"><a href="#伪类和伪元素区别" class="headerlink" title="伪类和伪元素区别"></a>伪类和伪元素区别</h3><p>伪类值一种状态，用于选择DOM树之外的信息，或是不能用简单选择器进行表示的信息。前者包含那些匹配指定状态的元素，比如:visited，:active；<br>伪类将特殊的效果添加到特定选择器上。它是已有元素上添加类别的，不会产生新的元素。例如： </p>
+<pre><code>a:hover {color: #FF00FF}
+p:first-child {color: red}
+</code></pre><p>伪元素是DOM树没有定义的虚拟元素，是一个真实存在的元素，他可以有样式有内容<br>伪元素在内容元素的前后插入额外的元素或样式，但是这些元素实际上并不在文档中生成。它们只在外部显示可见例如：</p>
+<pre><code>p::before {content:&quot;第一章：&quot;;}
+p::after {content:&quot;Hot!&quot;;}
+p::first-line {background:red;}
+p::first-letter {font-size:30px;}
+</code></pre><p>换句话说伪类和伪元素的区别就是伪类的操作对象是文档树中已有的元素，而伪元素则创建了一个文档树以外的元素。</p>
+<h3 id="浏览器解析CSS"><a href="#浏览器解析CSS" class="headerlink" title="浏览器解析CSS"></a>浏览器解析CSS</h3><p>.wrapper div &gt; p CSS中，浏览器查找元素是通过选择权从后往前找的， 这样做的目的是加快CSS解析速度，从后往前，排除法</p>
+<h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><p>盒模型有两种， W3C标准盒子模型、IE 怪异盒子模型；    </p>
+<p>盒模型是由： 内容(content)、内边距(padding)、边框(border)、外边距(margin) 组成的。</p>
+<p>标准模型的宽高是指的content区宽高； IE盒模型的宽高是指的content+padding+border的宽高。</p>
+<p><img src="https://github.com/huyaocode/webKnowledge/raw/master/img/stadardBox.png" alt=""></p>
+<ul>
+<li>盒子模型类型 box-sizing: border-box | content-box <ul>
+<li>border-box：width的值为width=width </li>
+<li>content-box：width的值为width=border+padding+content</li>
+</ul>
+</li>
 <li>height：长度/百分比/auto</li>
 <li>width： </li>
 <li>border边框<ul>
@@ -401,48 +467,295 @@
 </ul>
 </li>
 </ul>
-<h2 id="display属性"><a href="#display属性" class="headerlink" title="display属性"></a>display属性</h2><p>将元素显示为内联元素: <code>inline</code><br>将元素显示为块级元素: <code>block</code><br>将元素显示为内联元素具有快级属性可以设置宽高: <code>inline-block</code> </p>
-<p>ps：宽高设为100%，表示和父元素相同</p>
+<h2 id="bfc"><a href="#bfc" class="headerlink" title="bfc"></a>bfc</h2><p>W3C对BFC定义：</p>
+<blockquote>
+<p>浮动元素和绝对定位元素，非块级盒子的块级容器（例如 inline-blocks, table-cells, 和 table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们的内容创建新的BFC（块级格式上下文）。     </p>
+</blockquote>
+<p>BFC(Block formatting context)直译为”块级格式化上下文”。它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。</p>
+<p>BFC作用：</p>
+<ul>
+<li>利用BFC避免外边距折叠</li>
+<li>清除内部浮动 （撑开高度）</li>
+<li>原理: 触发父div的BFC属性，使下面的子div都处在父div的同一个BFC区域之内</li>
+<li>避免文字环绕</li>
+<li>分属于不同的BFC时，可以阻止margin重叠</li>
+<li>多列布局中使用BFC</li>
+</ul>
+<p>如何生成BFC：（脱离文档流，满足下列的任意一个或多个条件即可）</p>
+<ul>
+<li>根元素，即HTML元素（最大的一个BFC）</li>
+<li>float的值不为none</li>
+<li>position的值为absolute或fixed</li>
+<li>overflow的值不为visible（默认值。内容不会被修剪，会呈现在元素框之外）</li>
+<li>display的值为inline-block、table-cell、table-caption</li>
+</ul>
+<h2 id="非布局样式"><a href="#非布局样式" class="headerlink" title="非布局样式"></a>非布局样式</h2><p>文字粗细：<code>font-weight: normal/bold</code><br>文字斜度：<code>font-style: normal/italic/oblique</code><br>文字粗细：<code>font-weight: 600</code><br>字重（粗体）font-weight<br>斜体 font-style<br>下划线 text-decoration<br>指针 cursor</p>
+<h2 id="滚动"><a href="#滚动" class="headerlink" title="滚动"></a>滚动</h2><ul>
+<li>visible 滚动条隐藏, 文字超出显示</li>
+<li>hidden 滚动条隐藏, 文字超出不显示</li>
+<li>scroll 滚动条一直显示，无论文字是否够多</li>
+<li>auto 滚动条自动隐藏</li>
+</ul>
+<h2 id="文本对齐方式"><a href="#文本对齐方式" class="headerlink" title="文本对齐方式"></a>文本对齐方式</h2><p>文本水平对齐方式：<code>text-align: left/right/center/justify</code><br>左对齐/右对齐/居中对齐/两端对齐 只对块级元素有效 </p>
+<h2 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h2><p>首行缩进：<code>text-indent: 2em</code><br>行高：<code>line-height: 120em</code> 最好用em防止字体过大导致显示不全<br>注意：图片是按照inline元素做的排版，会涉及字体对齐，默认按照baseline对齐，和底线有空隙。 为了删除这个空隙，可以直接<code>vertical-align: bottom</code>或者<code>display: block</code>       </p>
+<h3 id="行高的构成"><a href="#行高的构成" class="headerlink" title="行高的构成"></a>行高的构成</h3><p>行高是由 line-box 组成的<br>line-box 是由一行里的 inline-box 组成的<br>inline-box中最高的那个，或字体最大的拿个决定行高</p>
+<h3 id="你对-line-height-是如何理解的？"><a href="#你对-line-height-是如何理解的？" class="headerlink" title="你对 line-height 是如何理解的？"></a>你对 line-height 是如何理解的？</h3><ul>
+<li>line-height 指一行字的高度，包含了字间距，实际上是下一行基线到上一行基线距离</li>
+<li>如果一个标签没有定义 height 属性，那么其最终表现的高度是由 line-height 决定的</li>
+<li>一个容器没有设置高度，那么撑开容器高度的是 line-height 而不是容器内的文字内容</li>
+<li>把 line-height 值设置为 height 一样大小的值可以实现单行文字的垂直居中</li>
+<li>line-height 和 height 都能撑开一个高度，height 会触发 haslayout（一个低版本IE的东西），而 line-height 不会     </li>
+</ul>
+<h3 id="line-height-三种赋值方式有何区别？（带单位、纯数字、百分比）"><a href="#line-height-三种赋值方式有何区别？（带单位、纯数字、百分比）" class="headerlink" title="line-height 三种赋值方式有何区别？（带单位、纯数字、百分比）"></a>line-height 三种赋值方式有何区别？（带单位、纯数字、百分比）</h3><ul>
+<li>带单位：px 是固定值，而 em 会参考父元素 font-size 值计算自身的行高</li>
+<li>纯数字：会把比例传递给后代。例如，父级行高为 1.5，子元素字体为 18px，则子元素行高为 1.5 * 18 = 27px</li>
+<li>百分比：将计算后的值传递给后代</li>
+</ul>
 <h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><ul>
-<li>脱离文档流，只能左右</li>
-<li><code>float:left/right/none</code> </li>
+<li>可以让行内元素形成块级元素</li>
+<li>元素”浮动”</li>
+<li>脱离文档流</li>
+<li>不脱离文本流</li>
+<li>位置尽量靠上，并靠左或右</li>
+<li>脱离文档流，只能左右  <code>float:left/right/none</code> </li>
+<li>对自己的影响<ul>
+<li>形成”块”(BFC)</li>
+<li>这个块会负责自己的布局，宽高由自己决定。比如 span 中用 float 这个span就形成了一个BFC，就可以设置宽高了</li>
+</ul>
+</li>
 <li>浮动后出现的问题：<ul>
 <li>浮动溢出（高度塌陷）</li>
 </ul>
 </li>
-<li>解决：清楚浮动<ul>
+<li><p>解决：清除浮动</p>
+<ul>
 <li><code>clear:none/left/right/both</code></li>
-<li>1.<code>&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;</code></li>
-<li>2.给父元素添加<code>overflow:hidden</code></li>
-<li>3.css3 <code></code>clearfix :after</li>
-<li>4.添加一个空行，style为clearboth {content:”.”;display:block;height:0;visibility:hidden;clear:both}<code></code> </li>
+<li>1.给父元素添加<code>overflow:hidden</code>  使父元素变成一个bfc，同时需要父元素指定宽度</li>
+<li><p>2.css3 <code></code>clearfix :after   使用伪元素</p>
+<pre><code>  .clearfloat:after{
+     display:block;
+     clear:both;
+     content:&quot;&quot;;
+     visibility:hidden;
+     height:0}
+ .clearfloat{zoom:1}
+</code></pre></li>
+<li><p>3.结尾添加一个空行</p>
+<pre><code>  &lt;div class=&quot;parent&quot;&gt;
+  &lt;div class=&quot;left&quot;&gt;Left&lt;/div&gt;
+  &lt;div class=&quot;right&quot;&gt;Right&lt;/div&gt;
+  &lt;div class=&quot;clearfloat&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;style&gt;
+  .left {float:left}
+  .clearfloat{clear:both}
+&lt;/style&gt;
+
+</code></pre></li>
 </ul>
 </li>
-<li>可以让行内元素行程块级元素</li>
-<li>位置会尽量靠上，尽量靠左</li>
+</ul>
+<h2 id="inline-block的间隙"><a href="#inline-block的间隙" class="headerlink" title="inline-block的间隙"></a>inline-block的间隙</h2><p>两个并列的inline-block中间会有一条裂缝，这个的原因是两个标签之间有空格，浏览器把这些空格当成文字中空格，所以这两个块中间多少有间隙。</p>
+<p>解决办法：</p>
+<ol>
+<li>删除两个标签间的空格，但是这样html排版不好</li>
+<li>容器元素font-size: 0 然后再在里面再重新设置字体大小</li>
+</ol>
+<h2 id="元素内容的垂直方式"><a href="#元素内容的垂直方式" class="headerlink" title="元素内容的垂直方式"></a>元素内容的垂直方式</h2><p>只对行内元素有效<br><code>vertical-align: sub/supper/</code>文字向上向下对齐</p>
+<h2 id="单行文本溢出显示省略号"><a href="#单行文本溢出显示省略号" class="headerlink" title="单行文本溢出显示省略号"></a>单行文本溢出显示省略号</h2><ul>
+<li>overflow: hidden;</li>
+<li>text-overflow: ellipsis;</li>
+<li>white-space: no-wrap;</li>
+</ul>
+<h2 id="多行文本溢出显示省略号"><a href="#多行文本溢出显示省略号" class="headerlink" title="多行文本溢出显示省略号"></a>多行文本溢出显示省略号</h2><ul>
+<li>overflow: hidden;</li>
+<li>text-overflow: ellipsis;</li>
+<li>display: -webkit-box;</li>
+<li>-webkit-line-clamp: 3;</li>
+<li>-webkit-box-orient: vertical;</li>
+</ul>
+<h2 id="display属性"><a href="#display属性" class="headerlink" title="display属性"></a>display属性</h2><p>将元素显示为内联元素: <code>inline</code><br>将元素显示为块级元素: <code>block</code><br>将元素显示为内联元素具有快级属性可以设置宽高: <code>inline-block</code><br>inherit 规定应该从父元素继承 display 属性的值<br>none 此元素将显示为块级元素，此元素前后会带有换行符。<br>list-item 象块类型元素一样显示，并添加样式列表标记。<br>table 此元素会作为块级表格来显示         </p>
+<p>ps：宽高设为100%，表示和父元素相同</p>
+<h3 id="display-none-与-visibility-hidden-的区别"><a href="#display-none-与-visibility-hidden-的区别" class="headerlink" title="display: none; 与 visibility: hidden; 的区别"></a>display: none; 与 visibility: hidden; 的区别</h3><p>结构：     </p>
+<ul>
+<li>display:none<ul>
+<li>会让元素完全从渲染树中消失，渲染的时候不占据任何空间, 不能点击</li>
+</ul>
+</li>
+<li>visibility: hidden<ul>
+<li>不会让元素从渲染树消失，渲染元素继续占据空间，只是内容不可见，不能点击</li>
+</ul>
+</li>
+<li>opacity: 0<ul>
+<li>不会让元素从渲染树消失，渲染元素继续占据空间，只是内容不可见，可以点击</li>
+</ul>
+</li>
+</ul>
+<p>继承</p>
+<ul>
+<li>display: none和opacity: 0<ul>
+<li>非继承属性，子孙节点消失由于元素从渲染树消失造成，通过修改子孙节点属性无法显示。</li>
+</ul>
+</li>
+<li>visibility: hidden<ul>
+<li>继承属性，子孙节点消失由于继承了hidden，通过设置visibility: visible;可以让子孙节点显式。</li>
+</ul>
+</li>
+</ul>
+<p>性能</p>
+<ul>
+<li>display:none<ul>
+<li>修改元素会造成文档回流。读屏器不会读取display: none元素内容，性能消耗较大</li>
+</ul>
+</li>
+<li>visibility:hidden<ul>
+<li>修改元素只会造成本元素的重绘,性能消耗较少。读屏器读取visibility: hidden元素内容</li>
+</ul>
+</li>
+<li>opacity: 0<ul>
+<li>修改元素会造成重绘，性能消耗较少       </li>
+</ul>
+</li>
+</ul>
+<p>相同点： 它们都能让元素不可见、他们都依然可以被 JS 所获取到</p>
+<h2 id="CSS预处理器"><a href="#CSS预处理器" class="headerlink" title="CSS预处理器"></a>CSS预处理器</h2><ul>
+<li>嵌套<ul>
+<li>反映层级和约束</li>
+</ul>
+</li>
+<li>变量和计算<ul>
+<li>减少冗余代码</li>
+</ul>
+</li>
+<li>entend和mixin<ul>
+<li>代码片段重用</li>
+<li>mixin是直接把CSS代码每个地方重复写一份</li>
+<li>extend是使用逗号分割的选择器来为多个不同的地方使用同一段CSS</li>
+</ul>
+</li>
+<li>循环<ul>
+<li>适用于复杂有规律的样式</li>
+</ul>
+</li>
+<li>import<ul>
+<li>CSS模块化</li>
+</ul>
+</li>
+<li>常见三种css预处理器：sass less stylus</li>
+</ul>
+<h2 id="CSS单位"><a href="#CSS单位" class="headerlink" title="CSS单位"></a>CSS单位</h2><ol>
+<li><p>px 绝对单位。传统上一个像素对应于计算机屏幕上的一个点，而对于高清屏则对应更多。</p>
+</li>
+<li><p>% 父元素宽度的比例。</p>
+<ul>
+<li>如果对 html 元素设置 font-size 为百分比值，则是以浏览器默认的字体大小16px为参照计算的（所有浏览器的默认字体大小都为 16px），如62.5%即等于10px（62.5% * 16px = 10px）。</li>
+</ul>
+</li>
+<li><p>em 相对单位。 不同的属性有不同的参照值。</p>
+<ul>
+<li>对于字体大小属性（font-size）来说，em 的计算方式是相对于父元素的字体大小</li>
+<li>border, width, height, padding, margin, line-height）在这些属性中，使用em单位的计算方式是参照该元素的 font-size，1em 等于该元素设置的字体大小。同理如果该元素没有设置，则一直向父级元素查找，直到找到，如果都没有设置大小，则使用浏览器默认的字体大小。</li>
+</ul>
+</li>
+<li><p>rem 是相对于根元素 html 的 font-size 来计算的，所以其参照物是固定的。</p>
+<ul>
+<li>好处：rem 只需要修改 html 的 font-size 值即可达到全部的修改，即所谓的牵一发而动全身。</li>
+</ul>
+</li>
+<li><p>vw, vh, vmin, vmax 相对单位，是基于视窗大小（浏览器用来显示内容的区域大小）来计算的。</p>
+<ul>
+<li>vw：基于视窗的宽度计算，1vw 等于视窗宽度的百分之一</li>
+<li>vh：基于视窗的高度计算，1vh 等于视窗高度的百分之一</li>
+<li>vmin：基于vw和vh中的最小值来计算，1vmin 等于最小值的百分之一</li>
+<li>vmax：基于vw和vh中的最大值来计算，1vmax 等于最大值的百分之一</li>
+</ul>
+</li>
+</ol>
+<h2 id="CSS-优化、提高性能的方法有哪些？"><a href="#CSS-优化、提高性能的方法有哪些？" class="headerlink" title="CSS 优化、提高性能的方法有哪些？"></a>CSS 优化、提高性能的方法有哪些？</h2><ul>
+<li>多个 css 合并，尽量减少 HTTP 请求</li>
+<li>css 雪碧图</li>
+<li>抽象提取公共样式，减少代码量</li>
+<li>选择器优化嵌套，尽量避免层级过深 （用‘&gt;’替换‘ ’）</li>
+<li>属性值为 0 时，不加单位</li>
+<li>压缩CSS代码</li>
+<li>避免使用 CSS 表达式<ul>
+<li>它们要计算成千上万次并且可能会对你页面的性能产生影响。</li>
+</ul>
+</li>
 </ul>
 <h2 id="position-定位模型"><a href="#position-定位模型" class="headerlink" title="position 定位模型"></a>position 定位模型</h2><ul>
-<li>static：常规流 忽略跑偏移量</li>
+<li>static：常规流 忽略跑偏移量（忽略 top, bottom, left, right - z-index 声明）</li>
+<li>inherit 规定从父元素继承 position 属性的值</li>
 <li>relative： <ul>
-<li>相对常规流，设置偏移量 <code>top/bottom/left/right:10px</code></li>
+<li>相对相对于其正常位置进行定位。设置偏移量 <code>top/bottom/left/right:10px</code></li>
 <li>常规流的位置会留下，不会影响其他元素</li>
 </ul>
 </li>
 <li>absolute：绝对定位<ul>
-<li>相对于最近的祖先元素做绝对定位</li>
+<li>相对于值不为 static 的第一个父元素进行定位。</li>
 <li>常规流的位置会被占据，会影响其他元素</li>
 <li>如果设置上下左右偏移量为0，margin：autoauto，子元素就会相对于父元素居中</li>
 </ul>
 </li>
 <li>常用： 父元素设置为relative，子元素设置为absolute，子元素就可以设置相对于父元素的偏移量 </li>
 <li>fixed：相对定位 <ul>
-<li>不会随着视图滚动而滚动，其余和absolute一样</li>
+<li>相对于浏览器窗口进行定位。不会随着视图滚动而滚动，其余和absolute一样</li>
 </ul>
 </li>
 <li>后三者可以设置z-index</li>
 </ul>
-<h2 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h2><ul>
-<li>新增的元素选择器<ul>
+<h2 id="DOM层级顺序与z-index"><a href="#DOM层级顺序与z-index" class="headerlink" title="DOM层级顺序与z-index"></a>DOM层级顺序与z-index</h2><p>DOM层级顺序，大概来说就是DOM节点在z轴方向（垂直于屏幕向外的方向）的显示优先级。为了调整DOM层级顺序，我们想到的往往就是用CSS的z-index属性来控制。<br>dom层级顺序规则：</p>
+<ol>
+<li>顺序规则<ul>
+<li>在不设置position属性（或设置成static）的情况下，文档流后面的DOM节点会覆盖前面的DOM节点。</li>
+</ul>
+</li>
+<li>定位规则<ul>
+<li>定位节点（position属性设置为relative，absolute或fixed的节点）会覆盖非定位节点（不设置position属性或position属性设为static的节点）</li>
+</ul>
+</li>
+<li>参与规则<ul>
+<li>z-index属性仅对定位节点生效。（使用position的节点）</li>
+<li>有三个DOM节点，其定位为static。但是A的z-index最大，但是依旧是在最底部，C的z-index最小，而在最顶部，因此可知z-index并未生效，此时为顺序规则在生效。</li>
+</ul>
+</li>
+<li>默认值规则<ul>
+<li>z-index设为0和没有设置z-index的节点在同一层级内没有高低之分。在IE6和7种，z-index的默认值为0，其他浏览器中默认值为auto。</li>
+</ul>
+</li>
+<li>从父规则<ul>
+<li>两个节点A和B都是定位节点，如果节点A的z-index值比节点B的大，那么节点A的子元素都会覆盖在节点B以及节点B的子节点上。 </li>
+</ul>
+</li>
+</ol>
+<h2 id="link-与-import-的区别"><a href="#link-与-import-的区别" class="headerlink" title="link 与 @import 的区别"></a>link 与 @import 的区别</h2><ul>
+<li>link 属于 XHTML 标签，除了加载 CSS 外，还能用于定义 RSS, 定义 rel 连接属性等作用；而@import 是 CSS 提供的，只能用于加载 CSS;</li>
+<li>页面被加载的时，link 会同时被加载，而@import 引用的 CSS 会等到页面被加载完再加载;</li>
+<li>import 是 CSS2.1 提出的，只在 IE5 以上才能被识别，而 link 是 XHTML 标签，无兼容问题;</li>
+<li>link 支持使用 js 控制 DOM 去改变样式，而@import 不支持;</li>
+</ul>
+<h2 id="CSS-有哪些继承属性"><a href="#CSS-有哪些继承属性" class="headerlink" title="CSS 有哪些继承属性"></a>CSS 有哪些继承属性</h2><ul>
+<li>关于文字排版的属性如：<ul>
+<li>font</li>
+<li>word-break</li>
+<li>letter-spacing</li>
+<li>text-align</li>
+<li>text-rendering</li>
+<li>word-spacing</li>
+<li>white-space</li>
+<li>text-indent</li>
+<li>text-transform</li>
+<li>text-shadow</li>
+</ul>
+</li>
+<li>line-height</li>
+<li>color</li>
+<li>visibility</li>
+<li>cursor</li>
+</ul>
+<h2 id="CSS3新特性"><a href="#CSS3新特性" class="headerlink" title="CSS3新特性"></a>CSS3新特性</h2><ul>
+<li>新增的选择器：<ul>
+<li>元素选择器<ul>
 <li>子元素选择器：<code>father &gt; son1 {}</code></li>
 <li>相邻兄弟元素选择器:<code>father &gt; son1 + son2 {}</code> </li>
 <li>通用兄弟选择器: <code>father &gt; son1 ~ son5 {}</code></li>
@@ -477,6 +790,9 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li>弹性盒模型 display: flex;</li>
 <li>边框与圆角    <ul>
 <li>圆角 <code>border-radius:10px/10rem/10%</code></li>
 <li>盒阴影 <code>box-shadow:水平偏移 垂直偏移 模糊 扩展 颜色</code></li>
@@ -489,7 +805,7 @@
 <li>文本属性</li>
 </ul>
 </li>
-<li>字体 @font-face<ul>
+<li>字体 @font-face    <ul>
 <li><code>@font-face {font-familt:&lt;name&gt; src:&lt;source&gt; [&lt;format&gt;]}</code></li>
 </ul>
 </li>
@@ -508,12 +824,12 @@
 <li><code>skewX(&lt;angle&gt;)``</code></li>
 </ul>
 </li>
-</ul>
-</li>
 <li>3D transform<ul>
 <li>rotateX</li>
 <li>translate3d(x,y,z)</li>
 <li>scale3d(x,y,z) scaleZ(z)</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>动画<ul>
@@ -523,7 +839,59 @@
 </ul>
 </li>
 </ul>
-<h2 id="常用布局方式"><a href="#常用布局方式" class="headerlink" title="常用布局方式"></a>常用布局方式</h2><h3 id="表格布局"><a href="#表格布局" class="headerlink" title="表格布局"></a>表格布局</h3><pre><code>    &lt;table&gt;   
+<h2 id="如何水平-垂直居中一个元素？"><a href="#如何水平-垂直居中一个元素？" class="headerlink" title="如何水平/垂直居中一个元素？"></a>如何水平/垂直居中一个元素？</h2><ul>
+<li><p>水平居中</p>
+<ul>
+<li><p>如果需要居中的元素为inline或inline-block，为父元素设置 text-align: center;即可实现</p>
+</li>
+<li><p>如果要居中的元素为一个块级元素的话，一般使用 margin: 0 auto; 进行居中。</p>
+</li>
+</ul>
+</li>
+<li><p>垂直居中</p>
+<ul>
+<li><p>对于绝对定位元素，直接宽高减去一半</p>
+<pre><code>  #d1 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    background: red
+  }
+</code></pre></li>
+<li><p>用css3的transform，无需知道宽高</p>
+<pre><code>    width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50%);
+  background: red
+</code></pre></li>
+<li>相对定位元素，先水平居中再垂直</li>
+</ul>
+</li>
+</ul>
+<h2 id="li-与-li-之间有看不见的空白间隔是什么原因引起的？有什么解决办法？-也称幽灵字符"><a href="#li-与-li-之间有看不见的空白间隔是什么原因引起的？有什么解决办法？-也称幽灵字符" class="headerlink" title="li 与 li 之间有看不见的空白间隔是什么原因引起的？有什么解决办法？(也称幽灵字符)"></a>li 与 li 之间有看不见的空白间隔是什么原因引起的？有什么解决办法？(也称幽灵字符)</h2><p>行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符, 这些空白也会被应用样式，占据空间，所以会有间隔，把字符大小设为 0，就没有空格了</p>
+<h2 id="display-inline-block-什么时候会显示间隙？-携程"><a href="#display-inline-block-什么时候会显示间隙？-携程" class="headerlink" title="display:inline-block 什么时候会显示间隙？(携程)"></a>display:inline-block 什么时候会显示间隙？(携程)</h2><ul>
+<li>相邻的 inline-block 元素之间有换行或空格分隔的情况下会产生间距</li>
+<li>非 inline-block 水平元素设置为 inline-block 也会有水平间距</li>
+<li>可以借助 vertical-align:top; 消除垂直间隙</li>
+<li>可以在父级加 font-size：0; 在子元素里设置需要的字体大小，消除垂直间隙</li>
+<li>把 li 标签写到同一行可以消除垂直间隙，但代码可读性差</li>
+</ul>
+<h2 id="用纯-CSS-创建一个三角形的原理是什么？"><a href="#用纯-CSS-创建一个三角形的原理是什么？" class="headerlink" title="用纯 CSS 创建一个三角形的原理是什么？"></a>用纯 CSS 创建一个三角形的原理是什么？</h2><p>把border的其他三条边设为透明 注意，这里要把 border-width 、border-style、 border-color 分开写。</p>
+<pre><code>.tri {
+  width: 0px;
+  height: 0;
+  border-style: solid;
+  border-width: 100px;
+  border-color: transparent transparent red transparent;
+}
+</code></pre><h2 id="常用布局方式"><a href="#常用布局方式" class="headerlink" title="常用布局方式"></a>常用布局方式</h2><h3 id="表格布局"><a href="#表格布局" class="headerlink" title="表格布局"></a>表格布局</h3><pre><code>    &lt;table&gt;   
         &lt;tr&gt;   
             &lt;td class=&quot;left&quot;&gt;left&lt;/td&gt;   
             &lt;td class=&quot;right&quot;&gt;right&lt;/td&gt;   
@@ -591,7 +959,64 @@
         &lt;div class=&quot;right&quot;&gt;right&lt;/div&gt; 
     &lt;/div&gt;
 
-</code></pre><h3 id="flexbox"><a href="#flexbox" class="headerlink" title="flexbox"></a>flexbox</h3><pre><code>    &lt;style&gt;
+</code></pre><h3 id="flexbox"><a href="#flexbox" class="headerlink" title="flexbox"></a>flexbox</h3><p><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool" target="_blank" rel="noopener">参考</a></p>
+<p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png" alt=""></p>
+<p>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</p>
+<ul>
+<li><p>弹性盒子的属性：</p>
+</li>
+<li><p>flex-direction：属性决定主轴的方向（即项目的排列方向）。</p>
+<ul>
+<li>row（默认值）：主轴为水平方向，起点在左端。</li>
+<li>row-reverse：主轴为水平方向，起点在右端。</li>
+<li>column：主轴为垂直方向，起点在上沿。</li>
+<li>column-reverse：主轴为垂直方向，起点在下沿。</li>
+</ul>
+</li>
+<li>flex-wrap: 定义，如果一条轴线排不下，如何换行。<ul>
+<li>nowrap（默认）：不换行。</li>
+<li>wrap：换行，第一行在上方。</li>
+<li>wrap-reverse：换行，第一行在下方。 </li>
+</ul>
+</li>
+<li>flex-flow: flex-direction属性和flex-wrap属性的简写形式</li>
+<li>justify-content: 定义了项目在主轴上的对齐方式。<ul>
+<li>flex-start（默认值）：左对齐</li>
+<li>flex-end：右对齐</li>
+<li>center： 居中</li>
+<li>space-between：两端对齐，项目之间的间隔都相等。</li>
+<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
+</ul>
+</li>
+<li>align-items: 定义项目在交叉轴上如何对齐。<ul>
+<li>flex-start：交叉轴的起点对齐。</li>
+<li>flex-end：交叉轴的终点对齐。</li>
+<li>center：交叉轴的中点对齐。</li>
+<li>baseline: 项目的第一行文字的基线对齐。</li>
+<li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。 </li>
+</ul>
+</li>
+<li><p>align-content: 定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<ul>
+<li>flex-start：与交叉轴的起点对齐。</li>
+<li>flex-end：与交叉轴的终点对齐。</li>
+<li>center：与交叉轴的中点对齐。</li>
+<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+<li>stretch（默认值）：轴线占满整个交叉轴。 </li>
+</ul>
+</li>
+<li><p>项目的属性</p>
+</li>
+<li>order：定义项目的排列顺序。数值越小，排列越靠前，默认为0。</li>
+<li>flex-grow：定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</li>
+<li>flex-shrink：定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</li>
+<li>flex-basis：定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</li>
+<li>flex：是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto</li>
+<li>align-self：允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch</li>
+</ul>
+<pre><code>    &lt;style&gt;
         .a1 {
             display: flex;
             height:100px;
@@ -609,6 +1034,9 @@
         &lt;/div&gt;
     &lt;/div&gt;
 </code></pre><h3 id="响应式设计和布局"><a href="#响应式设计和布局" class="headerlink" title="响应式设计和布局"></a>响应式设计和布局</h3><ul>
+<li>响应式设计就是网站能够兼容多个不同大小的终端，而不是为每个终端做一个特定的版本</li>
+<li>基本原理是利用 CSS3 媒体查询，为不同尺寸的设备适配不同样式</li>
+<li>对于低版本的 IE，可采用 JS 获取屏幕宽度，然后通过监听window.onresize 方法来实现兼容</li>
 <li>主要考虑屏幕大小</li>
 <li>主要方法：<ul>
 <li>隐藏：隐藏导航栏等不重要的东西</li>
@@ -623,7 +1051,7 @@
 </ul>
 </li>
 <li>viewport：在meta中手工确定屏幕大小<code>content=&quot;width=320&quot;</code></li>
-<li><p>media query：为不同屏幕写样式</p>
+<li><p>媒体查询：为不同屏幕写样式</p>
 <pre><code>  @media (max-width: 640px) {
       .left{display: none} /*为移动端隐藏样式*/
   }
@@ -631,7 +1059,39 @@
 </ul>
 </li>
 </ul>
-<h2 id="css问题"><a href="#css问题" class="headerlink" title="css问题"></a>css问题</h2><ul>
+<h2 id="请列举几种隐藏元素的方法"><a href="#请列举几种隐藏元素的方法" class="headerlink" title="请列举几种隐藏元素的方法"></a>请列举几种隐藏元素的方法</h2><ul>
+<li>visibility: hidden; 这个属性只是简单的隐藏某个元素，但是元素占用的空间任然存在</li>
+<li>opacity: 0; CSS3 属性，设置 0 可以使一个元素完全透明</li>
+<li>position: absolute; 设置一个很大的 left 负值定位，使元素定位在可见区域之外</li>
+<li>display: none; 元素会变得不可见，并且不会再占用文档的空间。</li>
+<li>transform: scale(0); 将一个元素设置为缩放无限小，元素将不可见，元素原来所在的位置将被保留</li>
+<li><div hidden="hidden"> HTML5 属性,效果和 display:none;相同，但这个属性用于记录一个元素的状态</div></li>
+<li>height: 0; 将元素高度设为 0 ，并消除边框</li>
+<li>filter: blur(0); CSS3 属性，将一个元素的模糊度设置为 0</li>
+</ul>
+<h2 id="css-属性-content-有什么作用？"><a href="#css-属性-content-有什么作用？" class="headerlink" title="css 属性 content 有什么作用？"></a>css 属性 content 有什么作用？</h2><p>content 属性专门应用在 before/after 伪元素上，用于插入额外内容或样式</p>
+<h2 id="元素竖向的百分比设定是相对于容器的高度吗？"><a href="#元素竖向的百分比设定是相对于容器的高度吗？" class="headerlink" title="元素竖向的百分比设定是相对于容器的高度吗？"></a>元素竖向的百分比设定是相对于容器的高度吗？</h2><p>元素竖向的百分比设定是相对于容器的宽度，而不是高度</p>
+<h2 id="a-标签上四个伪类的使用顺序是怎么样的？"><a href="#a-标签上四个伪类的使用顺序是怎么样的？" class="headerlink" title="a 标签上四个伪类的使用顺序是怎么样的？"></a>a 标签上四个伪类的使用顺序是怎么样的？</h2><p>link &gt; visited &gt; hover &gt; active 简称 lvha(love-ha)</p>
+<p>伪类的特殊性（应用优先级）是同样的，所以后出现的伪类会覆盖先出现的伪类（同时激活）</p>
+<p>在这里，比如把hover放在active后面，那么实际你在激活（active）链接的时候就触发了hover伪类，hover在后面覆盖了active的颜色，所以始终无法看到active的颜色</p>
+<h2 id="设置元素浮动后，该元素的-display-值会如何变化？"><a href="#设置元素浮动后，该元素的-display-值会如何变化？" class="headerlink" title="设置元素浮动后，该元素的 display 值会如何变化？"></a>设置元素浮动后，该元素的 display 值会如何变化？</h2><p>设置元素浮动后，该元素的 display 值自动变成 block</p>
+<h2 id="请解释-CSS-sprites，以及你要如何在页面或"><a href="#请解释-CSS-sprites，以及你要如何在页面或" class="headerlink" title="请解释 CSS sprites，以及你要如何在页面或"></a>请解释 CSS sprites，以及你要如何在页面或</h2><ul>
+<li>CSS Sprites 其实就是把网页中一些背景图片整合到一张图片文件中，再利用 CSS 的“background-image”，“background- repeat”，“background-position”的组合进行背景定位，background-position 可以用数字能精确的定位出背景图片的位置。</li>
+<li>CSS Sprites 为一些大型的网站节约了带宽，让提高了用户的加载速度和用户体验，不需要加载更多的图片。</li>
+</ul>
+<h2 id="margin叠加几种情况"><a href="#margin叠加几种情况" class="headerlink" title="margin叠加几种情况"></a>margin叠加几种情况</h2><p>margin叠加的意思是：当两个或者更多的margin相遇时，它们将形成一个外边距，这个外边距的高度等于两个发生叠加的外边距中高度较大者。</p>
+<ol>
+<li><p>当一个元素出现在另一个元素上面时，第一个元素的底边外边距与第二个元素的顶边外边距发生叠加。如图：<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/HmfhpRiWOBUiqhWg7nSjo8JdKXTfAM3LotdEYntiRLg!/b/dAcBAAAAAAAA&amp;bo=5gKqAQAAAAADB20!&amp;rf=viewer_4" alt=""></p>
+</li>
+<li><p>一个元素在另一个元素中时，它们的顶边距和低边距也会发生叠加<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/UiHoQ6RDkWO.LfVZIG5bem*UjUZOg1z0kFIrKQ94KEc!/b/dL8AAAAAAAAA&amp;bo=1wINAQAAAAADF.s!&amp;rf=viewer_4" alt=""></p>
+</li>
+<li><p>果一个元素是空元素（即一个元素没有内容，内边距和边框），这种情况外边距的顶边距和低边距碰在一起也会发生叠加<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/rGiGnulgayVLLScrCfPXfr48PlAlDPhZaz5S*RhN*aY!/b/dLgAAAAAAAAA&amp;bo=ywKiAAAAAAADF1k!&amp;rf=viewer_4" alt=""></p>
+</li>
+<li><p>在上面那种空元素的情况，如果该空元素与另一个元素的外边距碰在一起，也会发生叠加。<br><img src="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/g9JbXTvs5iHtLE3lZdF.b04G4xmre5IYTTXNJ8z4CMk!/b/dL8AAAAAAAAA&amp;bo=BgO1AAAAAAADF4I!&amp;rf=viewer_4" alt=""></p>
+</li>
+</ol>
+<p>以上4种外边距叠加情况只会发生在普通文档流的垂直方向。行内框、浮动框、绝对定位框之间的外边距不会发生叠加，同样水平方向也不会发生叠加。</p>
+<h2 id="水平居中和垂直居中"><a href="#水平居中和垂直居中" class="headerlink" title="水平居中和垂直居中"></a>水平居中和垂直居中</h2><h2 id="css问题"><a href="#css问题" class="headerlink" title="css问题"></a>css问题</h2><ul>
 <li>css优先级<ul>
 <li>权重：id&gt;class&gt;tag</li>
 <li>!important: 最高</li>
@@ -671,69 +1131,6 @@
 <li>viewport</li>
 <li>rem/viewport/media query</li>
 <li>设计上：隐藏/折行/自适应<br>visibility: hidden;<br>display: block;<br>font-size: 0;<br>content: “ “;<br>clear: both;<br>height: 0;</li>
-</ul>
-</li>
-</ul>
-<h2 id="关于html的一些补充"><a href="#关于html的一些补充" class="headerlink" title="关于html的一些补充"></a>关于html的一些补充</h2><h3 id="h5新增标签"><a href="#h5新增标签" class="headerlink" title="h5新增标签"></a>h5新增标签</h3><ul>
-<li>新区块标签<ul>
-<li>section</li>
-<li>article</li>
-<li>anv 导航</li>
-<li>aside 侧边栏，一般表示不重要的内容</li>
-</ul>
-</li>
-<li>表单增强属性<ul>
-<li>日期、时间、搜索</li>
-<li>表单验证 （required必填，minmax输入范围，正则）</li>
-<li>placeholder 表单空的时候显示什么内容 自动聚焦</li>
-</ul>
-</li>
-<li>新增语义<ul>
-<li>header/footer</li>
-<li>section/article 区域 </li>
-<li>nav 导航</li>
-<li>aside</li>
-<li>em/strong 强调</li>
-</ul>
-</li>
-</ul>
-<h3 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h3><ul>
-<li>块级一般不能嵌套块级（但div可以嵌套p）</li>
-<li>a可以包含div</li>
-</ul>
-<h3 id="html问题"><a href="#html问题" class="headerlink" title="html问题"></a>html问题</h3><ul>
-<li>doctype的意义是什么<ul>
-<li>让浏览器以标准模式渲染</li>
-<li>让浏览器知道元素的合法性</li>
-</ul>
-</li>
-<li>html xhtml h5的关系<ul>
-<li>html属于sgml</li>
-<li>xhtml属于xml，是html进行xml严格化的结果 </li>
-<li>h5是一个独立的规范，比hxtml宽松</li>
-</ul>
-</li>
-<li>H5有什么变化<ul>
-<li>新的语义化元素section article header footer aside</li>
-<li>表单增强</li>
-<li>新的API</li>
-</ul>
-</li>
-<li>em和i有什么区别<ul>
-<li>都是斜体，em是语义化标签，i是纯样式</li>
-</ul>
-</li>
-<li>语义化的意义<ul>
-<li>维护的开发者容易理解</li>
-<li>机器容易理解结构</li>
-<li>有助于seo</li>
-</ul>
-</li>
-<li>哪些标签可以自闭和（不能嵌套其他标签）<ul>
-<li>input</li>
-<li>img</li>
-<li>br（换行） hr（水平线）</li>
-<li>meta link</li>
 </ul>
 </li>
 </ul>
@@ -856,7 +1253,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -878,7 +1275,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -948,7 +1345,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS选择器"><span class="nav-number">1.</span> <span class="nav-text">CSS选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体大小"><span class="nav-number">2.</span> <span class="nav-text">字体大小</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#装饰器属性"><span class="nav-number">2.1.</span> <span class="nav-text">装饰器属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本对齐方式"><span class="nav-number">3.</span> <span class="nav-text">文本对齐方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行高"><span class="nav-number">4.</span> <span class="nav-text">行高</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滚动"><span class="nav-number">5.</span> <span class="nav-text">滚动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素内容的垂直方式"><span class="nav-number">6.</span> <span class="nav-text">元素内容的垂直方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#盒子模型"><span class="nav-number">7.</span> <span class="nav-text">盒子模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#display属性"><span class="nav-number">8.</span> <span class="nav-text">display属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮动"><span class="nav-number">9.</span> <span class="nav-text">浮动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#position-定位模型"><span class="nav-number">10.</span> <span class="nav-text">position 定位模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3"><span class="nav-number">11.</span> <span class="nav-text">CSS3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用布局方式"><span class="nav-number">12.</span> <span class="nav-text">常用布局方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表格布局"><span class="nav-number">12.1.</span> <span class="nav-text">表格布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-margin"><span class="nav-number">12.2.</span> <span class="nav-text">float+margin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inline-block"><span class="nav-number">12.3.</span> <span class="nav-text">inline-block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flexbox"><span class="nav-number">12.4.</span> <span class="nav-text">flexbox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应式设计和布局"><span class="nav-number">12.5.</span> <span class="nav-text">响应式设计和布局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css问题"><span class="nav-number">13.</span> <span class="nav-text">css问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于html的一些补充"><span class="nav-number">14.</span> <span class="nav-text">关于html的一些补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h5新增标签"><span class="nav-number">14.1.</span> <span class="nav-text">h5新增标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套"><span class="nav-number">14.2.</span> <span class="nav-text">嵌套</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html问题"><span class="nav-number">14.3.</span> <span class="nav-text">html问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS选择器"><span class="nav-number">1.</span> <span class="nav-text">CSS选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#权重"><span class="nav-number">1.1.</span> <span class="nav-text">权重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css3-属性选择器"><span class="nav-number">1.2.</span> <span class="nav-text">css3 属性选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪类和伪元素区别"><span class="nav-number">1.3.</span> <span class="nav-text">伪类和伪元素区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器解析CSS"><span class="nav-number">1.4.</span> <span class="nav-text">浏览器解析CSS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#盒子模型"><span class="nav-number">2.</span> <span class="nav-text">盒子模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bfc"><span class="nav-number">3.</span> <span class="nav-text">bfc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非布局样式"><span class="nav-number">4.</span> <span class="nav-text">非布局样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滚动"><span class="nav-number">5.</span> <span class="nav-text">滚动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本对齐方式"><span class="nav-number">6.</span> <span class="nav-text">文本对齐方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行高"><span class="nav-number">7.</span> <span class="nav-text">行高</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#行高的构成"><span class="nav-number">7.1.</span> <span class="nav-text">行高的构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#你对-line-height-是如何理解的？"><span class="nav-number">7.2.</span> <span class="nav-text">你对 line-height 是如何理解的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#line-height-三种赋值方式有何区别？（带单位、纯数字、百分比）"><span class="nav-number">7.3.</span> <span class="nav-text">line-height 三种赋值方式有何区别？（带单位、纯数字、百分比）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮动"><span class="nav-number">8.</span> <span class="nav-text">浮动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inline-block的间隙"><span class="nav-number">9.</span> <span class="nav-text">inline-block的间隙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素内容的垂直方式"><span class="nav-number">10.</span> <span class="nav-text">元素内容的垂直方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单行文本溢出显示省略号"><span class="nav-number">11.</span> <span class="nav-text">单行文本溢出显示省略号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行文本溢出显示省略号"><span class="nav-number">12.</span> <span class="nav-text">多行文本溢出显示省略号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#display属性"><span class="nav-number">13.</span> <span class="nav-text">display属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#display-none-与-visibility-hidden-的区别"><span class="nav-number">13.1.</span> <span class="nav-text">display: none; 与 visibility: hidden; 的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS预处理器"><span class="nav-number">14.</span> <span class="nav-text">CSS预处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS单位"><span class="nav-number">15.</span> <span class="nav-text">CSS单位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-优化、提高性能的方法有哪些？"><span class="nav-number">16.</span> <span class="nav-text">CSS 优化、提高性能的方法有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#position-定位模型"><span class="nav-number">17.</span> <span class="nav-text">position 定位模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM层级顺序与z-index"><span class="nav-number">18.</span> <span class="nav-text">DOM层级顺序与z-index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#link-与-import-的区别"><span class="nav-number">19.</span> <span class="nav-text">link 与 @import 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-有哪些继承属性"><span class="nav-number">20.</span> <span class="nav-text">CSS 有哪些继承属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3新特性"><span class="nav-number">21.</span> <span class="nav-text">CSS3新特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何水平-垂直居中一个元素？"><span class="nav-number">22.</span> <span class="nav-text">如何水平/垂直居中一个元素？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#li-与-li-之间有看不见的空白间隔是什么原因引起的？有什么解决办法？-也称幽灵字符"><span class="nav-number">23.</span> <span class="nav-text">li 与 li 之间有看不见的空白间隔是什么原因引起的？有什么解决办法？(也称幽灵字符)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#display-inline-block-什么时候会显示间隙？-携程"><span class="nav-number">24.</span> <span class="nav-text">display:inline-block 什么时候会显示间隙？(携程)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用纯-CSS-创建一个三角形的原理是什么？"><span class="nav-number">25.</span> <span class="nav-text">用纯 CSS 创建一个三角形的原理是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用布局方式"><span class="nav-number">26.</span> <span class="nav-text">常用布局方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表格布局"><span class="nav-number">26.1.</span> <span class="nav-text">表格布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-margin"><span class="nav-number">26.2.</span> <span class="nav-text">float+margin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inline-block"><span class="nav-number">26.3.</span> <span class="nav-text">inline-block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flexbox"><span class="nav-number">26.4.</span> <span class="nav-text">flexbox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应式设计和布局"><span class="nav-number">26.5.</span> <span class="nav-text">响应式设计和布局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请列举几种隐藏元素的方法"><span class="nav-number">27.</span> <span class="nav-text">请列举几种隐藏元素的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css-属性-content-有什么作用？"><span class="nav-number">28.</span> <span class="nav-text">css 属性 content 有什么作用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素竖向的百分比设定是相对于容器的高度吗？"><span class="nav-number">29.</span> <span class="nav-text">元素竖向的百分比设定是相对于容器的高度吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a-标签上四个伪类的使用顺序是怎么样的？"><span class="nav-number">30.</span> <span class="nav-text">a 标签上四个伪类的使用顺序是怎么样的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置元素浮动后，该元素的-display-值会如何变化？"><span class="nav-number">31.</span> <span class="nav-text">设置元素浮动后，该元素的 display 值会如何变化？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请解释-CSS-sprites，以及你要如何在页面或"><span class="nav-number">32.</span> <span class="nav-text">请解释 CSS sprites，以及你要如何在页面或</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#margin叠加几种情况"><span class="nav-number">33.</span> <span class="nav-text">margin叠加几种情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水平居中和垂直居中"><span class="nav-number">34.</span> <span class="nav-text">水平居中和垂直居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css问题"><span class="nav-number">35.</span> <span class="nav-text">css问题</span></a></li></ol></div>
             
 
           </div>

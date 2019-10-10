@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/10/10/vue%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</loc>
+    
+    <lastmod>2019-10-10T16:02:43.583Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/09/30/html5%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</loc>
+    
+    <lastmod>2019-09-30T03:25:41.606Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/06/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86css/</loc>
+    
+    <lastmod>2019-09-30T03:08:03.996Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/07/15/javascript%E6%95%B4%E7%90%86/</loc>
+    
+    <lastmod>2019-09-25T16:28:52.512Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/09/25/es6%E4%B8%AD%E7%9A%84async-await%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2019-09-25T14:46:38.249Z</lastmod>
@@ -19,13 +47,6 @@
     <loc>http://yoursite.com/2019/09/24/vue%E6%BA%90%E7%A0%81%E7%A0%94%E8%AF%BB/</loc>
     
     <lastmod>2019-09-24T10:50:13.112Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/09/24/vue%E7%9A%84%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E4%BE%A6%E5%90%AC%E5%99%A8/</loc>
-    
-    <lastmod>2019-09-24T09:58:31.326Z</lastmod>
     
   </url>
   
@@ -51,13 +72,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/07/15/javascript%E6%95%B4%E7%90%86/</loc>
-    
-    <lastmod>2019-09-21T01:16:20.864Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2019/05/22/Alexnet%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/</loc>
     
     <lastmod>2019-09-19T09:45:17.230Z</lastmod>
@@ -75,13 +89,6 @@
     <loc>http://yoursite.com/2018/09/10/%E7%94%A8CNN%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9CGAN/</loc>
     
     <lastmod>2019-09-19T09:01:00.912Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/06/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86css/</loc>
-    
-    <lastmod>2019-09-19T08:53:07.692Z</lastmod>
     
   </url>
   

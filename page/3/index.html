@@ -273,6 +273,229 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/15/基础知识/" itemprop="url">目前的learning plan</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-15T21:23:22+08:00">
+                2018-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">基础知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新"><a href="#必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新" class="headerlink" title="必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新"></a>必须掌握的基础知识，主要分为数据结构、算法、操作系统、数据库、前端等。不定期更新</h4><p>数据结构</p>
+<ul>
+<li>表</li>
+<li>堆栈</li>
+<li>队列</li>
+<li>数组</li>
+<li><p>树</p>
+<ul>
+<li>完全二叉树：除了最后一层以外，其余层必满；最后一层可以是满，如果不满，则节点必须集中在左边</li>
+<li>最大堆：1.必须是完全二叉树 2.节点的值必须大于左右子树的值</li>
+<li>二叉搜索树：左孩子比父母小，右孩子比父母大。</li>
+<li>avl树：一种平衡二叉搜索树，并且任意节点的孩子节点高度差最大为1.</li>
+<li>平衡因子：某节点的平衡因子是该节点左子树的高度减右子树的高度（avl只能是0，1，-1</li>
+<li><p>红黑树：</p>
+<p>  节点是红色或黑色。<br>  根是黑色。<br>  每个红色节点必须有两个黑色的子节点。（从每个叶子到根的所有路径上不能有两个连续的红色节点。）<br>  从任一节点到其每个叶子的所有简单路径都包含相同数目的黑色节点。</p>
+</li>
+</ul>
+</li>
+<li>图</li>
+</ul>
+<p>算法</p>
+<ul>
+<li>排序</li>
+<li>查找</li>
+<li>hash</li>
+<li>算法思想-递归</li>
+<li>算法思想-贪心</li>
+<li>算法思想-回溯</li>
+<li>算法思想-分支</li>
+<li>算法思想-动态规划</li>
+</ul>
+<p>数据库</p>
+<ul>
+<li>索引</li>
+<li>视图</li>
+<li>触发器</li>
+<li>范式</li>
+<li>锁</li>
+<li>存储过程</li>
+<li>事物</li>
+<li>B+树</li>
+<li>E-R图</li>
+<li>3.10补充-mysql、mongodb</li>
+</ul>
+<p>操作系统</p>
+<ul>
+<li><p>并发性（concurrence）</p>
+<p>  在一个系统（或者一段时间）中，有多个同时执行的程序进行计算，并且它们之间存在潜在的交互。优点：资源利用率高、程序设计更简化、程序响应更快、系统性能更高；缺点：存在并发性的系统会有不同的程序运行路径，所以系统的处理结果会有不确定性。</p>
+</li>
+<li><p>进程（process）、线程（thread）</p>
+<p>  一个应用程序包含一个或多个相互协作的进程。</p>
+<pre><code>  进程：一块包含一些资源的内存区域，组成为一段一定大小（4GB）的线性内存空间。
+
+  线程：进程中包含的一个或多个执行单元，无内存空间，只有指针、栈、寄存器、数据区。
+</code></pre><p>  一个程序至少有一个进程，一个进程至少有一个线程。进程和线程都是系统（程序）的执行单元。<br>  差别：进程具有独立的地址空间（供它包含的线程访问），线程没有，所以如果一个进程崩溃，在保护模式下不会对其他进程产生影响；而一个线程死掉就等于整个进程死掉（多进程程序比多线程程序健壮），但是进程切换时耗费的资源多，效率差。</p>
+</li>
+<li><p>异步、同步处理、阻塞和非阻塞</p>
+<pre><code>  同步调用：调用之后就能得到结果
+  异步调用：调用之后需要其他方法（状态、通知、回调函数）来得到结果。
+  同步线程：两个线程的步调要一致，如果二者运行速度不一样，则快的等慢的（快的阻塞一下等慢的）。
+  异步线程：两个线程的步调不一致，各自独立运行。
+  同步I/O：不发送成功或失败状态，一直等待。
+  异步I/O：输入/输出时立即返回成功或失败的状态。
+</code></pre><p>  阻塞：进程或线程停止。</p>
+<pre><code>  阻塞I/O：资源不可用时（输入/输出未完成，I/O一直阻塞，直到完成。
+  非阻塞I/O：资源不可用超过一定时间后，直接结束本次I/O。
+</code></pre></li>
+<li><p>调度、死锁</p>
+<p>  死锁：两个或多个执行单元之间相互等待对方结束而引起阻塞的情况。</p>
+<pre><code>  例：T1有R1的访问权、T2有R2的访问权。
+      T1想访问R2，同时T2想访问R1，此时T1和T2都要等待对方给出权限，形成死锁。
+</code></pre></li>
+<li>存储器管理</li>
+<li>文件管理</li>
+<li>IO阻塞</li>
+<li>用户态、核心态</li>
+</ul>
+<p>nodejs</p>
+<pre><code>express框架、es6、es7
+</code></pre><p>前端框架</p>
+<pre><code>react、vuejs、angularjs
+</code></pre><p>IOS开发</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/《深入浅出NodeJS》读书笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -517,7 +740,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -539,7 +762,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
