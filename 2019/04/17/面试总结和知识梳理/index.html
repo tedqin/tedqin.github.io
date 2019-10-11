@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="TedQin">
 <meta property="og:description" content="1 前言整理下自己准备面试以及面试过程中所遇到的一些问题，包括自己曾经的项目内容的简单整理，以及一些基本的面试点 2 项目介绍简单介绍 采用技术/担任职责 主要问题&amp;amp;解决方法 闪光点 2.1 上创： 小组组长 主要负责flask项目中的后端算法，参与前后端整合 web应用，协同过滤算法 书籍推荐系统，建立在学校推出的图书评分系统上 应用主要内容分为2块： 1是根据用户推荐书籍 老用户 基于">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-28T17:54:53.569Z">
+<meta property="og:updated_time" content="2019-10-11T14:11:03.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结和知识梳理">
 <meta name="twitter:description" content="1 前言整理下自己准备面试以及面试过程中所遇到的一些问题，包括自己曾经的项目内容的简单整理，以及一些基本的面试点 2 项目介绍简单介绍 采用技术/担任职责 主要问题&amp;amp;解决方法 闪光点 2.1 上创： 小组组长 主要负责flask项目中的后端算法，参与前后端整合 web应用，协同过滤算法 书籍推荐系统，建立在学校推出的图书评分系统上 应用主要内容分为2块： 1是根据用户推荐书籍 老用户 基于">
@@ -1051,6 +1051,32 @@
 </ul>
 </li>
 </ul>
+<h2 id="16-数据库"><a href="#16-数据库" class="headerlink" title="16 数据库"></a>16 数据库</h2><p>一个表users，行有id，username，password，realname</p>
+<ul>
+<li><p>增</p>
+<pre><code>  insert into users(username, password, realname) values (&#39;ted&#39;, &#39;123&#39;, &#39;tedqin&#39;);
+</code></pre></li>
+<li><p>查</p>
+<pre><code>  select * from users; --查看全部信息
+  select id, username from users; --查看全部信息中的id和username
+  select * from users where username=&#39;ted&#39;; --查看全部信息中username=ted的项
+  select * from users where username=&#39;ted&#39; and password=&#39;123&#39;; --查看全部信息中username=ted和password=123的项
+  select * from users where username like &#39;%te%&#39;; --查看全部信息中username带te的项
+</code></pre></li>
+<li><p>删</p>
+<pre><code>  delete from users where username=&#39;ted&#39;; --删除表中username为ted的项
+  delete from users where username&lt;&gt;&#39;ted&#39;; --删除表中username不为ted的项
+</code></pre></li>
+<li><p>改</p>
+<pre><code>  update users set realname=&#39;teddy&#39;; --把表中所有realname都改为teddy
+  update users set realname=&#39;teddy&#39; where username=&#39;ted&#39;; --把username为ted的项的realname改为teddy
+</code></pre></li>
+<li><p>order by 顺序排序，后面加desc就是倒序排序</p>
+<pre><code>  select * from users where username=&#39;ted&#39; order by id; --查询全部信息中username=ted的项并按id顺序排列
+  select * from users where username=&#39;ted&#39; order by id desc; --查询全部信息中username=ted的项并按id倒叙序排列
+</code></pre></li>
+<li></li>
+</ul>
 
       
     </div>
@@ -1262,7 +1288,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前言"><span class="nav-number">1.</span> <span class="nav-text">1 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-项目介绍"><span class="nav-number">2.</span> <span class="nav-text">2 项目介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-上创："><span class="nav-number">2.1.</span> <span class="nav-text">2.1 上创：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-大创：alexnet分类图像"><span class="nav-number">2.2.</span> <span class="nav-text">2.2    大创：alexnet分类图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-毕设"><span class="nav-number">2.3.</span> <span class="nav-text">2.3    毕设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-中科院自动化所："><span class="nav-number">2.4.</span> <span class="nav-text">2.4    中科院自动化所：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-饿了么："><span class="nav-number">2.5.</span> <span class="nav-text">2.5    饿了么：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-长虹"><span class="nav-number">2.6.</span> <span class="nav-text">2.6    长虹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-数学建模"><span class="nav-number">2.7.</span> <span class="nav-text">2.7    数学建模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-智能交通实验室"><span class="nav-number">2.8.</span> <span class="nav-text">2.8    智能交通实验室</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-操作系统"><span class="nav-number">3.</span> <span class="nav-text">3. 操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-网络协议："><span class="nav-number">4.</span> <span class="nav-text">4    网络协议：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-数据结构"><span class="nav-number">5.</span> <span class="nav-text">5    数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-算法"><span class="nav-number">6.</span> <span class="nav-text">6    算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-git："><span class="nav-number">7.</span> <span class="nav-text">7    git：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-前端："><span class="nav-number">8.</span> <span class="nav-text">8    前端：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-浏览器"><span class="nav-number">9.</span> <span class="nav-text">9    浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-性能"><span class="nav-number">10.</span> <span class="nav-text">10    性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-安全"><span class="nav-number">11.</span> <span class="nav-text">11    安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-框架"><span class="nav-number">12.</span> <span class="nav-text">12    框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-vue"><span class="nav-number">13.</span> <span class="nav-text">13    vue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-死锁"><span class="nav-number">14.</span> <span class="nav-text">14    死锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-设计模式："><span class="nav-number">15.</span> <span class="nav-text">15    设计模式：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前言"><span class="nav-number">1.</span> <span class="nav-text">1 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-项目介绍"><span class="nav-number">2.</span> <span class="nav-text">2 项目介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-上创："><span class="nav-number">2.1.</span> <span class="nav-text">2.1 上创：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-大创：alexnet分类图像"><span class="nav-number">2.2.</span> <span class="nav-text">2.2    大创：alexnet分类图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-毕设"><span class="nav-number">2.3.</span> <span class="nav-text">2.3    毕设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-中科院自动化所："><span class="nav-number">2.4.</span> <span class="nav-text">2.4    中科院自动化所：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-饿了么："><span class="nav-number">2.5.</span> <span class="nav-text">2.5    饿了么：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-长虹"><span class="nav-number">2.6.</span> <span class="nav-text">2.6    长虹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-数学建模"><span class="nav-number">2.7.</span> <span class="nav-text">2.7    数学建模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-智能交通实验室"><span class="nav-number">2.8.</span> <span class="nav-text">2.8    智能交通实验室</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-操作系统"><span class="nav-number">3.</span> <span class="nav-text">3. 操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-网络协议："><span class="nav-number">4.</span> <span class="nav-text">4    网络协议：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-数据结构"><span class="nav-number">5.</span> <span class="nav-text">5    数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-算法"><span class="nav-number">6.</span> <span class="nav-text">6    算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-git："><span class="nav-number">7.</span> <span class="nav-text">7    git：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-前端："><span class="nav-number">8.</span> <span class="nav-text">8    前端：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-浏览器"><span class="nav-number">9.</span> <span class="nav-text">9    浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-性能"><span class="nav-number">10.</span> <span class="nav-text">10    性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-安全"><span class="nav-number">11.</span> <span class="nav-text">11    安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-框架"><span class="nav-number">12.</span> <span class="nav-text">12    框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-vue"><span class="nav-number">13.</span> <span class="nav-text">13    vue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-死锁"><span class="nav-number">14.</span> <span class="nav-text">14    死锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-设计模式："><span class="nav-number">15.</span> <span class="nav-text">15    设计模式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-数据库"><span class="nav-number">16.</span> <span class="nav-text">16 数据库</span></a></li></ol></div>
             
 
           </div>

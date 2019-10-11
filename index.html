@@ -606,7 +606,56 @@
 </ul>
 </li>
 </ul>
+<h2 id="样式绑定"><a href="#样式绑定" class="headerlink" title="样式绑定"></a>样式绑定</h2><ul>
+<li><p><code>:class=</code>等价于<code>: v-bind:class=</code> ，将class绑定在一个标签上，可以控制class的显示与否</p>
+<ul>
+<li><p>class的对象绑定 <code>:class=&quot;{activated: isActivated}&quot;</code></p>
+<pre><code>  &lt;style&gt;
+      .activated {color: red}
+  &lt;/style&gt;
 
+  &lt;div @click=&quot;handleDivClick&gt;  
+        :class=&quot;{activated: isActivated}&quot;&gt;&lt;/div&gt;
+
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data: {
+            isActicated: false
+        },
+        method: {
+            handleDivClick: function() {
+                this.isActivated = true
+            }
+        }
+    })
+
+</code></pre></li>
+<li>class的数组绑定 <code>:class=&quot;[activated]&quot;</code></li>
+</ul>
+</li>
+</ul>
+<pre><code>    ```
+    &lt;style&gt;
+        .activated {color: red}
+    &lt;/style&gt;
+
+    &lt;div @click=&quot;handleDivClick&gt;  
+          :class=&quot;{activated: isActivated}&quot;&gt;&lt;/div&gt;
+
+      var vm = new Vue({
+          el: &quot;#app&quot;,
+          data: {
+              activated: &quot;&quot;
+          },
+          method: {
+              handleDivClick: function() {
+                  this.activated = &quot;activated&quot;
+              }
+          }
+      })
+
+    ``` 
+</code></pre>
           
         
       

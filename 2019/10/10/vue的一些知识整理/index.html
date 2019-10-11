@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="TedQin">
 <meta property="og:description" content="父子组件传值 父组件向子组件传值   //html   //1.父组件通过v-bind给子组件传值   &amp;lt;todo-item v-bind:content=&amp;quot;data1&amp;quot;&amp;gt;&amp;lt;/todo-item&amp;gt;    //script   //定义全局组件   Vue.component(&amp;quot;TodoItem&amp;quot;, {       //2.子组件通过p">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-10T16:02:43.583Z">
+<meta property="og:updated_time" content="2019-10-11T11:38:27.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue的一些知识整理">
 <meta name="twitter:description" content="父子组件传值 父组件向子组件传值   //html   //1.父组件通过v-bind给子组件传值   &amp;lt;todo-item v-bind:content=&amp;quot;data1&amp;quot;&amp;gt;&amp;lt;/todo-item&amp;gt;    //script   //定义全局组件   Vue.component(&amp;quot;TodoItem&amp;quot;, {       //2.子组件通过p">
@@ -602,7 +602,56 @@
 </ul>
 </li>
 </ul>
+<h2 id="样式绑定"><a href="#样式绑定" class="headerlink" title="样式绑定"></a>样式绑定</h2><ul>
+<li><p><code>:class=</code>等价于<code>: v-bind:class=</code> ，将class绑定在一个标签上，可以控制class的显示与否</p>
+<ul>
+<li><p>class的对象绑定 <code>:class=&quot;{activated: isActivated}&quot;</code></p>
+<pre><code>  &lt;style&gt;
+      .activated {color: red}
+  &lt;/style&gt;
 
+  &lt;div @click=&quot;handleDivClick&gt;  
+        :class=&quot;{activated: isActivated}&quot;&gt;&lt;/div&gt;
+
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data: {
+            isActicated: false
+        },
+        method: {
+            handleDivClick: function() {
+                this.isActivated = true
+            }
+        }
+    })
+
+</code></pre></li>
+<li>class的数组绑定 <code>:class=&quot;[activated]&quot;</code></li>
+</ul>
+</li>
+</ul>
+<pre><code>    ```
+    &lt;style&gt;
+        .activated {color: red}
+    &lt;/style&gt;
+
+    &lt;div @click=&quot;handleDivClick&gt;  
+          :class=&quot;{activated: isActivated}&quot;&gt;&lt;/div&gt;
+
+      var vm = new Vue({
+          el: &quot;#app&quot;,
+          data: {
+              activated: &quot;&quot;
+          },
+          method: {
+              handleDivClick: function() {
+                  this.activated = &quot;activated&quot;
+              }
+          }
+      })
+
+    ``` 
+</code></pre>
       
     </div>
     
@@ -809,7 +858,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#父子组件传值"><span class="nav-number">1.</span> <span class="nav-text">父子组件传值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局组件和局部组件"><span class="nav-number">2.</span> <span class="nav-text">全局组件和局部组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v-bind-v-model-v-for和v-on"><span class="nav-number">3.</span> <span class="nav-text">v-bind,v-model,v-for和v-on</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v-text和v-html的区别"><span class="nav-number">4.</span> <span class="nav-text">v-text和v-html的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算属性-computed"><span class="nav-number">5.</span> <span class="nav-text">计算属性 computed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#侦听器-watch"><span class="nav-number">6.</span> <span class="nav-text">侦听器 watch</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#父子组件传值"><span class="nav-number">1.</span> <span class="nav-text">父子组件传值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局组件和局部组件"><span class="nav-number">2.</span> <span class="nav-text">全局组件和局部组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v-bind-v-model-v-for和v-on"><span class="nav-number">3.</span> <span class="nav-text">v-bind,v-model,v-for和v-on</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v-text和v-html的区别"><span class="nav-number">4.</span> <span class="nav-text">v-text和v-html的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算属性-computed"><span class="nav-number">5.</span> <span class="nav-text">计算属性 computed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#侦听器-watch"><span class="nav-number">6.</span> <span class="nav-text">侦听器 watch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式绑定"><span class="nav-number">7.</span> <span class="nav-text">样式绑定</span></a></li></ol></div>
             
 
           </div>

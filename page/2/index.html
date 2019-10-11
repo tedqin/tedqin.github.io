@@ -3535,6 +3535,32 @@ p::first-letter {font-size:30px;}
 </ul>
 </li>
 </ul>
+<h2 id="16-数据库"><a href="#16-数据库" class="headerlink" title="16 数据库"></a>16 数据库</h2><p>一个表users，行有id，username，password，realname</p>
+<ul>
+<li><p>增</p>
+<pre><code>  insert into users(username, password, realname) values (&#39;ted&#39;, &#39;123&#39;, &#39;tedqin&#39;);
+</code></pre></li>
+<li><p>查</p>
+<pre><code>  select * from users; --查看全部信息
+  select id, username from users; --查看全部信息中的id和username
+  select * from users where username=&#39;ted&#39;; --查看全部信息中username=ted的项
+  select * from users where username=&#39;ted&#39; and password=&#39;123&#39;; --查看全部信息中username=ted和password=123的项
+  select * from users where username like &#39;%te%&#39;; --查看全部信息中username带te的项
+</code></pre></li>
+<li><p>删</p>
+<pre><code>  delete from users where username=&#39;ted&#39;; --删除表中username为ted的项
+  delete from users where username&lt;&gt;&#39;ted&#39;; --删除表中username不为ted的项
+</code></pre></li>
+<li><p>改</p>
+<pre><code>  update users set realname=&#39;teddy&#39;; --把表中所有realname都改为teddy
+  update users set realname=&#39;teddy&#39; where username=&#39;ted&#39;; --把username为ted的项的realname改为teddy
+</code></pre></li>
+<li><p>order by 顺序排序，后面加desc就是倒序排序</p>
+<pre><code>  select * from users where username=&#39;ted&#39; order by id; --查询全部信息中username=ted的项并按id顺序排列
+  select * from users where username=&#39;ted&#39; order by id desc; --查询全部信息中username=ted的项并按id倒叙序排列
+</code></pre></li>
+<li></li>
+</ul>
 
           
         
