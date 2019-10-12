@@ -508,7 +508,8 @@
 </code></pre></li>
 <li><p>v-for：循环data</p>
 <pre><code>  //html
-  &lt;li v-for=&quot;item in list&quot;&gt;{{item}}&lt;/li&gt;
+  &lt;li v-for=&quot;item of list&quot;&gt;{{item}}&lt;/li&gt;
+  &lt;li v-for=&quot;(item, index) of list&quot;&gt;{{item}}---{{index}}&lt;/li&gt;
 
   //script
   var app = new Vue({
@@ -607,7 +608,7 @@
 </li>
 </ul>
 <h2 id="样式绑定"><a href="#样式绑定" class="headerlink" title="样式绑定"></a>样式绑定</h2><ul>
-<li><p><code>:class=</code>等价于<code>: v-bind:class=</code> ，将class绑定在一个标签上，可以控制class的显示与否</p>
+<li><p>class绑定：<code>:class=</code>等价于<code>: v-bind:class=</code> ，将class绑定在一个标签上，可以控制class的显示与否</p>
 <ul>
 <li><p>class的对象绑定 <code>:class=&quot;{activated: isActivated}&quot;</code></p>
 <pre><code>  &lt;style&gt;
@@ -655,7 +656,53 @@
       })
 
     ``` 
-</code></pre>
+</code></pre><ul>
+<li><p>内联样式绑定</p>
+<ul>
+<li><p>style的对象绑定 </p>
+<pre><code>  &lt;div :style=&quot;styleObj&quot; v-on:click=&quot;handleDivClick&quot;&gt;&lt;/div&gt;
+
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data: {
+            styleObj: {
+                color: red
+            }
+        },
+        methods: {
+            handleDivClick: function() {
+                this.styleObj.color = red
+            }
+        }
+    })
+</code></pre></li>
+<li><p>style的数组绑定 </p>
+<p>  只需要把<code>&lt;div :style=&quot;styleObj&quot;</code>换成<code>&lt;div :style=[styleObj, {fontSize: &#39;20px&#39;}]</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><ul>
+<li>v-if: 隐藏的元素不会被渲染到页面上，还可以用v-else</li>
+<li><p>v-show: 隐藏的元素已经被渲染到页面上，只是用了display:none来隐藏</p>
+<pre><code>  &lt;div v-if=&quot;show&quot;&gt;{{name}}&lt;/div&gt;
+  &lt;div v-else=&quot;show&quot;&gt;Bye&lt;/div&gt;
+  &lt;div v-if=&quot;show===a&quot;&gt;a&lt;/div&gt;
+  &lt;div v-else-if=&quot;show===b&quot;&gt;b&lt;/div&gt;
+  &lt;div v-else&gt;bye&lt;/div&gt;
+
+  &lt;div v-show=&quot;show&quot;&gt;{{name}}&lt;/div&gt;
+
+  var vm = new Vue({
+      el: &quot;#app&quot;,
+      data: {
+          name: &#39;ted&#39;,
+          show: false
+      },
+  })
+</code></pre></li>
+</ul>
+
           
         
       
