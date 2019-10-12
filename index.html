@@ -377,6 +377,8 @@
   Vue.component(&quot;TodoItem&quot;, {
       //2.子组件通过props接收
       props: [&#39;content&#39;]
+      //也可以用对象形式进行参数校验
+      //props: {content: String}//只允许接受string
       template: &quot;&lt;li&gt;{{content}}&lt;/li&gt;&quot;
   })
 
@@ -418,6 +420,60 @@
       }
   })
 </code></pre></li>
+</ul>
+<h2 id="非父子组件传值"><a href="#非父子组件传值" class="headerlink" title="非父子组件传值"></a>非父子组件传值</h2><ul>
+<li><p>观察者模式</p>
+<pre><code>  &lt;!-- 非父子组件传值 --&gt;
+&lt;!-- 通过观察者模式实现，两个子组件之间传值，点击其中一个组件，另一个组件的值变成这个被点击组件的值--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Document&lt;/title&gt;
+&lt;script src=&quot;./vue.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;root&quot;&gt;
+  &lt;child :content=&quot;content1&quot;&gt;&lt;/child&gt;
+  &lt;child :content=&quot;content2&quot;&gt;&lt;/child&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  //1. 在Vue的prototype上定义一个bus
+  Vue.prototype.bus = new Vue()
+
+  Vue.component(&#39;child&#39;, {
+    props: {
+      content: String
+    },
+    template: &#39;&lt;div v-on:click=&quot;handleClick&quot;&gt;{{content}}&lt;/div&gt;&#39;,
+    methods: {
+      handleClick: function() {
+        //使用bus向外触发事件
+        this.bus.$emit(&#39;change&#39;, this.content)
+      }
+    },
+    //利用钩子函数，监听change事件
+    mounted: function() {
+      var this_ = this
+      this.bus.$on(&#39;change&#39;, function(msg) {
+        this_.content = msg
+      })
+    }
+  })
+
+  var vm = new Vue({
+    el: &quot;#root&quot;,
+    data: {
+      content1: &quot;tedqin&quot;,
+      content2: &quot;teddymoon&quot;
+    }
+  })
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre></li>
+<li>vuex</li>
 </ul>
 <h2 id="全局组件和局部组件"><a href="#全局组件和局部组件" class="headerlink" title="全局组件和局部组件"></a>全局组件和局部组件</h2><ul>
 <li><p>全局组件：用Vue.component()方法定义，其他组件可以直接使用</p>
@@ -507,15 +563,38 @@
   })
 </code></pre></li>
 <li><p>v-for：循环data</p>
-<pre><code>  //html
-  &lt;li v-for=&quot;item of list&quot;&gt;{{item}}&lt;/li&gt;
-  &lt;li v-for=&quot;(item, index) of list&quot;&gt;{{item}}---{{index}}&lt;/li&gt;
+<pre><code>  //循环数组
+  //html
+  &lt;li v-for=&quot;item of list&quot;&gt;{{item.text}}&lt;/li&gt;
+  &lt;li v-for=&quot;(item, index) of list&quot;&gt;{{item.text}}---{{index}}&lt;/li&gt;
+  &lt;li v-for=&quot;(item, index) of list&quot; :key=&quot;item.id&quot;&gt;{{item.text}}---{{index}}&lt;/li&gt;  &lt;!--用index的时候最好再用key唯一标识--&gt;
 
   //script
   var app = new Vue({
       ...
       data: {
-          list: []
+          list: [{
+              id: &quot;1&quot;,
+              text: &quot;ted&quot;
+          }, {
+              id: &quot;2&quot;,
+              text: &quot;xxy&quot;
+          }]
+      }
+  })
+</code></pre><pre><code>  //循环对象
+  //html
+  &lt;li v-for=&quot;(item, key, index) of list&quot;&gt;{{item}}--{{key}}--{{index}}&lt;/li&gt;
+  &lt;!--输出&quot;ted--name--0 23--age--1&quot;--&gt;
+
+  //script
+  var app = new Vue({
+      ...
+      data: {
+          list: {
+              name: &quot;ted&quot;,
+              age: &quot;23&quot;
+          }
       }
   })
 </code></pre></li>
@@ -702,7 +781,210 @@
   })
 </code></pre></li>
 </ul>
+<h2 id="vue中的set方法"><a href="#vue中的set方法" class="headerlink" title="vue中的set方法"></a>vue中的set方法</h2><pre><code>arr=[1,2,3,4,5]
+data={
+    name: &quot;ted&quot;,
+    age: &quot;23&quot;
+}
+</code></pre><p>改变页面中的渲染出来的对象或数组，不能直接用<code>arr[3]=5</code>这样直接改，只能修改数组/对象的引用，即<code>this.arr=[1,2,5,4,5]</code>全部修改</p>
+<ul>
+<li><p>也可以用Vue.set()方法修改，set方法也可以添加新的数据</p>
+<pre><code>  //改数组
+  Vue.set(this.arr, 0, 11) //[11,2,3,4,5]
+  //改对象
+  Vue.set(this.data, &quot;name&quot;, &quot;teddy&quot;) //{name:&quot;teddy&quot;, age: &quot;23&quot;}
+</code></pre></li>
+</ul>
+<h2 id="slot插槽："><a href="#slot插槽：" class="headerlink" title="slot插槽："></a>slot插槽：</h2><p>父组件向子组件传递dom结构: 直接在子组件中定义，然后在template中引入<slot></slot></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;script src=&quot;./vue.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;child&gt;
+      &lt;h1&gt;tedqin&lt;/h1&gt;
+    &lt;/child&gt;
+  &lt;/div&gt;
+  &lt;script&gt;
+    Vue.component(&#39;child&#39;, {
+      template: `&lt;div&gt;
+                          &lt;p&gt;hello&lt;/p&gt;
+                      &lt;slot&gt;&lt;/slot&gt;
+                  &lt;/div&gt;
+                `
+    })
 
+    var vm = new Vue({
+      el: &quot;#app&quot;
+    })
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;script src=&quot;./vue.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;child&gt;
+      &lt;header slot=&quot;header&quot;&gt;&lt;/header&gt;
+      &lt;footer slot=&quot;footer&quot;&gt;&lt;/footer&gt;
+    &lt;/child&gt;
+  &lt;/div&gt;
+  &lt;script&gt;
+    Vue.component(&#39;child&#39;, {
+      template: `&lt;div&gt;
+                          &lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;
+                          &lt;p&gt;hello&lt;/p&gt;
+                      &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+                  &lt;/div&gt;
+                `
+    })
+
+    var vm = new Vue({
+      el: &quot;#app&quot;
+    })
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="动态组件"><a href="#动态组件" class="headerlink" title="动态组件"></a>动态组件</h2><pre><code>&lt;component :is=&quot;type&quot;&gt;&lt;/component&gt;
+
+//
+Vue.component(&#39;type1&#39;, {
+    template: &#39;&lt;div&gt;type1&lt;/div&gt;&#39;
+})
+Vue.component(&#39;type2&#39;, {
+    template: &#39;&lt;div&gt;type2&lt;/div&gt;&#39;
+})
+
+//
+data:{
+    type: &#39;type1&#39;
+}
+
+//
+methods: {
+    handleBtnClick: function(){
+        this.type = (this.type===&quot;type1&quot; ? &#39;type2&#39; : &#39;type1&#39;)
+    }
+}
+</code></pre><p>根据is属性绑定的data数据中的type动态切换组件</p>
+<h2 id="v-once"><a href="#v-once" class="headerlink" title="v-once"></a>v-once</h2><p>将第一次展示在页面中的资源保存在内存中，下次直接从内存中取资源，可以优化性能，提高静态页面展示效率</p>
+<p>##vue的路由</p>
+<ul>
+<li><p>src/main.js</p>
+<ul>
+<li><p>入口文件，定义了一个根实例 </p>
+<pre><code>import Vue from &#39;vue&#39;
+import App from &#39;./App&#39;
+import router from &#39;./router&#39;
+
+new Vue({
+  el: &quot;app&quot;, //app挂载点在./index.html上
+  router, //使用router，在路由配置文件index.js中配置路由
+  components: { App }, //使用子组件App
+  template: &#39;&lt;App/&gt;&#39; //渲染App这个局部组件
+})
+</code></pre></li>
+</ul>
+</li>
+<li><p>src/App.js</p>
+<ul>
+<li><p>App局部组件，也就是main.js渲染的页面，也就是主页面</p>
+<pre><code>&lt;template&gt;
+  &lt;div id=&quot;app&gt;
+      &lt;router-view&gt; //显示当前路由地址所对应的路由内容
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &#39;App&#39;
+}
+&lt;sctipt&gt;
+
+&lt;style&gt;
+#app {
+  ...
+}
+&lt;style&gt;
+</code></pre></li>
+</ul>
+</li>
+<li><p>src/router/index.js</p>
+<ul>
+<li><p>路由配置项 </p>
+<p><code>`</code><br>import Vue from ‘vue’<br>import Router from ‘vue-router’<br>import Home from ‘@/pages/home/Home’<br>import Home from ‘@/pages/list/List’</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>Vue.use(Router)
+
+export default new Router({
+    routes: [
+        {
+            path: &#39;/&#39;, //1.当用户访问根路径的时候
+            name: &#39;Home&#39;, 
+            components: Home // 2.访问home这个单文件组件
+        }, {
+            //增加其他页面的配置项
+            path: &#39;/list&#39;,
+            name: &#39;List&#39;,
+            components: List
+        }
+    ]
+})
+```     
+</code></pre><ul>
+<li><p>@/pages/home/Home.vue</p>
+<ul>
+<li><p>主页，单文件组件</p>
+<pre><code>&lt;template&gt;
+  &lt;div&gt;home&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &#39;Home&#39;
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+</code></pre></li>
+</ul>
+</li>
+<li><p>@/pages/list/List.vue</p>
+<ul>
+<li><p>list页面，单文件组件</p>
+<pre><code>&lt;template&gt;
+  &lt;div&gt;list&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &#39;List&#39;
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h2 id="vue是单页面应用，用替换a标签"><a href="#vue是单页面应用，用替换a标签" class="headerlink" title="vue是单页面应用，用替换a标签"></a>vue是单页面应用，用<router-link>替换a标签</router-link></h2><pre><code>&lt;router-link to=&quot;/list&quot;&gt;点击跳转&lt;/router-link&gt;
+</code></pre>
           
         
       
