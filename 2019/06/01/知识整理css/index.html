@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/UiHoQ6RDkWO.LfVZIG5bem*UjUZOg1z0kFIrKQ94KEc!/b/dL8AAAAAAAAA&bo=1wINAQAAAAADF.s!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/rGiGnulgayVLLScrCfPXfr48PlAlDPhZaz5S*RhN*aY!/b/dLgAAAAAAAAA&bo=ywKiAAAAAAADF1k!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12vH3Ht0pjpx3/g9JbXTvs5iHtLE3lZdF.b04G4xmre5IYTTXNJ8z4CMk!/b/dL8AAAAAAAAA&bo=BgO1AAAAAAADF4I!&rf=viewer_4">
-<meta property="og:updated_time" content="2019-09-30T03:08:03.996Z">
+<meta property="og:updated_time" content="2019-10-16T16:59:19.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="知识整理CSS">
 <meta name="twitter:description" content="CSS选择器标签：p{}class: .class{}id：#id {}同一标签，多个类：p.class1{} .class2{集体选择器：p,.class1,#id1 {}后代选择器(选择子孙代)：p em a {}子代选择器(只能选择子代)：div &amp;gt; p相邻选择：div + p通配符选择：*否定选择：not(.link) {}属性选择器：[title] {}伪类选择：:link {}链">
@@ -688,12 +688,12 @@ p::first-letter {font-size:30px;}
 <li>inherit 规定从父元素继承 position 属性的值</li>
 <li>relative： <ul>
 <li>相对相对于其正常位置进行定位。设置偏移量 <code>top/bottom/left/right:10px</code></li>
-<li>常规流的位置会留下，不会影响其他元素</li>
+<li>常规流的位置会留下，不会影响其他元素;也就是如果因为它的移动空出来了区域，其他的元素不会填充</li>
 </ul>
 </li>
 <li>absolute：绝对定位<ul>
 <li>相对于值不为 static 的第一个父元素进行定位。</li>
-<li>常规流的位置会被占据，会影响其他元素</li>
+<li>常规流的位置会被占据，会影响其他元素；也就是如果因为它的移动空出来了区域，其他的元素会填充</li>
 <li>如果设置上下左右偏移量为0，margin：autoauto，子元素就会相对于父元素居中</li>
 </ul>
 </li>
@@ -1264,7 +1264,7 @@ p::first-letter {font-size:30px;}
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -1275,7 +1275,7 @@ p::first-letter {font-size:30px;}
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

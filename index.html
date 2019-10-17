@@ -273,6 +273,250 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/17/什么时候需要保存this/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ted Qin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TedQin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/17/什么时候需要保存this/" itemprop="url">什么时候需要保存this?</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-17T14:25:05+08:00">
+                2019-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p><a href="https://www.imooc.com/wenda/detail/312105" target="_blank" rel="noopener">https://www.imooc.com/wenda/detail/312105</a></p>
+</blockquote>
+<p>javascript中this什么时候可以直接调用？什么时候要把它赋值给一个变量后才能调用？</p>
+<ul>
+<li><p>1) 避免多层this</p>
+<pre><code>  var o = {  
+
+       f1: function() {    
+
+           console.log(this);      
+
+          var f2 = function() {      
+
+               console.log(this);    
+
+           }();   
+
+          }     
+
+  } 
+
+  o.f1()
+</code></pre><p>  上面代码包含两层this，结果运行后，第一层指向该对象，第二层指向全局对象。一个解决方法是在第二层改用一个指向外层this的变量。</p>
+<pre><code>  var o = {   
+
+      f1: function() {     
+
+          console.log(this);      
+
+          var that = this;     
+
+          var f2 = function() {       
+
+              console.log(that);     
+
+          }();   
+
+      } 
+
+  } 
+
+  o.f1()
+</code></pre><p>  上面代码定义了变量that，固定指向外层的this，然后在内层使用that，就不会发生this指向的改变。</p>
+</li>
+</ul>
+<ul>
+<li><p>2) 避免数组处理方法中的this</p>
+<p>  数组的map和foreach方法，允许提供一个函数作为参数。这个函数内部不应该使用this。</p>
+<pre><code>  var o = {
+   v: &#39;hello&#39;,
+   p: [ &#39;a1&#39;, &#39;a2&#39; ],
+   f: function f() {
+     this.p.forEach(function (item) {
+       console.log(this.v+&#39; &#39;+item);
+     });
+   }}
+
+  o.f()
+</code></pre><p>  上面代码中，foreach方法的参数函数中的this，其实是指向window对象，因此取不到o.v的值。</p>
+<p>  解决这个问题的一种方法，是使用中间变量。</p>
+<pre><code>  var o = {
+   v: &#39;hello&#39;,
+   p: [ &#39;a1&#39;, &#39;a2&#39; ],
+   f: function f() {
+     var that = this;
+     this.p.forEach(function (item) {
+       console.log(that.v+&#39; &#39;+item);
+     });
+   }}
+
+  o.f()
+</code></pre><p>  另一种方法是将this当作foreach方法的第二个参数，固定它的运行环境。</p>
+<pre><code>  var o = {
+   v: &#39;hello&#39;,
+   p: [ &#39;a1&#39;, &#39;a2&#39; ],
+   f: function f() {
+     this.p.forEach(function (item) {
+       console.log(this.v+&#39; &#39;+item);
+     }, this);
+   }}
+
+  o.f()
+</code></pre></li>
+<li><p>3) 避免回调中的this</p>
+<pre><code>  var o = new Object();o.f = function (){
+  console.log(this === o);}o.f()
+</code></pre><p>  上面代码表示，如果调用o对象的f方法，其中的this就是指向o对象。</p>
+<p>  但是，如果将f方法指定给某个按钮的click事件，this的指向就变了。</p>
+<pre><code>  $(&#39;#button&#39;).on(&#39;click&#39;, o.f);
+</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/vue的一些知识整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2770,328 +3014,6 @@ let cp = new ColorPoint(25, 8, &#39;green&#39;);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/vue2.0仿去哪儿网移动端Webapp遇到的问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ted Qin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TedQin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/31/vue2.0仿去哪儿网移动端Webapp遇到的问题/" itemprop="url">vue2.0仿去哪儿网移动端Webapp遇到的问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T23:20:07+08:00">
-                2019-07-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/javascript/vue/" itemprop="url" rel="index">
-                    <span itemprop="name">vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="vue2-0仿去哪儿网移动端Webapp遇到的问题"><a href="#vue2-0仿去哪儿网移动端Webapp遇到的问题" class="headerlink" title="vue2.0仿去哪儿网移动端Webapp遇到的问题"></a>vue2.0仿去哪儿网移动端Webapp遇到的问题</h2><p>github地址：<a href="https://github.com/tedqin/Travel" target="_blank" rel="noopener">https://github.com/tedqin/Travel</a><br>demo：<a href="https://tedqin.github.io/Travel/" target="_blank" rel="noopener">https://tedqin.github.io/Travel/</a></p>
-<p>使用vue2.0对去哪儿网的移动端web页面的复现，做个总结。</p>
-<h2 id="为什么使用单页面应用"><a href="#为什么使用单页面应用" class="headerlink" title="为什么使用单页面应用"></a>为什么使用单页面应用</h2><h3 id="多页面应用"><a href="#多页面应用" class="headerlink" title="多页面应用"></a>多页面应用</h3><ul>
-<li>每次页面跳转，后端返回一个新的html<ul>
-<li>优点：首屏时间快、seo效果好（搜索引擎可以识别跳转的多个链接）</li>
-<li>缺点：页面切换慢（每次跳转需发送http请求）</li>
-</ul>
-</li>
-</ul>
-<h3 id="单页面应用"><a href="#单页面应用" class="headerlink" title="单页面应用"></a>单页面应用</h3><ul>
-<li>js感知路由变化，动态清除页面内容并将新页面渲染<ul>
-<li>优点：页面切换快</li>
-<li>缺点：首屏时间慢，seo差</li>
-</ul>
-</li>
-</ul>
-<h2 id="移动web端配置"><a href="#移动web端配置" class="headerlink" title="移动web端配置"></a>移动web端配置</h2><ul>
-<li>使用rem单位</li>
-<li>防止手指放大缩小页面，修改index.js</li>
-</ul>
-<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, 
-initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;&gt;
-</code></pre><h2 id="组件开发"><a href="#组件开发" class="headerlink" title="组件开发"></a>组件开发</h2><p>合理拆分组件，提高开发效率。父组件通过import方式导入子组件，并且</p>
-<pre><code>export default {
-  name: &#39;xxx&#39;,
-  components: {注册子组件名}
-</code></pre><h2 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h2><p>使用场景：当组件的内容希望父组件去定制</p>
-<h2 id="stylus"><a href="#stylus" class="headerlink" title="stylus"></a>stylus</h2><p>style库，增加开发效率。<br>其中，<code>.a &gt;&gt;&gt; .b</code>具有穿透scoped限制的效果</p>
-<h2 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h2><p>为了防止图片加载的过程中，页面抖动（图片未加载完毕的时候，文字会在上方，加载完毕后会抖动）</p>
-<pre><code>.wrapper
-    width: 100%
-    height: 0
-    overflow: hidden
-    padding-bottom: 26.7% //图片的宽高比
-</code></pre><h2 id="vuex进行非父子组件数据传递"><a href="#vuex进行非父子组件数据传递" class="headerlink" title="vuex进行非父子组件数据传递"></a>vuex进行非父子组件数据传递</h2><h3 id="一般使用"><a href="#一般使用" class="headerlink" title="一般使用"></a>一般使用</h3><p>vuex中有几个关键：单向数据的改变过程<br><code>state</code>存放公用数据，组件改数据必须调用<code>actions</code>，做一些异步处理或者批量的同步操作。然后actions调用<code>mutations</code>，只有通过改变mutations的值才能改变state</p>
-<ul>
-<li>在state中设置默认值<br>  <code>attr = &#39;aaa&#39;</code></li>
-<li>在组件中通过dispatch向actions派发数据（如果没有异步请求，可以直接使用commit，跳过这步）<br>  <code>this.$store.dispatch(&#39;actionsName&#39;, data)</code></li>
-<li><p>在actions中通过commit向mutations发送数据</p>
-<pre><code>  actionnName(tcx, data) {
-      tcx.commit(&#39;mutationsName&#39;, data)
-      }
-</code></pre></li>
-<li><p>然后在mutations中修改state中的值</p>
-<pre><code>  mutationsName(state, data) {
-      state.attr = data
-      }
-</code></pre></li>
-</ul>
-<h3 id="高级使用"><a href="#高级使用" class="headerlink" title="高级使用"></a>高级使用</h3><ul>
-<li>引入mapState, mapMutations <code>import [mapState, mapMutations] from &#39;vuex</code></li>
-<li>把mapState添加到计算属性（compute）中，把mapMutations添加到方法（methods）中<pre><code>  computed: {
-      ...mapState({
-          currentCity: &#39;city
-      })
-  },
-  methods: {
-      ...mapMutations(
-          [&#39;changeCity&#39;]
-      )
-  }
-</code></pre></li>
-</ul>
-<h2 id="axios发送ajax请求"><a href="#axios发送ajax请求" class="headerlink" title="axios发送ajax请求"></a>axios发送ajax请求</h2><ul>
-<li>使用生命周期函数mounted函数获取ajax数据，此时vue实例被挂载，但dom还没有渲染，可以节省性能   </li>
-<li>请求url：<code>axios.get(&#39;xxx/xxx.json&#39;)</code></li>
-<li><p>axios返回的是promise对象，可以使用then</p>
-<pre><code>  methods: {
-      getCityInfo () {
-        axios.get(&#39;/Travel/static/mock/city.json&#39;)
-          .then(this.handleGetCityInfoSucc)
-      },
-      handleGetCityInfoSucc (res) {
-        res = res.data
-        if (res.ret &amp;&amp; res.data) {
-          const data = res.data
-          this.cities = data.cities
-          this.hotCities = data.hotCities
-        }
-        ...
-</code></pre></li>
-<li>对以上代码的解释：<ul>
-<li>在mounted钩子函数里面定义一个A方法，只要页面加载完毕就执行A方法</li>
-<li>A方法用于获取后端的数据，它是一个promise函数，只要获取到了函数就then一个B函数</li>
-<li>B函数可以接收一个res参数，这个参数就是返回的结果 </li>
-</ul>
-</li>
-<li>ajax请求一般放在最外层的组件，这样只需要一次请求就可以获取所有页面的内容</li>
-</ul>
-<h2 id="ajax获取动态数据"><a href="#ajax获取动态数据" class="headerlink" title="ajax获取动态数据"></a>ajax获取动态数据</h2><ul>
-<li>在路由里的地址后面写:id，表示把对应的id参数存在了id变量中</li>
-<li>在获取ajax请求的地址上，可以写<code>axios.get(&#39;xxx/xxx.json?id=&#39; + this.$route.params.id)</code></li>
-<li>也可以写<code>axios.get(&#39;xxx/xxx.json&#39;, {params: {id: this.$route.params.id}})</code></li>
-</ul>
-<h2 id="router-link"><a href="#router-link" class="headerlink" title="router-link"></a>router-link</h2><ul>
-<li>vue中的内置路由组件<br>  <code>&lt;router-link to=&#39;/city&#39;&gt;&lt;/router-link&gt;</code>  </li>
-<li>使用前先在router/index.js中配置路由  </li>
-<li>可以通过配置tag属性改成别的标签</li>
-</ul>
-<h2 id="单行内容超出范围"><a href="#单行内容超出范围" class="headerlink" title="单行内容超出范围"></a>单行内容超出范围</h2><p>当单行文字内容超出显示范围，而显示<code>......</code>时，可以</p>
-<pre><code>overflow: hidden
-white-space: nowrap
-text-overflow: ellipsis
-</code></pre><h2 id="betterscroll"><a href="#betterscroll" class="headerlink" title="betterscroll"></a>betterscroll</h2><p>页面滚动插件</p>
-<h2 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h2><p>当鼠标在字母表上来回移动的时候，touchMove执行的频率是非常高的，通过函数节流限制下执行的频率：增加延时器</p>
-<h2 id="localstorage"><a href="#localstorage" class="headerlink" title="localstorage"></a>localstorage</h2><p>自动缓存，刷新页面的时候已经选择的城市不发生改变</p>
-<ul>
-<li>相当于cookie，但是用法要简单很多</li>
-<li>用法：<br>  <code>localStorage.arrt = va;ue</code></li>
-<li>最好使用try catch包裹，因为在部分浏览器会报错</li>
-</ul>
-<h2 id="keepalive"><a href="#keepalive" class="headerlink" title="keepalive"></a>keepalive</h2><p>优化问题：缓存页面数据，防止切换页面会发生多次ajax请求</p>
-<pre><code>&lt;keep-alive&gt;
-    &lt;router-view/&gt;
-&lt;/keep-alive&gt;
-</code></pre><p>它的意思是，路由内容每被加载一次，就把路由中的内容放到内存之中，下一次再进这个路由的时候，不需要再次渲染这个组件去重新执行钩子函数，只需要你从内存把以前的内容拿出来显示到页面上就可以</p>
-<h2 id="组件中name属性"><a href="#组件中name属性" class="headerlink" title="组件中name属性"></a>组件中name属性</h2><ul>
-<li>在递归组件时使用</li>
-<li>keepalive取消缓存在exclude=’组件name’中使用</li>
-<li>vue devtool调试工具中显示项目结构的名字</li>
-</ul>
-<h2 id="组件异步加载"><a href="#组件异步加载" class="headerlink" title="组件异步加载"></a>组件异步加载</h2><p>正常情况下，单页应用会在进入首页时加载所有组件<br>可以删除import特定的组件，然后通过<code>component: () =&gt; import(&#39;@/pages/home/Home)</code>按需加载</p>
-<h2 id="全局事件解绑"><a href="#全局事件解绑" class="headerlink" title="全局事件解绑"></a>全局事件解绑</h2><ul>
-<li>window是全局事件，无论那个页面都会监听这个事件，会影响到其他页面，所以要解绑</li>
-<li>在有keep-alive时会出现两个新的钩子函数：<ul>
-<li>activated 在页面被显示时执行</li>
-<li>deactivated 在页面即将被隐藏或页面被替换的时候执行 </li>
-</ul>
-</li>
-</ul>
-<h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><ul>
-<li>@表示src目录</li>
-<li>es6中，键值对相同写一个就可以</li>
-</ul>
-<h2 id="组件一览"><a href="#组件一览" class="headerlink" title="组件一览"></a>组件一览</h2><ul>
-<li>home <ul>
-<li>Header 头部 </li>
-<li>Icon 原型图标区域 </li>
-<li>Recommend 推荐 </li>
-<li>Swiper 图片轮播 </li>
-<li>Weekend 周末推荐</li>
-</ul>
-</li>
-<li>city <ul>
-<li>Header 头部 </li>
-<li>Alphabet 右侧城市首字母下拉列表 </li>
-<li>List 城市列表 </li>
-<li>Search 搜索</li>
-</ul>
-</li>
-<li>detail <ul>
-<li>Header 头部 </li>
-<li>Banner 主页面 </li>
-<li>List 图片详情页的轮播</li>
-</ul>
-</li>
-</ul>
-<h2 id="部署到GitHub-pages"><a href="#部署到GitHub-pages" class="headerlink" title="部署到GitHub pages"></a>部署到GitHub pages</h2><p>参考 <a href="https://medium.com/@Roli_Dori/deploy-vue-cli-3-project-to-github-pages-ebeda0705fbd" target="_blank" rel="noopener">https://medium.com/@Roli_Dori/deploy-vue-cli-3-project-to-github-pages-ebeda0705fbd</a></p>
-<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><p>后期更新</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3153,7 +3075,7 @@ text-overflow: ellipsis
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -3164,7 +3086,7 @@ text-overflow: ellipsis
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
